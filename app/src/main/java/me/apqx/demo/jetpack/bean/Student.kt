@@ -1,4 +1,4 @@
-package me.apqx.demo.bean
+package me.apqx.demo.jetpack.bean
 
 import me.apqx.demo.R
 

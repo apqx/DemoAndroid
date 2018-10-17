@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">DemoAndroid</string>
+    <string name="jetpack">Jetpack</string>
+    <string name="invoke">Do</string>
 </resources>
