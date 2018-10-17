@@ -24,9 +24,10 @@ class JetpackActivity : Activity() {
     }
 
     fun onClick(view: View) {
-        println("click")
+        println("btn click")
         for (i in 1..5) {
             list.add(Student("Tom${list.size}", list.size))
+
         }
         adapter?.notifyDataSetChanged()
     }
