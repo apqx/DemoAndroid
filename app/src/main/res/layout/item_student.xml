@@ -13,9 +13,10 @@
             type="me.apqx.demo.jetpack.bean.Student" />
     </data>
 
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="80dp">
+        android:layout_height="80dp"
+        android:onClick="@{() -> adapter.onItemClick(std)}">
 
         <ImageView
             android:id="@+id/iv_head"
@@ -44,7 +45,7 @@
             app:layout_constraintStart_toEndOf="@+id/iv_head"
             app:layout_constraintTop_toTopOf="@+id/iv_head" />
 
-        <Button
+        <TextView
             android:id="@+id/tv_age"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -53,7 +54,6 @@
             android:text="@{String.valueOf(std.age),default=10}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/tv_name"
-            app:layout_constraintTop_toBottomOf="@+id/tv_name"
-            android:onClick="@{() -> adapter.onItemClick(std)}" />
-    </android.support.constraint.ConstraintLayout>
+            app:layout_constraintTop_toBottomOf="@+id/tv_name" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

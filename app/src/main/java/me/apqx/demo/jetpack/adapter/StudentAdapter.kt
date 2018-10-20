@@ -1,19 +1,23 @@
 package me.apqx.demo.jetpack.adapter
 
 import android.content.Context
-import android.databinding.DataBindingUtil
-import android.support.v7.widget.RecyclerView
+import androidx.databinding.DataBindingUtil
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleObserver
+import androidx.lifecycle.OnLifecycleEvent
+import androidx.recyclerview.widget.RecyclerView
 import me.apqx.demo.Constant
 import me.apqx.demo.R
 import me.apqx.demo.databinding.ItemStudentBinding
 import me.apqx.demo.jetpack.bean.Student
 
-class StudentAdapter(private val list: ArrayList<Student>,
-                     private val context: Context): RecyclerView.Adapter<StudentAdapter.CusViewHolder>() {
+class StudentAdapter(private val list: List<Student>?,
+                     private val context: Context): RecyclerView.Adapter<StudentAdapter.CusViewHolder>(), LifecycleObserver {
 
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): CusViewHolder {
         val binding: ItemStudentBinding = DataBindingUtil.inflate(LayoutInflater.from(context), R.layout.item_student, p0, false)
@@ -21,15 +25,26 @@ class StudentAdapter(private val list: ArrayList<Student>,
     }
 
     override fun getItemCount(): Int {
-        return list.size
+        return list!!.size
     }
 
     override fun onBindViewHolder(p0: CusViewHolder, p1: Int) {
-        p0.bind(list[p1])
+        p0.bind(list!![p1])
     }
 
     fun onItemClick(std: Student) {
         Log.d(Constant.TAG, "item click $std")
+        Toast.makeText(context, std.toString(), Toast.LENGTH_SHORT).show()
+    }
+
+    @OnLifecycleEvent(Lifecycle.Event.ON_START)
+    fun onStart() {
+        Log.d(Constant.TAG, "onStart")
+    }
+
+    @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
+    fun onStop() {
+        Log.d(Constant.TAG, "onStop")
     }
 
     inner class CusViewHolder(private val binding: ItemStudentBinding): RecyclerView.ViewHolder(binding.root) {
