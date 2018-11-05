@@ -28,6 +28,7 @@ class StudentAdapter(val list: List<Student>) : RecyclerView.Adapter<StudentAdap
         fun setStudent(student: Student) {
             itemStudentBinding!!.tvName.text = student.name
             itemStudentBinding!!.tvAge.text = student.age.toString()
+            itemStudentBinding!!.imageView.setImageResource(R.mipmap.ic_launcher_round)
         }
 
     }

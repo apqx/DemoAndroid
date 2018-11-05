@@ -8,10 +8,18 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.navigation.NavController
 import androidx.navigation.NavHost
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import me.apqx.demo.LogUtil
 import me.apqx.demo.R
+import me.apqx.demo.databinding.FragmentMainBinding
+import me.apqx.demo.jetpack.navigation.adapter.StudentAdapter
+import me.apqx.demo.jetpack.navigation.bean.Student
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -28,12 +36,14 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  *
  */
-class FragmentMain : Fragment(), NavHost {
+class FragmentMain : NavHostFragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
     private var listener: OnFragmentInteractionListener? = null
-    private var hasLogin = false
+    val studentList = ArrayList<Student>()
+    val studentAdapter = StudentAdapter(studentList)
+    var fragmentMainBinding: FragmentMainBinding? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,26 +51,26 @@ class FragmentMain : Fragment(), NavHost {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
-        if (!hasLogin) {
-            // 没有登陆，启动登陆页面
-            Log.d("apqx", "not login, show login page")
-            navController.navigate(R.id.fragment_login)
-        }
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_main, container, false)
+        LogUtil.log("FragmentMain onCreateView")
+        val view = inflater.inflate(R.layout.fragment_main, container, false)
+        fragmentMainBinding = DataBindingUtil.bind<FragmentMainBinding>(view)
+        val layoutManager = LinearLayoutManager(context)
+        fragmentMainBinding!!.rvStudents.adapter = studentAdapter
+        fragmentMainBinding!!.rvStudents.layoutManager = layoutManager
+        return view
     }
 
     override fun onStart() {
         super.onStart()
-
-    }
-
-    override fun getNavController(): NavController {
-        return findNavController()
+        for (i in 0..9) {
+            studentList.add(Student("Tom$i", i))
+        }
+        studentAdapter.notifyDataSetChanged()
     }
 
     // TODO: Rename method, update argument and hook method into UI event

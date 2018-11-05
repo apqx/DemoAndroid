@@ -24,15 +24,28 @@
             android:id="@+id/action_fragment_main_to_fragment_login"
             app:destination="@id/fragment_login"
             app:enterAnim="@anim/nav_default_enter_anim" />
+        <action
+            android:id="@+id/action_fragment_main_to_fragment_settings"
+            app:destination="@id/fragment_info"
+            app:popUpTo="@+id/nav_main" />
     </fragment>
     <fragment
         android:id="@+id/fragment_login"
         android:name="me.apqx.demo.jetpack.navigation.fragments.FragmentLogin"
         android:label="fragment_login"
-        tools:layout="@layout/fragment_login"/>
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_fragment_login_to_fragment_blue"
+            app:destination="@id/fragment_blue"
+            app:popUpTo="@+id/nav_main" />
+        <action
+            android:id="@+id/action_fragment_login_to_fragment_red"
+            app:destination="@id/fragment_red"
+            app:popUpTo="@+id/nav_main" />
+    </fragment>
     <fragment
-        android:id="@+id/fragment_settings"
+        android:id="@+id/fragment_info"
         android:name="me.apqx.demo.jetpack.navigation.fragments.FragmentSettings"
-        android:label="fragment_settings"
-        tools:layout="@layout/fragment_settings" />
+        android:label="fragment_info"
+        tools:layout="@layout/fragment_info" />
 </navigation>
