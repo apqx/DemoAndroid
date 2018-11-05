@@ -1,6 +1,7 @@
 <resources>
-    <string name="app_name">DemoAndroid</string>
-    <string name="jetpack">Jetpack</string>
-    <string name="invoke">Do</string>
-    <string name="change">Change</string>
+    <string name="main_fragment">Main Fragment</string>
+    <string name="app_name">DemoApp</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

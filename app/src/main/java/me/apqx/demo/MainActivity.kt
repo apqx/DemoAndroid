@@ -1,22 +1,20 @@
 package me.apqx.demo
 
-import android.app.Activity
 import android.content.Intent
-import androidx.databinding.DataBindingUtil
 import android.os.Bundle
-import me.apqx.demo.jetpack.bean.Student
+import android.view.View
+import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
 import me.apqx.demo.databinding.ActivityMainBinding
-import me.apqx.demo.jetpack.view.JetpackActivity
+import me.apqx.demo.jetpack.JetpackActivity
 
-class MainActivity: Activity() {
-
-
+class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        val binding: ActivityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-        binding.btnJetpack.setOnClickListener{
-            startActivity(Intent(this, JetpackActivity::class.java))
-        }
+        val activityMainBinding = DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
+    }
+
+    fun onClickJetpack(view: View) {
+        startActivity(Intent(this, JetpackActivity::class.java))
     }
 }

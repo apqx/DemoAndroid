@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_main"
+    app:startDestination="@id/fragment_main">
+
+    <fragment
+        android:id="@+id/fragment_red"
+        android:name="me.apqx.demo.jetpack.navigation.fragments.FragmentRed"
+        android:label="fragment_red"
+        tools:layout="@layout/fragment_red"/>
+    <fragment
+        android:id="@+id/fragment_blue"
+        android:name="me.apqx.demo.jetpack.navigation.fragments.FragmentBlue"
+        android:label="fragment_blue"
+        tools:layout="@layout/fragment_blue" />
+    <fragment
+        android:id="@+id/fragment_main"
+        android:name="me.apqx.demo.jetpack.navigation.fragments.FragmentMain"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/action_fragment_main_to_fragment_login"
+            app:destination="@id/fragment_login"
+            app:enterAnim="@anim/nav_default_enter_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_login"
+        android:name="me.apqx.demo.jetpack.navigation.fragments.FragmentLogin"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login"/>
+    <fragment
+        android:id="@+id/fragment_settings"
+        android:name="me.apqx.demo.jetpack.navigation.fragments.FragmentSettings"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" />
+</navigation>
