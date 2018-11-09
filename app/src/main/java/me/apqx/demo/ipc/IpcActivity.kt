@@ -1,6 +1,7 @@
 package me.apqx.demo.ipc
 
-import android.os.Bundle
+import android.content.Intent
+import android.os.*
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
