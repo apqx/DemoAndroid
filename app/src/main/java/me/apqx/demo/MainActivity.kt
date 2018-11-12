@@ -7,6 +7,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import me.apqx.demo.databinding.ActivityMainBinding
+import me.apqx.demo.ipc.IpcActivity
 import me.apqx.demo.jetpack.JetpackActivity
 
 class MainActivity : AppCompatActivity() {
@@ -17,7 +18,14 @@ class MainActivity : AppCompatActivity() {
         handler.postAtTime({}, 1000)
     }
 
-    fun onClickJetpack(view: View) {
-        startActivity(Intent(this, JetpackActivity::class.java))
+    fun onClick(view: View) {
+        when (view.id) {
+            R.id.btn_jetpack -> {
+                startActivity(Intent(this, JetpackActivity::class.java))
+            }
+            R.id.btn_ipc -> {
+                startActivity(Intent(this, IpcActivity::class.java))
+            }
+        }
     }
 }
