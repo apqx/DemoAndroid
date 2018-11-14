@@ -47,7 +47,7 @@ class IpcActivity : AppCompatActivity() {
             }
             R.id.btn_add -> {
                 val dbList = iBookManager!!.getBooks()
-                val publisher = Publisher(0, "demoPublisher")
+//                val publisher = Publisher(0, "demoPublisher")
                 val list = Array(2) {
 //                    Book(dbList.size + it, "book$it", 10, publisher)
                     Book(dbList.size + it, "book$it", 10)
