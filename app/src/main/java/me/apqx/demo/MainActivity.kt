@@ -9,6 +9,7 @@ import androidx.databinding.DataBindingUtil
 import me.apqx.demo.databinding.ActivityMainBinding
 import me.apqx.demo.ipc.IpcActivity
 import me.apqx.demo.jetpack.JetpackActivity
+import me.apqx.demo.tools.ToolsActivity
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,6 +26,9 @@ class MainActivity : AppCompatActivity() {
             }
             R.id.btn_ipc -> {
                 startActivity(Intent(this, IpcActivity::class.java))
+            }
+            R.id.btn_tools -> {
+                startActivity(Intent(this, ToolsActivity::class.java))
             }
         }
     }
