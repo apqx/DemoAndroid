@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import me.apqx.demo.R
 import me.apqx.demo.databinding.ActivityJetpackBinding
+import me.apqx.demo.jetpack.databinding.DataBindingActivity
 import me.apqx.demo.jetpack.navigation.NavActivity
 
 class JetpackActivity : AppCompatActivity() {
@@ -15,8 +16,15 @@ class JetpackActivity : AppCompatActivity() {
         val activityJetpackBinding = DataBindingUtil.setContentView<ActivityJetpackBinding>(this, R.layout.activity_jetpack)
     }
 
-    fun onClickNavigation(view: View) {
-        startActivity(Intent(this, NavActivity::class.java))
+    fun onClick(view: View) {
+        when (view.id) {
+            R.id.btn_nav -> {
+                startActivity(Intent(this, NavActivity::class.java))
+            }
+            R.id.btn_dataBinding -> {
+                startActivity(Intent(this, DataBindingActivity::class.java))
+            }
+        }
     }
 }
 

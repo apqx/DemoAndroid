@@ -19,6 +19,7 @@
         <activity android:name=".jetpack.navigation.NavActivity"/>
         <activity android:name=".ipc.IpcActivity"/>
         <activity android:name=".tools.ToolsActivity" />
+        <activity android:name=".jetpack.databinding.DataBindingActivity" />
 
         <service android:name=".ipc.RemoteService"
             android:process=":ipc"/>
