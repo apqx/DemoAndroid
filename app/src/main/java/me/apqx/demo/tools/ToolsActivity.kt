@@ -8,7 +8,8 @@ import androidx.databinding.DataBindingUtil
 import me.apqx.demo.R
 import me.apqx.demo.databinding.ActivityToolsBinding
 import android.os.Build
-
+import android.view.LayoutInflater
+import android.widget.Button
 
 
 class ToolsActivity : AppCompatActivity() {
@@ -16,6 +17,9 @@ class ToolsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         dataBinding = DataBindingUtil.setContentView<ActivityToolsBinding>(this, R.layout.activity_tools)
+        Thread{
+            dataBinding.tvInfo.setText(Thread.currentThread().toString())
+        }.start()
     }
 
     fun onClick(view: View) {

@@ -8,6 +8,8 @@ import androidx.databinding.DataBindingUtil
 import me.apqx.demo.R
 import me.apqx.demo.databinding.ActivityJetpackBinding
 import me.apqx.demo.jetpack.databinding.DataBindingActivity
+import me.apqx.demo.jetpack.lifecycle.LifecycleActivity
+import me.apqx.demo.jetpack.livedata.LiveDataActivity
 import me.apqx.demo.jetpack.navigation.NavActivity
 
 class JetpackActivity : AppCompatActivity() {
@@ -23,6 +25,12 @@ class JetpackActivity : AppCompatActivity() {
             }
             R.id.btn_dataBinding -> {
                 startActivity(Intent(this, DataBindingActivity::class.java))
+            }
+            R.id.btn_lifecycle -> {
+                startActivity(Intent(this, LifecycleActivity::class.java))
+            }
+            R.id.btn_livedata -> {
+                startActivity(Intent(this, LiveDataActivity::class.java))
             }
         }
     }

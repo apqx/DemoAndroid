@@ -9,6 +9,8 @@ import androidx.databinding.DataBindingUtil
 import me.apqx.demo.databinding.ActivityMainBinding
 import me.apqx.demo.ipc.IpcActivity
 import me.apqx.demo.jetpack.JetpackActivity
+import me.apqx.demo.test.TestActivity
+import me.apqx.demo.test.TestActivityJ
 import me.apqx.demo.tools.ToolsActivity
 
 class MainActivity : AppCompatActivity() {
@@ -29,6 +31,9 @@ class MainActivity : AppCompatActivity() {
             }
             R.id.btn_tools -> {
                 startActivity(Intent(this, ToolsActivity::class.java))
+            }
+            R.id.btn_test -> {
+                startActivity(Intent(this, TestActivity::class.java))
             }
         }
     }

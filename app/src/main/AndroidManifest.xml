@@ -20,6 +20,10 @@
         <activity android:name=".ipc.IpcActivity"/>
         <activity android:name=".tools.ToolsActivity" />
         <activity android:name=".jetpack.databinding.DataBindingActivity" />
+        <activity android:name=".test.TestActivity" />
+        <activity android:name=".test.TestActivityJ" />
+        <activity android:name=".jetpack.livedata.LiveDataActivity" />
+        <activity android:name=".jetpack.lifecycle.LifecycleActivity" />
 
         <service android:name=".ipc.RemoteService"
             android:process=":ipc"/>

@@ -31,13 +31,13 @@ class DataBindingActivity : AppCompatActivity() {
         when (view.id) {
             R.id.btn_add -> {
                 for (i in 0..9) {
-                    adapter.list.add(Student("Tom${adapter.list.size}", adapter.list.size, R.mipmap.ic_launcher_round))
+                    adapter.list.add(Student("Tom${adapter.list.size}", adapter.list.size, R.mipmap.ic_launcher_round, adapter.list.size))
                 }
                 adapter.notifyDataSetChanged()
             }
             R.id.btn_delete -> {
                 for (i in 0..9)
-                adapter.list.removeAt(adapter.list.size - 1)
+                    adapter.list.removeAt(adapter.list.size - 1)
                 adapter.notifyDataSetChanged()
             }
         }

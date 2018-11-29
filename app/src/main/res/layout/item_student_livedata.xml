@@ -6,16 +6,16 @@
     <data>
         <variable
             name="student"
-            type="me.apqx.demo.jetpack.databinding.bean.Student"/>
+            type="me.apqx.demo.jetpack.livedata.bean.Student"/>
         <variable
-            name="adapter"
-            type="me.apqx.demo.jetpack.databinding.adapter.StudentAdapter"/>
+            name="activity"
+            type="me.apqx.demo.jetpack.livedata.ILiveDataActivity"/>
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:paddingLeft="@{student.paddingLeft}"
-        android:onClick="@{() -> adapter.onItemClick(student)}">
+        android:onClick="@{() -> activity.onClickItem(student)}"
+        android:background="@{student.bgColor}">
 
         <ImageView
             android:id="@+id/iv_head"
