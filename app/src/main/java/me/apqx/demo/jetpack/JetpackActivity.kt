@@ -11,6 +11,7 @@ import me.apqx.demo.jetpack.databinding.DataBindingActivity
 import me.apqx.demo.jetpack.lifecycle.LifecycleActivity
 import me.apqx.demo.jetpack.livedata.LiveDataActivity
 import me.apqx.demo.jetpack.navigation.NavActivity
+import me.apqx.demo.jetpack.workmanager.WorkManagerActivity
 
 class JetpackActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,6 +32,9 @@ class JetpackActivity : AppCompatActivity() {
             }
             R.id.btn_livedata -> {
                 startActivity(Intent(this, LiveDataActivity::class.java))
+            }
+            R.id.btn_workManager -> {
+                startActivity(Intent(this, WorkManagerActivity::class.java))
             }
         }
     }
