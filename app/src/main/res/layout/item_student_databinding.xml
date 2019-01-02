@@ -15,7 +15,8 @@
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:paddingLeft="@{student.paddingLeft}"
-        android:onClick="@{() -> adapter.onItemClick(student)}">
+        android:onClick="@{() -> adapter.onItemClick(student)}"
+        app:bgRed="@{student.age}">
 
         <ImageView
             android:id="@+id/iv_head"

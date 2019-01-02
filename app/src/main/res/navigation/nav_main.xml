@@ -9,12 +9,16 @@
         android:id="@+id/fragment_red"
         android:name="me.apqx.demo.jetpack.navigation.fragments.FragmentRed"
         android:label="fragment_red"
-        tools:layout="@layout/fragment_red"/>
+        tools:layout="@layout/fragment_red">
+        <action
+            android:id="@+id/action_fragment_red_to_fragment_main"
+            app:destination="@id/fragment_main" />
+    </fragment>
     <fragment
         android:id="@+id/fragment_blue"
         android:name="me.apqx.demo.jetpack.navigation.fragments.FragmentBlue"
         android:label="fragment_blue"
-        tools:layout="@layout/fragment_blue" />
+        tools:layout="@layout/fragment_blue" ></fragment>
     <fragment
         android:id="@+id/fragment_main"
         android:name="me.apqx.demo.jetpack.navigation.fragments.FragmentMain"
@@ -23,11 +27,23 @@
         <action
             android:id="@+id/action_fragment_main_to_fragment_login"
             app:destination="@id/fragment_login"
-            app:enterAnim="@anim/nav_default_enter_anim" />
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:launchSingleTop="false"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@+id/fragment_main"
+            app:popUpToInclusive="false" />
         <action
             android:id="@+id/action_fragment_main_to_fragment_settings"
             app:destination="@id/fragment_info"
-            app:popUpTo="@+id/nav_main" />
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:launchSingleTop="true"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@+id/fragment_main"
+            app:popUpToInclusive="false" />
     </fragment>
     <fragment
         android:id="@+id/fragment_login"
@@ -37,15 +53,21 @@
         <action
             android:id="@+id/action_fragment_login_to_fragment_blue"
             app:destination="@id/fragment_blue"
-            app:popUpTo="@+id/nav_main" />
+            app:popUpTo="@+id/fragment_main"
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_fragment_login_to_fragment_red"
             app:destination="@id/fragment_red"
-            app:popUpTo="@+id/nav_main" />
+            app:popUpTo="@+id/fragment_main"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="name"
+            android:defaultValue="Tom"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/fragment_info"
         android:name="me.apqx.demo.jetpack.navigation.fragments.FragmentSettings"
         android:label="fragment_info"
-        tools:layout="@layout/fragment_info" />
+        tools:layout="@layout/fragment_info" ></fragment>
 </navigation>

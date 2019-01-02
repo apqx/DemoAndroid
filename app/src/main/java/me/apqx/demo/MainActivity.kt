@@ -1,6 +1,7 @@
 package me.apqx.demo
 
 import android.content.Intent
+import android.os.AsyncTask
 import android.os.Bundle
 import android.os.Handler
 import android.view.View
@@ -10,15 +11,12 @@ import me.apqx.demo.databinding.ActivityMainBinding
 import me.apqx.demo.ipc.IpcActivity
 import me.apqx.demo.jetpack.JetpackActivity
 import me.apqx.demo.test.TestActivity
-import me.apqx.demo.test.TestActivityJ
 import me.apqx.demo.tools.ToolsActivity
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val activityMainBinding = DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
-        val handler = Handler()
-        handler.postAtTime({}, 1000)
     }
 
     fun onClick(view: View) {
@@ -36,5 +34,8 @@ class MainActivity : AppCompatActivity() {
                 startActivity(Intent(this, TestActivity::class.java))
             }
         }
+        Thread {
+
+        }.start()
     }
 }
