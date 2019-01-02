@@ -10,6 +10,7 @@ import androidx.databinding.DataBindingUtil
 import me.apqx.demo.databinding.ActivityMainBinding
 import me.apqx.demo.ipc.IpcActivity
 import me.apqx.demo.jetpack.JetpackActivity
+import me.apqx.demo.mvvm.view.MVVMActivity
 import me.apqx.demo.test.TestActivity
 import me.apqx.demo.tools.ToolsActivity
 
@@ -32,6 +33,9 @@ class MainActivity : AppCompatActivity() {
             }
             R.id.btn_test -> {
                 startActivity(Intent(this, TestActivity::class.java))
+            }
+            R.id.btn_mvvm -> {
+                startActivity(Intent(this, MVVMActivity::class.java))
             }
         }
         Thread {
