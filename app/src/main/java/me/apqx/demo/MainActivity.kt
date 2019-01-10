@@ -13,6 +13,7 @@ import me.apqx.demo.jetpack.JetpackActivity
 import me.apqx.demo.mvvm.view.MVVMActivity
 import me.apqx.demo.test.TestActivity
 import me.apqx.demo.tools.ToolsActivity
+import me.apqx.demo.widget.WidgetActivity
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,9 +38,9 @@ class MainActivity : AppCompatActivity() {
             R.id.btn_mvvm -> {
                 startActivity(Intent(this, MVVMActivity::class.java))
             }
+            R.id.btn_widget -> {
+                startActivity(Intent(this, WidgetActivity::class.java))
+            }
         }
-        Thread {
-
-        }.start()
     }
 }

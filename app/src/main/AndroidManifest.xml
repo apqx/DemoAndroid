@@ -26,6 +26,7 @@
         <activity android:name=".jetpack.lifecycle.LifecycleActivity" />
         <activity android:name=".jetpack.workmanager.WorkManagerActivity" />
         <activity android:name=".mvvm.view.MVVMActivity" />
+        <activity android:name=".widget.WidgetActivity" />
 
         <service android:name=".ipc.RemoteService"
             android:process=":ipc"/>

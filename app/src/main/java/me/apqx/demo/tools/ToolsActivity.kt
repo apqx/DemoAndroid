@@ -8,6 +8,7 @@ import androidx.databinding.DataBindingUtil
 import me.apqx.demo.R
 import me.apqx.demo.databinding.ActivityToolsBinding
 import android.os.Build
+import android.util.DisplayMetrics
 import android.view.LayoutInflater
 import android.widget.Button
 
@@ -43,8 +44,14 @@ class ToolsActivity : AppCompatActivity() {
         val disPlay = windowManager.defaultDisplay
         val point = Point()
         disPlay.getSize(point)
+        val widthPx = point.x
+        val heightPx = point.y
+        val dm = resources.displayMetrics;
         return "screenWidth = ${point.x}\n" +
                 "screenHeight = ${point.y}\n" +
+                "widthDp = ${dm.widthPixels}\n" +
+                "heightDp = ${dm.heightPixels}\n" +
+                "test = ${resources.getString(R.string.test)}"
                 "dpi = ${resources.displayMetrics.densityDpi}\n"
     }
 }
