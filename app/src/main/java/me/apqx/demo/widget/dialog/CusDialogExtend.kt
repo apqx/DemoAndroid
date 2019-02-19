@@ -1,4 +1,4 @@
-package me.apqx.demo.widget
+package me.apqx.demo.widget.dialog
 
 import android.app.Dialog
 import android.content.Context

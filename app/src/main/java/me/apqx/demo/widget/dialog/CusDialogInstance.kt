@@ -1,8 +1,7 @@
-package me.apqx.demo.widget
+package me.apqx.demo.widget.dialog
 
 import android.app.Dialog
 import android.content.Context
-import kotlinx.coroutines.channels.consumesAll
 import me.apqx.demo.R
 
 class CusDialogInstance(val context: Context) {

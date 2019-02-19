@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import me.apqx.demo.R
 import me.apqx.demo.databinding.ActivityWidgetBinding
+import me.apqx.demo.widget.dialog.CusDialogExtend
+import me.apqx.demo.widget.dialog.CusDialogInstance
 
 class WidgetActivity : AppCompatActivity() {
 
