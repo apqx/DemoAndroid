@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<me.apqx.demo.widget.view.EventViewGroup xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/v_level_0"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary">
-    <me.apqx.demo.widget.view.EventViewGroup
+    <me.apqx.demo.widget.view.intercept.EventViewGroup
         android:id="@+id/v_level_1"
-        android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
         android:layout_centerInParent="true"
         android:background="@color/design_default_color_primary">
-        <me.apqx.demo.widget.view.EventView
+        <me.apqx.demo.widget.view.intercept.EventView
             android:id="@+id/v_level_2"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
             android:layout_centerInParent="true"
             android:background="@color/colorAccent"/>
-    </me.apqx.demo.widget.view.EventViewGroup>
-</me.apqx.demo.widget.view.EventViewGroup>
+    </me.apqx.demo.widget.view.intercept.EventViewGroup>
+</RelativeLayout>
