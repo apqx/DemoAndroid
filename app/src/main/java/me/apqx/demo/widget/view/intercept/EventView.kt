@@ -34,7 +34,11 @@ class EventView : ImageView {
                 var offsetX = event.rawX - xPoint
                 LogUtil.e("$id onTouchEvent  ACTION_MOVE offsetX = $offsetX")
                 // 水平移动
-                offsetLeftAndRight(offsetX.toInt())
+                if (offsetX != 0f) {
+                    offsetLeftAndRight(offsetX.toInt())
+                    // 不允许父View再拦截本事件序列的后续事件
+                    parent.requestDisallowInterceptTouchEvent(true)
+                }
                 xPoint = event.rawX
                 yPoint = event.rawY
             }

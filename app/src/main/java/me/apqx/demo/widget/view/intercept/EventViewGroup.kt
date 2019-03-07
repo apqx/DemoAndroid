@@ -28,10 +28,6 @@ class EventViewGroup : RelativeLayout {
     private var xPoint = 0f
     private var yPoint = 0f
 
-    /**
-     * 是否要拦截，如果ViewGroup对第一次滑动事件没有拦截，则同序列的后续事件都不应该拦截
-     */
-    private var intercept = true
 
     // ViewGroup判断是否要拦截事件，否则所有事件均交给View处理
     override fun onInterceptTouchEvent(ev: MotionEvent?): Boolean {
@@ -44,7 +40,6 @@ class EventViewGroup : RelativeLayout {
 
                 xPoint = ev.rawX
                 yPoint = ev.rawY
-                intercept = true
                 // 不拦截ACTION_DOWN事件
                 false
             }
@@ -63,8 +58,6 @@ class EventViewGroup : RelativeLayout {
                     // 垂直距离大于水平距离，拦截
                     true
                 } else {
-                    // 如果第一次滑动不拦截事件，则事件已交给子View处理，不再拦截同序列事件
-                    intercept = false
                     // 其余情况不拦截
                     false
                 }
@@ -77,11 +70,7 @@ class EventViewGroup : RelativeLayout {
 
             else -> false
         }
-        if (!intercept) {
-            // 是否拦截同序列事件
-            result = false
-        }
-        LogUtil.d("$id onInterceptTouchEvent  $result $intercept")
+        LogUtil.d("$id onInterceptTouchEvent  $result")
         return result
     }
 

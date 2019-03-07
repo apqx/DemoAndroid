@@ -28,6 +28,8 @@
         <activity android:name=".mvvm.view.MVVMActivity" />
         <activity android:name=".widget.WidgetActivity" />
         <activity android:name=".service.ServiceActivity" />
+        <activity android:name=".realm.RealmActivity" />
+        <activity android:name=".widget.recycler.RecyclerActivity" />
 
         <service android:name=".ipc.RemoteService"
             android:process=":ipc"/>

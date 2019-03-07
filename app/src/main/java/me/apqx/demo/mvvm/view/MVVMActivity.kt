@@ -9,7 +9,7 @@ import androidx.lifecycle.ViewModelProviders
 import me.apqx.demo.LogUtil
 import me.apqx.demo.R
 import me.apqx.demo.databinding.ActivityMvvmBinding
-import me.apqx.demo.mvvm.model.Student
+import me.apqx.demo.mvvm.bean.Student
 import me.apqx.demo.mvvm.viewmodel.StudentViewModel
 
 class MVVMActivity : AppCompatActivity() {
@@ -29,6 +29,6 @@ class MVVMActivity : AppCompatActivity() {
 
     fun onClick(view: View) {
         LogUtil.d("click $view")
-        studentViewMode.studentLiveData.value = Student(dataBinding.tvName.text.toString(), (dataBinding.tvAge.text.toString() + "0").toInt())
+        studentViewMode.refreshData()
     }
 }
