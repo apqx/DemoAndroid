@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:onClick="@{() -> activity.onClickItem(student)}"
-        android:background="@{student.bgColor}">
+        app:selected="@{student.select}">
 
         <ImageView
             android:id="@+id/iv_head"

@@ -12,7 +12,7 @@ import me.apqx.demo.R
 import me.apqx.demo.databinding.ActivityLivedataBinding
 import me.apqx.demo.jetpack.livedata.adapter.StudentAdapter
 import me.apqx.demo.jetpack.livedata.bean.Student
-import me.apqx.demo.jetpack.livedata.bean.StudentViewModel
+import me.apqx.demo.jetpack.livedata.viewmodel.StudentViewModel
 
 /**
  * LiveData与DataBinding配合
@@ -21,7 +21,6 @@ class LiveDataActivity: AppCompatActivity(), ILiveDataActivity {
     lateinit var dataBinding: ActivityLivedataBinding
     lateinit var adapter: StudentAdapter
     lateinit var stdViewModel: StudentViewModel
-    val list: MutableList<Student> = ArrayList()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         dataBinding = DataBindingUtil.setContentView(this, R.layout.activity_livedata)
@@ -32,7 +31,7 @@ class LiveDataActivity: AppCompatActivity(), ILiveDataActivity {
             LogUtil.d("notifyDataSetChanged")
         })
 
-        adapter = StudentAdapter(list, this)
+        adapter = StudentAdapter(stdViewModel.studentLiveData.value!!, this)
         val layoutManager = LinearLayoutManager(this)
         dataBinding.rvStudents.adapter = adapter
         dataBinding.rvStudents.layoutManager = layoutManager
@@ -41,15 +40,10 @@ class LiveDataActivity: AppCompatActivity(), ILiveDataActivity {
     fun onClick(view: View) {
         when (view.id) {
             R.id.btn_add -> {
-                for (i in 0..9) {
-                    list.add(Student("Tom${adapter.list.size}", adapter.list.size, R.mipmap.ic_launcher_round))
-                }
-                stdViewModel.studentLiveData.value = list
+                stdViewModel.add()
             }
             R.id.btn_delete -> {
-                for (i in 0..9)
-                    list.removeAt(adapter.list.size - 1)
-                stdViewModel.studentLiveData.value = list
+                stdViewModel.delete()
             }
             R.id.btn_change -> {
 
@@ -62,6 +56,6 @@ class LiveDataActivity: AppCompatActivity(), ILiveDataActivity {
         student.name += " !"
         student.select = !student.select
         // 通知数据发生了变化，触发Observer的回调
-        stdViewModel.studentLiveData.value = list
+        stdViewModel.refresh()
     }
 }

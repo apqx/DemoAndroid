@@ -27,21 +27,12 @@ class TestActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_test)
-        for (i in 0..4) {
-            val view = LayoutInflater.from(this).inflate(R.layout.item_tab, null)
-            tv_tab.addTab(tv_tab.newTab().setCustomView(R.layout.item_tab))
-        }
-        wv_web.loadUrl("https://baidu.com")
-        wv_web.webChromeClient = object : WebChromeClient() {
-            override fun onProgressChanged(view: WebView?, newProgress: Int) {
-                super.onProgressChanged(view, newProgress)
-                LogUtil.d("onProgressChanged $newProgress")
+        Thread{
+            for (i in 0 until 1000) {
+                SystemClock.sleep(1000)
+                println(this)
             }
-
-            override fun onJsTimeout(): Boolean {
-                return super.onJsTimeout()
-            }
-        }
+        }.start()
     }
 
     fun onClick(view: View) {

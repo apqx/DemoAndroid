@@ -1,6 +1,7 @@
 package me.apqx.demo
 
 import android.app.Application
+import com.squareup.leakcanary.LeakCanary
 import io.realm.Realm
 import io.realm.RealmConfiguration
 import me.apqx.demo.realm.CusRealmMigration
@@ -15,5 +16,10 @@ class CusApp : Application() {
                 .name("defRealm")
                 .build()
         Realm.setDefaultConfiguration(config)
+        if (LeakCanary.isInAnalyzerProcess(this)) {
+            return
+        } else {
+            LeakCanary.install(this)
+        }
     }
 }
