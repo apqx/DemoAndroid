@@ -3,8 +3,10 @@ package me.apqx.demo.widget
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.view.ViewConfiguration
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import me.apqx.demo.LogUtil
 import me.apqx.demo.R
 import me.apqx.demo.databinding.ActivityWidgetBinding
 import me.apqx.demo.widget.dialog.CusDialogExtend
@@ -26,6 +28,7 @@ class WidgetActivity : AppCompatActivity() {
 //            dialogExtend.show()
             dialogInstance.show()
         }
+        LogUtil.d("${ViewConfiguration.get(this).scaledTouchSlop}")
     }
 
     fun onClick(view: View) {
