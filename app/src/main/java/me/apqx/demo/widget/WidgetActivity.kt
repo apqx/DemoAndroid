@@ -29,6 +29,7 @@ class WidgetActivity : AppCompatActivity() {
             dialogInstance.show()
         }
         LogUtil.d("${ViewConfiguration.get(this).scaledTouchSlop}")
+
     }
 
     fun onClick(view: View) {
