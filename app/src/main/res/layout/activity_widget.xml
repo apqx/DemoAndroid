@@ -36,17 +36,19 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btn_showDialog" />
 
-        <view
+        <include
             android:id="@+id/sv_img"
-            class="me.apqx.demo.widget.view.scroll.ScalableView"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            layout="@layout/item_scroll"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
+            android:layout_marginBottom="8dp"
             android:background="@color/colorAccent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btn_recycler" />
