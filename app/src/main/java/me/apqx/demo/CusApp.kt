@@ -1,12 +1,13 @@
 package me.apqx.demo
 
 import android.app.Application
+import androidx.multidex.MultiDexApplication
 import com.squareup.leakcanary.LeakCanary
 import io.realm.Realm
 import io.realm.RealmConfiguration
 import me.apqx.demo.realm.CusRealmMigration
 
-class CusApp : Application() {
+class CusApp : MultiDexApplication() {
     override fun onCreate() {
         super.onCreate()
         ToastUtil.init(applicationContext)

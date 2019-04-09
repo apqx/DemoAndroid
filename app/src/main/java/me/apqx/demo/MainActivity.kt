@@ -8,6 +8,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import me.apqx.demo.databinding.ActivityMainBinding
+import me.apqx.demo.device.usb.UsbActivity
 import me.apqx.demo.ipc.IpcActivity
 import me.apqx.demo.jetpack.JetpackActivity
 import me.apqx.demo.mvvm.view.MVVMActivity
@@ -48,6 +49,9 @@ class MainActivity : AppCompatActivity() {
             }
             R.id.btn_realm -> {
                 startActivity(Intent(this, RealmActivity::class.java))
+            }
+            R.id.btn_usb -> {
+                startActivity(Intent(this, UsbActivity::class.java))
             }
         }
     }
