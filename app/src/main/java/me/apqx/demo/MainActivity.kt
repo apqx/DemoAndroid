@@ -4,9 +4,11 @@ import android.content.Intent
 import android.os.AsyncTask
 import android.os.Bundle
 import android.os.Handler
+import android.view.KeyEvent
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import kotlinx.android.synthetic.main.activity_main.*
 import me.apqx.demo.databinding.ActivityMainBinding
 import me.apqx.demo.device.usb.UsbActivity
 import me.apqx.demo.ipc.IpcActivity
@@ -19,6 +21,9 @@ import me.apqx.demo.tools.ToolsActivity
 import me.apqx.demo.widget.WidgetActivity
 
 class MainActivity : AppCompatActivity() {
+    private var input = ""
+    private var lastInputTimeMills = 0L
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val activityMainBinding = DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
@@ -54,5 +59,27 @@ class MainActivity : AppCompatActivity() {
                 startActivity(Intent(this, UsbActivity::class.java))
             }
         }
+    }
+
+    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
+        // 监听键盘输入输入内容
+        val currentTime = System.currentTimeMillis()
+        // 只监听数字
+        if (keyCode in 7..16) {
+            if (currentTime - lastInputTimeMills < 500) {
+                // 输入间隔小于500ms，判定为一次连续输入
+                input += keyCode - 7
+                LogUtil.d("continue input, curInput = $input")
+            } else {
+                // 输入间隔大于500ms，判定为一次新的输入
+                input = (keyCode - 7).toString()
+                LogUtil.d("new input, curInput = $input")
+            }
+            tv_hint.text = input
+            lastInputTimeMills = currentTime
+        } else {
+            LogUtil.d("input not num, do nothing")
+        }
+        return super.onKeyDown(keyCode, event)
     }
 }
