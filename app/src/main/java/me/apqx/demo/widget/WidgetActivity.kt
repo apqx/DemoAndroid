@@ -11,7 +11,9 @@ import me.apqx.demo.R
 import me.apqx.demo.databinding.ActivityWidgetBinding
 import me.apqx.demo.widget.dialog.CusDialogExtend
 import me.apqx.demo.widget.dialog.CusDialogInstance
+import me.apqx.demo.widget.list.ListActivity
 import me.apqx.demo.widget.recycler.RecyclerActivity
+import me.apqx.demo.widget.view.RelativeActivity
 
 class WidgetActivity : AppCompatActivity() {
 
@@ -36,6 +38,12 @@ class WidgetActivity : AppCompatActivity() {
         when (view.id) {
             R.id.btn_recycler -> {
                 startActivity(Intent(this, RecyclerActivity::class.java))
+            }
+            R.id.btn_relative -> {
+                startActivity(Intent(this, RelativeActivity::class.java))
+            }
+            R.id.btn_list -> {
+                startActivity(Intent(this, ListActivity::class.java))
             }
         }
     }

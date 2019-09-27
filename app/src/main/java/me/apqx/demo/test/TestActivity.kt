@@ -36,7 +36,6 @@ class TestActivity : AppCompatActivity() {
     }
 
     fun onClick(view: View) {
-//        tv_tab.removeTabAt(tv_tab.tabCount - 1)
         for (file in File("/data/").listFiles()) {
             LogUtil.d(file.absolutePath)
         }

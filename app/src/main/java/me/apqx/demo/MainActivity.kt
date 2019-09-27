@@ -64,6 +64,7 @@ class MainActivity : AppCompatActivity() {
     override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
         // 监听键盘输入输入内容
         val currentTime = System.currentTimeMillis()
+        LogUtil.d("input key = ${event?.characters}")
         // 只监听数字
         if (keyCode in 7..16) {
             if (currentTime - lastInputTimeMills < 500) {

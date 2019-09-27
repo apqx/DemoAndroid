@@ -32,6 +32,8 @@
         <activity android:name=".realm.RealmActivity" />
         <activity android:name=".widget.recycler.RecyclerActivity" />
         <activity android:name=".device.usb.UsbActivity" />
+        <activity android:name=".widget.view.RelativeActivity" />
+        <activity android:name=".widget.list.ListActivity" />
 
         <service android:name=".ipc.RemoteService"
             android:process=":ipc"/>
