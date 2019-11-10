@@ -24,7 +24,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.CusVie
     @Override
     public CusViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         // 根据viewType加载不同类型的ViewHolder
-        View view = LayoutInflater.from(parent.getContext()).inflate(resource, null, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(resource, parent, false);
         return new CusViewHolder(view, viewType);
     }
 

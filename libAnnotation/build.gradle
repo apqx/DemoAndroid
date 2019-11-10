@@ -1,0 +1,13 @@
+apply plugin: 'java-library'
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    // 在编译时动态生成类文件
+    implementation 'com.squareup:javapoet:1.11.1'
+
+    // 使自定义的注解处理器，在Android中自动编译运行
+    annotationProcessor 'com.google.auto.service:auto-service:1.0-rc6'
+}
+
+sourceCompatibility = "8"
+targetCompatibility = "8"

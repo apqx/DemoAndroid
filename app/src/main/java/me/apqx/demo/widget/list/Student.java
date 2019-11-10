@@ -1,5 +1,7 @@
 package me.apqx.demo.widget.list;
 
+import androidx.annotation.NonNull;
+
 public class Student {
     private int age;
     private String name;
@@ -23,5 +25,11 @@ public class Student {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return name;
     }
 }
