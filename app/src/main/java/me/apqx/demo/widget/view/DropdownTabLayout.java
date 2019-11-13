@@ -32,13 +32,14 @@ public class DropdownTabLayout extends FrameLayout {
     private TextView tv_more;
 
     private List<TabBean<String>> tabList;
-    private List<TabBean<String>> dropdownList;
     private PopupWindow popupWindow;
     private OnTabSelectListener<String> onTabSelectListener;
 
     private int colorBlack;
     private int colorBlue;
     private int colorTransparent;
+
+    private static final int MAX_TAB_COUNT = 5;
 
     private TextView selectedDropdownItem;
     private OnClickListener onMoreTabClickListener = new OnClickListener() {
@@ -79,7 +80,7 @@ public class DropdownTabLayout extends FrameLayout {
         tv_more.setText("更多");
         tv_more.setTextColor(getResources().getColor(android.R.color.black));
         if (selectedDropdownItem != null)
-        selectedDropdownItem.setTextColor(getResources().getColor(android.R.color.black));
+            selectedDropdownItem.setTextColor(getResources().getColor(android.R.color.black));
     }
 
     /**
@@ -160,7 +161,7 @@ public class DropdownTabLayout extends FrameLayout {
                 LogUtil.INSTANCE.d("dropdown click");
                 expandIconAnimExpand();
                 if (popupWindow == null) {
-                    LinearLayout linearLayout = fillDropdownList(dropdownList);
+                    LinearLayout linearLayout = fillDropdownList();
                     popupWindow = new PopupWindow(linearLayout, vg_more.getWidth(), LinearLayout.LayoutParams.WRAP_CONTENT);
                     popupWindow.setFocusable(true);
                     popupWindow.setOutsideTouchable(true);
@@ -198,27 +199,33 @@ public class DropdownTabLayout extends FrameLayout {
     /**
      * 根据传入的数据，填充下拉列表的UI视图
      */
-    private LinearLayout fillDropdownList(List<TabBean<String>> list) {
+    private LinearLayout fillDropdownList() {
         int dp5 = DisplayUtils.dpToPx(getContext(), 5);
         int dp10 = DisplayUtils.dpToPx(getContext(), 10);
         LinearLayout linearLayout = new LinearLayout(getContext());
         linearLayout.setOrientation(LinearLayout.VERTICAL);
         linearLayout.setPadding(dp5, 0, dp5, 0);
         linearLayout.setBackgroundColor(Color.parseColor("#F0F0F0"));
-        for (TabBean<String> tab : list) {
-            TextView textView = new TextView(getContext());
-            textView.setOnClickListener(onMoreTabClickListener);
-            textView.setText(tab.getTabStr());
-            textView.setTextColor(colorBlack);
-            textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 13);
-            textView.setGravity(Gravity.CENTER);
-            textView.setTag(tab.getData());
-            textView.setMaxLines(1);
-            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT
-                    , DisplayUtils.dpToPx(getContext(), 30));
-            layoutParams.topMargin = dp5;
-            layoutParams.bottomMargin = dp5;
-            linearLayout.addView(textView, layoutParams);
+        if (tabList.size() <= MAX_TAB_COUNT) {
+            // 标签可以在TabLayout中全部显示，下拉列表为空
+        } else {
+            // 填充下拉列表
+            for (int i = MAX_TAB_COUNT; i < tabList.size(); i++) {
+                TabBean<String> tabBean = tabList.get(i);
+                TextView textView = new TextView(getContext());
+                textView.setOnClickListener(onMoreTabClickListener);
+                textView.setText(tabBean.getTabStr());
+                textView.setTextColor(colorBlack);
+                textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 13);
+                textView.setGravity(Gravity.CENTER);
+                textView.setTag(tabBean.getData());
+                textView.setMaxLines(1);
+                LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT
+                        , DisplayUtils.dpToPx(getContext(), 30));
+                layoutParams.topMargin = dp5;
+                layoutParams.bottomMargin = dp5;
+                linearLayout.addView(textView, layoutParams);
+            }
         }
         // 添加一个编辑按钮
         ImageView imageView = new ImageView(getContext());
@@ -244,28 +251,33 @@ public class DropdownTabLayout extends FrameLayout {
     }
 
     /**
-     * 设置标签数据，可以用于刷新
+     * 设置标签数据，可以用于刷新，前6个标签显示在tab里，其它标签显示在下拉列表里
      *
-     * @param tabList      固定显示的标签
-     * @param dropdownList 下拉列表里的标签
+     * @param tabList 固定显示的标签
      */
-    public void setData(List<TabBean<String>> tabList, List<TabBean<String>> dropdownList) {
+    public void setData(List<TabBean<String>> tabList) {
         this.tabList = tabList;
-        this.dropdownList = dropdownList;
+        if (tabList == null) return;
         // 横向的tab
-        if (tabList != null) {
-            tabLayout.removeAllTabs();
-            for (TabBean<String> tab : tabList) {
-                tabLayout.addTab(tabLayout.newTab().setText(tab.getTabStr()).setTag(tab.getData()));
-            }
+        if (tabList.size() >= MAX_TAB_COUNT) {
+            // 当标签数大于MAX_TAB_COUNT时，tabLayout的每一个tab平分总宽度
+            tabLayout.setTabMode(TabLayout.MODE_FIXED);
+        } else {
+            tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
+        }
+        tabLayout.removeAllTabs();
+        for (int i = 0; i < MAX_TAB_COUNT; i++) {
+            if (i >= tabList.size()) break;
+            TabBean<String> tabBean = tabList.get(i);
+            tabLayout.addTab(tabLayout.newTab().setText(tabBean.getTabStr()).setTag(tabBean.getData()));
         }
         setTabLayoutSelectable();
         // 下拉列表的tab
         if (popupWindow == null) {
-            // 下拉列表还没有加载，因为刷新数据的入口在下拉列表里，所以不可能出现
+            // 下拉列表还没有加载，不刷新数据
             return;
         }
-        LinearLayout linearLayout = fillDropdownList(dropdownList);
+        LinearLayout linearLayout = fillDropdownList();
         popupWindow.setContentView(linearLayout);
         showDropTabNotClick();
     }

@@ -27,7 +27,6 @@ class WidgetActivity : AppCompatActivity() {
     lateinit var dialogExtend: CusDialogExtend
     lateinit var dialogInstance: CusDialogInstance
     var tabList = ArrayList<TabBean<String>>()
-    var dropList = ArrayList<TabBean<String>>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,17 +40,7 @@ class WidgetActivity : AppCompatActivity() {
         LogUtil.d("${ViewConfiguration.get(this).scaledTouchSlop}")
 
 
-        tabList.add(TabBean("tab0", "tab0"))
-        tabList.add(TabBean("tab1", "tab1"))
-        tabList.add(TabBean("tab2", "tab2"))
-        tabList.add(TabBean("tab3", "tab3"))
-        tabList.add(TabBean("tab4", "tab4"))
-
-        dropList.add(TabBean("drop0", "drop1"))
-        dropList.add(TabBean("drop1", "drop2"))
-        dropList.add(TabBean("drop2", "drop3"))
-        dropList.add(TabBean("drop3", "drop4"))
-        dataBinding.inTab.dropdown_tab.setData(tabList, dropList)
+        refreshTab()
         dataBinding.inTab.dropdown_tab.setOnTabSelectListener(object : OnTabSelectListener<String> {
             override fun onTabClick(t: String?) {
                 LogUtil.d("----onTabClick $t")
@@ -81,16 +70,11 @@ class WidgetActivity : AppCompatActivity() {
     }
 
     private fun refreshTab() {
-        val tabCount = Random(SystemClock.currentThreadTimeMillis()).nextInt(1, 5)
+        val tabCount = Random(SystemClock.currentThreadTimeMillis()).nextInt(1, 8)
         tabList.clear()
         for (i in 0 .. tabCount) {
             tabList.add(TabBean("tab$i", "tab$i"))
         }
-
-        dropList.clear()
-        for (i in 0 .. tabCount) {
-            dropList.add(TabBean("drop$i", "drop$i"))
-        }
-        dataBinding.inTab.dropdown_tab.setData(tabList, dropList)
+        dataBinding.inTab.dropdown_tab.setData(tabList)
     }
 }
