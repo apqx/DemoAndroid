@@ -8,22 +8,22 @@ import me.apqx.demo.ipc.aidl.ICallback;
 interface IBookManager {
 
     /**
-    * 获取远程书库中所有书本列表
+    * get all books from server
     */
     List<Book> getBooks();
 
     /**
-    * 向远程书库中添加书本
+    * add books to server
     */
     void addBook(in List<Book> books);
 
     /**
-    * 清除远程书库的所有书本
+    * clear server books
     */
     void clearBooks();
 
     /**
-    * 传入Callback接口，用于远程回调
+    * transport callback for remote invoke
     */
     void registerCallBack(in ICallback iCallback);
 }
