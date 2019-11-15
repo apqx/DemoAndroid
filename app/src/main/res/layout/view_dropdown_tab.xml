@@ -10,6 +10,7 @@
         android:layout_weight="1"
         app:tabSelectedTextColor="@android:color/holo_blue_dark"
         app:tabIndicatorColor="@android:color/holo_blue_dark"
+        app:tabIndicatorFullWidth="false"
         app:tabMode="fixed"
         app:tabGravity="fill"
         app:tabBackground="@android:color/transparent"

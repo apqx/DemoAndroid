@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CusSwitcher">
+        <attr name="tabTextSize" format="dimension"/>
+        <attr name="tabLeftTitle" format="string"/>
+        <attr name="tabRightTitle" format="string"/>
+        <attr name="tabTextPadding" format="dimension"/>
+
+        <attr name="selectedTabTextColor" format="color"/>
+        <attr name="unselectedTabTextColor" format="color"/>
+        <attr name="selectedTabBgColor" format="color"/>
+        <attr name="unselectedTabBgColor" format="color"/>
+    </declare-styleable>
+</resources>

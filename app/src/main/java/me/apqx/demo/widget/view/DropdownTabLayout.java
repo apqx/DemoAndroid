@@ -40,6 +40,8 @@ public class DropdownTabLayout extends FrameLayout {
     private int colorTransparent;
 
     private static final int MAX_TAB_COUNT = 5;
+    private static int selectIndex;
+    private static boolean recreate;
 
     private TextView selectedDropdownItem;
     private OnClickListener onMoreTabClickListener = new OnClickListener() {
@@ -55,11 +57,12 @@ public class DropdownTabLayout extends FrameLayout {
             selectedDropdownItem.setTextColor(getResources().getColor(android.R.color.holo_blue_dark));
 
             popupWindow.dismiss();
+            TabBean<String> tabBean = tabList.get((Integer) view.getTag());
             if (onTabSelectListener != null) {
-                onTabSelectListener.onTabClick((String) view.getTag());
+                onTabSelectListener.onTabClick(tabBean.getData());
             }
             // “更多”显示点击的下拉标签项
-            showDropTabClick((String) view.getTag());
+            showDropTabClick(tabBean.getData());
         }
     };
 
@@ -118,6 +121,9 @@ public class DropdownTabLayout extends FrameLayout {
 
 
     private void init() {
+        LogUtil.INSTANCE.d("DropdownTabLayout init recreate = " + recreate);
+
+
         colorBlack = Color.BLACK;
         colorBlue = Color.parseColor("#2F74E9");
         colorTransparent = getResources().getColor(android.R.color.transparent);
@@ -132,14 +138,29 @@ public class DropdownTabLayout extends FrameLayout {
 
         setTabLayoutSelectable();
 
+        post(new Runnable() {
+            @Override
+            public void run() {
+                if (recreate) {
+                    LogUtil.INSTANCE.d("recreate, restore select " + selectIndex);
+                    tabLayout.getTabAt(selectIndex).select();
+                } else {
+                    recreate = true;
+                }
+            }
+        });
+
+
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                LogUtil.INSTANCE.d("tab click: " + tab.getTag() + " : " + tab.getText());
+                selectIndex = (int) tab.getTag();
+                LogUtil.INSTANCE.d("tab click: " + tab.getTag() + " : " + tab.getText() + " index = " + selectIndex);
                 showDropTabNotClick();
                 setTabLayoutSelectable();
+                TabBean<String> tabBean = tabList.get(selectIndex);
                 if (onTabSelectListener != null) {
-                    onTabSelectListener.onTabClick((String) tab.getTag());
+                    onTabSelectListener.onTabClick(tabBean.getData());
                 }
 
             }
@@ -201,6 +222,7 @@ public class DropdownTabLayout extends FrameLayout {
      */
     private LinearLayout fillDropdownList() {
         int dp5 = DisplayUtils.dpToPx(getContext(), 5);
+        int dp2 = DisplayUtils.dpToPx(getContext(), 2);
         int dp10 = DisplayUtils.dpToPx(getContext(), 10);
         LinearLayout linearLayout = new LinearLayout(getContext());
         linearLayout.setOrientation(LinearLayout.VERTICAL);
@@ -218,12 +240,12 @@ public class DropdownTabLayout extends FrameLayout {
                 textView.setTextColor(colorBlack);
                 textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 13);
                 textView.setGravity(Gravity.CENTER);
-                textView.setTag(tabBean.getData());
+                textView.setTag(i);
                 textView.setMaxLines(1);
                 LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT
                         , DisplayUtils.dpToPx(getContext(), 30));
-                layoutParams.topMargin = dp5;
-                layoutParams.bottomMargin = dp5;
+                layoutParams.topMargin = dp2;
+                layoutParams.bottomMargin = dp2;
                 linearLayout.addView(textView, layoutParams);
             }
         }
@@ -269,7 +291,7 @@ public class DropdownTabLayout extends FrameLayout {
         for (int i = 0; i < MAX_TAB_COUNT; i++) {
             if (i >= tabList.size()) break;
             TabBean<String> tabBean = tabList.get(i);
-            tabLayout.addTab(tabLayout.newTab().setText(tabBean.getTabStr()).setTag(tabBean.getData()));
+            tabLayout.addTab(tabLayout.newTab().setText(tabBean.getTabStr()).setTag(i));
         }
         setTabLayoutSelectable();
         // 下拉列表的tab

@@ -1,12 +1,15 @@
 package me.apqx.demo.widget
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.os.SystemClock
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewConfiguration
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import kotlinx.android.synthetic.main.activity_widget.*
 import kotlinx.android.synthetic.main.layout_tab.view.*
 import me.apqx.demo.LogUtil
 import me.apqx.demo.R
@@ -40,7 +43,7 @@ class WidgetActivity : AppCompatActivity() {
         LogUtil.d("${ViewConfiguration.get(this).scaledTouchSlop}")
 
 
-        refreshTab()
+        refreshTab(8)
         dataBinding.inTab.dropdown_tab.setOnTabSelectListener(object : OnTabSelectListener<String> {
             override fun onTabClick(t: String?) {
                 LogUtil.d("----onTabClick $t")
@@ -50,6 +53,13 @@ class WidgetActivity : AppCompatActivity() {
                 LogUtil.d("----onEditClick")
             }
         })
+
+
+        cs_switcher.setTabText("美元", "元")
+        cs_switcher.setOnSwitcherSelectListener {
+            LogUtil.d(if (it) "select left" else "select right")
+        }
+
     }
 
     fun onClick(view: View) {
@@ -65,12 +75,31 @@ class WidgetActivity : AppCompatActivity() {
             }
             R.id.btn_refreshTab -> {
                 refreshTab()
+                changeSwitcherColor()
             }
         }
     }
 
-    private fun refreshTab() {
-        val tabCount = Random(SystemClock.currentThreadTimeMillis()).nextInt(1, 8)
+
+    var green = false
+    private fun changeSwitcherColor() {
+        if (green) {
+            fl_switcherContainer.setBackgroundColor(Color.RED)
+            cs_switcher.setSelectedTextColor(Color.RED)
+        } else {
+            fl_switcherContainer.setBackgroundColor(Color.GREEN)
+            cs_switcher.setSelectedTextColor(Color.GREEN)
+        }
+        green = !green
+    }
+
+    private fun refreshTab(vararg countArray: Int) {
+        var tabCount = 0
+        if (countArray.isEmpty()) {
+            tabCount = Random(SystemClock.currentThreadTimeMillis()).nextInt(1, 8)
+        } else{
+            tabCount = countArray[0]
+        }
         tabList.clear()
         for (i in 0 .. tabCount) {
             tabList.add(TabBean("tab$i", "tab$i"))
