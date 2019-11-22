@@ -242,8 +242,11 @@ public class DropdownTabLayout extends FrameLayout {
                 textView.setGravity(Gravity.CENTER);
                 textView.setTag(i);
                 textView.setMaxLines(1);
+                // 设置padding
+                textView.setPadding(0, 10, 0, 10);
                 LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT
-                        , DisplayUtils.dpToPx(getContext(), 30));
+                        , ViewGroup.LayoutParams.WRAP_CONTENT);
+                // 设置margin
                 layoutParams.topMargin = dp2;
                 layoutParams.bottomMargin = dp2;
                 linearLayout.addView(textView, layoutParams);
