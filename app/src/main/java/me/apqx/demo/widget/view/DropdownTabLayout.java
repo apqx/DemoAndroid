@@ -3,6 +3,7 @@ package me.apqx.demo.widget.view;
 import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.graphics.Color;
+import android.os.Build;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -227,7 +228,7 @@ public class DropdownTabLayout extends FrameLayout {
         LinearLayout linearLayout = new LinearLayout(getContext());
         linearLayout.setOrientation(LinearLayout.VERTICAL);
         linearLayout.setPadding(dp5, 0, dp5, 0);
-        linearLayout.setBackgroundColor(Color.parseColor("#F0F0F0"));
+        linearLayout.setBackgroundColor(Color.WHITE);
         if (tabList.size() <= MAX_TAB_COUNT) {
             // 标签可以在TabLayout中全部显示，下拉列表为空
         } else {
@@ -254,7 +255,7 @@ public class DropdownTabLayout extends FrameLayout {
         }
         // 添加一个编辑按钮
         ImageView imageView = new ImageView(getContext());
-        imageView.setImageResource(R.mipmap.edit);
+        imageView.setImageResource(R.mipmap.edit_black);
         imageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         layoutParams.gravity = Gravity.CENTER;
@@ -272,6 +273,10 @@ public class DropdownTabLayout extends FrameLayout {
                 popupWindow.dismiss();
             }
         });
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            // 加阴影
+            linearLayout.setZ(5);
+        }
         return linearLayout;
     }
 
@@ -294,6 +299,7 @@ public class DropdownTabLayout extends FrameLayout {
         for (int i = 0; i < MAX_TAB_COUNT; i++) {
             if (i >= tabList.size()) break;
             TabBean<String> tabBean = tabList.get(i);
+            // TODO:这里可以为tab指定自定义布局，实现更灵活的UI控制
             tabLayout.addTab(tabLayout.newTab().setText(tabBean.getTabStr()).setTag(i));
         }
         setTabLayoutSelectable();

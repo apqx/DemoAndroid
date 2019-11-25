@@ -21,4 +21,10 @@
         <item name="android:backgroundDimEnabled">false</item>
     </style>
 
+    <style name="CusTabStyle">
+        <item name="android:textSize">12sp</item>
+<!--        必须设置颜色，因为View默认会加载颜色，没有的话会异常-->
+        <item name="android:textColor">@color/colorAccent</item>
+    </style>
+
 </resources>

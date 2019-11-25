@@ -33,7 +33,7 @@ android {
             // 修改Debug模式下的应用名
             manifestPlaceholders = [appName: "Debug"]
             // debug模式下生成不一样的applicationId，让正式版和测试版共存
-            applicationIdSuffix = '.debug'
+//            applicationIdSuffix = '.debug'
         }
     }
     dataBinding {

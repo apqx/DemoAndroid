@@ -8,16 +8,18 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
+        app:tabTextAppearance="@style/CusTabStyle"
         app:tabSelectedTextColor="@android:color/holo_blue_dark"
         app:tabIndicatorColor="@android:color/holo_blue_dark"
         app:tabIndicatorFullWidth="false"
         app:tabMode="fixed"
         app:tabGravity="fill"
         app:tabBackground="@android:color/transparent"
-        app:tabRippleColor="@android:color/transparent"/>
+        app:tabRippleColor="@android:color/transparent"
+        />
     <RelativeLayout
         android:id="@+id/ll_more"
-        android:layout_width="60dp"
+        android:layout_width="50dp"
         android:layout_height="match_parent"
         android:orientation="horizontal"
         android:layout_marginRight="10dp">
@@ -26,8 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="更多"
-            android:textStyle="bold"
-            android:textSize="13sp"
+            android:textSize="12sp"
             android:gravity="center"
             android:paddingLeft="5dp"
             android:paddingRight="2dp"
@@ -35,7 +36,7 @@
             android:layout_toLeftOf="@id/iv_dropdown"/>
         <ImageView
             android:id="@+id/iv_dropdown"
-            android:layout_width="13dp"
+            android:layout_width="12dp"
             android:layout_height="7dp"
             android:gravity="center"
             android:layout_centerVertical="true"
