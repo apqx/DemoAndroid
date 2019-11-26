@@ -33,6 +33,7 @@ import me.apqx.demo.widget.dialog.CusDialogExtend
 import me.apqx.demo.widget.dialog.CusDialogInstance
 import me.apqx.demo.widget.list.ListActivity
 import me.apqx.demo.widget.recycler.RecyclerActivity
+import me.apqx.demo.widget.view.DisplayUtils
 import me.apqx.demo.widget.view.OnTabSelectListener
 import me.apqx.demo.widget.view.RelativeActivity
 import me.apqx.demo.widget.view.TabBean
@@ -74,7 +75,8 @@ class WidgetActivity : AppCompatActivity() {
     private fun initClickableText() {
         var text = "尊敬的用户，在您使用金投网前，为了让您更好地了解我们是如何保护用户的个人信息的，请您仔细阅读《隐私政策》和《服务协议》。" +
                 "\n" +
-                "如您同意并接受全部条款，请点击“同意”开始接受我们的服务。"
+                "如您同意并接受全部条款，请点击\"同意\"开始接受我们的服务。"
+        text = DisplayUtils.halfToFull(text)
         var spannableString = SpannableString(text)
         val regex1 = "《隐私政策》"
         val regex2 = "《服务协议》"
@@ -105,6 +107,9 @@ class WidgetActivity : AppCompatActivity() {
         tv_clickableSpanString.movementMethod = LinkMovementMethod.getInstance()
     }
 
+
+
+
     private fun initCustomSwitcher() {
         cs_switcher.setTabText("美元", "元")
         cs_switcher.setOnSwitcherSelectListener {
@@ -113,7 +118,7 @@ class WidgetActivity : AppCompatActivity() {
     }
 
     private fun initTab() {
-        refreshTab(8)
+        refreshTab(3)
         dataBinding.inTab.dropdown_tab.setOnTabSelectListener(object : OnTabSelectListener<String> {
             override fun onTabClick(t: String?) {
                 LogUtil.d("----onTabClick $t")
@@ -173,6 +178,24 @@ class WidgetActivity : AppCompatActivity() {
             // Window的坐标系似乎是屏幕中心，和某个设置有关
             layoutParams = WindowManager.LayoutParams(WindowManager.LayoutParams.WRAP_CONTENT, WindowManager.LayoutParams.WRAP_CONTENT
                 , 0, 0, type, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, PixelFormat.TRANSPARENT)
+            ftb.setOnTouchListener(object : View.OnTouchListener {
+                override fun onTouch(view: View?, event: MotionEvent?): Boolean {
+                    when (event?.action) {
+                        MotionEvent.ACTION_DOWN -> {
+                            LogUtil.d("click ftb ACTION_DOWN")
+                        }
+                        MotionEvent.ACTION_MOVE -> {
+                            LogUtil.d("click ftb ACTION_MOVE")
+
+                        }
+                        MotionEvent.ACTION_UP -> {
+                            LogUtil.d("click ftb ACTION_UP")
+
+                        }
+                    }
+                    return true
+                }
+            })
         }
         // 显示悬浮窗
         windowManager.addView(ftb, layoutParams)
@@ -235,8 +258,8 @@ class WidgetActivity : AppCompatActivity() {
             tabCount = countArray[0]
         }
         tabList.clear()
-        for (i in 0..tabCount) {
-            tabList.add(TabBean("tab$i", "tab$i"))
+        for (i in 0 until tabCount) {
+            tabList.add(TabBean("分k$i", "分k$i"))
         }
         dataBinding.inTab.dropdown_tab.setData(tabList)
     }

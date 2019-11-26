@@ -6,30 +6,69 @@ public class DisplayUtils {
     /**
      * 将dp或dip转换为px
      */
-    public static int dpToPx(Context context, float dpValue){
-        final float scale=context.getResources().getDisplayMetrics().density;
-        return (int)(dpValue * scale + 0.5f);
+    public static int dpToPx(Context context, float dpValue) {
+        final float scale = context.getResources().getDisplayMetrics().density;
+        return (int) (dpValue * scale + 0.5f);
     }
+
     /**
      * 将px转换为dp或dip
      */
-    public static int pxToDp(Context context, float pxValue){
+    public static int pxToDp(Context context, float pxValue) {
         final float scale = context.getResources().getDisplayMetrics().density;
-        return (int)(pxValue / scale + 0.5f);
+        return (int) (pxValue / scale + 0.5f);
     }
+
     /**
      * 将sp转换为px
      */
-    public static int spToPx(Context context, float dpValue){
-        final float fontScale=context.getResources().getDisplayMetrics().scaledDensity;
-        return (int)(dpValue * fontScale + 0.5f);
+    public static int spToPx(Context context, float dpValue) {
+        final float fontScale = context.getResources().getDisplayMetrics().scaledDensity;
+        return (int) (dpValue * fontScale + 0.5f);
     }
+
     /**
      * 将px转换为sp
      */
-    public static int pxToSp(Context context, float pxValue){
+    public static int pxToSp(Context context, float pxValue) {
         final float fontScale = context.getResources().getDisplayMetrics().scaledDensity;
-        return (int)(pxValue / fontScale + 0.5f);
+        return (int) (pxValue / fontScale + 0.5f);
+    }
+
+    /**
+     * 把半角字符切换为全角字符
+     */
+    public static String halfToFull(String input) {
+        char[] chars = input.toCharArray();
+        for (int i = 0; i < chars.length; i++) {
+            // 半角空格比较特殊
+            if (chars[i] == 32) {
+                chars[i] = (char) 12288;
+                continue;
+            }
+            // 其他符号都转换为全角
+            if (chars[i] > 32 && chars[i] < 127)
+                chars[i] = (char) (chars[i] + 65248);
+        }
+        return new String(chars);
+    }
+
+    /**
+     * 把全角字符切换为半角字符
+     */
+    public static String fullToHalf(String input) {
+        char[] chars = input.toCharArray();
+        for (int i = 0; i < chars.length; i++) {
+            // 半角空格比较特殊
+            if (chars[i] == 12288) {
+                chars[i] = (char) 32;
+                continue;
+            }
+            // 其他符号都转换为全角
+            if (chars[i] > 65280 && chars[i] < 65375)
+                chars[i] = (char) (chars[i] - 65248);
+        }
+        return new String(chars);
     }
 
 }

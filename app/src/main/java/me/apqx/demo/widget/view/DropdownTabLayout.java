@@ -4,6 +4,9 @@ import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Build;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.style.TypefaceSpan;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -300,7 +303,9 @@ public class DropdownTabLayout extends FrameLayout {
             if (i >= tabList.size()) break;
             TabBean<String> tabBean = tabList.get(i);
             // TODO:这里可以为tab指定自定义布局，实现更灵活的UI控制
-            tabLayout.addTab(tabLayout.newTab().setText(tabBean.getTabStr()).setTag(i));
+            SpannableString spannableString = new SpannableString(tabBean.getTabStr());
+            spannableString.setSpan(new TypefaceSpan("sans-serif"), 0, spannableString.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            tabLayout.addTab(tabLayout.newTab().setText(spannableString).setTag(i));
         }
         setTabLayoutSelectable();
         // 下拉列表的tab
