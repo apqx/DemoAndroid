@@ -51,9 +51,9 @@ android {
         mi {
             dimension = 'apqx'
         }
-        play {
-            dimension = 'apqx'
-        }
+//        play {
+//            dimension = 'apqx'
+//        }
     }
 }
 

@@ -16,8 +16,10 @@ class ManViewModel : ViewModel() {
     }
 
     fun refreshNew() {
-        for (i in 0 until 100) {
-            val type = if (i % 10 == 0) DATA_TYPE_HORIZONTAL else DATA_TYPE_NORMAL
+
+        for (i in 0 until 10) {
+//            val type = if (i % 10 == 0) DATA_TYPE_HORIZONTAL else DATA_TYPE_NORMAL
+            val type =  DATA_TYPE_NORMAL
             list.add(Man("${list.size + 1}", "", type))
         }
         manLiveData.value = list
