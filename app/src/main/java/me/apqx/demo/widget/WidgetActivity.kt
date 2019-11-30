@@ -24,6 +24,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.android.synthetic.main.activity_widget.*
+import kotlinx.android.synthetic.main.layout_horizontal_pager.*
+import kotlinx.android.synthetic.main.layout_horizontal_pager.view.*
 import kotlinx.android.synthetic.main.layout_tab.view.*
 import me.apqx.demo.LogUtil
 import me.apqx.demo.R
@@ -33,10 +35,7 @@ import me.apqx.demo.widget.dialog.CusDialogExtend
 import me.apqx.demo.widget.dialog.CusDialogInstance
 import me.apqx.demo.widget.list.ListActivity
 import me.apqx.demo.widget.recycler.RecyclerActivity
-import me.apqx.demo.widget.view.DisplayUtils
-import me.apqx.demo.widget.view.OnTabSelectListener
-import me.apqx.demo.widget.view.RelativeActivity
-import me.apqx.demo.widget.view.TabBean
+import me.apqx.demo.widget.view.*
 import java.util.RandomAccess
 import java.util.regex.Pattern
 import kotlin.random.Random
@@ -70,6 +69,13 @@ class WidgetActivity : AppCompatActivity() {
 
         initClickableText()
 
+        initHorizontalPager()
+
+    }
+
+    private fun initHorizontalPager() {
+        val adapter = CusHorizontalAdapter(this)
+        in_hp.setAdapter(adapter)
     }
 
     private fun initClickableText() {
