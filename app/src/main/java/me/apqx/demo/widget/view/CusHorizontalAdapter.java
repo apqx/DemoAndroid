@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
 
 import me.apqx.demo.LogUtil;
@@ -28,6 +29,7 @@ public class CusHorizontalAdapter extends HorizontalPager.Adapter {
         textView.setText(String.valueOf(position));
         textView.setBackgroundColor(Color.RED);
         textView.setGravity(Gravity.CENTER);
+        textView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         return textView;
     }
 

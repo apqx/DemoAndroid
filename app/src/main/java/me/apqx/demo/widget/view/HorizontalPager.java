@@ -1,24 +1,33 @@
 package me.apqx.demo.widget.view;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.util.AttributeSet;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.GridLayout;
-import android.widget.GridView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import org.jetbrains.annotations.NotNull;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import me.apqx.demo.LogUtil;
 
 public class HorizontalPager extends FrameLayout {
     private ViewPager viewPager;
     private Adapter adapter;
+    private List<GridLayout> pagerList = new ArrayList<>();
+    private CusPagerAdapter pagerAdapter;
+
+    private int itemPaddingDp = 10;
 
     public HorizontalPager(@NonNull Context context) {
         super(context);
@@ -40,6 +49,8 @@ public class HorizontalPager extends FrameLayout {
         viewPager = new ViewPager(getContext());
         LayoutParams layoutParams = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         addView(viewPager, layoutParams);
+        pagerAdapter = new CusPagerAdapter(pagerList);
+        viewPager.setAdapter(pagerAdapter);
     }
 
     public void setAdapter(Adapter adapter) {
@@ -52,33 +63,44 @@ public class HorizontalPager extends FrameLayout {
             return;
         }
         post(() -> {
+            // 在完成了Measure过程后，才能获得正确的尺寸
+            pagerList.clear();
             int itemWidth = getItemWidth();
             int groupCount = getGroupCount();
             LogUtil.INSTANCE.d("groupCount = " + groupCount);
             for (int i = 0; i < groupCount; i++) {
-                GridLayout gridView = fillGridView(i, itemWidth);
-                LayoutParams layoutParams = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-                addView(gridView, layoutParams);
+                GridLayout gridLayout = fillGridLayout(i, itemWidth);
+                gridLayout.setBackgroundColor(Color.GREEN);
+                gridLayout.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+                pagerList.add(gridLayout);
             }
+
+            pagerAdapter.notifyDataSetChanged();
+
         });
     }
 
     @NotNull
-    private GridLayout fillGridView(int groupPosition, int itemWidth) {
-        GridLayout gridView = new GridLayout(getContext());
-        gridView.setColumnCount(adapter.getColumnCount());
-        gridView.setRowCount(1);
+    private GridLayout fillGridLayout(int groupPosition, int itemWidth) {
+        GridLayout gridLayout = new GridLayout(getContext());
+        gridLayout.setColumnCount(adapter.getColumnCount());
+        gridLayout.setRowCount(1);
 
-        int itemViewCount = getColItemCount(groupPosition);
-        LogUtil.INSTANCE.d("itemViewCount = " + itemViewCount);
-        for (int i = 0; i < itemViewCount; i++) {
-            // GridView会自动平分
-            LayoutParams layoutParams = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-            layoutParams.setMargins(40, 40, 40, 40);
+        int itemCount = getColItemCount(groupPosition);
+        LogUtil.INSTANCE.d("itemCount = " + itemCount);
+            int margins = DisplayUtils.dpToPx(getContext(), itemPaddingDp);
+        for (int i = 0; i < itemCount; i++) {
+            // GridView不会自动平分，需要指定宽度和高度
+            GridLayout.LayoutParams layoutParams = new GridLayout.LayoutParams(GridLayout.spec(0), GridLayout.spec(i));
+            layoutParams.setGravity(Gravity.CENTER);
+            layoutParams.width = itemWidth - 2 * margins;
+            layoutParams.height = getMeasuredHeight() - 2 * margins;
+            layoutParams.setMargins(margins, margins, margins, margins);
 
-            gridView.addView(adapter.getView(groupPosition * adapter.getColumnCount() + i), layoutParams);
+            View view = adapter.getView(groupPosition * adapter.getColumnCount() + i);
+            gridLayout.addView(view, layoutParams);
         }
-        return gridView;
+        return gridLayout;
     }
 
     /**
@@ -88,18 +110,22 @@ public class HorizontalPager extends FrameLayout {
      */
     private int getColItemCount(int groupPosition) {
         int residue = adapter.getCount() % adapter.getColumnCount();
-        int value = adapter.getCount() / adapter.getColumnCount();
         if (residue == 0) {
-            return value;
+            return adapter.getColumnCount();
         } else if (groupPosition == getGroupCount() - 1) {
             return residue;
         } else {
-            return value;
+            return adapter.getColumnCount();
         }
     }
 
+    /**
+     * 获取需要的Pager页数
+     */
     private int getGroupCount() {
+        // 余数
         int residue = adapter.getCount() % adapter.getColumnCount();
+        // 商
         int value = adapter.getCount() / adapter.getColumnCount();
         return residue > 0 ? value + 1 : value;
     }
@@ -107,6 +133,7 @@ public class HorizontalPager extends FrameLayout {
     private int getItemWidth() {
         return getMeasuredWidth() / adapter.getColumnCount();
     }
+
 
     public static abstract class Adapter {
         public abstract int getCount();
@@ -121,5 +148,32 @@ public class HorizontalPager extends FrameLayout {
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         LogUtil.INSTANCE.d("HorizontalPager onMeasure");
+    }
+}
+
+class CusPagerAdapter extends PagerAdapter {
+    private final List<GridLayout> pagerList;
+
+    CusPagerAdapter(List<GridLayout> pagerList) {
+        this.pagerList = pagerList;
+    }
+
+    @Override
+    public int getCount() {
+        return pagerList.size();
+    }
+
+    @Override
+    public boolean isViewFromObject(@NonNull View view, @NonNull Object object) {
+        return view == object;
+    }
+
+    @NonNull
+    @Override
+    public Object instantiateItem(@NonNull ViewGroup container, int position) {
+        GridLayout gridLayout = pagerList.get(position);
+        ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        container.addView(gridLayout, layoutParams);
+        return gridLayout;
     }
 }
