@@ -55,6 +55,7 @@ public class HorizontalPager extends FrameLayout {
 
     public void setAdapter(Adapter adapter) {
         this.adapter = adapter;
+        adapter.bindPagerView(this);
         refresh();
     }
 
@@ -65,6 +66,7 @@ public class HorizontalPager extends FrameLayout {
         post(() -> {
             // 在完成了Measure过程后，才能获得正确的尺寸
             pagerList.clear();
+
             int itemWidth = getItemWidth();
             int groupCount = getGroupCount();
             LogUtil.INSTANCE.d("groupCount = " + groupCount);
@@ -135,45 +137,68 @@ public class HorizontalPager extends FrameLayout {
     }
 
 
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+    }
+
+
     public static abstract class Adapter {
+        private HorizontalPager pager;
+
         public abstract int getCount();
 
         public abstract View getView(int position);
 
         public abstract int getColumnCount();
+
+        public void bindPagerView(HorizontalPager pager) {
+            this.pager = pager;
+        }
+
+        public void notifyDataSetChanged() {
+            pager.refresh();
+        }
     }
 
 
-    @Override
-    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        LogUtil.INSTANCE.d("HorizontalPager onMeasure");
+
+    private class CusPagerAdapter extends PagerAdapter {
+        private final List<GridLayout> pagerList;
+
+        CusPagerAdapter(List<GridLayout> pagerList) {
+            this.pagerList = pagerList;
+        }
+
+        @Override
+        public int getCount() {
+            return pagerList.size();
+        }
+
+        @Override
+        public boolean isViewFromObject(@NonNull View view, @NonNull Object object) {
+            return view == object;
+        }
+
+        @NonNull
+        @Override
+        public Object instantiateItem(@NonNull ViewGroup container, int position) {
+            GridLayout gridLayout = pagerList.get(position);
+            ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+            container.addView(gridLayout, layoutParams);
+            return gridLayout;
+        }
+
+        @Override
+        public int getItemPosition(@NonNull Object object) {
+            // 覆写此方法，保证当notifyDataSetChanged时，所有View被销毁重建
+            return POSITION_NONE;
+        }
+
+        @Override
+        public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
+            container.removeView(pagerList.get(position));
+        }
     }
 }
 
-class CusPagerAdapter extends PagerAdapter {
-    private final List<GridLayout> pagerList;
-
-    CusPagerAdapter(List<GridLayout> pagerList) {
-        this.pagerList = pagerList;
-    }
-
-    @Override
-    public int getCount() {
-        return pagerList.size();
-    }
-
-    @Override
-    public boolean isViewFromObject(@NonNull View view, @NonNull Object object) {
-        return view == object;
-    }
-
-    @NonNull
-    @Override
-    public Object instantiateItem(@NonNull ViewGroup container, int position) {
-        GridLayout gridLayout = pagerList.get(position);
-        ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-        container.addView(gridLayout, layoutParams);
-        return gridLayout;
-    }
-}

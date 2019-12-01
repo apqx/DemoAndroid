@@ -1,7 +1,6 @@
 package me.apqx.demo.widget
 
 import android.annotation.TargetApi
-import android.app.ActionBar
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.PixelFormat
@@ -19,13 +18,10 @@ import android.view.MotionEvent
 import android.view.View
 import android.view.ViewConfiguration
 import android.view.WindowManager
-import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.android.synthetic.main.activity_widget.*
-import kotlinx.android.synthetic.main.layout_horizontal_pager.*
-import kotlinx.android.synthetic.main.layout_horizontal_pager.view.*
 import kotlinx.android.synthetic.main.layout_tab.view.*
 import me.apqx.demo.LogUtil
 import me.apqx.demo.R
@@ -36,21 +32,22 @@ import me.apqx.demo.widget.dialog.CusDialogInstance
 import me.apqx.demo.widget.list.ListActivity
 import me.apqx.demo.widget.recycler.RecyclerActivity
 import me.apqx.demo.widget.view.*
-import java.util.RandomAccess
-import java.util.regex.Pattern
 import kotlin.random.Random
 
 const val REQUEST_CODE_OVERLAY_PERMISSION = 1
 
 class WidgetActivity : AppCompatActivity() {
 
-    lateinit var dataBinding: ActivityWidgetBinding
-    lateinit var dialogExtend: CusDialogExtend
-    lateinit var dialogInstance: CusDialogInstance
-    var tabList = ArrayList<TabBean<String>>()
+    private lateinit var dataBinding: ActivityWidgetBinding
+    private lateinit var dialogExtend: CusDialogExtend
+    private lateinit var dialogInstance: CusDialogInstance
+    private var tabList = ArrayList<TabBean<String>>()
+    private lateinit var pagerAdapter: CusHorizontalAdapter
 
     lateinit var ftb: FloatingActionButton
     lateinit var layoutParams: WindowManager.LayoutParams
+
+    val strList = ArrayList<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -74,8 +71,12 @@ class WidgetActivity : AppCompatActivity() {
     }
 
     private fun initHorizontalPager() {
-        val adapter = CusHorizontalAdapter(this)
-        in_hp.setAdapter(adapter)
+        pagerAdapter = CusHorizontalAdapter(this, strList)
+        in_hp.setAdapter(pagerAdapter)
+
+        for (i in 0 until 8) {
+            strList.add(i.toString())
+        }
     }
 
     private fun initClickableText() {
@@ -114,8 +115,6 @@ class WidgetActivity : AppCompatActivity() {
     }
 
 
-
-
     private fun initCustomSwitcher() {
         cs_switcher.setTabText("美元", "元")
         cs_switcher.setOnSwitcherSelectListener {
@@ -150,6 +149,7 @@ class WidgetActivity : AppCompatActivity() {
             R.id.btn_refreshTab -> {
                 refreshTab()
                 changeSwitcherColor()
+                refreshGridPager()
             }
             R.id.btn_showFloating -> {
                 showFloating()
@@ -158,6 +158,14 @@ class WidgetActivity : AppCompatActivity() {
                 hideFloating()
             }
         }
+    }
+
+    private fun refreshGridPager() {
+        for (i in 0 until strList.size) {
+            strList[i] = strList[i] + strList[i]
+        }
+
+        pagerAdapter.notifyDataSetChanged()
     }
 
     private fun hideFloating() {
@@ -183,7 +191,7 @@ class WidgetActivity : AppCompatActivity() {
             else WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY
             // Window的坐标系似乎是屏幕中心，和某个设置有关
             layoutParams = WindowManager.LayoutParams(WindowManager.LayoutParams.WRAP_CONTENT, WindowManager.LayoutParams.WRAP_CONTENT
-                , 0, 0, type, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, PixelFormat.TRANSPARENT)
+                    , 0, 0, type, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, PixelFormat.TRANSPARENT)
             ftb.setOnTouchListener(object : View.OnTouchListener {
                 override fun onTouch(view: View?, event: MotionEvent?): Boolean {
                     when (event?.action) {

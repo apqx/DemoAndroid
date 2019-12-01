@@ -7,26 +7,31 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import me.apqx.demo.LogUtil;
 
 public class CusHorizontalAdapter extends HorizontalPager.Adapter {
 
+    private List<String> list;
     private Context context;
 
-    public CusHorizontalAdapter(Context context) {
+    public CusHorizontalAdapter(Context context, List<String> strList) {
         this.context = context;
+        this.list = strList;
     }
 
     @Override
     public int getCount() {
-        return 5;
+        return list.size();
     }
 
     @Override
     public View getView(int position) {
-        LogUtil.INSTANCE.d("getView " + position);
+        LogUtil.INSTANCE.d("getView " + position + " : " + list.get(position));
         TextView textView = new TextView(context);
-        textView.setText(String.valueOf(position));
+        textView.setText(list.get(position));
         textView.setBackgroundColor(Color.RED);
         textView.setGravity(Gravity.CENTER);
         textView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
