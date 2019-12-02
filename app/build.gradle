@@ -46,15 +46,15 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
     buildToolsVersion '28.0.3'
-    flavorDimensions 'apqx'
-    productFlavors {
-        mi {
-            dimension = 'apqx'
-        }
+//    flavorDimensions 'apqx'
+//    productFlavors {
+//        mi {
+//            dimension = 'apqx'
+//        }
 //        play {
 //            dimension = 'apqx'
 //        }
-    }
+//    }
 }
 
 dependencies {

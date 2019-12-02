@@ -68,6 +68,7 @@ class WidgetActivity : AppCompatActivity() {
 
         initHorizontalPager()
 
+        setResult(100)
     }
 
     private fun initHorizontalPager() {
