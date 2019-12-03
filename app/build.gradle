@@ -46,15 +46,15 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
     buildToolsVersion '28.0.3'
-    flavorDimensions 'apqx'
-    productFlavors {
-        mi {
-            dimension = 'apqx'
-        }
+//    flavorDimensions 'apqx'
+//    productFlavors {
+//        mi {
+//            dimension = 'apqx'
+//        }
 //        play {
 //            dimension = 'apqx'
 //        }
-    }
+//    }
 }
 
 dependencies {
@@ -101,6 +101,6 @@ dependencies {
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.6.3'
     releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.6.3'
     implementation 'com.android.support:design:28.0.0'
-
+    implementation 'org.greenrobot:eventbus:3.1.1'
 
 }

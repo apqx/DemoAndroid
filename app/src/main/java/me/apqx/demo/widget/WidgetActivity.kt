@@ -73,6 +73,7 @@ class WidgetActivity : AppCompatActivity() {
     private fun initHorizontalPager() {
         pagerAdapter = CusHorizontalAdapter(this, strList)
         in_hp.setAdapter(pagerAdapter)
+        in_hp.setLoopAnimEnabled(true)
 
         for (i in 0 until 8) {
             strList.add(i.toString())
