@@ -35,6 +35,7 @@
         <activity android:name=".device.usb.UsbActivity" />
         <activity android:name=".widget.view.RelativeActivity" />
         <activity android:name=".widget.list.ListActivity" />
+        <activity android:name=".fragment.FragmentActivity" />
 
         <service android:name=".ipc.RemoteService"
             android:process=":ipc"/>
