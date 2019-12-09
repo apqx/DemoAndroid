@@ -3,6 +3,8 @@ package me.apqx.demo.widget.recycler.adapter;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.graphics.Rect;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
@@ -43,6 +45,9 @@ public class ItemDecoration extends RecyclerView.ItemDecoration {
     public void onDraw(@NonNull Canvas c, @NonNull RecyclerView parent, @NonNull RecyclerView.State state) {
         super.onDraw(c, parent, state);
         // 当滑动屏幕，View移动时执行，每移动一点点，就会执行一次，执行的非常频繁
+        // onDraw和onOverDraw针对的是RecyclerView本身
+        // getItemOffsets针对的是每一个itemView
+
         // 在itemView下层绘制
         LogUtil.INSTANCE.d("onDraw");
 
@@ -54,16 +59,20 @@ public class ItemDecoration extends RecyclerView.ItemDecoration {
 
         LogUtil.INSTANCE.d(firstChild.getTop() + ":" + firstChild.getBottom());
 
-        int currentX = left;
-        int currentY = (int) (ViewCompat.getTranslationY(firstChild));
-
-        if (bitmap != null) {
-            lastX = currentX;
-            lastY = currentY;
-
-            LogUtil.INSTANCE.d("lastXY = " + lastX + " : " + lastY);
-            c.drawBitmap(bitmap, lastX, lastY, null);
-        }
+//        int currentX = left;
+//        int currentY = (int) (ViewCompat.getTranslationY(firstChild));
+//
+//        if (bitmap != null) {
+//            lastX = currentX;
+//            lastY = currentY;
+//
+//            LogUtil.INSTANCE.d("lastXY = " + lastX + " : " + lastY);
+//            c.drawBitmap(bitmap, lastX, lastY, null);
+//        }
+        Paint paint = new Paint();
+        paint.setColor(Color.BLACK);
+        paint.setStrokeWidth(10);
+        c.drawCircle(0, 0, 500, paint);
     }
 
     @Override
@@ -78,15 +87,13 @@ public class ItemDecoration extends RecyclerView.ItemDecoration {
     public void getItemOffsets(@NonNull Rect outRect, @NonNull View view, @NonNull RecyclerView parent, @NonNull RecyclerView.State state) {
         super.getItemOffsets(outRect, view, parent, state);
         // 当有一个新的View滑入可见范围时执行
-        LogUtil.INSTANCE.d("getItemOffsets");
+        // 此View在Adapter的List里的位置
         int position = parent.getChildAdapterPosition(view);
+        LogUtil.INSTANCE.d("getItemOffsets psoition = " + position);
         int listCount = parent.getAdapter().getItemCount();
-        if (position == 0) {
-            // 第一个元素，设置上边距
+        if (position == 0 || position == 5) {
+            // 给指定位置的元素，设置上边距
             outRect.set(0, 300, 0, 0);
-        } else if (position == listCount - 1) {
-            // 最后一个元素，设置下边距
-            outRect.set(0, 0, 0, 300);
         }
     }
 
