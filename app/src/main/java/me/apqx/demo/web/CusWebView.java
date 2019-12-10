@@ -44,50 +44,50 @@ public class CusWebView extends WebView {
     int offsetX;
     int offsetY;
 
-    @Override
-    public boolean dispatchTouchEvent(MotionEvent ev) {
-        // 此时, x, y是相对于屏幕左上角的绝对坐标
-        x = (int) ev.getRawX();
-        y = (int) ev.getRawY();
-        LogUtil.INSTANCE.d("getScrollY = " + getScrollY() + ", getY = " + getY());
-        switch (ev.getAction()) {
-            case MotionEvent.ACTION_DOWN:
-                lastX = x;
-                lastY = y;
-                break;
-            case MotionEvent.ACTION_MOVE:
-                offsetX = x - lastX;
-                offsetY = y - lastY;
-                // 在这里改变View的位置实现滑动
-                // 向上滚动，scrollY > 0
-
-                if (offsetY > 0) {
-                    // 向下滑
-                    if (getY() < paddingTop && getScrollY() == 0) {
-                        offsetTopAndBottom(offsetY);
-                    }
-                } else if (offsetY < 0) {
-                    if (getY() > 0) {
-                        offsetTopAndBottom(offsetY);
-                    }
-                }
-
-                if (getY() > paddingTop) {
-                    offsetTopAndBottom((int) (paddingTop - getY()));
-                }
-
-                if (getY() < 0) {
-                    offsetTopAndBottom((int) (-getY()));
-                }
-
-
-                lastX = x;
-                lastY = y;
-                break;
-        }
-
-        return super.dispatchTouchEvent(ev);
-    }
+//    @Override
+//    public boolean dispatchTouchEvent(MotionEvent ev) {
+//        // 此时, x, y是相对于屏幕左上角的绝对坐标
+//        x = (int) ev.getRawX();
+//        y = (int) ev.getRawY();
+//        LogUtil.INSTANCE.d("getScrollY = " + getScrollY() + ", getY = " + getY());
+//        switch (ev.getAction()) {
+//            case MotionEvent.ACTION_DOWN:
+//                lastX = x;
+//                lastY = y;
+//                break;
+//            case MotionEvent.ACTION_MOVE:
+//                offsetX = x - lastX;
+//                offsetY = y - lastY;
+//                // 在这里改变View的位置实现滑动
+//                // 向上滚动，scrollY > 0
+//
+//                if (offsetY > 0) {
+//                    // 向下滑
+//                    if (getY() < paddingTop && getScrollY() == 0) {
+//                        offsetTopAndBottom(offsetY);
+//                    }
+//                } else if (offsetY < 0) {
+//                    if (getY() > 0) {
+//                        offsetTopAndBottom(offsetY);
+//                    }
+//                }
+//
+//                if (getY() > paddingTop) {
+//                    offsetTopAndBottom((int) (paddingTop - getY()));
+//                }
+//
+//                if (getY() < 0) {
+//                    offsetTopAndBottom((int) (-getY()));
+//                }
+//
+//
+//                lastX = x;
+//                lastY = y;
+//                break;
+//        }
+//
+//        return super.dispatchTouchEvent(ev);
+//    }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
