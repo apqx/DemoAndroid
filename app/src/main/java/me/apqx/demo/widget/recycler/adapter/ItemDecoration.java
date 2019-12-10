@@ -97,6 +97,9 @@ public class ItemDecoration extends RecyclerView.ItemDecoration {
         }
     }
 
+    /**
+     * 从View生成Bitmap
+     */
     public void setData(String dataStr) {
         this.dataStr = dataStr;
         view = (TextView) LayoutInflater.from(context).inflate(R.layout.item_color, null, false);

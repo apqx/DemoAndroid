@@ -36,7 +36,6 @@ public class RelativeActivity extends Activity {
         rv_temp.setAdapter(adapter);
         rv_temp.setLayoutManager(layoutManager);
 
-        View in = findViewById(R.id.in_test);
     }
 
     public void onClick(View view) {

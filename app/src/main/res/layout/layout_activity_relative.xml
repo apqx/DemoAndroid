@@ -90,10 +90,4 @@
             app:layout_constraintBottom_toBottomOf="@+id/btn_add"
             app:layout_constraintEnd_toEndOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <include layout="@layout/in_ll"
-        android:id="@+id/in_test"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"/>
 </LinearLayout>
