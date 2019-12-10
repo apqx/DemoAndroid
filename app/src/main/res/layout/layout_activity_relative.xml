@@ -4,29 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <RelativeLayout
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
-        <Button
-            android:id="@+id/btn_1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="1"/>
+        android:layout_height="200dp">
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_temp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
-        <Button
-            android:id="@+id/btn_2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/btn_1"
-            android:text="2" />
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/btn_2"
-            android:text="3"/>
-
-    </RelativeLayout>
+    </FrameLayout>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -78,14 +64,14 @@
             app:layout_goneMarginTop="80dp" />
 
         <Button
-            android:id="@+id/btn_relative"
+            android:id="@+id/btn_add"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginBottom="8dp"
             android:onClick="onClick"
-            android:text="Relative"
+            android:text="add"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
@@ -97,7 +83,7 @@
             android:layout_marginRight="8dp"
             android:onClick="onClick"
             android:text="Constraint"
-            app:layout_constraintBottom_toBottomOf="@+id/btn_relative"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_add"
             app:layout_constraintEnd_toEndOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>

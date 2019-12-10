@@ -142,7 +142,7 @@ class WidgetActivity : AppCompatActivity() {
             R.id.btn_recycler -> {
                 startActivity(Intent(this, RecyclerActivity::class.java))
             }
-            R.id.btn_relative -> {
+            R.id.btn_add -> {
                 startActivity(Intent(this, RelativeActivity::class.java))
             }
             R.id.btn_list -> {
