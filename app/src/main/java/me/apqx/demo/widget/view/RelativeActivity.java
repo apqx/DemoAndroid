@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
+import me.apqx.demo.LogUtil;
 import me.apqx.demo.R;
 
 public class RelativeActivity extends Activity {
@@ -34,6 +35,8 @@ public class RelativeActivity extends Activity {
         GridLayoutManager layoutManager = new GridLayoutManager(this, 2);
         rv_temp.setAdapter(adapter);
         rv_temp.setLayoutManager(layoutManager);
+
+        View in = findViewById(R.id.in_test);
     }
 
     public void onClick(View view) {

@@ -19,6 +19,7 @@ import me.apqx.demo.realm.RealmActivity
 import me.apqx.demo.service.ServiceActivity
 import me.apqx.demo.test.TestActivity
 import me.apqx.demo.tools.ToolsActivity
+import me.apqx.demo.web.WebActivity
 import me.apqx.demo.widget.WidgetActivity
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
@@ -72,6 +73,9 @@ class MainActivity : AppCompatActivity() {
             }
             R.id.btn_fragment -> {
                 startActivity(Intent(this, FragmentActivity::class.java))
+            }
+            R.id.btn_web -> {
+                startActivity(Intent(this, WebActivity::class.java))
             }
         }
     }

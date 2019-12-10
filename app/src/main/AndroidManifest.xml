@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:name=".CusApp">
+        android:name=".CusApp"
+        android:usesCleartextTraffic="true">
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -36,6 +37,7 @@
         <activity android:name=".widget.view.RelativeActivity" />
         <activity android:name=".widget.list.ListActivity" />
         <activity android:name=".fragment.FragmentActivity" />
+        <activity android:name=".web.WebActivity" />
 
         <service android:name=".ipc.RemoteService"
             android:process=":ipc"/>
