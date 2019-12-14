@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Canvas;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -16,11 +17,14 @@ import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import me.apqx.demo.LogUtil;
 import me.apqx.demo.R;
 
 public class ListActivity extends Activity {
     private ListView listView;
     private RecyclerView recyclerView;
+    private ListAdapter listAdapter;
+    private List<Student> list;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -29,12 +33,12 @@ public class ListActivity extends Activity {
         listView = findViewById(R.id.lv_top);
         recyclerView = findViewById(R.id.rv_bottom);
 
-        List<Student> list = new ArrayList<>();
+        list = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
             list.add(new Student(i, String.valueOf(i)));
         }
 
-        ListAdapter listAdapter = new ListAdapter(this, R.layout.item_list, list);
+        listAdapter = new ListAdapter(this, R.layout.item_list, list);
         listView.setAdapter(listAdapter);
 
         listAdapter.notifyDataSetChanged();
@@ -87,9 +91,9 @@ public class ListActivity extends Activity {
             @Override
             public void onChildDraw(@NonNull Canvas c, @NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
                 super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
-                if(actionState == ItemTouchHelper.ACTION_STATE_SWIPE) {
+                if (actionState == ItemTouchHelper.ACTION_STATE_SWIPE) {
                     //滑动时改变Item的透明度
-                    final float alpha = 1 - Math.abs(dX) / (float)viewHolder.itemView.getWidth();
+                    final float alpha = 1 - Math.abs(dX) / (float) viewHolder.itemView.getWidth();
                     viewHolder.itemView.setAlpha(alpha);
                     viewHolder.itemView.setTranslationX(dX);
                 }
@@ -97,5 +101,21 @@ public class ListActivity extends Activity {
         });
 
         itemTouchHelper.attachToRecyclerView(recyclerView);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.btn_list_refresh:
+                LogUtil.INSTANCE.d("click list refresh");
+                if (!list.isEmpty())
+                    list.remove(list.size() - 1);
+                listAdapter.notifyDataSetChanged();
+                break;
+        }
     }
 }
