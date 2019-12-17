@@ -2,14 +2,22 @@ package me.apqx.demo
 
 import android.app.Activity
 import android.app.Application
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import android.widget.PopupWindow
 import androidx.multidex.MultiDexApplication
 import com.squareup.leakcanary.LeakCanary
 import io.realm.Realm
 import io.realm.RealmConfiguration
 import me.apqx.demo.realm.CusRealmMigration
+import me.apqx.demo.tools.ScreenShotManager
 
 class CusApp : MultiDexApplication() {
+    val screenShotManager = ScreenShotManager.newInstance(this)
+
     private val actLifeCycleCallback = object : ActivityLifecycleCallbacks {
         override fun onActivityPaused(activity: Activity?) {
             LogUtil.d("onActivityPaused ${activity?.javaClass?.simpleName}")
@@ -43,6 +51,15 @@ class CusApp : MultiDexApplication() {
         super.onCreate()
         registerActivityLifecycleCallbacks(actLifeCycleCallback)
 
+        screenShotManager.startListen()
+        screenShotManager.setListener(object : ScreenShotManager.OnScreenShotListener {
+            override fun onShot(imagePath: String?) {
+                val bitmap = BitmapFactory.decodeFile(imagePath)
+                LogUtil.d("screenShot ${bitmap.width} : ${bitmap.height}")
+                showPopWindow()
+            }
+        })
+
         ToastUtil.init(applicationContext)
         Realm.init(this)
         val config = RealmConfiguration.Builder()
@@ -55,10 +72,17 @@ class CusApp : MultiDexApplication() {
         } else {
             LeakCanary.install(this)
         }
+
+    }
+
+    private fun showPopWindow() {
+        val view = LayoutInflater.from(this).inflate(R.layout.window_pop, null, false)
+        val popWindow = PopupWindow(view, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
     }
 
     override fun onTerminate() {
         super.onTerminate()
+        screenShotManager.stopListen()
         unregisterActivityLifecycleCallbacks(actLifeCycleCallback)
     }
 }

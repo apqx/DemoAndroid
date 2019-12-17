@@ -3,6 +3,7 @@
     package="me.apqx.demo">
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-feature android:name="android.hardware.usb.host"/>
     <application
         android:allowBackup="true"
@@ -38,6 +39,8 @@
         <activity android:name=".widget.list.ListActivity" />
         <activity android:name=".fragment.FragmentActivity" />
         <activity android:name=".web.WebActivity" />
+        <activity android:name=".recycler.RecyclerActivity" />
+        <activity android:name=".draw.DrawActivity" />
 
         <service android:name=".ipc.RemoteService"
             android:process=":ipc"/>

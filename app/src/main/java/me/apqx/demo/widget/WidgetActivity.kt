@@ -9,17 +9,16 @@ import android.os.Build
 import android.os.Bundle
 import android.os.SystemClock
 import android.provider.Settings
-import android.text.SpannableString
-import android.text.Spanned
-import android.text.TextPaint
+import android.text.*
 import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
-import android.view.MotionEvent
-import android.view.View
-import android.view.ViewConfiguration
-import android.view.WindowManager
+import android.view.*
+import android.view.inputmethod.EditorInfo
+import android.widget.PopupWindow
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.databinding.Observable
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.android.synthetic.main.activity_widget.*
 import kotlinx.android.synthetic.main.layout_tab.view.*
@@ -44,7 +43,7 @@ class WidgetActivity : AppCompatActivity() {
     private var tabList = ArrayList<TabBean<String>>()
     private lateinit var pagerAdapter: CusHorizontalAdapter
 
-    lateinit var ftb: FloatingActionButton
+    lateinit var ftb: View
     lateinit var layoutParams: WindowManager.LayoutParams
 
     val strList = ArrayList<String>()
@@ -69,6 +68,35 @@ class WidgetActivity : AppCompatActivity() {
         initHorizontalPager()
 
         setResult(100)
+
+        et_search.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(p0: Editable?) {
+                LogUtil.d("edit afterTextChanged $p0")
+            }
+
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                LogUtil.d("edit beforeTextChanged $p0")
+
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                LogUtil.d("edit onTextChanged $p0")
+                // 设置EditText的text会导致这里也会调用，出现递归
+
+            }
+        })
+        et_search.setOnEditorActionListener(object : TextView.OnEditorActionListener {
+            override fun onEditorAction(p0: TextView?, p1: Int, p2: KeyEvent?): Boolean {
+                LogUtil.d("edit onEditorAction ${p0?.text} $p1")
+                if (p1 == EditorInfo.IME_ACTION_SEARCH || p1 == EditorInfo.IME_ACTION_UNSPECIFIED) {
+                    LogUtil.d("edit onEditorAction press search")
+                    return true
+                }
+                return false
+            }
+        })
+
+
     }
 
     private fun initHorizontalPager() {
@@ -185,15 +213,19 @@ class WidgetActivity : AppCompatActivity() {
             return
         }
         if (!this::ftb.isInitialized) {
-            ftb = FloatingActionButton(this)
+//            val view = LayoutInflater.from(this).inflate(R.layout.window_pop, null, false)
+            ftb = LayoutInflater.from(this).inflate(R.layout.window_pop, null, false)
             // 如果是应用内悬浮窗，type为TYPE_APPLICATION即可
             // 如果是全局悬浮窗，targetSdk在Android O之前，type为TYPE_SYSTEM_ALERT，Android O开始，为TYPE_APPLICATION_OVERLAY
-            val type = if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O)
-                WindowManager.LayoutParams.TYPE_SYSTEM_ALERT
-            else WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY
+//            val type = if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O)
+//                WindowManager.LayoutParams.TYPE_SYSTEM_ALERT
+//            else WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY
+            val type = WindowManager.LayoutParams.TYPE_APPLICATION
+            val flags = WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE or WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL
             // Window的坐标系似乎是屏幕中心，和某个设置有关
-            layoutParams = WindowManager.LayoutParams(WindowManager.LayoutParams.WRAP_CONTENT, WindowManager.LayoutParams.WRAP_CONTENT
-                    , 0, 0, type, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, PixelFormat.TRANSPARENT)
+            layoutParams = WindowManager.LayoutParams(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT
+                    , 0, 0, type, flags, PixelFormat.TRANSPARENT)
+
             ftb.setOnTouchListener(object : View.OnTouchListener {
                 override fun onTouch(view: View?, event: MotionEvent?): Boolean {
                     when (event?.action) {

@@ -1,21 +1,20 @@
 package me.apqx.demo
 
 import android.content.Intent
-import android.os.AsyncTask
 import android.os.Bundle
-import android.os.Handler
 import android.view.KeyEvent
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import kotlinx.android.synthetic.main.activity_main.*
 import me.apqx.demo.databinding.ActivityMainBinding
-import me.apqx.demo.device.usb.UsbActivity
+import me.apqx.demo.draw.DrawActivity
 import me.apqx.demo.fragment.FragmentActivity
 import me.apqx.demo.ipc.IpcActivity
 import me.apqx.demo.jetpack.JetpackActivity
 import me.apqx.demo.mvvm.view.MVVMActivity
 import me.apqx.demo.realm.RealmActivity
+import me.apqx.demo.recycler.RecyclerActivity
 import me.apqx.demo.service.ServiceActivity
 import me.apqx.demo.test.TestActivity
 import me.apqx.demo.tools.ToolsActivity
@@ -76,6 +75,12 @@ class MainActivity : AppCompatActivity() {
             }
             R.id.btn_web -> {
                 startActivity(Intent(this, WebActivity::class.java))
+            }
+            R.id.btn_rv -> {
+                startActivity(Intent(this, RecyclerActivity::class.java))
+            }
+            R.id.btn_draw -> {
+                startActivity(Intent(this, DrawActivity::class.java))
             }
         }
     }
