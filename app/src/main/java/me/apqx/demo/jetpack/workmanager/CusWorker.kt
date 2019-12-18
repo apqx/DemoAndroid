@@ -10,10 +10,10 @@ import me.apqx.demo.ToastUtil
 class CusWorker(val context: Context, workerParameters: WorkerParameters) : Worker(context, workerParameters) {
     override fun doWork(): Result {
         LogUtil.d("doWork start ${inputData.getString("apqx")}")
-        ToastUtil.showToastAsync("doWork start")
+        ToastUtil.showToast("doWork start")
         Thread.sleep(2000)
         LogUtil.d("doWork done")
-        ToastUtil.showToastAsync("doWork done")
+        ToastUtil.showToast("doWork done")
         val data = Data.Builder().putString("apqx", "result").build()
         outputData = data
 

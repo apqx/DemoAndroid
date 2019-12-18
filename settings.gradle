@@ -1,1 +1,1 @@
-include ':app', ':libAnnotation'
+include ':app', ':libAnnotation', ':libtools'

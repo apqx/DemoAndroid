@@ -187,7 +187,15 @@ class WidgetActivity : AppCompatActivity() {
             R.id.btn_hideFloating -> {
                 hideFloating()
             }
+            R.id.btn_click -> {
+                showToast()
+            }
         }
+    }
+
+    var count = 0
+    private fun showToast() {
+        ToastUtil.showToast(R.string.app_name)
     }
 
     private fun refreshGridPager() {

@@ -179,6 +179,20 @@ public class HorizontalPager extends RelativeLayout {
         });
     }
 
+    @Override
+    protected void onAttachedToWindow() {
+        super.onAttachedToWindow();
+        LogUtil.INSTANCE.d("onAttachedToWindow");
+    }
+
+    @Override
+    protected void onDetachedFromWindow() {
+        super.onDetachedFromWindow();
+        // 关闭动画，防止内存泄露
+        LogUtil.INSTANCE.d("onDetachedFromWindow");
+        handler.removeCallbacks(animRunnable);
+    }
+
     /**
      * 加载Index指示器
      */
@@ -299,7 +313,6 @@ public class HorizontalPager extends RelativeLayout {
     @Override
     public void onViewRemoved(View child) {
         super.onViewRemoved(child);
-        handler.removeCallbacks(animRunnable);
     }
 
     public static abstract class Adapter {

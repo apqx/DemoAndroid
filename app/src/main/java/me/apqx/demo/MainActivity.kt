@@ -3,6 +3,7 @@ package me.apqx.demo
 import android.content.Intent
 import android.os.Bundle
 import android.view.KeyEvent
+import android.view.MotionEvent
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -85,7 +86,13 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    override fun dispatchKeyEvent(event: KeyEvent?): Boolean {
+        LogUtil.d("onKeyDown dispatchKeyEvent ${event?.keyCode} ${event?.action}")
+        return super.dispatchKeyEvent(event)
+    }
+
     override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
+        LogUtil.d("onKeyDown $keyCode ${event?.action}")
         // 监听键盘输入输入内容
         val currentTime = System.currentTimeMillis()
         LogUtil.d("input key = ${event?.characters}")

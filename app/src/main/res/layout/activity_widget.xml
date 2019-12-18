@@ -142,7 +142,6 @@
                     android:layout_height="wrap_content"
                     android:onClick="onClick"
                     android:text="show floating"
-                    android:layout_marginTop="8dp"
                     android:layout_marginLeft="8dp"/>
 
                 <Button
@@ -151,8 +150,7 @@
                     android:layout_height="wrap_content"
                     android:onClick="onClick"
                     android:text="hide floating"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginRight="8dp"/>
+                    android:layout_marginLeft="8dp"/>
                 <me.apqx.demo.widget.view.HorizontalPager
                     android:id="@+id/in_hp"
                     android:layout_width="match_parent"
@@ -198,6 +196,12 @@
                         android:text="1"
                         android:background="@android:color/holo_green_light"/>
                 </GridLayout>
+                <Button
+                    android:id="@+id/btn_click"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Click"
+                    android:onClick="onClick"/>
             </LinearLayout>
 
         </ScrollView>

@@ -1,26 +1,49 @@
 package me.apqx.demo
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Handler
 import android.widget.Toast
 import java.util.concurrent.CopyOnWriteArrayList
 
+@SuppressLint("StaticFieldLeak")
 object ToastUtil {
     lateinit var handler: Handler
     lateinit var context: Context
+    lateinit var toast: Toast
 
     fun init(context: Context) {
         this.context = context
         handler = Handler()
     }
 
-    fun showToast(string: String) {
-        Toast.makeText(context, string, Toast.LENGTH_SHORT).show()
+    @SuppressLint("ShowToast")
+    private fun showToastBase(string: String) {
+        if (ToastUtil::toast.isInitialized) {
+            toast.cancel()
+        }
+        toast = Toast.makeText(context, string, Toast.LENGTH_SHORT)
+        toast.show()
     }
 
-    fun showToastAsync(string: String) {
+    fun showToast(string: String) {
         handler.post {
-            showToast(string)
+            showToastBase(string)
         }
+    }
+
+    fun showToast(strId: Int) {
+        handler.post {
+            showToastBase(strId)
+        }
+    }
+
+    @SuppressLint("ShowToast")
+    private fun showToastBase(strId: Int) {
+        if (ToastUtil::toast.isInitialized) {
+            toast.cancel()
+        }
+        toast = Toast.makeText(context, strId, Toast.LENGTH_SHORT)
+        toast.show()
     }
 }
