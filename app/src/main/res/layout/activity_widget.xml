@@ -109,6 +109,7 @@
                     android:paddingLeft="24.5dp"
                     android:paddingRight="25dp"
                     android:layout_margin="8dp"
+                    android:ellipsize="end"
                     android:textSize="14sp"
                     android:text="clickable text"
                      />
