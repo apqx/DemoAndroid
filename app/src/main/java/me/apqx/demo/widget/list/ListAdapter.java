@@ -32,7 +32,7 @@ public class ListAdapter extends ArrayAdapter<Student> {
         View view = null;
         if (convertView == null) {
             // 第一次加载View，并非是复用已有的View
-            view = LayoutInflater.from(getContext()).inflate(resource, null, false);
+            view = LayoutInflater.from(getContext()).inflate(resource, parent, false);
             viewHolder = new ViewHolder(view);
             // 将ViewHolder保存在View里
             view.setTag(viewHolder);

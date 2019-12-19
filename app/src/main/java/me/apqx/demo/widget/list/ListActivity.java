@@ -14,9 +14,11 @@ import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import me.apqx.demo.LogUtil;
 import me.apqx.demo.R;
 
@@ -45,7 +47,7 @@ public class ListActivity extends Activity {
 
 
         RecyclerAdapter recyclerAdapter = new RecyclerAdapter(R.layout.item_list, list);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
+        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(this, 3);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(recyclerAdapter);
         recyclerAdapter.setOnItemClickListener(student -> {
@@ -59,12 +61,16 @@ public class ListActivity extends Activity {
         // 通知指定范围的item数据刷新
         recyclerAdapter.notifyItemRangeChanged(0, 2);
 
-        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(ItemTouchHelper.UP | ItemTouchHelper.DOWN,
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(ItemTouchHelper.UP | ItemTouchHelper.DOWN
+                | ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT,
                 ItemTouchHelper.RIGHT) {
             @Override
             public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
                 int fromPosition = viewHolder.getAdapterPosition();
                 int toPosition = target.getAdapterPosition();
+                if (toPosition == 0 || fromPosition == 0) {
+                    return false;
+                }
                 if (fromPosition < toPosition) {
                     //分别把中间所有的item的位置重新交换
                     for (int i = fromPosition; i < toPosition; i++) {
@@ -97,6 +103,11 @@ public class ListActivity extends Activity {
                     viewHolder.itemView.setAlpha(alpha);
                     viewHolder.itemView.setTranslationX(dX);
                 }
+            }
+
+            @Override
+            public boolean isItemViewSwipeEnabled() {
+                return false;
             }
         });
 
