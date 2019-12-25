@@ -5,24 +5,31 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+import me.apqx.demo.LogUtil;
 import me.apqx.demo.R;
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.CusViewHolder> {
     private int resource;
-    private List<Student> list;
+    private List<Student> list = new ArrayList<>();
     private OnItemClickListener listener;
 
-    public RecyclerAdapter(int resource, List<Student> list) {
+    public RecyclerAdapter(int resource) {
         this.resource = resource;
-        this.list = list;
+    }
+
+    public void setData(List<Student> list) {
+        this.list.clear();
+        this.list.addAll(list);
     }
 
     @Override
     public CusViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        LogUtil.INSTANCE.d("onCreateViewHolder");
         // 根据viewType加载不同类型的ViewHolder
         View view = LayoutInflater.from(parent.getContext()).inflate(resource, parent, false);
         return new CusViewHolder(view, viewType);
@@ -30,6 +37,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.CusVie
 
     @Override
     public void onBindViewHolder(@NonNull CusViewHolder holder, int position) {
+        LogUtil.INSTANCE.d("onBindViewHolder");
         // 根据viewType绑定数据
         Student student = list.get(position);
         holder.setData(student);

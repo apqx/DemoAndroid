@@ -46,7 +46,7 @@ public class ListActivity extends Activity {
         listAdapter.notifyDataSetChanged();
 
 
-        RecyclerAdapter recyclerAdapter = new RecyclerAdapter(R.layout.item_list, list);
+        RecyclerAdapter recyclerAdapter = new RecyclerAdapter(R.layout.item_list);
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(this, 3);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(recyclerAdapter);
