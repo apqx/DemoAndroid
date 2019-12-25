@@ -2,6 +2,7 @@ package me.apqx.demo
 
 import android.app.Activity
 import android.app.Application
+import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Bundle
@@ -73,6 +74,17 @@ class CusApp : MultiDexApplication() {
             LeakCanary.install(this)
         }
 
+        readManifest()
+
+    }
+
+    /**
+     * 读取AndroidManifest文件
+     */
+    private fun readManifest() {
+        val applicationInfo = packageManager.getApplicationInfo(packageName, PackageManager.GET_META_DATA)
+        val channel = applicationInfo.metaData.getString("channel")
+        LogUtil.e("READ ANDROID_MANIFEST chanel = $channel")
     }
 
     private fun showPopWindow() {

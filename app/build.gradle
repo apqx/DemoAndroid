@@ -13,6 +13,7 @@ apply plugin: 'realm-android'
 android {
     compileSdkVersion 28
     defaultConfig {
+        // 定义包名
         applicationId "me.apqx.demo"
         // 定义可以在AndroidManifest文件中使用的变量，不同的分支比如release和debug可以覆写这个变量
         // 来实现不同分支的不同行为
@@ -46,15 +47,60 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
     buildToolsVersion '28.0.3'
-//    flavorDimensions 'apqx'
-//    productFlavors {
-//        mi {
-//            dimension = 'apqx'
-//        }
-//        play {
-//            dimension = 'apqx'
+    flavorDimensions 'apqx'
+    productFlavors {
+        mi {
+            dimension = 'apqx'
+        }
+        play {
+            dimension = 'apqx'
+        }
+    }
+
+//    android.applicationVariants.all { variant ->
+//        variant.outputs.get(0).processManifest.doLast {
+//            // 替换AndroidManifest文件中的字符
+//            def manifestFile = "${buildDir}/intermediates/manifests/full/${variant.dirName}/AndroidManifest.xml"
+//            def updatedContent = new File(manifestFile).getText('UTF-8')
+//            if (variant.buildType.name.equals("release")) {
+//                String productName = variant.productFlavors[0].name
+//                switch (productName) {
+//                    case "mi":
+//                        updatedContent = updatedContent.replaceAll("APP_NAME", getReleaseMi())
+//                        break
+//                    case "play":
+//                        updatedContent = updatedContent.replaceAll("APP_NAME", getReleasePlay())
+//                        break
+//                }
+//            }
+//
+//            if (variant.buildType.name.equals("debug")) {
+//                String productName = variant.productFlavors[0].name
+//                switch (productName) {
+//                    case "mi":
+//                        updatedContent = updatedContent.replaceAll("APP_NAME", getReleaseMi())
+//                        break
+//                    case "play":
+//                        updatedContent = updatedContent.replaceAll("APP_NAME", getReleasePlay())
+//                        break
+//                }
+//            }
+//            // 把修改后的内容，输出回源文件
+//            new File(manifestFile).write(updatedContent, 'UTF-8')
+//            // 把分支的AndroidManifest文件指定为上面修改后的文件
+//            variant.outputs[0].processResources.manifestFile = file("${buildDir}/intermediates/manifests/full/${variant.dirName}/AndroidManifest.xml")
 //        }
 //    }
+}
+
+static def getReleaseMi() {
+    def release = "mi"
+    return release
+}
+
+static def getReleasePlay() {
+    def release = "play"
+    return release
 }
 
 dependencies {

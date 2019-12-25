@@ -1,28 +1,34 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="me.apqx.demo">
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-feature android:name="android.hardware.usb.host"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <uses-feature android:name="android.hardware.usb.host" />
     <application
+        android:name=".CusApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="${appName}"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:name=".CusApp"
-        android:usesCleartextTraffic="true">
+        android:usesCleartextTraffic="true"
+        tools:ignore="GoogleAppIndexingWarning">
+
+        <meta-data android:name="channel" android:value="DEF_CHANNEL"/>
+
         <activity android:name=".MainActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".jetpack.JetpackActivity" />
-        <activity android:name=".jetpack.navigation.NavActivity"/>
-        <activity android:name=".ipc.IpcActivity"/>
+        <activity android:name=".jetpack.navigation.NavActivity" />
+        <activity android:name=".ipc.IpcActivity" />
         <activity android:name=".tools.ToolsActivity" />
         <activity android:name=".jetpack.databinding.DataBindingActivity" />
         <activity android:name=".test.TestActivity" />
@@ -41,9 +47,11 @@
         <activity android:name=".web.WebActivity" />
         <activity android:name=".recycler.RecyclerActivity" />
         <activity android:name=".draw.DrawActivity" />
+        <activity android:name=".notification.NotificationActivity" />
 
-        <service android:name=".ipc.RemoteService"
-            android:process=":ipc"/>
+        <service
+            android:name=".ipc.RemoteService"
+            android:process=":ipc" />
         <service android:name=".service.Service1" />
         <service android:name=".service.Service2" />
     </application>

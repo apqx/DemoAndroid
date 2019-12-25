@@ -14,6 +14,7 @@ import me.apqx.demo.fragment.FragmentActivity
 import me.apqx.demo.ipc.IpcActivity
 import me.apqx.demo.jetpack.JetpackActivity
 import me.apqx.demo.mvvm.view.MVVMActivity
+import me.apqx.demo.notification.NotificationActivity
 import me.apqx.demo.realm.RealmActivity
 import me.apqx.demo.recycler.RecyclerActivity
 import me.apqx.demo.service.ServiceActivity
@@ -82,6 +83,9 @@ class MainActivity : AppCompatActivity() {
             }
             R.id.btn_draw -> {
                 startActivity(Intent(this, DrawActivity::class.java))
+            }
+            R.id.btn_notification -> {
+                startActivity(Intent(this, NotificationActivity::class.java))
             }
         }
     }
