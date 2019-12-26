@@ -11,30 +11,41 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'realm-android'
 
 android {
+    // 定义要重复使用的字符串
+    def APP_NAME = "appName"
+
     compileSdkVersion 28
+    buildToolsVersion '28.0.3'
     defaultConfig {
         // 定义包名
         applicationId "me.apqx.demo"
-        // 定义可以在AndroidManifest文件中使用的变量，不同的分支比如release和debug可以覆写这个变量
-        // 来实现不同分支的不同行为
-        manifestPlaceholders = [appName: "Demo"]
-        minSdkVersion 15
-        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
+
+        // 定义可以在AndroidManifest文件中使用的变量，不同的分支比如release和debug可以覆写这个变量
+        // 来实现不同分支的不同行为
+        getManifestPlaceholders().put(APP_NAME, "DEF_NAME")
+        minSdkVersion 15
+        targetSdkVersion 28
+
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
     }
+    // 这里是按方法块的定义顺序执行的，似乎有的代码块可以继承属性，有的就不可以
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
         debug {
+            println("apqx: buildTypes debug")
+            println("name1 = " + getManifestPlaceholders().get(APP_NAME, "NULL"))
             // 修改Debug模式下的应用名
             manifestPlaceholders = [appName: "Debug"]
+            println("name2 = " + getManifestPlaceholders().get(APP_NAME, "NULL"))
             // debug模式下生成不一样的applicationId，让正式版和测试版共存
-//            applicationIdSuffix = '.debug'
+            applicationIdSuffix = '.debug'
+            versionNameSuffix = "-debug"
         }
     }
     dataBinding {
@@ -46,18 +57,29 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-    buildToolsVersion '28.0.3'
-    flavorDimensions 'apqx'
+    flavorDimensions 'version'
     productFlavors {
+        // 每一个flavor都从defaultConfig中继承属性，并可以进行覆盖
         mi {
-            dimension = 'apqx'
+
+            dimension = 'version'
+            println("apqx: flavor mi")
+            println("name1 = " + getManifestPlaceholders().get(APP_NAME, "NULL"))
+            manifestPlaceholders = [appName : "Mi"]
+            println("name2 = " + getManifestPlaceholders().get(APP_NAME, "NULL"))
+//            getManifestPlaceholders().put(APP_NAME, "Mi")
         }
         play {
-            dimension = 'apqx'
+            dimension = 'version'
+            println("apqx: flavor play")
+            println("name1 = " + getManifestPlaceholders().get(APP_NAME, "NULL"))
+            manifestPlaceholders = [appName : "Play"]
+            println("name2 = " + getManifestPlaceholders().get(APP_NAME, "NULL"))
+//            getManifestPlaceholders().put(APP_NAME, "Play")
         }
     }
 
-//    android.applicationVariants.all { variant ->
+    android.applicationVariants.all { variant ->
 //        variant.outputs.get(0).processManifest.doLast {
 //            // 替换AndroidManifest文件中的字符
 //            def manifestFile = "${buildDir}/intermediates/manifests/full/${variant.dirName}/AndroidManifest.xml"
@@ -90,7 +112,7 @@ android {
 //            // 把分支的AndroidManifest文件指定为上面修改后的文件
 //            variant.outputs[0].processResources.manifestFile = file("${buildDir}/intermediates/manifests/full/${variant.dirName}/AndroidManifest.xml")
 //        }
-//    }
+    }
 }
 
 static def getReleaseMi() {

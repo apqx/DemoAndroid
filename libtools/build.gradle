@@ -21,6 +21,18 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+        debug {
+        }
+    }
+
+    flavorDimensions 'apqx'
+    productFlavors {
+        mi {
+            dimension = 'apqx'
+        }
+        play {
+            dimension = 'apqx'
+        }
     }
 
 }
