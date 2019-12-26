@@ -4,7 +4,10 @@ import android.content.Context;
 import android.graphics.Color;
 import android.os.Handler;
 import android.util.AttributeSet;
+import android.view.GestureDetector;
 import android.view.Gravity;
+import android.view.MotionEvent;
+import android.view.VelocityTracker;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AccelerateInterpolator;
@@ -88,6 +91,7 @@ public class HorizontalPager extends RelativeLayout {
     private Handler handler;
 
     private Runnable animRunnable;
+    private long lastTouchTime;
 
     public HorizontalPager(@NonNull Context context) {
         super(context);
@@ -113,18 +117,19 @@ public class HorizontalPager extends RelativeLayout {
         pagerAdapter = new CusPagerAdapter(pagerList);
         viewPager.setAdapter(pagerAdapter);
 
-//        try {
-//            Field mField;
-//
-//            mField = ViewPager.class.getDeclaredField("mScroller");
-//            mField.setAccessible(true);
-//
-//            Scroller mScroller = new CusScroller(getContext(),
-//                    new AccelerateInterpolator());
-//            mField.set(viewPager, mScroller);
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
+        // 设置切换动画速度
+        try {
+            Field mField;
+
+            mField = ViewPager.class.getDeclaredField("mScroller");
+            mField.setAccessible(true);
+
+            Scroller mScroller = new CusScroller(getContext(),
+                    new AccelerateInterpolator());
+            mField.set(viewPager, mScroller);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
 
         rg_indicator = new RadioGroup(getContext());
@@ -143,7 +148,7 @@ public class HorizontalPager extends RelativeLayout {
 
             @Override
             public void onPageSelected(int position) {
-                ((RadioButton)rg_indicator.getChildAt(position)).setChecked(true);
+                ((RadioButton) rg_indicator.getChildAt(position)).setChecked(true);
             }
 
             @Override
@@ -191,6 +196,87 @@ public class HorizontalPager extends RelativeLayout {
         // 关闭动画，防止内存泄露
         LogUtil.INSTANCE.d("onDetachedFromWindow");
         handler.removeCallbacks(animRunnable);
+    }
+
+    private VelocityTracker velocityTracker = VelocityTracker.obtain();
+    private GestureDetector gestureDetector = new GestureDetector(getContext(), new GestureDetector.OnGestureListener() {
+        @Override
+        public boolean onDown(MotionEvent e) {
+            LogUtil.INSTANCE.d("gestureDetector onDown");
+            return false;
+        }
+
+        @Override
+        public void onShowPress(MotionEvent e) {
+            LogUtil.INSTANCE.d("gestureDetector onShowPress");
+
+        }
+
+        @Override
+        public boolean onSingleTapUp(MotionEvent e) {
+            LogUtil.INSTANCE.d("gestureDetector onSingleTapUp");
+            return false;
+        }
+
+        @Override
+        public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
+            LogUtil.INSTANCE.d("gestureDetector onScroll");
+            return false;
+        }
+
+        @Override
+        public void onLongPress(MotionEvent e) {
+            LogUtil.INSTANCE.d("gestureDetector onLongPress");
+
+        }
+
+        @Override
+        public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+            LogUtil.INSTANCE.d("gestureDetector onFling " + velocityX + " : " + velocityY);
+            if (velocityX < 0) {
+                // 向左滑动，显示右面的元素
+                int nextIndex = viewPager.getCurrentItem() + 1;
+                if (nextIndex >= getPagerCount()) {
+                } else {
+                    viewPager.setCurrentItem(nextIndex);
+                }
+            } else {
+                // 向右滑动，显示左面的元素
+                int nextIndex = viewPager.getCurrentItem() - 1;
+                if (nextIndex < 0) {
+                } else {
+                    viewPager.setCurrentItem(nextIndex);
+                }
+            }
+            return false;
+        }
+    });
+
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+//        LogUtil.INSTANCE.e("dispatchTouchEvent");
+
+        lastTouchTime = System.currentTimeMillis();
+        velocityTracker.addMovement(ev);
+        velocityTracker.computeCurrentVelocity(1000);
+        gestureDetector.onTouchEvent(ev);
+
+        switch (ev.getAction()) {
+        }
+        return super.dispatchTouchEvent(ev);
+    }
+
+    @Override
+    public boolean onInterceptTouchEvent(MotionEvent ev) {
+//        LogUtil.INSTANCE.e("onInterceptTouchEvent");
+        return super.onInterceptTouchEvent(ev);
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+//        LogUtil.INSTANCE.e("onTouchEvent");
+        return super.onTouchEvent(event);
     }
 
     /**
@@ -342,6 +428,10 @@ public class HorizontalPager extends RelativeLayout {
                 LogUtil.INSTANCE.d("anim run 1");
                 return;
             }
+            if (System.currentTimeMillis() - lastTouchTime < animTimeMills) {
+                doAnim();
+                return;
+            }
             LogUtil.INSTANCE.d("anim run 2");
             if (viewPager != null) {
                 LogUtil.INSTANCE.d("anim run 3");
@@ -400,6 +490,8 @@ public class HorizontalPager extends RelativeLayout {
     }
 
     private class CusScroller extends Scroller {
+        private int timeMills = 600;
+
         public CusScroller(Context context) {
             super(context);
         }
@@ -414,12 +506,12 @@ public class HorizontalPager extends RelativeLayout {
 
         @Override
         public void startScroll(int startX, int startY, int dx, int dy) {
-            super.startScroll(startX, startY, dx, dy, 1000);
+            super.startScroll(startX, startY, dx, dy, timeMills);
         }
 
         @Override
         public void startScroll(int startX, int startY, int dx, int dy, int duration) {
-            super.startScroll(startX, startY, dx, dy, 1000);
+            super.startScroll(startX, startY, dx, dy, timeMills);
         }
     }
 }

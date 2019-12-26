@@ -44,7 +44,7 @@ android {
             manifestPlaceholders = [appName: "Debug"]
             println("name2 = " + getManifestPlaceholders().get(APP_NAME, "NULL"))
             // debug模式下生成不一样的applicationId，让正式版和测试版共存
-            applicationIdSuffix = '.debug'
+//            applicationIdSuffix = '.debug'
             versionNameSuffix = "-debug"
         }
     }
