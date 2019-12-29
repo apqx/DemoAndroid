@@ -27,10 +27,10 @@ android {
 
     flavorDimensions 'apqx'
     productFlavors {
-        mi {
+        libMi {
             dimension = 'apqx'
         }
-        play {
+        libPlay {
             dimension = 'apqx'
         }
     }

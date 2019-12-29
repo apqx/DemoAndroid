@@ -11,6 +11,15 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'realm-android'
 
 android {
+    signingConfigs {
+        mySign {
+            storeFile file('/Users/apqx/Code/Android/DemoAndroid/apqx.jks')
+            storePassword '123456'
+            keyAlias = 'apqx'
+            keyPassword '123456'
+        }
+    }
+
     // 定义要重复使用的字符串
     def APP_NAME = "appName"
 
@@ -25,6 +34,7 @@ android {
         // 定义可以在AndroidManifest文件中使用的变量，不同的分支比如release和debug可以覆写这个变量
         // 来实现不同分支的不同行为
         getManifestPlaceholders().put(APP_NAME, "DEF_NAME")
+
         minSdkVersion 15
         targetSdkVersion 28
 
@@ -39,12 +49,12 @@ android {
         }
         debug {
             println("apqx: buildTypes debug")
-            println("name1 = " + getManifestPlaceholders().get(APP_NAME, "NULL"))
-            // 修改Debug模式下的应用名
-            manifestPlaceholders = [appName: "Debug"]
-            println("name2 = " + getManifestPlaceholders().get(APP_NAME, "NULL"))
+            // 修改Debug模式下的应用名，这个属性会覆盖flavor中定义的属性
+//            manifestPlaceholders = [appName: "Debug"]
+            getManifestPlaceholders().put(APP_NAME, "Debug")
             // debug模式下生成不一样的applicationId，让正式版和测试版共存
-//            applicationIdSuffix = '.debug'
+            applicationIdSuffix = '.debug'
+            // debug模式下定义不一样的版本名称
             versionNameSuffix = "-debug"
         }
     }
@@ -64,65 +74,25 @@ android {
 
             dimension = 'version'
             println("apqx: flavor mi")
-            println("name1 = " + getManifestPlaceholders().get(APP_NAME, "NULL"))
-            manifestPlaceholders = [appName : "Mi"]
-            println("name2 = " + getManifestPlaceholders().get(APP_NAME, "NULL"))
-//            getManifestPlaceholders().put(APP_NAME, "Mi")
+            // 定义不同的应用名
+            getManifestPlaceholders().put(APP_NAME, "Mi")
         }
         play {
             dimension = 'version'
             println("apqx: flavor play")
-            println("name1 = " + getManifestPlaceholders().get(APP_NAME, "NULL"))
-            manifestPlaceholders = [appName : "Play"]
-            println("name2 = " + getManifestPlaceholders().get(APP_NAME, "NULL"))
-//            getManifestPlaceholders().put(APP_NAME, "Play")
+            // 定义不同的应用名
+            getManifestPlaceholders().put(APP_NAME, "Play")
         }
     }
 
     android.applicationVariants.all { variant ->
-//        variant.outputs.get(0).processManifest.doLast {
-//            // 替换AndroidManifest文件中的字符
-//            def manifestFile = "${buildDir}/intermediates/manifests/full/${variant.dirName}/AndroidManifest.xml"
-//            def updatedContent = new File(manifestFile).getText('UTF-8')
-//            if (variant.buildType.name.equals("release")) {
-//                String productName = variant.productFlavors[0].name
-//                switch (productName) {
-//                    case "mi":
-//                        updatedContent = updatedContent.replaceAll("APP_NAME", getReleaseMi())
-//                        break
-//                    case "play":
-//                        updatedContent = updatedContent.replaceAll("APP_NAME", getReleasePlay())
-//                        break
-//                }
-//            }
-//
-//            if (variant.buildType.name.equals("debug")) {
-//                String productName = variant.productFlavors[0].name
-//                switch (productName) {
-//                    case "mi":
-//                        updatedContent = updatedContent.replaceAll("APP_NAME", getReleaseMi())
-//                        break
-//                    case "play":
-//                        updatedContent = updatedContent.replaceAll("APP_NAME", getReleasePlay())
-//                        break
-//                }
-//            }
-//            // 把修改后的内容，输出回源文件
-//            new File(manifestFile).write(updatedContent, 'UTF-8')
-//            // 把分支的AndroidManifest文件指定为上面修改后的文件
-//            variant.outputs[0].processResources.manifestFile = file("${buildDir}/intermediates/manifests/full/${variant.dirName}/AndroidManifest.xml")
-//        }
+        variant.outputs.all {
+//            outputFileName = filePath
+            def apkName = "Haha"
+            // 相对于默认的输出路径，向上跳2个层级
+            outputFileName = "../../myApks/" + apkName +"-${variant.name}-${variant.versionName}.apk"
+        }
     }
-}
-
-static def getReleaseMi() {
-    def release = "mi"
-    return release
-}
-
-static def getReleasePlay() {
-    def release = "play"
-    return release
 }
 
 dependencies {
