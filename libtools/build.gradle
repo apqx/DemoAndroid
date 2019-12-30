@@ -25,13 +25,13 @@ android {
         }
     }
 
-    flavorDimensions 'apqx'
+    flavorDimensions 'version'
     productFlavors {
-        libMi {
-            dimension = 'apqx'
+        mi {
+            dimension = 'version'
         }
-        libPlay {
-            dimension = 'apqx'
+        play {
+            dimension = 'version'
         }
     }
 

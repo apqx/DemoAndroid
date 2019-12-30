@@ -31,6 +31,9 @@ import me.apqx.demo.widget.dialog.CusDialogInstance
 import me.apqx.demo.widget.list.ListActivity
 import me.apqx.demo.widget.recycler.RecyclerActivity
 import me.apqx.demo.widget.view.*
+import org.greenrobot.eventbus.EventBus
+import org.greenrobot.eventbus.Subscribe
+import org.greenrobot.eventbus.ThreadMode
 import kotlin.random.Random
 
 const val REQUEST_CODE_OVERLAY_PERMISSION = 1
@@ -97,6 +100,16 @@ class WidgetActivity : AppCompatActivity() {
         })
 
 
+    }
+
+    override fun onResume() {
+        super.onResume()
+        EventBus.getDefault().register(this)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        EventBus.getDefault().unregister(this)
     }
 
     private fun initHorizontalPager() {
@@ -189,8 +202,16 @@ class WidgetActivity : AppCompatActivity() {
             }
             R.id.btn_click -> {
                 showToast()
+                EventBus.getDefault().postSticky("stickyEvent")
+                EventBus.getDefault().postSticky("stickyEven1")
+                EventBus.getDefault().post("normalEvent")
             }
         }
+    }
+
+    @Subscribe(sticky = true, threadMode = ThreadMode.MAIN)
+    fun onEvent(str: String) {
+        LogUtil.d("${javaClass.simpleName} EventBus onEvent $str")
     }
 
     var count = 0

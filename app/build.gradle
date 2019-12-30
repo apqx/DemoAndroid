@@ -41,6 +41,7 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
     }
+
     // 这里是按方法块的定义顺序执行的，似乎有的代码块可以继承属性，有的就不可以
     buildTypes {
         release {
@@ -143,4 +144,5 @@ dependencies {
 
     implementation 'com.google.android:flexbox:2.0.0'
 
+    implementation project(path: ':libtools', configuration: 'default')
 }

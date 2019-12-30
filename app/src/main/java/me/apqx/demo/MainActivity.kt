@@ -33,17 +33,25 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val activityMainBinding = DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
-        EventBus.getDefault().register(this)
     }
 
     override fun onDestroy() {
         super.onDestroy()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        EventBus.getDefault().register(this)
+    }
+
+    override fun onPause() {
+        super.onPause()
         EventBus.getDefault().unregister(this)
     }
 
-    @Subscribe(threadMode = ThreadMode.MAIN)
+    @Subscribe(sticky = true, threadMode = ThreadMode.MAIN)
     fun onEvent(str: String) {
-        LogUtil.d("EventBus onEvent $str")
+        LogUtil.d("${javaClass.simpleName} EventBus onEvent $str")
     }
 
     fun onClick(view: View) {
