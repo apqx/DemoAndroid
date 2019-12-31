@@ -57,8 +57,8 @@ class WidgetActivity : AppCompatActivity() {
         dialogExtend = CusDialogExtend(this)
         dialogInstance = CusDialogInstance(this)
         dataBinding.btnShowDialog.setOnClickListener {
-            //            dialogExtend.showAsDropDown()
-            dialogInstance.show()
+            dialogExtend.show()
+//            dialogInstance.show()
         }
         LogUtil.d("${ViewConfiguration.get(this).scaledTouchSlop}")
 

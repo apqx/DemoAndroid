@@ -9,6 +9,7 @@ import android.view.ContextMenu
 import android.view.LayoutInflater
 import android.view.View
 import androidx.databinding.DataBindingUtil
+import me.apqx.demo.LogUtil
 import me.apqx.demo.R
 import me.apqx.demo.databinding.DialogCusBinding
 
@@ -24,7 +25,12 @@ class CusDialogExtend : Dialog {
         super.onCreate(savedInstanceState)
         dataBinding = DataBindingUtil.inflate<DialogCusBinding>(LayoutInflater.from(context), R.layout.dialog_cus, null, false)
         setContentView(dataBinding.root)
+        LogUtil.d("dialog onCreate")
     }
 
-
+    override fun show() {
+        LogUtil.d("dialog before show()")
+        super.show()
+        LogUtil.d("dialog after show()")
+    }
 }
