@@ -20,7 +20,8 @@
 
         <meta-data android:name="channel" android:value="DEF_CHANNEL"/>
 
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:theme="@style/AppTheme.TransparentStatusBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

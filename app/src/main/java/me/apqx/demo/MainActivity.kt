@@ -1,10 +1,14 @@
 package me.apqx.demo
 
+import android.app.Activity
 import android.content.Intent
+import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
 import android.view.KeyEvent
 import android.view.MotionEvent
 import android.view.View
+import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import kotlinx.android.synthetic.main.activity_main.*
@@ -22,6 +26,7 @@ import me.apqx.demo.test.TestActivity
 import me.apqx.demo.tools.ToolsActivity
 import me.apqx.demo.web.WebActivity
 import me.apqx.demo.widget.WidgetActivity
+import me.apqx.demo.widget.view.DisplayUtils
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
@@ -33,6 +38,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val activityMainBinding = DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
+        DisplayUtils.dealStatusBarTransparent(this)
     }
 
     override fun onDestroy() {
@@ -52,6 +58,7 @@ class MainActivity : AppCompatActivity() {
     @Subscribe(sticky = true, threadMode = ThreadMode.MAIN)
     fun onEvent(str: String) {
         LogUtil.d("${javaClass.simpleName} EventBus onEvent $str")
+        EventBus.getDefault().removeStickyEvent(str)
     }
 
     fun onClick(view: View) {

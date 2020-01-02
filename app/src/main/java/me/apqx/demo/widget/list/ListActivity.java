@@ -11,6 +11,7 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,6 +19,9 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.flexbox.FlexDirection;
+import com.google.android.flexbox.FlexboxLayoutManager;
 
 import me.apqx.demo.LogUtil;
 import me.apqx.demo.R;
@@ -36,8 +40,9 @@ public class ListActivity extends Activity {
         recyclerView = findViewById(R.id.rv_bottom);
 
         list = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-            list.add(new Student(i, String.valueOf(i)));
+        for (int i = 0; i < 100; i++) {
+            Random random = new Random(System.currentTimeMillis());
+            list.add(new Student(random.nextInt(100), String.valueOf(i)));
         }
 
         listAdapter = new ListAdapter(this, R.layout.item_list, list);
@@ -47,9 +52,12 @@ public class ListActivity extends Activity {
 
 
         RecyclerAdapter recyclerAdapter = new RecyclerAdapter(R.layout.item_list);
-        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(this, 3);
+        recyclerAdapter.setData(list);
+//        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(this, 3);
+        RecyclerView.LayoutManager layoutManager = new FlexboxLayoutManager(this, FlexDirection.ROW);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(recyclerAdapter);
+
         recyclerAdapter.setOnItemClickListener(student -> {
             // item被点击时回调
         });
