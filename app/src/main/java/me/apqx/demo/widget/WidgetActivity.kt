@@ -54,7 +54,7 @@ class WidgetActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         dataBinding = DataBindingUtil.setContentView(this, R.layout.activity_widget)
-        dialogExtend = CusDialogExtend(this)
+        dialogExtend = CusDialogExtend(this, R.style.TransparentDialog)
         dialogInstance = CusDialogInstance(this)
         dataBinding.btnShowDialog.setOnClickListener {
             dialogExtend.show()
@@ -100,6 +100,11 @@ class WidgetActivity : AppCompatActivity() {
         })
 
 
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        dialogExtend.show()
     }
 
     override fun onResume() {
@@ -216,7 +221,7 @@ class WidgetActivity : AppCompatActivity() {
 
     var count = 0
     private fun showToast() {
-        ToastUtil.showToast(R.string.app_name)
+        ToastUtil.showCustomToast()
     }
 
     private fun refreshGridPager() {

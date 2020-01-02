@@ -3,6 +3,7 @@ package me.apqx.demo
 import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Handler
+import android.view.LayoutInflater
 import android.widget.Toast
 import java.util.concurrent.CopyOnWriteArrayList
 
@@ -44,6 +45,22 @@ object ToastUtil {
             toast.cancel()
         }
         toast = Toast.makeText(context, strId, Toast.LENGTH_SHORT)
+        toast.show()
+    }
+
+    fun showCustomToast() {
+        handler.post {
+            showCustomToastBase()
+        }
+    }
+
+    private fun showCustomToastBase() {
+        if (ToastUtil::toast.isInitialized) {
+            toast.cancel()
+        }
+        toast = Toast(context)
+        toast.view = LayoutInflater.from(context).inflate(R.layout.dialog_cus, null, false)
+        toast.duration = Toast.LENGTH_SHORT
         toast.show()
     }
 }

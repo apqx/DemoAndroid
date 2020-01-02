@@ -12,19 +12,27 @@ import androidx.annotation.Nullable;
 
 
 import java.util.HashMap;
+import java.util.concurrent.TimeUnit;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import io.reactivex.Observable;
+import io.reactivex.Observer;
+import io.reactivex.disposables.Disposable;
 import me.apqx.demo.LogUtil;
 import me.apqx.demo.R;
 
 public class WebActivity extends Activity {
+    @BindView(R.id.wv_web)
+    WebView webView;
     private HashMap<String, Boolean> map = new HashMap();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_web);
-        WebView webView = findViewById(R.id.wv_web);
-
+//        WebView webView = findViewById(R.id.wv_web);
+        ButterKnife.bind(this);
         webView.setWebViewClient(new WebViewClient() {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
@@ -63,6 +71,27 @@ public class WebActivity extends Activity {
 //        webView.loadUrl("https://www.cfd139.com/zt/hy/mobile/lp6/m-common26.html?utm_source=jt&utm_medium=sy&utm_campaign=banner");
         webView.loadUrl("https://btcccfd.com/JT1/?utm_source=JT1&utm_medium=BTHQ_2.5.2");
 //        webView.loadUrl("javascript:(function(){ document.body.style.paddingTop = '50px'})();");
+        Observable.interval(1, TimeUnit.SECONDS)
+                .subscribe(new Observer<Long>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
 
+                    }
+
+                    @Override
+                    public void onNext(Long aLong) {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
     }
 }

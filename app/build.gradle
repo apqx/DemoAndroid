@@ -145,4 +145,7 @@ dependencies {
     implementation 'com.google.android:flexbox:2.0.0'
 
     implementation project(path: ':libtools', configuration: 'default')
+    implementation 'com.jakewharton:butterknife:10.2.1'
+    kapt 'com.jakewharton:butterknife-compiler:10.2.1'
+
 }

@@ -17,7 +17,7 @@ import me.apqx.demo.realm.CusRealmMigration
 import me.apqx.demo.tools.ScreenShotManager
 
 class CusApp : MultiDexApplication() {
-    val screenShotManager = ScreenShotManager.newInstance(this)
+//    val screenShotManager = ScreenShotManager.newInstance(this)
 
     private val actLifeCycleCallback = object : ActivityLifecycleCallbacks {
         override fun onActivityPaused(activity: Activity?) {
@@ -52,14 +52,14 @@ class CusApp : MultiDexApplication() {
         super.onCreate()
         registerActivityLifecycleCallbacks(actLifeCycleCallback)
 
-        screenShotManager.startListen()
-        screenShotManager.setListener(object : ScreenShotManager.OnScreenShotListener {
-            override fun onShot(imagePath: String?) {
-                val bitmap = BitmapFactory.decodeFile(imagePath)
-                LogUtil.d("screenShot ${bitmap.width} : ${bitmap.height}")
-                showPopWindow()
-            }
-        })
+//        screenShotManager.startListen()
+//        screenShotManager.setListener(object : ScreenShotManager.OnScreenShotListener {
+//            override fun onShot(imagePath: String?) {
+//                val bitmap = BitmapFactory.decodeFile(imagePath)
+//                LogUtil.d("screenShot ${bitmap.width} : ${bitmap.height}")
+//                showPopWindow()
+//            }
+//        })
 
         ToastUtil.init(applicationContext)
         Realm.init(this)
@@ -94,7 +94,7 @@ class CusApp : MultiDexApplication() {
 
     override fun onTerminate() {
         super.onTerminate()
-        screenShotManager.stopListen()
+//        screenShotManager.stopListen()
         unregisterActivityLifecycleCallbacks(actLifeCycleCallback)
     }
 }

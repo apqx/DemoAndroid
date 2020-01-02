@@ -18,7 +18,17 @@
     <style name="DropdownDialogTheme" parent="Theme.MaterialComponents.Light.Dialog">
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowIsFloating">true</item>
+<!--        取消Dialog的大背景半透明虚化-->
         <item name="android:backgroundDimEnabled">false</item>
+    </style>
+
+    <style name="TransparentDialog" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <!--        取消Dialog的大背景半透明虚化-->
+        <item name="android:backgroundDimEnabled">true</item>
+        <!--        设置Dialog窗体背景颜色，默认是白色-->
+        <item name="android:windowBackground">@android:color/transparent</item><!--背景透明-->
     </style>
 
     <style name="CusTabStyle">
