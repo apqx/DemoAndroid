@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
         dataBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         fragNavHost = frag_nav_host as NavHostFragment
 
-        DisplayUtils.dealStatusBarTransparent(this)
+//        DisplayUtils.dealStatusBarTransparent(this)
         initNavigation()
     }
 

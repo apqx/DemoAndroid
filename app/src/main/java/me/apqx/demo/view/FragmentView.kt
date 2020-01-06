@@ -1,16 +1,22 @@
 package me.apqx.demo.view
 
 import android.app.Activity
+import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import me.apqx.demo.LogUtil
 import me.apqx.demo.R
+import me.apqx.demo.databinding.FragViewBinding
+import me.apqx.demo.fragment.CusFragmentActivity
 
 class FragmentView: Fragment() {
+    private lateinit var binding: FragViewBinding
+
     override fun onAttach(activity: Activity) {
         LogUtil.d("fragment onAttach ${javaClass.simpleName}")
         super.onAttach(activity)
@@ -23,7 +29,11 @@ class FragmentView: Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         LogUtil.d("fragment onCreateView ${javaClass.simpleName}")
-        return inflater.inflate(R.layout.frag_view, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.frag_view, container, false)
+        binding.btnFragment.setOnClickListener {
+            startActivity(Intent(activity, CusFragmentActivity::class.java))
+        }
+        return binding.root
     }
 
     override fun onStart() {

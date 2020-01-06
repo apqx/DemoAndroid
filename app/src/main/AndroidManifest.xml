@@ -44,7 +44,7 @@
         <activity android:name=".device.usb.UsbActivity" />
         <activity android:name=".widget.view.RelativeActivity" />
         <activity android:name=".widget.list.ListActivity" />
-        <activity android:name=".fragment.FragmentActivity" />
+        <activity android:name=".fragment.CusFragmentActivity" />
         <activity android:name=".web.WebActivity" />
         <activity android:name=".recycler.RecyclerActivity" />
         <activity android:name=".draw.DrawActivity" />
