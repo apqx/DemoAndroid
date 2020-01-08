@@ -5,8 +5,11 @@ import android.content.Context;
 import android.graphics.Color;
 import android.os.Build;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+
+import me.apqx.demo.LogUtil;
 
 public class DisplayUtils {
     /**
@@ -88,6 +91,29 @@ public class DisplayUtils {
             window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
             window.setStatusBarColor(Color.TRANSPARENT);
         }
+    }
+
+    /**
+     * 打印View层级
+     */
+    public static void listViews(View view, int level) {
+        if (view instanceof ViewGroup) {
+            LogUtil.INSTANCE.d(getLevelSpace(level) + "|-" + view + "\\");
+            int newLevel = level + 1;
+            for (int i = 0; i < ((ViewGroup)view).getChildCount(); i++) {
+                listViews(((ViewGroup) view).getChildAt(i), newLevel);
+            }
+        } else {
+            LogUtil.INSTANCE.d(getLevelSpace(level) + "|-" + view);
+        }
+    }
+
+    private static String getLevelSpace(int level) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < level; i++) {
+            sb.append("_");
+        }
+        return sb.toString();
     }
 
 }
