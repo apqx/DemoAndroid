@@ -10,7 +10,6 @@ import me.apqx.demo.databinding.ActivityJetpackBinding
 import me.apqx.demo.jetpack.databinding.DataBindingActivity
 import me.apqx.demo.jetpack.lifecycle.LifecycleActivity
 import me.apqx.demo.jetpack.livedata.LiveDataActivity
-import me.apqx.demo.jetpack.navigation.NavActivity
 import me.apqx.demo.jetpack.workmanager.WorkManagerActivity
 
 class JetpackActivity : AppCompatActivity() {
@@ -21,9 +20,6 @@ class JetpackActivity : AppCompatActivity() {
 
     fun onClick(view: View) {
         when (view.id) {
-            R.id.btn_nav -> {
-                startActivity(Intent(this, NavActivity::class.java))
-            }
             R.id.btn_dataBinding -> {
                 startActivity(Intent(this, DataBindingActivity::class.java))
             }

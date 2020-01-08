@@ -293,6 +293,7 @@ class WidgetActivity : AppCompatActivity() {
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
         when (requestCode) {
             REQUEST_CODE_OVERLAY_PERMISSION -> {
                 if (checkOverlayPermission()) {

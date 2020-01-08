@@ -45,7 +45,7 @@ class CusApp : MultiDexApplication() {
         }
 
         override fun onActivityCreated(activity: Activity?, savedInstanceState: Bundle?) {
-            LogUtil.d("onActivityCreated ${activity?.javaClass?.simpleName}")
+            LogUtil.d("onActivityCreated $activity")
         }
     }
     override fun onCreate() {
@@ -61,7 +61,7 @@ class CusApp : MultiDexApplication() {
 //            }
 //        })
 
-        ToastUtil.init(applicationContext)
+        ToastUtil.init(this)
         Realm.init(this)
         val config = RealmConfiguration.Builder()
                 .migration(CusRealmMigration())
