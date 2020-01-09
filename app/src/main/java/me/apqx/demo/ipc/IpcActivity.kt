@@ -9,7 +9,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import me.apqx.demo.LogUtil
+import me.apqx.demo.tools.LogUtil
 import me.apqx.demo.R
 import me.apqx.demo.databinding.ActivityIpcBinding
 import me.apqx.demo.ipc.aidl.IBookManager

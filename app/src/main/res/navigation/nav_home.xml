@@ -11,7 +11,7 @@
         android:label="FragmentView"
         tools:layout="@layout/frag_view">
         <action
-            android:id="@+id/action_fragmentView_to_fragmentComponent"
+            android:id="@+id/view_to_component"
             app:destination="@id/component" />
         <action
             android:id="@+id/action_view_to_others"

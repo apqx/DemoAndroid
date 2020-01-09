@@ -7,12 +7,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import me.apqx.demo.LogUtil
+import me.apqx.demo.tools.LogUtil
 import me.apqx.demo.R
-import me.apqx.demo.ToastUtil
+import me.apqx.demo.tools.ToastUtil
 import me.apqx.demo.databinding.ActivityRecyclerBinding
 import me.apqx.demo.widget.recycler.adapter.ItemDecoration
 import me.apqx.demo.widget.recycler.adapter.OutAdapter

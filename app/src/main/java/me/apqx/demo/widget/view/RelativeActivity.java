@@ -16,7 +16,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
-import me.apqx.demo.LogUtil;
 import me.apqx.demo.R;
 
 public class RelativeActivity extends Activity {

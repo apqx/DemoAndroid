@@ -7,7 +7,7 @@ import android.os.Build;
 
 import androidx.core.app.NotificationManagerCompat;
 
-import me.apqx.demo.LogUtil;
+import me.apqx.demo.tools.LogUtil;
 
 
 public class NotificationUtils {

@@ -28,7 +28,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".jetpack.JetpackActivity" />
-        <activity android:name=".jetpack.navigation.NavActivity" />
         <activity android:name=".ipc.IpcActivity" />
         <activity android:name=".tools.ToolsActivity" />
         <activity android:name=".jetpack.databinding.DataBindingActivity" />
@@ -49,6 +48,8 @@
         <activity android:name=".recycler.RecyclerActivity" />
         <activity android:name=".draw.DrawActivity" />
         <activity android:name=".notification.NotificationActivity" />
+        <activity android:name=".SecondActivity"
+            android:theme="@style/TransparentStatusBar"/>
 
         <service
             android:name=".ipc.RemoteService"

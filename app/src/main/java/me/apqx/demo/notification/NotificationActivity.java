@@ -1,15 +1,11 @@
 package me.apqx.demo.notification;
 
 import android.app.Activity;
-import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -17,11 +13,8 @@ import android.view.View;
 import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
-import androidx.core.content.ContextCompat;
 
-import java.util.Random;
-
-import me.apqx.demo.LogUtil;
+import me.apqx.demo.tools.LogUtil;
 import me.apqx.demo.R;
 
 public class NotificationActivity extends Activity {

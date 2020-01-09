@@ -1,23 +1,13 @@
 package me.apqx.demo.realm
 
 import android.os.Bundle
-import android.os.Handler
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import io.reactivex.Flowable
-import io.reactivex.Observable
-import io.reactivex.Observer
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.functions.Consumer
-import io.reactivex.functions.Function
-import io.reactivex.schedulers.Schedulers
 import io.realm.Realm
-import io.realm.RealmResults
-import me.apqx.demo.LogUtil
+import me.apqx.demo.tools.LogUtil
 import me.apqx.demo.R
 import me.apqx.demo.realm.bean.Course
 import me.apqx.demo.realm.bean.Student
-import java.util.concurrent.TimeUnit
 
 class RealmActivity : AppCompatActivity() {
     private lateinit var realm: Realm

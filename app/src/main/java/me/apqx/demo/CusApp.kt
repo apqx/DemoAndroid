@@ -1,10 +1,7 @@
 package me.apqx.demo
 
 import android.app.Activity
-import android.app.Application
 import android.content.pm.PackageManager
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -14,38 +11,39 @@ import com.squareup.leakcanary.LeakCanary
 import io.realm.Realm
 import io.realm.RealmConfiguration
 import me.apqx.demo.realm.CusRealmMigration
-import me.apqx.demo.tools.ScreenShotManager
+import me.apqx.demo.tools.LogUtil
+import me.apqx.demo.tools.ToastUtil
 
 class CusApp : MultiDexApplication() {
 //    val screenShotManager = ScreenShotManager.newInstance(this)
 
     private val actLifeCycleCallback = object : ActivityLifecycleCallbacks {
         override fun onActivityPaused(activity: Activity?) {
-            LogUtil.d("onActivityPaused ${activity?.javaClass?.simpleName}")
+            LogUtil.i("onActivityPaused ${activity?.javaClass?.simpleName}")
         }
 
         override fun onActivityResumed(activity: Activity?) {
-            LogUtil.d("onActivityResumed ${activity?.javaClass?.simpleName}")
+            LogUtil.i("onActivityResumed ${activity?.javaClass?.simpleName}")
         }
 
         override fun onActivityStarted(activity: Activity?) {
-            LogUtil.d("onActivityStarted ${activity?.javaClass?.simpleName}")
+            LogUtil.i("onActivityStarted ${activity?.javaClass?.simpleName}")
         }
 
         override fun onActivityDestroyed(activity: Activity?) {
-            LogUtil.d("onActivityDestroyed ${activity?.javaClass?.simpleName}")
+            LogUtil.i("onActivityDestroyed ${activity?.javaClass?.simpleName}")
         }
 
         override fun onActivitySaveInstanceState(activity: Activity?, outState: Bundle?) {
-            LogUtil.d("onActivitySaveInstanceState ${activity?.javaClass?.simpleName}")
+            LogUtil.i("onActivitySaveInstanceState ${activity?.javaClass?.simpleName}")
         }
 
         override fun onActivityStopped(activity: Activity?) {
-            LogUtil.d("onActivityStopped ${activity?.javaClass?.simpleName}")
+            LogUtil.i("onActivityStopped ${activity?.javaClass?.simpleName}")
         }
 
         override fun onActivityCreated(activity: Activity?, savedInstanceState: Bundle?) {
-            LogUtil.d("onActivityCreated $activity")
+            LogUtil.i("onActivityCreated $activity")
         }
     }
     override fun onCreate() {

@@ -1,11 +1,11 @@
-package me.apqx.demo
+package me.apqx.demo.tools
 
 import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Handler
 import android.view.LayoutInflater
 import android.widget.Toast
-import java.util.concurrent.CopyOnWriteArrayList
+import me.apqx.demo.R
 
 @SuppressLint("StaticFieldLeak")
 object ToastUtil {
@@ -14,7 +14,7 @@ object ToastUtil {
     lateinit var toast: Toast
 
     fun init(context: Context) {
-        this.context = context
+        ToastUtil.context = context
         handler = Handler()
     }
 

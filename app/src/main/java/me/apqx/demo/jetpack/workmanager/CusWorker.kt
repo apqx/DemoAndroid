@@ -4,8 +4,8 @@ import android.content.Context
 import androidx.work.Data
 import androidx.work.Worker
 import androidx.work.WorkerParameters
-import me.apqx.demo.LogUtil
-import me.apqx.demo.ToastUtil
+import me.apqx.demo.tools.LogUtil
+import me.apqx.demo.tools.ToastUtil
 
 class CusWorker(val context: Context, workerParameters: WorkerParameters) : Worker(context, workerParameters) {
     override fun doWork(): Result {

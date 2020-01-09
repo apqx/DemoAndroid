@@ -9,10 +9,9 @@ import android.hardware.usb.UsbManager
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_usb.*
-import me.apqx.demo.LogUtil
+import me.apqx.demo.tools.LogUtil
 import me.apqx.demo.R
 
 class UsbActivity : AppCompatActivity(){

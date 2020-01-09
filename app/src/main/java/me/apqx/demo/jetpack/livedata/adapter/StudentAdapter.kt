@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
-import me.apqx.demo.LogUtil
+import me.apqx.demo.tools.LogUtil
 import me.apqx.demo.R
 import me.apqx.demo.databinding.ItemStudentLivedataBinding
 import me.apqx.demo.jetpack.livedata.ILiveDataActivity

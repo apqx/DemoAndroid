@@ -19,7 +19,6 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.Scroller;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -32,7 +31,7 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
-import me.apqx.demo.LogUtil;
+import me.apqx.demo.tools.LogUtil;
 import me.apqx.demo.R;
 
 public class HorizontalPager extends RelativeLayout {

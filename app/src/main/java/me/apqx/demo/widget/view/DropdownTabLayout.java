@@ -26,7 +26,7 @@ import com.google.android.material.tabs.TabLayout;
 
 import java.util.List;
 
-import me.apqx.demo.LogUtil;
+import me.apqx.demo.tools.LogUtil;
 import me.apqx.demo.R;
 
 public class DropdownTabLayout extends FrameLayout {

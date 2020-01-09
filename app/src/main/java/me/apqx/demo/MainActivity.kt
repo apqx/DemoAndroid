@@ -2,19 +2,17 @@ package me.apqx.demo
 
 import android.os.Bundle
 import android.view.View
-import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
-import kotlinx.android.synthetic.main.activity_main.*
 import me.apqx.demo.databinding.ActivityMainBinding
+import me.apqx.demo.tools.LogUtil
 import me.apqx.demo.widget.view.DisplayUtils
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
-import java.lang.StringBuilder
 
 class MainActivity : AppCompatActivity() {
     private lateinit var dataBinding: ActivityMainBinding
@@ -25,8 +23,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         dataBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         navController = findNavController(R.id.frag_nav_host_main)
-        LogUtil.d("MainActivity navController = $navController")
         DisplayUtils.listViews(window.decorView, 0)
+
 //        DisplayUtils.dealStatusBarTransparent(this)
     }
 

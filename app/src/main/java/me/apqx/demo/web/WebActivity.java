@@ -2,8 +2,6 @@ package me.apqx.demo.web;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.util.SparseArray;
-import android.view.LayoutInflater;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -19,7 +17,7 @@ import butterknife.ButterKnife;
 import io.reactivex.Observable;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
-import me.apqx.demo.LogUtil;
+import me.apqx.demo.tools.LogUtil;
 import me.apqx.demo.R;
 
 public class WebActivity extends Activity {

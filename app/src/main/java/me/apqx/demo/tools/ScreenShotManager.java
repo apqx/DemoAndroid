@@ -19,8 +19,6 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
-import me.apqx.demo.LogUtil;
-
 /**
  * 截屏监听管理器 <br/><br/>
  *

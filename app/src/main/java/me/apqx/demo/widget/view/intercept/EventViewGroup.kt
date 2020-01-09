@@ -1,12 +1,10 @@
 package me.apqx.demo.widget.view.intercept
 
 import android.content.Context
-import android.os.Handler
-import android.os.Message
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.widget.RelativeLayout
-import me.apqx.demo.LogUtil
+import me.apqx.demo.tools.LogUtil
 
 /**
  * 事件分发拦截：外部拦截法

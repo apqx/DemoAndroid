@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 
-import me.apqx.demo.LogUtil;
+import me.apqx.demo.tools.LogUtil;
 
 public class DisplayUtils {
     /**
@@ -82,14 +82,31 @@ public class DisplayUtils {
 
     /**
      * 设置指定Activity的状态栏透明显示
+     *
+     * @param darkStatusIcon 是否显示深色的状态栏图标、文字
      */
-    public static void dealStatusBarTransparent(Activity activity) {
+    public static void dealStatusBarTransparent(Activity activity, boolean darkStatusIcon) {
+        dealStatusBarColor(activity, darkStatusIcon, Color.TRANSPARENT);
+    }
+
+    /**
+     * 在Activity运行时，动态设置状态栏颜色
+     *
+     * @param darkStatusIcon 是否显示深色的状态栏图标、文字
+     */
+    public static void dealStatusBarColor(Activity activity, boolean darkStatusIcon, int color) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = activity.getWindow();
             window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
-            window.setStatusBarColor(Color.TRANSPARENT);
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            int SystemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN;
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O && darkStatusIcon) {
+                LogUtil.INSTANCE.d("dealStatusBarTransparent darkStatusIcon");
+                SystemUiVisibility = SystemUiVisibility | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR;
+            }
+            window.getDecorView().setSystemUiVisibility(SystemUiVisibility);
+            window.setStatusBarColor(color);
         }
     }
 
@@ -100,7 +117,7 @@ public class DisplayUtils {
         if (view instanceof ViewGroup) {
             LogUtil.INSTANCE.d(getLevelSpace(level) + "|-" + view + "\\");
             int newLevel = level + 1;
-            for (int i = 0; i < ((ViewGroup)view).getChildCount(); i++) {
+            for (int i = 0; i < ((ViewGroup) view).getChildCount(); i++) {
                 listViews(((ViewGroup) view).getChildAt(i), newLevel);
             }
         } else {

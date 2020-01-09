@@ -4,14 +4,10 @@ import android.app.Dialog
 import android.content.Context
 import android.content.DialogInterface
 import android.os.Bundle
-import android.view.ContextMenu
-import android.view.LayoutInflater
-import android.view.View
 import android.widget.TextView
-import androidx.databinding.DataBindingUtil
 import butterknife.BindView
 import butterknife.ButterKnife
-import me.apqx.demo.LogUtil
+import me.apqx.demo.tools.LogUtil
 import me.apqx.demo.R
 import me.apqx.demo.databinding.DialogCusBinding
 import java.lang.Exception

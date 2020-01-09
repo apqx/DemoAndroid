@@ -5,7 +5,7 @@ import android.widget.Toast
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
-import me.apqx.demo.LogUtil
+import me.apqx.demo.tools.LogUtil
 
 class CusLifeObserver(val context: Context) : LifecycleObserver {
     @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)

@@ -33,14 +33,12 @@
 
     <style name="CusTabStyle">
         <item name="android:textSize">14sp</item>
-<!--        必须设置颜色，因为View默认会加载颜色，没有的话会异常-->
+<!--    必须设置颜色，因为View默认会加载颜色，没有的话会异常-->
         <item name="android:textColor">@color/colorAccent</item>
         <item name="android:textAllCaps">true</item>
     </style>
 
-<!--    定义一个继承自AppTheme的透明状态栏的主题，再安卓4.4以上有效-->
-    <style name="AppTheme.TransparentStatusBar">
-        <item name="android:windowTranslucentStatus" tools:targetApi="kitkat">true</item>
-    </style>
+<!--    定义一个继承自AppTheme的透明状态栏的主题，Android 4.4以上有效-->
+    <style name="AppTheme.TransparentStatusBar"/>
 
 </resources>
