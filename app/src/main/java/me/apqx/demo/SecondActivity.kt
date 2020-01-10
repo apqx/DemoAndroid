@@ -10,14 +10,14 @@ class SecondActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_second)
-        DisplayUtils.dealStatusBarTransparent(this, true)
+        DisplayUtils.dealStatusBarTransparent(this, false)
     }
 
 
     public fun onClick(view: View) {
         when (view.id) {
             R.id.btn_change -> {
-                DisplayUtils.dealStatusBarColor(this, false, Color.RED)
+                DisplayUtils.dealStatusBarTransparent(this, true)
             }
         }
     }

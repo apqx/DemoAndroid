@@ -49,7 +49,7 @@
         <activity android:name=".draw.DrawActivity" />
         <activity android:name=".notification.NotificationActivity" />
         <activity android:name=".SecondActivity"
-            android:theme="@style/TransparentStatusBar"/>
+            android:theme="@style/AppTheme.TransparentStatusBar"/>
 
         <service
             android:name=".ipc.RemoteService"
