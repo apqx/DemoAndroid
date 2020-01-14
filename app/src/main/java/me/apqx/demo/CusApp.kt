@@ -1,6 +1,8 @@
 package me.apqx.demo
 
 import android.app.Activity
+import android.app.Application
+import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -50,6 +52,8 @@ class CusApp : MultiDexApplication() {
         super.onCreate()
         registerActivityLifecycleCallbacks(actLifeCycleCallback)
 
+        LogUtil.d("process = ${getCurrentProcessName()}")
+
 //        screenShotManager.startListen()
 //        screenShotManager.setListener(object : ScreenShotManager.OnScreenShotListener {
 //            override fun onShot(imagePath: String?) {
@@ -74,6 +78,17 @@ class CusApp : MultiDexApplication() {
 
         readManifest()
 
+    }
+
+    private fun getCurrentProcessName(): String {
+        val pid = android.os.Process.myPid()
+        val activityManager = getSystemService(Context.ACTIVITY_SERVICE) as android.app.ActivityManager
+        for (appProcess in activityManager.runningAppProcesses) {
+            if (appProcess.pid == pid) {
+                return appProcess.processName
+            }
+        }
+        return "Process Not Found"
     }
 
     /**

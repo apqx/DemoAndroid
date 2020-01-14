@@ -10,79 +10,17 @@ import androidx.fragment.app.Fragment
 import me.apqx.demo.tools.LogUtil
 import me.apqx.demo.R
 
-class FragmentOthers: Fragment() {
-    override fun onAttach(activity: Activity) {
-        LogUtil.i("fragment onAttach ${javaClass.simpleName}")
-        super.onAttach(activity)
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        LogUtil.i("fragment onCreate ${javaClass.simpleName}")
-        super.onCreate(savedInstanceState)
-    }
+class FragmentOthers: BaseFragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        LogUtil.i("fragment onCreateView ${javaClass.simpleName}")
         return inflater.inflate(R.layout.frag_others, container, false)
     }
 
-    override fun onStart() {
-        LogUtil.i("fragment onStart ${javaClass.simpleName}")
-        super.onStart()
-    }
-
-    override fun onResume() {
-        LogUtil.i("fragment onResume ${javaClass.simpleName}")
-        super.onResume()
-    }
-
-    override fun onPause() {
-        LogUtil.i("fragment onPause ${javaClass.simpleName}")
-        super.onPause()
-    }
-
-    override fun onStop() {
-        LogUtil.i("fragment onStop ${javaClass.simpleName}")
-        super.onStop()
-    }
-
-    override fun onDestroyView() {
-        LogUtil.d("fragment onDestroyView ${javaClass.simpleName}")
-        super.onDestroyView()
-    }
-
-    override fun onDestroy() {
-        LogUtil.i("fragment onDestroy ${javaClass.simpleName}")
-        super.onDestroy()
-    }
-
-    override fun onDetach() {
-        LogUtil.i("fragment onDetach ${javaClass.simpleName}")
-        super.onDetach()
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        LogUtil.i("fragment onViewCreated ${javaClass.simpleName}")
-        super.onViewCreated(view, savedInstanceState)
-    }
-
     override fun onActivityCreated(savedInstanceState: Bundle?) {
-        LogUtil.i("fragment onActivityCreated ${javaClass.simpleName}")
         super.onActivityCreated(savedInstanceState)
     }
 
-    override fun onConfigurationChanged(newConfig: Configuration) {
-        LogUtil.i("fragment onConfigurationChanged ${javaClass.simpleName}")
-        super.onConfigurationChanged(newConfig)
-    }
+    override fun onClick(v: View?) {
 
-    override fun onViewStateRestored(savedInstanceState: Bundle?) {
-        LogUtil.i("fragment onViewStateRestored ${javaClass.simpleName}")
-        super.onViewStateRestored(savedInstanceState)
-    }
-
-    override fun onSaveInstanceState(outState: Bundle) {
-        LogUtil.i("fragment onSaveInstanceState ${javaClass.simpleName}")
-        super.onSaveInstanceState(outState)
     }
 }

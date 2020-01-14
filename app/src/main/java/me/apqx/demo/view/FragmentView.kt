@@ -9,94 +9,47 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import kotlinx.android.synthetic.main.frag_view.*
+import me.apqx.demo.MainActivity
 import me.apqx.demo.tools.LogUtil
 import me.apqx.demo.R
 import me.apqx.demo.SecondActivity
 import me.apqx.demo.databinding.FragViewBinding
 import me.apqx.demo.fragment.CusFragmentActivity
 
-class FragmentView: Fragment() {
+class FragmentView: BaseFragment() {
     private lateinit var binding: FragViewBinding
 
-    override fun onAttach(activity: Activity) {
-        LogUtil.i("fragment onAttach ${javaClass.simpleName}")
-        super.onAttach(activity)
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        LogUtil.i("fragment onCreate ${javaClass.simpleName}")
-        super.onCreate(savedInstanceState)
-    }
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        LogUtil.i("fragment onCreateView ${javaClass.simpleName}")
         binding = DataBindingUtil.inflate(inflater, R.layout.frag_view, container, false)
-        binding.btnFragment.setOnClickListener {
-            startActivity(Intent(activity, CusFragmentActivity::class.java))
-        }
-        binding.btnSecondActivity.setOnClickListener{
-            startActivity(Intent(activity, SecondActivity::class.java))
-        }
         return binding.root
     }
 
-    override fun onStart() {
-        LogUtil.i("fragment onStart ${javaClass.simpleName}")
-        super.onStart()
-    }
-
-    override fun onResume() {
-        LogUtil.i("fragment onResume ${javaClass.simpleName}")
-        super.onResume()
-    }
-
-    override fun onPause() {
-        LogUtil.i("fragment onPause ${javaClass.simpleName}")
-        super.onPause()
-    }
-
-    override fun onStop() {
-        LogUtil.i("fragment onStop ${javaClass.simpleName}")
-        super.onStop()
-    }
-
-    override fun onDestroyView() {
-        LogUtil.i("fragment onDestroyView ${javaClass.simpleName}")
-        super.onDestroyView()
-    }
-
-    override fun onDestroy() {
-        LogUtil.i("fragment onDestroy ${javaClass.simpleName}")
-        super.onDestroy()
-    }
-
-    override fun onDetach() {
-        LogUtil.i("fragment onDetach ${javaClass.simpleName}")
-        super.onDetach()
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        LogUtil.i("fragment onViewCreated ${javaClass.simpleName}")
-        super.onViewCreated(view, savedInstanceState)
-    }
-
     override fun onActivityCreated(savedInstanceState: Bundle?) {
-        LogUtil.i("fragment onActivityCreated ${javaClass.simpleName}")
         super.onActivityCreated(savedInstanceState)
+        btn_fragment.setOnClickListener(this)
+        btn_second_activity.setOnClickListener(this)
+        btn_dialog.setOnClickListener(this)
+        btn_anim.setOnClickListener(this)
     }
 
-    override fun onConfigurationChanged(newConfig: Configuration) {
-        LogUtil.i("fragment onConfigurationChanged ${javaClass.simpleName}")
-        super.onConfigurationChanged(newConfig)
+    override fun onClick(v: View?) {
+        when (v?.id) {
+            R.id.btn_fragment -> {
+                startActivity(Intent(activity, CusFragmentActivity::class.java))
+            }
+            R.id.btn_second_activity -> {
+                startActivity(Intent(activity, SecondActivity::class.java))
+            }
+            R.id.btn_dialog -> {
+                (activity as MainActivity).navController.navigate(FragmentHomeDirections.actionHomeToDialog())
+            }
+            R.id.btn_anim -> {
+                (activity as MainActivity).navController.navigate(FragmentHomeDirections.actionHomeToAnim())
+            }
+        }
     }
 
-    override fun onViewStateRestored(savedInstanceState: Bundle?) {
-        LogUtil.i("fragment onViewStateRestored ${javaClass.simpleName}")
-        super.onViewStateRestored(savedInstanceState)
-    }
 
-    override fun onSaveInstanceState(outState: Bundle) {
-        LogUtil.i("fragment onSaveInstanceState ${javaClass.simpleName}")
-        super.onSaveInstanceState(outState)
-    }
 }

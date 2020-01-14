@@ -3,11 +3,28 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_main"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/fragmentHome">
 
     <fragment
-        android:id="@+id/homeFragment"
-        android:name="me.apqx.demo.HomeFragment"
-        android:label="HomeFragment"
-        tools:layout="@layout/fragment_home"/>
+        android:id="@+id/fragmentHome"
+        android:name="me.apqx.demo.view.FragmentHome"
+        android:label="FragmentHome"
+        tools:layout="@layout/frag_home">
+        <action
+            android:id="@+id/action_home_to_dialog"
+            app:destination="@id/fragmentDialog" />
+        <action
+            android:id="@+id/action_home_to_Anim"
+            app:destination="@id/fragmentAnim" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentDialog"
+        android:name="me.apqx.demo.view.FragmentDialog"
+        android:label="FragmentDialog"
+        tools:layout="@layout/frag_dialog"/>
+    <fragment
+        android:id="@+id/fragmentAnim"
+        android:name="me.apqx.demo.view.FragmentAnim"
+        android:label="FragmentAnim"
+        tools:layout="@layout/frag_anim"/>
 </navigation>

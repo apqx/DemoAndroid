@@ -35,6 +35,7 @@ class CusDialogExtend : Dialog {
         ButterKnife.bind(this)
 //        tvHint = findViewById(R.id.tv_hint)
         LogUtil.d("dialog onCreate $tvHint")
+        setCanceledOnTouchOutside(true)
     }
 
     override fun onAttachedToWindow() {

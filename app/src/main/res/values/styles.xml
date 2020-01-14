@@ -42,7 +42,7 @@
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowIsFloating">true</item>
         <!--        取消Dialog的大背景半透明虚化-->
-        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:backgroundDimEnabled">false</item>
         <!--        设置Dialog窗体背景颜色，默认是白色-->
         <item name="android:windowBackground">@android:color/transparent</item><!--背景透明-->
     </style>
@@ -56,5 +56,11 @@
 
 <!--    定义一个继承自AppTheme的透明状态栏的主题，Android 4.4以上有效-->
     <style name="AppTheme.TransparentStatusBar"/>
+
+<!--    Dialog的进入、退出动画-->
+    <style name="dialogWindowAnim" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/dialog_enter</item>
+        <item name="android:windowExitAnimation">@anim/dialog_exit</item>
+    </style>
 
 </resources>

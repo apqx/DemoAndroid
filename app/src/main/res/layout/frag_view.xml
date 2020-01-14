@@ -23,6 +23,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Second Activity"/>
+            <Button
+                android:id="@+id/btn_dialog"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Dialog"/>
+            <Button
+                android:id="@+id/btn_anim"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Animation"/>
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

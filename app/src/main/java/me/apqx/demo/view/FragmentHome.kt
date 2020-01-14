@@ -1,34 +1,25 @@
-package me.apqx.demo
+package me.apqx.demo.view
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
-import kotlinx.android.synthetic.main.fragment_home.*
-import me.apqx.demo.databinding.FragmentHomeBinding
-import me.apqx.demo.view.FragmentComponent
-import me.apqx.demo.view.FragmentViewDirections
+import kotlinx.android.synthetic.main.frag_home.*
+import me.apqx.demo.R
+import me.apqx.demo.databinding.FragHomeBinding
 
-class HomeFragment: Fragment() {
-    private lateinit var fragmentHomeBinding: FragmentHomeBinding
+class FragmentHome: BaseFragment() {
+    private lateinit var fragmentHomeBinding: FragHomeBinding
     private lateinit var navController: NavController
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        fragmentHomeBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
+        fragmentHomeBinding = DataBindingUtil.inflate(inflater, R.layout.frag_home, container, false)
         // <fragment>标签其实是一个FrameLayout，也即是这里的Container，即，Fragment的View被插入到了它要被FragmentManager操作的那个ViewGroup里面
         return fragmentHomeBinding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -45,5 +36,9 @@ class HomeFragment: Fragment() {
     private fun initNavigation() {
         // 绑定BottomNavigationView和Navigation里的destinations，注意，id要相同，才能实现点击跳转
         NavigationUI.setupWithNavController(bnv_tab, navController)
+    }
+
+    override fun onClick(v: View?) {
+
     }
 }
