@@ -33,6 +33,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Animation"/>
+            <Button
+                android:id="@+id/btn_add_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Add View"/>
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

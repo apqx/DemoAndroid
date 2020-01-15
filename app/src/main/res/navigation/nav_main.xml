@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_home_to_Anim"
             app:destination="@id/fragmentAnim" />
+        <action
+            android:id="@+id/action_home_to_addView"
+            app:destination="@id/fragmentAddView" />
     </fragment>
     <fragment
         android:id="@+id/fragmentDialog"
@@ -27,4 +30,9 @@
         android:name="me.apqx.demo.view.FragmentAnim"
         android:label="FragmentAnim"
         tools:layout="@layout/frag_anim"/>
+    <fragment
+        android:id="@+id/fragmentAddView"
+        android:name="me.apqx.demo.view.FragmentAddView"
+        android:label="FragmentAddView"
+        tools:layout="@layout/frag_add_view"/>
 </navigation>

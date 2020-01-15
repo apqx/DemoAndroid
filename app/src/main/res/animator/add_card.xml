@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android"
+    android:ordering="together">
+    <objectAnimator>
+<!--        修改View旋转支点的坐标为左上角，没有设置时间，默认是0，这个属性在动画开始时是立即执行的-->
+        <propertyValuesHolder
+            android:propertyName="pivotX"
+            android:valueType="floatType"
+            android:valueFrom="0"
+            android:valueTo="0"/>
+        <propertyValuesHolder
+            android:propertyName="pivotY"
+            android:valueType="floatType"
+            android:valueFrom="0"
+            android:valueTo="0"/>
+    </objectAnimator>
+    <objectAnimator
+        android:propertyName="translationY"
+        android:duration="500"
+        android:interpolator="@anim/accelerate_interpolator">
+        <propertyValuesHolder
+            android:propertyName="translationY"
+            android:valueType="floatType"
+            android:valueFrom="30dp"
+            android:valueTo="0dp"/>
+        <propertyValuesHolder
+            android:propertyName="alpha"
+            android:valueType="floatType"
+            android:valueFrom="0"
+            android:valueTo="1"/>
+        <propertyValuesHolder
+            android:propertyName="rotation"
+            android:valueType="floatType"
+            android:valueFrom="30"
+            android:valueTo="0"/>
+    </objectAnimator>
+</set>

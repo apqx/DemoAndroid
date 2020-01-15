@@ -35,7 +35,7 @@ android {
         // 来实现不同分支的不同行为
         getManifestPlaceholders().put(APP_NAME, "DEF_NAME")
 
-        minSdkVersion 15
+        minSdkVersion 16
         targetSdkVersion 28
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"

@@ -37,8 +37,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="12" />
-                            <option name="y" value="54" />
+                            <option name="x" value="-62" />
+                            <option name="y" value="186" />
                           </Point>
                         </option>
                         <option name="myPositions">
@@ -68,42 +68,32 @@
             <LayoutPositions>
               <option name="myPositions">
                 <map>
+                  <entry key="fragmentAddView">
+                    <value>
+                      <LayoutPositions />
+                    </value>
+                  </entry>
                   <entry key="fragmentAnim">
                     <value>
-                      <LayoutPositions>
-                        <option name="myPosition">
-                          <Point>
-                            <option name="x" value="274" />
-                            <option name="y" value="177" />
-                          </Point>
-                        </option>
-                      </LayoutPositions>
+                      <LayoutPositions />
                     </value>
                   </entry>
                   <entry key="fragmentDialog">
                     <value>
-                      <LayoutPositions>
-                        <option name="myPosition">
-                          <Point>
-                            <option name="x" value="242" />
-                            <option name="y" value="-188" />
-                          </Point>
-                        </option>
-                      </LayoutPositions>
+                      <LayoutPositions />
                     </value>
                   </entry>
-                  <entry key="homeFragment">
+                  <entry key="fragmentHome">
                     <value>
                       <LayoutPositions>
-                        <option name="myPosition">
-                          <Point>
-                            <option name="x" value="12" />
-                            <option name="y" value="12" />
-                          </Point>
-                        </option>
                         <option name="myPositions">
                           <map>
-                            <entry key="action_homeFragment_to_fragmentAnim">
+                            <entry key="action_fragmentHome_to_fragmentAddView">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_home_to_Anim">
                               <value>
                                 <LayoutPositions />
                               </value>

@@ -32,6 +32,7 @@ class FragmentView: BaseFragment() {
         btn_second_activity.setOnClickListener(this)
         btn_dialog.setOnClickListener(this)
         btn_anim.setOnClickListener(this)
+        btn_add_view.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
@@ -47,6 +48,9 @@ class FragmentView: BaseFragment() {
             }
             R.id.btn_anim -> {
                 (activity as MainActivity).navController.navigate(FragmentHomeDirections.actionHomeToAnim())
+            }
+            R.id.btn_add_view -> {
+                (activity as MainActivity).navController.navigate(FragmentHomeDirections.actionHomeToAddView())
             }
         }
     }
