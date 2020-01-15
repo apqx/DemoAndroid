@@ -17,6 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layoutAnimation="@anim/layout_init_view"
+            android:background="@color/colorPrimary"
             android:animateLayoutChanges="true"
             android:orientation="vertical"
             android:paddingBottom="10dp">
@@ -25,24 +26,27 @@
                 android:id="@+id/cv_1"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp" />
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cv_2"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="10dp" />
+                android:layout_marginRight="10dp"  />
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cv_3"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp" />
         </LinearLayout>
     </ScrollView>

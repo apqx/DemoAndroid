@@ -78,7 +78,8 @@ class FragmentAddView : BaseFragment() {
         checkNotNull(context) { "Context is null" }
         val view = generateView()
         val layoutParams = LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, DisplayUtils.dpToPx(context!!, 180f))
-        layoutParams.topMargin = DisplayUtils.dpToPx(context!!, 10f)
+        layoutParams.topMargin = DisplayUtils.dpToPx(context!!, 5f)
+        layoutParams.bottomMargin = DisplayUtils.dpToPx(context!!, 5f)
         layoutParams.leftMargin = DisplayUtils.dpToPx(context!!, 10f)
         layoutParams.rightMargin = DisplayUtils.dpToPx(context!!, 10f)
 
