@@ -5,39 +5,98 @@
 
     <data></data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <LinearLayout
+
+        <!--        AppBarLayout是一个Vertical的LinearLayout，它自带阴影效果-->
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/abl_top"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-            <Button
-                android:id="@+id/btn_fragment"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.appbar.CollapsingToolbarLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/commonBtn"
-                android:text="Fragment"/>
+                app:layout_scrollFlags="scroll|exitUntilCollapsed"
+                app:contentScrim="@color/colorPrimary">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:layout_marginTop="?attr/actionBarSize">
+
+                    <Button
+                        android:id="@+id/btn_fragment"
+                        style="@style/commonBtn"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="Fragment" />
+
+                    <Button
+                        android:id="@+id/btn_second_activity"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Second Activity" />
+
+                    <Button
+                        android:id="@+id/btn_dialog"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Dialog" />
+
+                    <Button
+                        android:id="@+id/btn_anim"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Animation" />
+
+                    <Button
+                        android:id="@+id/btn_add_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Add View" />
+                </LinearLayout>
+
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/tb_top_bar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:background="@color/colorPrimary"
+                    app:layout_collapseMode="pin"
+                    app:layout_scrollFlags="scroll|enterAlways"
+                    app:navigationIcon="@drawable/ic_arrow_white_24px"
+
+                    tools:targetApi="lollipop">
+
+                </androidx.appcompat.widget.Toolbar>
+
+
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
             <Button
-                android:id="@+id/btn_second_activity"
+                android:id="@+id/btn_expand_top"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Second Activity"/>
-            <Button
-                android:id="@+id/btn_dialog"
+                android:text="Expand Top"/>
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/srl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Dialog"/>
-            <Button
-                android:id="@+id/btn_anim"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Animation"/>
-            <Button
-                android:id="@+id/btn_add_view"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Add View"/>
-        </LinearLayout>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+                android:layout_height="match_parent"
+                tools:listitem="@android:layout/simple_list_item_1"/>
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

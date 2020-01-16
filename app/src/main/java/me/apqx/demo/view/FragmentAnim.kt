@@ -101,23 +101,7 @@ class FragmentAnim : BaseFragment() {
 //        objectAnimator.repeatMode = ValueAnimator.REVERSE
 //        objectAnimator.repeatCount = ValueAnimator.INFINITE
         valueAnimator.interpolator = AccelerateInterpolator()
-        objectAnimator.addListener(object : Animator.AnimatorListener {
-            override fun onAnimationRepeat(animation: Animator?) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-            }
 
-            override fun onAnimationEnd(animation: Animator?) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-            }
-
-            override fun onAnimationCancel(animation: Animator?) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-            }
-
-            override fun onAnimationStart(animation: Animator?) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-            }
-        })
         valueAnimator.start()
     }
 

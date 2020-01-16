@@ -30,13 +30,14 @@ class FragmentAddView : BaseFragment() {
         btn_show_view.setOnClickListener(this)
 
 //        setLayoutAnimation()
-//        setLayoutTransition()
+        setLayoutTransition()
     }
 
     private fun setLayoutTransition() {
         val layoutTransition = LayoutTransition()
         val animator = AnimatorInflater.loadAnimator(context!!, R.animator.add_card)
         layoutTransition.setAnimator(LayoutTransition.APPEARING, animator)
+
         ll_add_view_container.layoutTransition = layoutTransition
     }
 
