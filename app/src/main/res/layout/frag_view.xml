@@ -61,6 +61,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Add View" />
+                    <Button
+                        android:id="@+id/btn_toggle_loading"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Toggle Loading" />
                 </LinearLayout>
 
                 <androidx.appcompat.widget.Toolbar

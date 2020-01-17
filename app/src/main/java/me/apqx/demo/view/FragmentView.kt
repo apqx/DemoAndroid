@@ -21,7 +21,7 @@ import me.apqx.demo.databinding.FragViewBinding
 import me.apqx.demo.fragment.CusFragmentActivity
 import me.apqx.demo.tools.ToastUtil
 
-class FragmentView: BaseFragment() {
+class FragmentView : BaseFragment() {
     private lateinit var binding: FragViewBinding
     private lateinit var simpleAdapter: SimpleRecyclerAdapter
 
@@ -44,6 +44,7 @@ class FragmentView: BaseFragment() {
         btn_dialog.setOnClickListener(this)
         btn_anim.setOnClickListener(this)
         btn_add_view.setOnClickListener(this)
+        btn_toggle_loading.setOnClickListener(this)
 
         simpleAdapter = SimpleRecyclerAdapter()
         simpleAdapter.setData(generateSimpleList())
@@ -81,6 +82,13 @@ class FragmentView: BaseFragment() {
             }
             R.id.btn_add_view -> {
                 (activity as MainActivity).navController.navigate(FragmentHomeDirections.actionHomeToAddView())
+            }
+            R.id.btn_toggle_loading -> {
+                if ((activity as MainActivity).isLoadingShowing()) {
+                    (activity as MainActivity).dismissLoading()
+                } else {
+                    (activity as MainActivity).showLoading("")
+                }
             }
 
             R.id.btn_expand_top -> {
