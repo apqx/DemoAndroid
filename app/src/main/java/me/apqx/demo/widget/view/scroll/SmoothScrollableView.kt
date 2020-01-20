@@ -6,7 +6,7 @@ import android.view.MotionEvent
 import android.view.View
 import android.widget.ImageView
 import android.widget.Scroller
-import me.apqx.demo.tools.LogUtil
+import me.apqx.demo.old.tools.LogUtil
 
 /**
  * 使用Scroller进行平滑移动

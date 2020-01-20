@@ -1,7 +1,6 @@
 package me.apqx.demo
 
 import android.app.Activity
-import android.app.Application
 import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Bundle
@@ -12,9 +11,9 @@ import androidx.multidex.MultiDexApplication
 import com.squareup.leakcanary.LeakCanary
 import io.realm.Realm
 import io.realm.RealmConfiguration
-import me.apqx.demo.realm.CusRealmMigration
-import me.apqx.demo.tools.LogUtil
-import me.apqx.demo.tools.ToastUtil
+import me.apqx.demo.old.realm.CusRealmMigration
+import me.apqx.demo.old.tools.LogUtil
+import me.apqx.demo.old.tools.ToastUtil
 
 class CusApp : MultiDexApplication() {
 //    val screenShotManager = ScreenShotManager.newInstance(this)

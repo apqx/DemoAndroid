@@ -21,40 +21,41 @@
         <meta-data android:name="channel" android:value="DEF_CHANNEL"/>
 
         <activity android:name=".MainActivity"
-            android:theme="@style/AppTheme">
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".jetpack.JetpackActivity" />
+        <activity android:name="me.apqx.demo.old.jetpack.JetpackActivity" />
         <activity android:name=".ipc.IpcActivity" />
-        <activity android:name=".tools.ToolsActivity" />
-        <activity android:name=".jetpack.databinding.DataBindingActivity" />
-        <activity android:name=".test.TestActivity" />
-        <activity android:name=".jetpack.livedata.LiveDataActivity" />
-        <activity android:name=".jetpack.lifecycle.LifecycleActivity" />
-        <activity android:name=".jetpack.workmanager.WorkManagerActivity" />
-        <activity android:name=".mvvm.view.MVVMActivity" />
+        <activity android:name="me.apqx.demo.old.tools.ToolsActivity" />
+        <activity android:name="me.apqx.demo.old.jetpack.databinding.DataBindingActivity" />
+        <activity android:name="me.apqx.demo.old.test.TestActivity" />
+        <activity android:name="me.apqx.demo.old.jetpack.livedata.LiveDataActivity" />
+        <activity android:name="me.apqx.demo.old.jetpack.lifecycle.LifecycleActivity" />
+        <activity android:name="me.apqx.demo.old.jetpack.workmanager.WorkManagerActivity" />
+        <activity android:name="me.apqx.demo.old.mvvm.view.MVVMActivity" />
         <activity android:name=".widget.WidgetActivity" />
-        <activity android:name=".service.ServiceActivity" />
-        <activity android:name=".realm.RealmActivity" />
+        <activity android:name="me.apqx.demo.old.service.ServiceActivity" />
+        <activity android:name="me.apqx.demo.old.realm.RealmActivity" />
         <activity android:name=".widget.recycler.RecyclerActivity" />
-        <activity android:name=".device.usb.UsbActivity" />
+        <activity android:name="me.apqx.demo.old.usb.UsbActivity" />
         <activity android:name=".widget.view.RelativeActivity" />
         <activity android:name=".widget.list.ListActivity" />
-        <activity android:name=".fragment.CusFragmentActivity" />
-        <activity android:name=".web.WebActivity" />
-        <activity android:name=".recycler.RecyclerActivity" />
-        <activity android:name=".draw.DrawActivity" />
-        <activity android:name=".notification.NotificationActivity" />
+        <activity android:name="me.apqx.demo.old.fragment.CusFragmentActivity" />
+        <activity android:name=".old.web.WebActivity" />
+        <activity android:name=".old.recycler.RecyclerActivity" />
+        <activity android:name=".old.draw.DrawActivity" />
+        <activity android:name=".old.notification.NotificationActivity" />
         <activity android:name=".SecondActivity"
             android:theme="@style/AppTheme.TransparentStatusBar"/>
 
         <service
             android:name=".ipc.RemoteService"
             android:process=":ipc" />
-        <service android:name=".service.Service1" />
-        <service android:name=".service.Service2" />
+        <service android:name="me.apqx.demo.old.service.Service1" />
+        <service android:name="me.apqx.demo.old.service.Service2" />
     </application>
 </manifest>

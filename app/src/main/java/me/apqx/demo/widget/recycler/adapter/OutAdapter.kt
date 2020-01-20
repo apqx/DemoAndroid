@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import me.apqx.demo.tools.LogUtil
+import me.apqx.demo.old.tools.LogUtil
 import me.apqx.demo.R
 import me.apqx.demo.databinding.ItemRecyclerListBinding
 import me.apqx.demo.databinding.ItemRecyclerManBinding

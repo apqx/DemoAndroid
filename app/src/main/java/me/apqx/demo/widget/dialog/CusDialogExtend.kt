@@ -7,7 +7,7 @@ import android.os.Bundle
 import android.widget.TextView
 import butterknife.BindView
 import butterknife.ButterKnife
-import me.apqx.demo.tools.LogUtil
+import me.apqx.demo.old.tools.LogUtil
 import me.apqx.demo.R
 import me.apqx.demo.databinding.DialogCusBinding
 import java.lang.Exception

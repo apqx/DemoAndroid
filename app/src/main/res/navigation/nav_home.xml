@@ -7,7 +7,7 @@
 <!--通过tools:view显示预览-->
     <fragment
         android:id="@+id/view"
-        android:name="me.apqx.demo.view.FragmentView"
+        android:name="me.apqx.demo.view.ViewFragment"
         android:label="FragmentView"
         tools:layout="@layout/frag_view">
         <action
@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/component"
-        android:name="me.apqx.demo.view.FragmentComponent"
+        android:name="me.apqx.demo.view.ComponentFragment"
         android:label="FragmentComponent"
         tools:layout="@layout/frag_component" />
     <fragment

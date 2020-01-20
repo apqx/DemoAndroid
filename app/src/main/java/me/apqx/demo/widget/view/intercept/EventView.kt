@@ -4,7 +4,7 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.widget.ImageView
-import me.apqx.demo.tools.LogUtil
+import me.apqx.demo.old.tools.LogUtil
 
 /**
  * 事件分发拦截：外部拦截法

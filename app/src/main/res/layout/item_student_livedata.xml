@@ -6,10 +6,10 @@
     <data>
         <variable
             name="student"
-            type="me.apqx.demo.jetpack.livedata.bean.Student"/>
+            type="me.apqx.demo.old.jetpack.livedata.bean.Student"/>
         <variable
             name="activity"
-            type="me.apqx.demo.jetpack.livedata.ILiveDataActivity"/>
+            type="me.apqx.demo.old.jetpack.livedata.ILiveDataActivity"/>
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

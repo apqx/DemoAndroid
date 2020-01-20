@@ -6,10 +6,10 @@
     <data>
         <variable
             name="student"
-            type="me.apqx.demo.jetpack.databinding.bean.Student"/>
+            type="me.apqx.demo.old.jetpack.databinding.bean.Student"/>
         <variable
             name="adapter"
-            type="me.apqx.demo.jetpack.databinding.adapter.StudentAdapter"/>
+            type="me.apqx.demo.old.jetpack.databinding.adapter.StudentAdapter"/>
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

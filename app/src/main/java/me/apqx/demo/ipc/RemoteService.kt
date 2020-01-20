@@ -4,7 +4,7 @@ import android.app.Service
 import android.content.Intent
 import android.os.IBinder
 import androidx.room.Room
-import me.apqx.demo.tools.LogUtil
+import me.apqx.demo.old.tools.LogUtil
 import me.apqx.demo.ipc.aidl.IBookManager
 import me.apqx.demo.ipc.aidl.ICallback
 import me.apqx.demo.ipc.aidl.bean.Book

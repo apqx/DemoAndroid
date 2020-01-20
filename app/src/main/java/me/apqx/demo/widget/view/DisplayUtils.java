@@ -4,12 +4,13 @@ import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Build;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 
-import me.apqx.demo.tools.LogUtil;
+import me.apqx.demo.old.tools.LogUtil;
 
 public class DisplayUtils {
     /**
@@ -85,8 +86,27 @@ public class DisplayUtils {
      *
      * @param darkStatusIcon 是否显示深色的状态栏图标、文字
      */
-    public static void dealStatusBarTransparent(Activity activity, boolean darkStatusIcon) {
-        dealStatusBarColor(activity, darkStatusIcon, Color.TRANSPARENT);
+    public static void setStatusBarTransparent(Activity activity, boolean darkStatusIcon) {
+        setStatusBarTransparent(activity);
+        setStatusDarkIcon(activity, darkStatusIcon);
+    }
+
+    /**
+     * 在Activity运行时，设置状态栏为透明，必须设置Theme#windowTranslucentStatus
+     */
+    public static void setStatusBarTransparent(Activity activity) {
+        LogUtil.INSTANCE.i("setStatusBarTransparent " + activity.getClass().getSimpleName());
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = activity.getWindow();
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            // 添加Flag
+            int systemUiVisibility = window.getDecorView().getSystemUiVisibility();
+            systemUiVisibility |= View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN;
+
+            window.getDecorView().setSystemUiVisibility(systemUiVisibility);
+            window.setStatusBarColor(Color.TRANSPARENT);
+        }
     }
 
     /**
@@ -94,21 +114,54 @@ public class DisplayUtils {
      *
      * @param darkStatusIcon 是否显示深色的状态栏图标、文字
      */
-    public static void dealStatusBarColor(Activity activity, boolean darkStatusIcon, int color) {
+    public static void setStatusBarColor(Activity activity, int color, boolean darkStatusIcon) {
+        setStatusBarColor(activity, color);
+        setStatusDarkIcon(activity, darkStatusIcon);
+    }
+
+    /**
+     * 在Activity运行时，动态设置状态栏颜色，不需要设置Theme
+     */
+    public static void setStatusBarColor(Activity activity, int color) {
+        LogUtil.INSTANCE.i("setStatusBarColor " + activity.getClass().getSimpleName());
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = activity.getWindow();
-            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            int SystemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN;
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O && darkStatusIcon) {
-                LogUtil.INSTANCE.d("dealStatusBarTransparent darkStatusIcon");
-                SystemUiVisibility = SystemUiVisibility | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR;
-            }
-            window.getDecorView().setSystemUiVisibility(SystemUiVisibility);
             window.setStatusBarColor(color);
         }
     }
+
+    /**
+     * 在Activity运行时，动态设置状态栏颜色，不需要设置Theme
+     *
+     * @param darkStatusIcon 是否显示深色的状态栏图标、文字
+     */
+    public static void setStatusDarkIcon(Activity activity, boolean darkStatusIcon) {
+        LogUtil.INSTANCE.i("setStatusDarkIcon " + activity.getClass().getSimpleName() + ", "
+                + "darkStatusIcon = " + darkStatusIcon);
+        Window window = activity.getWindow();
+        int systemUiVisibility = window.getDecorView().getSystemUiVisibility();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            if (darkStatusIcon) {
+                // 添加Flag
+                systemUiVisibility |= View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR;
+            } else {
+                // 删除Flag
+                systemUiVisibility &= ~View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR;
+            }
+            window.getDecorView().setSystemUiVisibility(systemUiVisibility);
+        }
+    }
+
+    /**
+     * 对于一个32位二进制，指定的位是否为1
+     *
+     * @param bits       原始数据段
+     * @param targetBits 目标数据段
+     */
+    private static boolean bitAlreadyEnable(int bits, int targetBits) {
+        return (bits & targetBits) == targetBits;
+    }
+
 
     /**
      * 打印View层级

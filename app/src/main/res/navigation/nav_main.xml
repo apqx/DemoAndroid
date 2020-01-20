@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/fragmentHome"
-        android:name="me.apqx.demo.view.FragmentHome"
+        android:name="me.apqx.demo.view.HomeFragment"
         android:label="FragmentHome"
         tools:layout="@layout/frag_home">
         <action
@@ -19,20 +19,28 @@
         <action
             android:id="@+id/action_home_to_addView"
             app:destination="@id/fragmentAddView" />
+        <action
+            android:id="@+id/action_home_to_text"
+            app:destination="@id/fragmentText" />
     </fragment>
     <fragment
         android:id="@+id/fragmentDialog"
-        android:name="me.apqx.demo.view.FragmentDialog"
+        android:name="me.apqx.demo.view.DialogFragment"
         android:label="FragmentDialog"
         tools:layout="@layout/frag_dialog"/>
     <fragment
         android:id="@+id/fragmentAnim"
-        android:name="me.apqx.demo.view.FragmentAnim"
+        android:name="me.apqx.demo.view.AnimFragment"
         android:label="FragmentAnim"
         tools:layout="@layout/frag_anim"/>
     <fragment
         android:id="@+id/fragmentAddView"
-        android:name="me.apqx.demo.view.FragmentAddView"
+        android:name="me.apqx.demo.view.AddViewFragment"
         android:label="FragmentAddView"
         tools:layout="@layout/frag_add_view"/>
+    <fragment
+        android:id="@+id/fragmentText"
+        android:name="me.apqx.demo.view.TextFragment"
+        android:label="TextFragment"
+        tools:layout="@layout/frag_text"/>
 </navigation>

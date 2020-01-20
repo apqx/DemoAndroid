@@ -8,7 +8,7 @@ import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import me.apqx.demo.databinding.ActivityMainBinding
-import me.apqx.demo.tools.LogUtil
+import me.apqx.demo.old.tools.LogUtil
 import me.apqx.demo.widget.dialog.LoadingDialog
 import me.apqx.demo.widget.view.DisplayUtils
 import org.greenrobot.eventbus.EventBus

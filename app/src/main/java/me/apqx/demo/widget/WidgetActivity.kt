@@ -19,9 +19,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import kotlinx.android.synthetic.main.activity_widget.*
 import kotlinx.android.synthetic.main.layout_tab.view.*
-import me.apqx.demo.tools.LogUtil
+import me.apqx.demo.old.tools.LogUtil
 import me.apqx.demo.R
-import me.apqx.demo.tools.ToastUtil
+import me.apqx.demo.old.tools.ToastUtil
 import me.apqx.demo.databinding.ActivityWidgetBinding
 import me.apqx.demo.widget.dialog.CusDialogExtend
 import me.apqx.demo.widget.dialog.CusDialogInstance
