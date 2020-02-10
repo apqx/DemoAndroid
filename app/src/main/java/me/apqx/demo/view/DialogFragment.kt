@@ -6,9 +6,11 @@ import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SeekBar
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.frag_dialog.*
 import me.apqx.demo.R
+import me.apqx.demo.old.tools.LogUtil
 import me.apqx.demo.widget.dialog.CusDialogExtend
 
 class DialogFragment: BaseFragment() {
@@ -23,6 +25,17 @@ class DialogFragment: BaseFragment() {
         super.onActivityCreated(savedInstanceState)
         btn_show_dialog.setOnClickListener(this)
         btn_dialog_dismiss.setOnClickListener(this)
+        seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                LogUtil.d("SeekBar onProgressChanged $progress")
+            }
+
+            override fun onStartTrackingTouch(seekBar: SeekBar?) {
+            }
+
+            override fun onStopTrackingTouch(seekBar: SeekBar?) {
+            }
+        })
 
     }
 
