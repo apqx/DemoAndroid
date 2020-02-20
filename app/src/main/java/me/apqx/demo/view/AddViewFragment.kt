@@ -28,6 +28,7 @@ class AddViewFragment : BaseFragment() {
         btn_add_view.setOnClickListener(this)
         btn_delete_view.setOnClickListener(this)
         btn_show_view.setOnClickListener(this)
+        btn_toggle_container_visiable.setOnClickListener(this)
 
 //        setLayoutAnimation()
         setLayoutTransition()
@@ -58,6 +59,9 @@ class AddViewFragment : BaseFragment() {
             }
             R.id.btn_show_view -> {
                 showHideView()
+            }
+            R.id.btn_toggle_container_visiable -> {
+                ll_add_view_container.visibility = if (ll_add_view_container.visibility == View.VISIBLE) View.GONE else View.VISIBLE
             }
             else -> {
                 v?.visibility = View.GONE

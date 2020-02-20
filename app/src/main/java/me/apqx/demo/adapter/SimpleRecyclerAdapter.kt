@@ -5,9 +5,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import me.apqx.demo.old.tools.LogUtil
 
 class SimpleRecyclerAdapter: RecyclerView.Adapter<SimpleRecyclerAdapter.CusViewHolder>() {
     private val list = ArrayList<String>()
+
+    private lateinit var onItemClickListenerListener: OnItemClickListener
 
     public fun setData(list: List<String>) {
         this.list.clear()
@@ -16,6 +19,7 @@ class SimpleRecyclerAdapter: RecyclerView.Adapter<SimpleRecyclerAdapter.CusViewH
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CusViewHolder {
+        LogUtil.d("onCreateViewHolder")
         return CusViewHolder(LayoutInflater.from(parent.context).inflate(android.R.layout.simple_list_item_1, parent, false))
     }
 
@@ -24,15 +28,33 @@ class SimpleRecyclerAdapter: RecyclerView.Adapter<SimpleRecyclerAdapter.CusViewH
     }
 
     override fun onBindViewHolder(holder: CusViewHolder, position: Int) {
+        LogUtil.d("onBindViewHolder $position")
         holder.bindView(list[position])
     }
 
-    inner class CusViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+    inner class CusViewHolder: RecyclerView.ViewHolder {
         private val tv: TextView = itemView.findViewById(android.R.id.text1)
+
+        constructor(itemView: View) : super(itemView) {
+            itemView.setOnClickListener {
+                if (this@SimpleRecyclerAdapter::onItemClickListenerListener.isInitialized) {
+                    onItemClickListenerListener.onItemClick()
+                }
+            }
+        }
 
         fun bindView(str: String) {
             tv.text = str
         }
 
+    }
+
+    public fun setOnItemClickListener(listener: OnItemClickListener) {
+        this.onItemClickListenerListener = listener
+    }
+
+
+    public interface OnItemClickListener {
+        fun onItemClick();
     }
 }

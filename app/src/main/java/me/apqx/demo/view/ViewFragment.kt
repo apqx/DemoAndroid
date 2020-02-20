@@ -43,6 +43,11 @@ class ViewFragment : BaseFragment() {
         btn_text.setOnClickListener(this)
 
         simpleAdapter = SimpleRecyclerAdapter()
+        simpleAdapter.setOnItemClickListener(object : SimpleRecyclerAdapter.OnItemClickListener {
+            override fun onItemClick() {
+                simpleAdapter.notifyDataSetChanged()
+            }
+        })
         simpleAdapter.setData(generateSimpleList())
         rv.adapter = simpleAdapter
         rv.layoutManager = LinearLayoutManager(context)
