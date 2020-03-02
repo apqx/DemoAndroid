@@ -7,7 +7,7 @@
 <!--通过tools:view显示预览-->
     <fragment
         android:id="@+id/view"
-        android:name="me.apqx.demo.view.ViewFragment"
+        android:name="me.apqx.demo.view.tab.TabViewFragment"
         android:label="FragmentView"
         tools:layout="@layout/frag_view">
         <action
@@ -19,12 +19,12 @@
     </fragment>
     <fragment
         android:id="@+id/component"
-        android:name="me.apqx.demo.view.ComponentFragment"
+        android:name="me.apqx.demo.view.tab.TabComponentFragment"
         android:label="FragmentComponent"
         tools:layout="@layout/frag_component" />
     <fragment
         android:id="@+id/others"
-        android:name="me.apqx.demo.view.FragmentOthers"
+        android:name="me.apqx.demo.view.tab.TabOtherFragment"
         android:label="FragmentOthers"
         tools:layout="@layout/frag_others" />
 </navigation>

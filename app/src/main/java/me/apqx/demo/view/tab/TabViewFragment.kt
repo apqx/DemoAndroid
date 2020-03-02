@@ -1,4 +1,4 @@
-package me.apqx.demo.view
+package me.apqx.demo.view.tab
 
 import android.content.Intent
 import android.os.Bundle
@@ -13,10 +13,14 @@ import me.apqx.demo.R
 import me.apqx.demo.SecondActivity
 import me.apqx.demo.adapter.SimpleRecyclerAdapter
 import me.apqx.demo.databinding.FragViewBinding
+import me.apqx.demo.mvp.BaseFragment
+import me.apqx.demo.mvp.BasePresenter
+import me.apqx.demo.mvp.IBaseView
 import me.apqx.demo.old.fragment.CusFragmentActivity
 import me.apqx.demo.old.tools.ToastUtil
+import me.apqx.demo.view.HomeFragmentDirections
 
-class ViewFragment : BaseFragment() {
+class TabViewFragment : BaseFragment<BasePresenter<IBaseView>>() {
     private lateinit var binding: FragViewBinding
     private lateinit var simpleAdapter: SimpleRecyclerAdapter
 

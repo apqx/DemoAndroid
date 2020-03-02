@@ -12,9 +12,12 @@ import android.widget.LinearLayout
 import androidx.cardview.widget.CardView
 import kotlinx.android.synthetic.main.frag_add_view.*
 import me.apqx.demo.R
+import me.apqx.demo.mvp.BaseFragment
+import me.apqx.demo.mvp.BasePresenter
+import me.apqx.demo.mvp.IBaseView
 import me.apqx.demo.widget.view.DisplayUtils
 
-class AddViewFragment : BaseFragment() {
+class AddViewFragment : BaseFragment<BasePresenter<IBaseView>>() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.frag_add_view, container, false)
     }

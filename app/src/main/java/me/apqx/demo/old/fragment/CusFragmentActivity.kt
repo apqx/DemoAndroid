@@ -5,15 +5,15 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import kotlinx.android.synthetic.main.activity_fragment.*
 import me.apqx.demo.R
-import me.apqx.demo.view.ComponentFragment
-import me.apqx.demo.view.FragmentOthers
-import me.apqx.demo.view.ViewFragment
+import me.apqx.demo.view.tab.TabComponentFragment
+import me.apqx.demo.view.tab.TabOtherFragment
+import me.apqx.demo.view.tab.TabViewFragment
 
 class CusFragmentActivity : FragmentActivity() {
 
-    private lateinit var componentFragment: ComponentFragment
-    private lateinit var fragmentOthers: FragmentOthers
-    private lateinit var viewFragment: ViewFragment
+    private lateinit var tabComponentFragment: TabComponentFragment
+    private lateinit var tabOtherFragment: TabOtherFragment
+    private lateinit var tabViewFragment: TabViewFragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,27 +46,27 @@ class CusFragmentActivity : FragmentActivity() {
     }
 
     private fun showFragView() {
-        if (!this::viewFragment.isInitialized) {
-            viewFragment = ViewFragment()
+        if (!this::tabViewFragment.isInitialized) {
+            tabViewFragment = TabViewFragment()
         }
-        if (!viewFragment.isResumed)
-            showFragByReplace(viewFragment)
+        if (!tabViewFragment.isResumed)
+            showFragByReplace(tabViewFragment)
     }
 
     private fun showFragComonent() {
-        if (!this::componentFragment.isInitialized) {
-            componentFragment = ComponentFragment()
+        if (!this::tabComponentFragment.isInitialized) {
+            tabComponentFragment = TabComponentFragment()
         }
-        if (!componentFragment.isResumed)
-            showFragByReplace(componentFragment)
+        if (!tabComponentFragment.isResumed)
+            showFragByReplace(tabComponentFragment)
     }
 
     private fun showFragOthers() {
-        if (!this::fragmentOthers.isInitialized) {
-            fragmentOthers = FragmentOthers()
+        if (!this::tabOtherFragment.isInitialized) {
+            tabOtherFragment = TabOtherFragment()
         }
-        if (!fragmentOthers.isResumed)
-            showFragByReplace(fragmentOthers)
+        if (!tabOtherFragment.isResumed)
+            showFragByReplace(tabOtherFragment)
     }
 
 

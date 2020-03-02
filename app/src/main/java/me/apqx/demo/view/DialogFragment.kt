@@ -10,10 +10,13 @@ import android.widget.SeekBar
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.frag_dialog.*
 import me.apqx.demo.R
+import me.apqx.demo.mvp.BaseFragment
+import me.apqx.demo.mvp.BasePresenter
+import me.apqx.demo.mvp.IBaseView
 import me.apqx.demo.old.tools.LogUtil
 import me.apqx.demo.widget.dialog.CusDialogExtend
 
-class DialogFragment: BaseFragment() {
+class DialogFragment: BaseFragment<BasePresenter<IBaseView>>() {
 
     private lateinit var cusDialogExtend: CusDialogExtend
 
@@ -52,9 +55,7 @@ class DialogFragment: BaseFragment() {
 
     private fun showDialogDefault() {
         if (!this::cusDialogExtend.isInitialized) {
-            cusDialogExtend = CusDialogExtend(activity!!, R.style.TransparentDialog)
-            setPositionBottom(cusDialogExtend)
-            setAnim(cusDialogExtend)
+            cusDialogExtend = CusDialogExtend(activity!!)
         }
         if (cusDialogExtend.isShowing) {
             cusDialogExtend.dismiss()
@@ -62,20 +63,6 @@ class DialogFragment: BaseFragment() {
         cusDialogExtend.show()
     }
 
-    private fun setAnim(dialog: Dialog) {
-        dialog.window?.setWindowAnimations(R.style.dialogWindowAnim)
-    }
 
-    /**
-     * 设置Dialog的位置
-     */
-    private fun setPositionBottom(dialog: Dialog) {
-        val window = dialog.window!!
-        val layoutParams = window.attributes
 
-        layoutParams.gravity = Gravity.BOTTOM
-        layoutParams.y = 100
-
-        window.attributes = layoutParams
-    }
 }

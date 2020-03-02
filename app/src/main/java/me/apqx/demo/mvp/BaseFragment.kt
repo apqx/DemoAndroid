@@ -1,4 +1,4 @@
-package me.apqx.demo.view
+package me.apqx.demo.mvp
 
 import android.app.Activity
 import android.content.res.Configuration
@@ -9,7 +9,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import me.apqx.demo.old.tools.LogUtil
 
-abstract class BaseFragment: Fragment(), View.OnClickListener {
+abstract class BaseFragment<P : BasePresenter<*>>: Fragment(), IBaseView, View.OnClickListener {
+
+    protected var presenter: P? = null
 
     override fun onAttach(activity: Activity) {
         LogUtil.i("fragment onAttach ${javaClass.simpleName}")
@@ -23,12 +25,18 @@ abstract class BaseFragment: Fragment(), View.OnClickListener {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         LogUtil.i("fragment onCreateView ${javaClass.simpleName}")
+
         return super.onCreateView(inflater, container, savedInstanceState)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         LogUtil.i("fragment onActivityCreated ${javaClass.simpleName}")
         super.onActivityCreated(savedInstanceState)
+        presenter = initPresenter()
+    }
+
+    protected open fun initPresenter(): P? {
+        return null
     }
 
     override fun onStart() {
@@ -59,6 +67,7 @@ abstract class BaseFragment: Fragment(), View.OnClickListener {
     override fun onDestroy() {
         LogUtil.i("fragment onDestroy ${javaClass.simpleName}")
         super.onDestroy()
+        presenter?.detachView()
     }
 
     override fun onDetach() {

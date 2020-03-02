@@ -12,35 +12,52 @@
         tools:layout="@layout/frag_home">
         <action
             android:id="@+id/action_home_to_dialog"
-            app:destination="@id/fragmentDialog" />
+            app:destination="@id/dialogFragment" />
         <action
             android:id="@+id/action_home_to_Anim"
-            app:destination="@id/fragmentAnim" />
+            app:destination="@id/animFragment" />
         <action
             android:id="@+id/action_home_to_addView"
-            app:destination="@id/fragmentAddView" />
+            app:destination="@id/addViewFragment" />
         <action
             android:id="@+id/action_home_to_text"
-            app:destination="@id/fragmentText" />
+            app:destination="@id/textFragment" />
+        <action
+            android:id="@+id/action_home_to_recycler"
+            app:destination="@id/recyclerFragment" />
+        <action
+            android:id="@+id/action_home_to_notification"
+            app:destination="@id/notificationFragment" />
     </fragment>
     <fragment
-        android:id="@+id/fragmentDialog"
+        android:id="@+id/dialogFragment"
         android:name="me.apqx.demo.view.DialogFragment"
-        android:label="FragmentDialog"
+        android:label="DialogFragment"
         tools:layout="@layout/frag_dialog"/>
     <fragment
-        android:id="@+id/fragmentAnim"
+        android:id="@+id/animFragment"
         android:name="me.apqx.demo.view.AnimFragment"
-        android:label="FragmentAnim"
+        android:label="AnimFragment"
         tools:layout="@layout/frag_anim"/>
     <fragment
-        android:id="@+id/fragmentAddView"
+        android:id="@+id/addViewFragment"
         android:name="me.apqx.demo.view.AddViewFragment"
-        android:label="FragmentAddView"
+        android:label="AddViewFragment"
         tools:layout="@layout/frag_add_view"/>
     <fragment
-        android:id="@+id/fragmentText"
+        android:id="@+id/textFragment"
         android:name="me.apqx.demo.view.TextFragment"
         android:label="TextFragment"
         tools:layout="@layout/frag_text"/>
+    <fragment
+        android:id="@+id/recyclerFragment"
+        android:name="me.apqx.demo.view.recycler.RecyclerFragment"
+        android:label="RecyclerFragment"
+        tools:layout="@layout/frag_recycler"/>
+    <fragment
+        android:id="@+id/notificationFragment"
+        android:name="me.apqx.demo.view.NotificationFragment"
+        android:label="NotificationFragment"
+        tools:layout="@layout/frag_notification"/>
+
 </navigation>
