@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 
 import me.apqx.demo.old.tools.LogUtil;
 
@@ -184,6 +186,35 @@ public class DisplayUtils {
             sb.append("_");
         }
         return sb.toString();
+    }
+
+    /**
+     * 隐藏输入法
+     * @param view 与弹出输入法的View在同一个Window中的其它任何一个View
+     */
+    public static void hideSoftInputKeyboard(View view) {
+        InputMethodManager imm = (InputMethodManager) view.getContext().getSystemService(Activity.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+    }
+
+    /**
+     * 清除该View和其子View的所有EditText的焦点
+     * @param view View或ViewGroup
+     */
+    public static void clearEditFocus(View view) {
+        if (view instanceof ViewGroup) {
+            ViewGroup vg = (ViewGroup) view;
+            for (int i = 0; i < vg.getChildCount(); i++) {
+                clearEditFocus(vg.getChildAt(i));
+            }
+        } else {
+            if (view instanceof EditText) {
+                EditText et = (EditText) view;
+                et.setFocusableInTouchMode(false);
+                et.clearFocus();
+                et.setFocusableInTouchMode(true);
+            }
+        }
     }
 
 }

@@ -12,11 +12,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:background="@color/colorAccent"/>
+        android:background="@color/colorAccent">
+        <Button
+            android:id="@+id/btn_top"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Top"/>
+    </androidx.appcompat.widget.Toolbar>
 
 
     <ScrollView
-        android:id="@+id/scrollView2"
+        android:id="@+id/sv_text"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:fillViewport="true"
@@ -26,12 +32,13 @@
         app:layout_constraintTop_toBottomOf="@id/tb">
 
         <RelativeLayout
+            android:id="@+id/vg_inner_scroll_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <EditText
-                android:id="@+id/editText3"
+                android:id="@+id/et_test"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
@@ -48,10 +55,10 @@
     </ScrollView>
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/btn_bottom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Top"
+        android:text="Bottom"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
