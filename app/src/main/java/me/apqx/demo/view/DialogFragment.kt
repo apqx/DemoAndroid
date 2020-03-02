@@ -6,12 +6,14 @@ import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.frag_dialog.*
 import me.apqx.demo.R
+import me.apqx.demo.mvp.BaseFragment
+import me.apqx.demo.mvp.BasePresenter
+import me.apqx.demo.mvp.IBaseView
 import me.apqx.demo.widget.dialog.CusDialogExtend
 
-class DialogFragment: BaseFragment() {
+class DialogFragment: BaseFragment<BasePresenter<IBaseView>>() {
 
     private lateinit var cusDialogExtend: CusDialogExtend
 

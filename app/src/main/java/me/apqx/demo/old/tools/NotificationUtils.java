@@ -1,4 +1,4 @@
-package me.apqx.demo.old.notification;
+package me.apqx.demo.old.tools;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,20 +12,25 @@ import me.apqx.demo.old.tools.LogUtil;
 
 public class NotificationUtils {
 
+    /**
+     * 通知权限是否开启
+     */
     public static boolean isNotificationEnabled(Context context) {
         boolean isOpened = false;
         try {
             isOpened = NotificationManagerCompat.from(context).areNotificationsEnabled();
         } catch (Exception e) {
             e.printStackTrace();
-            isOpened = false;
         }
-        LogUtil.INSTANCE.d("pushStatus isOpen = " + isOpened);
+        LogUtil.INSTANCE.d("notificationStatus isOpen = " + isOpened);
         return isOpened;
     }
 
+    /**
+     * 跳转到App的通知设置页面
+     */
     public static void goToSet(Context context) {
-        LogUtil.INSTANCE.d("pushStatus goToNotificationSet");
+        LogUtil.INSTANCE.d("goToNotificationSet");
         Intent intent = new Intent();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             // android 8.0引导

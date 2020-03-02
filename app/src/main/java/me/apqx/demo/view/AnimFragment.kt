@@ -3,18 +3,19 @@ package me.apqx.demo.view
 import android.animation.*
 import android.graphics.Color
 import android.graphics.Path
-import android.graphics.drawable.ColorDrawable
 import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.*
-import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.frag_anim.*
 import me.apqx.demo.R
+import me.apqx.demo.mvp.BaseFragment
+import me.apqx.demo.mvp.BasePresenter
+import me.apqx.demo.mvp.IBaseView
 
-class AnimFragment : BaseFragment() {
+class AnimFragment : BaseFragment<BasePresenter<IBaseView>>() {
     private lateinit var objectAnimator: ObjectAnimator
     private lateinit var animation: Animation
 

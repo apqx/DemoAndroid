@@ -5,16 +5,17 @@ import android.text.Editable
 import android.text.SpannableStringBuilder
 import android.text.TextWatcher
 import android.view.LayoutInflater
-import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
 import kotlinx.android.synthetic.main.frag_text.*
 import me.apqx.demo.R
+import me.apqx.demo.mvp.BaseFragment
+import me.apqx.demo.mvp.BasePresenter
+import me.apqx.demo.mvp.IBaseView
 import me.apqx.demo.old.tools.LogUtil
 import me.apqx.demo.widget.view.DisplayUtils
 
-class TextFragment: BaseFragment() {
+class TextFragment: BaseFragment<BasePresenter<IBaseView>>() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.frag_text, container, false)

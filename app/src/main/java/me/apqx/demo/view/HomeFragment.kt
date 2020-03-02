@@ -11,8 +11,11 @@ import androidx.navigation.ui.NavigationUI
 import kotlinx.android.synthetic.main.frag_home.*
 import me.apqx.demo.R
 import me.apqx.demo.databinding.FragHomeBinding
+import me.apqx.demo.mvp.BaseFragment
+import me.apqx.demo.mvp.BasePresenter
+import me.apqx.demo.mvp.IBaseView
 
-class HomeFragment: BaseFragment() {
+class HomeFragment: BaseFragment<BasePresenter<IBaseView>>() {
     private lateinit var fragmentHomeBinding: FragHomeBinding
     private lateinit var navController: NavController
 
