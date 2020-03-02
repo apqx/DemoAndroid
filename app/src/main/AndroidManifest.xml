@@ -50,7 +50,6 @@
         <activity android:name=".old.web.WebActivity" />
         <activity android:name=".old.recycler.RecyclerActivity" />
         <activity android:name=".old.draw.DrawActivity" />
-        <activity android:name=".old.notification.NotificationActivity" />
         <activity android:name=".SecondActivity"
             android:theme="@style/AppTheme.TransparentStatusBar"/>
 

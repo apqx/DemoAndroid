@@ -13,11 +13,11 @@ import android.view.ViewGroup
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import kotlinx.android.synthetic.main.frag_notification.*
+import me.apqx.demo.MainActivity
 import me.apqx.demo.R
 import me.apqx.demo.mvp.BaseFragment
 import me.apqx.demo.mvp.BasePresenter
 import me.apqx.demo.mvp.IBaseView
-import me.apqx.demo.old.notification.NotificationActivity
 import me.apqx.demo.old.tools.NotificationUtils
 import me.apqx.demo.old.tools.LogUtil
 
@@ -52,7 +52,7 @@ class NotificationFragment : BaseFragment<BasePresenter<IBaseView>>() {
         createNotificationChannel(context)
 
         // 设置点击行为 TODO: Deep Link
-        val intent = Intent(context, NotificationActivity::class.java)
+        val intent = Intent(context, MainActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_SINGLE_TOP
         val pendingIntent = PendingIntent.getActivity(context, requestCode, intent, PendingIntent.FLAG_UPDATE_CURRENT)
 
