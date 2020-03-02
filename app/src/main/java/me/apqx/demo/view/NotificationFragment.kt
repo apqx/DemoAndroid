@@ -43,12 +43,12 @@ class NotificationFragment : BaseFragment<BasePresenter<IBaseView>>() {
                     LogUtil.e("没有通知权限")
                     return
                 }
-                showNotification(context!!)
+                showSimpleNotification(context!!)
             }
         }
     }
 
-    private fun showNotification(context: Context) {
+    private fun showSimpleNotification(context: Context) {
         createNotificationChannel(context)
 
         // 设置点击行为 TODO: Deep Link
@@ -57,7 +57,8 @@ class NotificationFragment : BaseFragment<BasePresenter<IBaseView>>() {
         val pendingIntent = PendingIntent.getActivity(context, requestCode, intent, PendingIntent.FLAG_UPDATE_CURRENT)
 
         val builder = NotificationCompat.Builder(context, channelId)
-                .setSmallIcon(R.drawable.ic_launcher_foreground)
+                .setSmallIcon(R.drawable.baseline_expand_more_black_24)
+//                .setLargeIcon(R.mipmap.ic_launcher_round)
                 .setContentTitle("title")
                 .setContentText("content")
                 .setContentIntent(pendingIntent)
@@ -71,6 +72,10 @@ class NotificationFragment : BaseFragment<BasePresenter<IBaseView>>() {
         val notificationManager = NotificationManagerCompat.from(context)
 
         notificationManager.notify(notificationId, builder.build())
+    }
+
+    private fun showHandsUpNotification(context: Context) {
+
     }
 
     /**
