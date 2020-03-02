@@ -112,7 +112,14 @@ public class ListActivity extends Activity {
 
             @Override
             public boolean isItemViewSwipeEnabled() {
+                // 是否支持item滑动
                 return false;
+            }
+
+            @Override
+            public boolean isLongPressDragEnabled() {
+                // 是否支持长按拖拽
+                return true;
             }
         });
 
