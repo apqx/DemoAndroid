@@ -57,7 +57,7 @@ class NotificationFragment : BaseFragment<BasePresenter<IBaseView>>() {
         val pendingIntent = PendingIntent.getActivity(context, requestCode, intent, PendingIntent.FLAG_UPDATE_CURRENT)
 
         val builder = NotificationCompat.Builder(context, channelId)
-                .setSmallIcon(R.drawable.baseline_expand_more_black_24)
+                .setSmallIcon(R.drawable.ic_bottom_navigation)
 //                .setLargeIcon(R.mipmap.ic_launcher_round)
                 .setContentTitle("title")
                 .setContentText("content")
