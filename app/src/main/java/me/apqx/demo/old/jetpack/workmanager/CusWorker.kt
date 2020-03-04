@@ -15,8 +15,8 @@ class CusWorker(val context: Context, workerParameters: WorkerParameters) : Work
         LogUtil.d("doWork done")
         ToastUtil.showToast("doWork done")
         val data = Data.Builder().putString("apqx", "result").build()
-        outputData = data
+//        outputData = data
 
-        return Result.SUCCESS
+        return Result.success()
     }
 }

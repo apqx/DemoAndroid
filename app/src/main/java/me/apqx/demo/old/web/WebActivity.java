@@ -28,7 +28,7 @@ public class WebActivity extends Activity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_web);
+        setContentView(R.layout.activity_web_test);
 //        WebView webView = findViewById(R.id.wv_web);
         ButterKnife.bind(this);
         webView.setWebViewClient(new WebViewClient() {

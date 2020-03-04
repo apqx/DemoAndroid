@@ -30,23 +30,23 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="me.apqx.demo.old.jetpack.JetpackActivity" />
+        <activity android:name=".old.jetpack.JetpackActivity" />
         <activity android:name=".ipc.IpcActivity" />
-        <activity android:name="me.apqx.demo.old.tools.ToolsActivity" />
-        <activity android:name="me.apqx.demo.old.jetpack.databinding.DataBindingActivity" />
-        <activity android:name="me.apqx.demo.old.test.TestActivity" />
-        <activity android:name="me.apqx.demo.old.jetpack.livedata.LiveDataActivity" />
-        <activity android:name="me.apqx.demo.old.jetpack.lifecycle.LifecycleActivity" />
-        <activity android:name="me.apqx.demo.old.jetpack.workmanager.WorkManagerActivity" />
-        <activity android:name="me.apqx.demo.old.mvvm.view.MVVMActivity" />
+        <activity android:name=".old.tools.ToolsActivity" />
+        <activity android:name=".old.jetpack.databinding.DataBindingActivity" />
+        <activity android:name=".old.test.TestActivity" />
+        <activity android:name=".old.jetpack.livedata.LiveDataActivity" />
+        <activity android:name=".old.jetpack.lifecycle.LifecycleActivity" />
+        <activity android:name=".old.jetpack.workmanager.WorkManagerActivity" />
+        <activity android:name=".old.mvvm.view.MVVMActivity" />
         <activity android:name=".widget.WidgetActivity" />
-        <activity android:name="me.apqx.demo.old.service.ServiceActivity" />
-        <activity android:name="me.apqx.demo.old.realm.RealmActivity" />
+        <activity android:name=".old.service.ServiceActivity" />
+        <activity android:name=".old.realm.RealmActivity" />
         <activity android:name=".widget.recycler.RecyclerActivity" />
-        <activity android:name="me.apqx.demo.old.usb.UsbActivity" />
+        <activity android:name=".old.usb.UsbActivity" />
         <activity android:name=".widget.view.RelativeActivity" />
         <activity android:name=".widget.list.ListActivity" />
-        <activity android:name="me.apqx.demo.old.fragment.CusFragmentActivity" />
+        <activity android:name=".old.fragment.CusFragmentActivity" />
         <activity android:name=".old.web.WebActivity" />
         <activity android:name=".old.recycler.RecyclerActivity" />
         <activity android:name=".old.draw.DrawActivity" />

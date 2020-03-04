@@ -54,7 +54,6 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <WebView
-        android:id="@+id/wv_web"
         android:layout_width="344dp"
         android:layout_height="291dp"
         android:layout_marginStart="8dp"

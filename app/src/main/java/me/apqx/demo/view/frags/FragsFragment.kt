@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.frag_fragments.*
 import me.apqx.demo.R
 import me.apqx.demo.mvp.BaseFragment
@@ -11,6 +12,8 @@ import me.apqx.demo.mvp.BasePresenter
 import me.apqx.demo.mvp.IBaseView
 
 class FragsFragment : BaseFragment<BasePresenter<IBaseView>>() {
+    private var flag = 1
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.frag_fragments, container, false)
     }
@@ -27,7 +30,7 @@ class FragsFragment : BaseFragment<BasePresenter<IBaseView>>() {
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.btn_add_fragment -> {
-
+                addFragment()
             }
             R.id.btn_replace_fragment -> {
 
@@ -42,6 +45,16 @@ class FragsFragment : BaseFragment<BasePresenter<IBaseView>>() {
 
             }
         }
+    }
+
+    private fun addFragment() {
+        fragmentManager?.beginTransaction()
+                ?.add(R.id.vg_frag_container, generateFragment())
+                ?.commit()
+    }
+
+    private fun generateFragment(): Fragment {
+        return if (flag++ % 2 == 0) ItemRedFragment() else ItemGreenFragment()
     }
 
     override fun onDestroy() {

@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         navController = findNavController(R.id.frag_nav_host_main)
         DisplayUtils.listViews(window.decorView, 0)
 
-//        DisplayUtils.dealStatusBarTransparent(this)
+        DisplayUtils.setStatusBarTransparent(this)
     }
 
 
