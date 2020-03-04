@@ -73,6 +73,7 @@ android {
     }
 
     flavorDimensions 'version'
+
     productFlavors {
         // 每一个flavor都从defaultConfig中继承属性，并可以进行覆盖
         mi {

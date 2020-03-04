@@ -7,7 +7,9 @@
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary"
+        android:fitsSystemWindows="true">
 
         <!--        AppBarLayout是一个Vertical的LinearLayout，它自带阴影效果-->
         <com.google.android.material.appbar.AppBarLayout

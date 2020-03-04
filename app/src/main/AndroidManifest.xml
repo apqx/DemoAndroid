@@ -23,7 +23,7 @@
         <meta-data android:name="channel" android:value="DEF_CHANNEL"/>
 
         <activity android:name=".MainActivity"
-            android:theme="@style/AppTheme"
+            android:theme="@style/AppTheme.TransparentStatusBar"
             android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -37,7 +37,6 @@
         <activity android:name=".old.test.TestActivity" />
         <activity android:name=".old.jetpack.livedata.LiveDataActivity" />
         <activity android:name=".old.jetpack.lifecycle.LifecycleActivity" />
-        <activity android:name=".old.jetpack.workmanager.WorkManagerActivity" />
         <activity android:name=".old.mvvm.view.MVVMActivity" />
         <activity android:name=".widget.WidgetActivity" />
         <activity android:name=".old.service.ServiceActivity" />

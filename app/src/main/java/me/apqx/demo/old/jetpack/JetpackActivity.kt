@@ -10,7 +10,6 @@ import me.apqx.demo.databinding.ActivityJetpackBinding
 import me.apqx.demo.old.jetpack.databinding.DataBindingActivity
 import me.apqx.demo.old.jetpack.lifecycle.LifecycleActivity
 import me.apqx.demo.old.jetpack.livedata.LiveDataActivity
-import me.apqx.demo.old.jetpack.workmanager.WorkManagerActivity
 
 class JetpackActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,7 +29,6 @@ class JetpackActivity : AppCompatActivity() {
                 startActivity(Intent(this, LiveDataActivity::class.java))
             }
             R.id.btn_workManager -> {
-                startActivity(Intent(this, WorkManagerActivity::class.java))
             }
         }
     }

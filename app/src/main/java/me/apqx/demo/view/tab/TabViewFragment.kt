@@ -32,19 +32,19 @@ class TabViewFragment : BaseFragment<BasePresenter<IBaseView>>() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         // 在Fragment中，使用Toolbar，需要手动设置行为，不能使用Activity的setSupportActionBar()
-        tb_top_bar.setNavigationOnClickListener {
-            ToastUtil.showToast("Click Back")
-        }
-
-        btn_expand_top.setOnClickListener(this)
-
-        btn_fragment.setOnClickListener(this)
-        btn_second_activity.setOnClickListener(this)
-        btn_dialog.setOnClickListener(this)
-        btn_anim.setOnClickListener(this)
-        btn_add_view.setOnClickListener(this)
-        btn_toggle_loading.setOnClickListener(this)
-        btn_text.setOnClickListener(this)
+//        tb_top_bar.setNavigationOnClickListener {
+//            ToastUtil.showToast("Click Back")
+//        }
+//
+//        btn_expand_top.setOnClickListener(this)
+//
+//        btn_fragment.setOnClickListener(this)
+//        btn_second_activity.setOnClickListener(this)
+//        btn_dialog.setOnClickListener(this)
+//        btn_anim.setOnClickListener(this)
+//        btn_add_view.setOnClickListener(this)
+//        btn_toggle_loading.setOnClickListener(this)
+//        btn_text.setOnClickListener(this)
 
         simpleAdapter = SimpleRecyclerAdapter()
         simpleAdapter.setOnItemClickListener(object : SimpleRecyclerAdapter.OnItemClickListener {
