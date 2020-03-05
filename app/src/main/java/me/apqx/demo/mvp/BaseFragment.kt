@@ -92,6 +92,11 @@ abstract class BaseFragment<P : BasePresenter<*>>: Fragment(), IBaseView, View.O
         super.onViewStateRestored(savedInstanceState)
     }
 
+    override fun onHiddenChanged(hidden: Boolean) {
+        LogUtil.i("fragment onHiddenChanged ${javaClass.simpleName} hidden = $hidden")
+        super.onHiddenChanged(hidden)
+    }
+
     override fun onSaveInstanceState(outState: Bundle) {
         LogUtil.i("fragment onSaveInstanceState ${javaClass.simpleName}")
         super.onSaveInstanceState(outState)

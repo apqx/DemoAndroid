@@ -28,6 +28,9 @@
         <action
             android:id="@+id/action_home_to_notification"
             app:destination="@id/notificationFragment" />
+        <action
+            android:id="@+id/action_home_to_frags"
+            app:destination="@id/fragsFragment" />
     </fragment>
     <fragment
         android:id="@+id/dialogFragment"
@@ -59,5 +62,10 @@
         android:name="me.apqx.demo.view.NotificationFragment"
         android:label="NotificationFragment"
         tools:layout="@layout/frag_notification"/>
+    <fragment
+        android:id="@+id/fragsFragment"
+        android:name="me.apqx.demo.view.frags.FragsFragment"
+        android:label="FragsFragment"
+        tools:layout="@layout/frag_fragments"/>
 
 </navigation>

@@ -17,34 +17,42 @@ import me.apqx.demo.mvp.BaseFragment
 import me.apqx.demo.mvp.BasePresenter
 import me.apqx.demo.mvp.IBaseView
 import me.apqx.demo.old.fragment.CusFragmentActivity
+import me.apqx.demo.old.tools.LogUtil
 import me.apqx.demo.old.tools.ToastUtil
 import me.apqx.demo.view.HomeFragmentDirections
 
 class TabViewFragment : BaseFragment<BasePresenter<IBaseView>>() {
     private lateinit var binding: FragViewBinding
     private lateinit var simpleAdapter: SimpleRecyclerAdapter
+    private lateinit var savedView: View
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        LogUtil.d("TabViewFragment savedView = " + this::savedView.isInitialized)
         binding = DataBindingUtil.inflate(inflater, R.layout.frag_view, container, false)
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        savedView = view
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         // 在Fragment中，使用Toolbar，需要手动设置行为，不能使用Activity的setSupportActionBar()
-//        tb_top_bar.setNavigationOnClickListener {
-//            ToastUtil.showToast("Click Back")
-//        }
-//
-//        btn_expand_top.setOnClickListener(this)
-//
-//        btn_fragment.setOnClickListener(this)
-//        btn_second_activity.setOnClickListener(this)
-//        btn_dialog.setOnClickListener(this)
-//        btn_anim.setOnClickListener(this)
-//        btn_add_view.setOnClickListener(this)
-//        btn_toggle_loading.setOnClickListener(this)
-//        btn_text.setOnClickListener(this)
+        tb_top_bar.setNavigationOnClickListener {
+            ToastUtil.showToast("Click Back")
+        }
+
+        btn_expand_top.setOnClickListener(this)
+
+        btn_fragment.setOnClickListener(this)
+        btn_second_activity.setOnClickListener(this)
+        btn_dialog.setOnClickListener(this)
+        btn_anim.setOnClickListener(this)
+        btn_add_view.setOnClickListener(this)
+        btn_toggle_loading.setOnClickListener(this)
+        btn_text.setOnClickListener(this)
 
         simpleAdapter = SimpleRecyclerAdapter()
         simpleAdapter.setOnItemClickListener(object : SimpleRecyclerAdapter.OnItemClickListener {
@@ -74,7 +82,7 @@ class TabViewFragment : BaseFragment<BasePresenter<IBaseView>>() {
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.btn_fragment -> {
-                startActivity(Intent(activity, CusFragmentActivity::class.java))
+                (activity as MainActivity).navController.navigate(HomeFragmentDirections.actionHomeToFrags())
             }
             R.id.btn_second_activity -> {
                 startActivity(Intent(activity, SecondActivity::class.java))

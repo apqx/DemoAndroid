@@ -19,7 +19,6 @@ class SimpleRecyclerAdapter: RecyclerView.Adapter<SimpleRecyclerAdapter.CusViewH
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CusViewHolder {
-        LogUtil.d("onCreateViewHolder")
         return CusViewHolder(LayoutInflater.from(parent.context).inflate(android.R.layout.simple_list_item_1, parent, false))
     }
 
@@ -28,7 +27,6 @@ class SimpleRecyclerAdapter: RecyclerView.Adapter<SimpleRecyclerAdapter.CusViewH
     }
 
     override fun onBindViewHolder(holder: CusViewHolder, position: Int) {
-        LogUtil.d("onBindViewHolder $position")
         holder.bindView(list[position])
     }
 
