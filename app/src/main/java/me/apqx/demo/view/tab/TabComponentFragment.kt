@@ -11,11 +11,19 @@ import me.apqx.demo.mvp.BaseFragment
 import me.apqx.demo.mvp.BasePresenter
 import me.apqx.demo.mvp.IBaseView
 import me.apqx.demo.view.HomeFragmentDirections
+import java.lang.ref.SoftReference
 
 class TabComponentFragment: BaseFragment<BasePresenter<IBaseView>>() {
 
+    private lateinit var viewSoftReference: SoftReference<View>
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.frag_component, container, false)
+        if (this::viewSoftReference.isInitialized && viewSoftReference.get() != null) {
+            return viewSoftReference.get()
+        }
+        val itemView = inflater.inflate(R.layout.frag_component, container, false)
+        viewSoftReference = SoftReference(itemView)
+        return itemView
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

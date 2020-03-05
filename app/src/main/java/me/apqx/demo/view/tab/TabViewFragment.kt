@@ -20,15 +20,22 @@ import me.apqx.demo.old.fragment.CusFragmentActivity
 import me.apqx.demo.old.tools.LogUtil
 import me.apqx.demo.old.tools.ToastUtil
 import me.apqx.demo.view.HomeFragmentDirections
+import java.lang.ref.SoftReference
 
 class TabViewFragment : BaseFragment<BasePresenter<IBaseView>>() {
     private lateinit var binding: FragViewBinding
     private lateinit var simpleAdapter: SimpleRecyclerAdapter
     private lateinit var savedView: View
 
+    private lateinit var viewSoftReference: SoftReference<View>
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        if (this::viewSoftReference.isInitialized && viewSoftReference.get() != null) {
+            return viewSoftReference.get()
+        }
         LogUtil.d("TabViewFragment savedView = " + this::savedView.isInitialized)
         binding = DataBindingUtil.inflate(inflater, R.layout.frag_view, container, false)
+        viewSoftReference = SoftReference(binding.root)
         return binding.root
     }
 

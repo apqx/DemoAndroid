@@ -30,6 +30,8 @@ class FragsFragment : BaseFragment<BasePresenter<IBaseView>>() {
         btn_replace_fragment.setOnClickListener(this)
         btn_show_fragment.setOnClickListener(this)
         btn_remove_fragment.setOnClickListener(this)
+
+        LogUtil.d("FragsFragment fragList.size = ${fragList.size}")
     }
 
     override fun onClick(v: View?) {

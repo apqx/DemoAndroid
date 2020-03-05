@@ -14,14 +14,21 @@ import me.apqx.demo.databinding.FragHomeBinding
 import me.apqx.demo.mvp.BaseFragment
 import me.apqx.demo.mvp.BasePresenter
 import me.apqx.demo.mvp.IBaseView
+import java.lang.ref.SoftReference
 
 class HomeFragment: BaseFragment<BasePresenter<IBaseView>>() {
     private lateinit var fragmentHomeBinding: FragHomeBinding
     private lateinit var navController: NavController
 
+    private lateinit var viewSoftReference: SoftReference<View>
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        if (this::viewSoftReference.isInitialized && viewSoftReference.get() != null) {
+            return viewSoftReference.get()
+        }
         fragmentHomeBinding = DataBindingUtil.inflate(inflater, R.layout.frag_home, container, false)
         // <fragment>标签其实是一个FrameLayout，也即是这里的Container，即，Fragment的View被插入到了它要被FragmentManager操作的那个ViewGroup里面
+        viewSoftReference = SoftReference(fragmentHomeBinding.root)
         return fragmentHomeBinding.root
     }
 
