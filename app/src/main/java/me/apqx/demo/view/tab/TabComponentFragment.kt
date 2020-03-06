@@ -18,9 +18,9 @@ class TabComponentFragment: BaseFragment<BasePresenter<IBaseView>>() {
     private lateinit var viewSoftReference: SoftReference<View>
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        if (this::viewSoftReference.isInitialized && viewSoftReference.get() != null) {
-            return viewSoftReference.get()
-        }
+//        if (this::viewSoftReference.isInitialized && viewSoftReference.get() != null) {
+//            return viewSoftReference.get()
+//        }
         val itemView = inflater.inflate(R.layout.frag_component, container, false)
         viewSoftReference = SoftReference(itemView)
         return itemView
@@ -30,6 +30,7 @@ class TabComponentFragment: BaseFragment<BasePresenter<IBaseView>>() {
         super.onActivityCreated(savedInstanceState)
         btn_recycler.setOnClickListener(this)
         btn_notification.setOnClickListener(this)
+        btn_mvvm.setOnClickListener(this)
     }
 
 
@@ -41,6 +42,9 @@ class TabComponentFragment: BaseFragment<BasePresenter<IBaseView>>() {
             }
             R.id.btn_notification -> {
                 (activity as MainActivity).navController.navigate(HomeFragmentDirections.actionHomeToNotification())
+            }
+            R.id.btn_mvvm -> {
+                (activity as MainActivity).navController.navigate(HomeFragmentDirections.actionHomeToMvvm())
             }
         }
     }

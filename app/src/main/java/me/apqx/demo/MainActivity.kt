@@ -2,13 +2,17 @@ package me.apqx.demo
 
 import android.os.Bundle
 import android.view.View
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import me.apqx.demo.databinding.ActivityMainBinding
+import me.apqx.demo.mvvm.viewmodels.DemoViewModel
 import me.apqx.demo.old.tools.LogUtil
+import me.apqx.demo.old.tools.ToastUtil
 import me.apqx.demo.widget.dialog.LoadingDialog
 import me.apqx.demo.widget.view.DisplayUtils
 import org.greenrobot.eventbus.EventBus

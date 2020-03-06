@@ -31,6 +31,9 @@
         <action
             android:id="@+id/action_home_to_frags"
             app:destination="@id/fragsFragment" />
+        <action
+            android:id="@+id/action_home_to_mvvm"
+            app:destination="@id/mvvmFragment" />
     </fragment>
     <fragment
         android:id="@+id/dialogFragment"
@@ -67,5 +70,10 @@
         android:name="me.apqx.demo.view.frags.FragsFragment"
         android:label="FragsFragment"
         tools:layout="@layout/frag_fragments"/>
+    <fragment
+        android:id="@+id/mvvmFragment"
+        android:name="me.apqx.demo.mvvm.views.MvvmFragment"
+        android:label="MvvmFragment"
+        tools:layout="@layout/frag_mvvm"/>
 
 </navigation>

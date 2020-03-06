@@ -23,9 +23,9 @@ class HomeFragment: BaseFragment<BasePresenter<IBaseView>>() {
     private lateinit var viewSoftReference: SoftReference<View>
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        if (this::viewSoftReference.isInitialized && viewSoftReference.get() != null) {
-            return viewSoftReference.get()
-        }
+//        if (this::viewSoftReference.isInitialized && viewSoftReference.get() != null) {
+//            return viewSoftReference.get()
+//        }
         fragmentHomeBinding = DataBindingUtil.inflate(inflater, R.layout.frag_home, container, false)
         // <fragment>标签其实是一个FrameLayout，也即是这里的Container，即，Fragment的View被插入到了它要被FragmentManager操作的那个ViewGroup里面
         viewSoftReference = SoftReference(fragmentHomeBinding.root)

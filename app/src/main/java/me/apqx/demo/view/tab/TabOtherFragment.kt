@@ -15,9 +15,9 @@ class TabOtherFragment: BaseFragment<BasePresenter<IBaseView>>() {
     private lateinit var viewSoftReference: SoftReference<View>
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        if (this::viewSoftReference.isInitialized && viewSoftReference.get() != null) {
-            return viewSoftReference.get()
-        }
+//        if (this::viewSoftReference.isInitialized && viewSoftReference.get() != null) {
+//            return viewSoftReference.get()
+//        }
         val itemView = inflater.inflate(R.layout.frag_others, container, false)
         viewSoftReference = SoftReference(itemView)
         return itemView

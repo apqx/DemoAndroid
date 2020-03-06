@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.frag_view.*
 import me.apqx.demo.MainActivity
@@ -16,6 +18,7 @@ import me.apqx.demo.databinding.FragViewBinding
 import me.apqx.demo.mvp.BaseFragment
 import me.apqx.demo.mvp.BasePresenter
 import me.apqx.demo.mvp.IBaseView
+import me.apqx.demo.mvvm.viewmodels.DemoViewModel
 import me.apqx.demo.old.fragment.CusFragmentActivity
 import me.apqx.demo.old.tools.LogUtil
 import me.apqx.demo.old.tools.ToastUtil
@@ -25,15 +28,13 @@ import java.lang.ref.SoftReference
 class TabViewFragment : BaseFragment<BasePresenter<IBaseView>>() {
     private lateinit var binding: FragViewBinding
     private lateinit var simpleAdapter: SimpleRecyclerAdapter
-    private lateinit var savedView: View
 
     private lateinit var viewSoftReference: SoftReference<View>
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        if (this::viewSoftReference.isInitialized && viewSoftReference.get() != null) {
-            return viewSoftReference.get()
-        }
-        LogUtil.d("TabViewFragment savedView = " + this::savedView.isInitialized)
+//        if (this::viewSoftReference.isInitialized && viewSoftReference.get() != null) {
+//            return viewSoftReference.get()
+//        }
         binding = DataBindingUtil.inflate(inflater, R.layout.frag_view, container, false)
         viewSoftReference = SoftReference(binding.root)
         return binding.root
@@ -41,7 +42,10 @@ class TabViewFragment : BaseFragment<BasePresenter<IBaseView>>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        savedView = view
+        val model: DemoViewModel by viewModels()
+        model.strList.observe(this, Observer {
+            ToastUtil.showToast("TabView LiveData $it")
+        })
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
