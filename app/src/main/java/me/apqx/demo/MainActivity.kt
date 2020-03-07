@@ -7,8 +7,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.navigation.NavController
+import androidx.navigation.NavDestination
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.NavigationUI
+import kotlinx.android.synthetic.main.activity_main.*
 import me.apqx.demo.databinding.ActivityMainBinding
 import me.apqx.demo.mvvm.viewmodels.DemoViewModel
 import me.apqx.demo.old.tools.LogUtil
@@ -29,6 +32,17 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         dataBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         navController = findNavController(R.id.frag_nav_host_main)
+        navController.addOnDestinationChangedListener { controller, destination, arguments ->
+            when (destination.id) {
+                R.id.tabViewFragment, R.id.tabComponentFragment, R.id.tabOtherFragment -> {
+                    bnv_tab.visibility = View.VISIBLE
+                }
+                else -> {
+                    bnv_tab.visibility = View.GONE
+                }
+            }
+        }
+        NavigationUI.setupWithNavController(bnv_tab, navController)
         DisplayUtils.listViews(window.decorView, 0)
 
         DisplayUtils.setStatusBarTransparent(this)

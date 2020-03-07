@@ -7,6 +7,7 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import kotlinx.android.synthetic.main.frag_text.*
 import me.apqx.demo.R
 import me.apqx.demo.mvp.BaseFragment
@@ -24,6 +25,7 @@ class TextFragment: BaseFragment<BasePresenter<IBaseView>>() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         btn_top.setOnClickListener(this)
+        btn_bottom.setOnClickListener(this)
 
         vg_inner_scroll_text.setOnClickListener(this)
 
@@ -49,8 +51,14 @@ class TextFragment: BaseFragment<BasePresenter<IBaseView>>() {
                 DisplayUtils.clearEditFocus(v)
             }
 
+            R.id.btn_bottom -> {
+                findNavController().navigate(TextFragmentDirections.actionTextFragmentToTabViewFragment())
+            }
+
             R.id.btn_top -> {
                 et_test.text = SpannableStringBuilder("${et_test.text} 1")
+                // 启动自己的新实例
+                findNavController().navigate(TextFragmentDirections.actionTextFragmentSelf())
             }
         }
 

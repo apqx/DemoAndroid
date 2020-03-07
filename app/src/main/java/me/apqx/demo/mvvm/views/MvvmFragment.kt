@@ -1,18 +1,23 @@
 package me.apqx.demo.mvvm.views
 
 import android.os.Bundle
+import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.frag_mvvm.*
 import me.apqx.demo.R
 import me.apqx.demo.mvp.BaseFragment
 import me.apqx.demo.mvp.BasePresenter
 import me.apqx.demo.mvp.IBaseView
+import me.apqx.demo.mvvm.adapter.MvvmRecyclerAdapter
+import me.apqx.demo.mvvm.data.Student
 import me.apqx.demo.mvvm.viewmodels.DemoViewModel
 import me.apqx.demo.old.tools.LogUtil
+import me.apqx.demo.old.tools.ToastUtil
 
 class MvvmFragment : BaseFragment<BasePresenter<IBaseView>>() {
 
@@ -25,18 +30,45 @@ class MvvmFragment : BaseFragment<BasePresenter<IBaseView>>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         btn_mvvm_change.setOnClickListener(this)
-
-        model.strList.observe(this, Observer {
-            LogUtil.d("MvvmFragment notifyData $it")
-            if (it.isNotEmpty())
-                tv_mvvm_hint.text = it[0]
+        srl_mvvm.setOnRefreshListener {
+            model.loadMoreStudent()
+        }
+        val adapter = MvvmRecyclerAdapter()
+        rv_mvvm.adapter = adapter
+        rv_mvvm.layoutManager = LinearLayoutManager(requireContext())
+        model.studentList.observe(viewLifecycleOwner, Observer {
+            LogUtil.d("MvvmFragment notifyData studentList $it")
+            adapter.submitList(it)
         })
+        // 监听刷新状态
+        model.loadingState.observe(viewLifecycleOwner, Observer {
+            LogUtil.d("MvvmFragment notifyData loadingState $it")
+            srl_mvvm.isRefreshing = it
+        })
+        // 监听UI要展示的错误信息
+        model.errorInfo.observe(viewLifecycleOwner, Observer {
+            LogUtil.d("MvvmFragment notifyData errorInfo $it")
+            if (TextUtils.isEmpty(it)) return@Observer
+            ToastUtil.showToast(it)
+            model.errorInfo.value = ""
+        })
+
+//        adapter.submitList(generateList())
+
+    }
+
+    private fun generateList(): MutableList<Student>? {
+        val list = ArrayList<Student>()
+        for (i in 0 until 30) {
+            list.add(Student(i, "Tom_$i"))
+        }
+        return list
     }
 
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.btn_mvvm_change -> {
-                model.loadStrList()
+                model.loadMoreStudent()
             }
         }
     }

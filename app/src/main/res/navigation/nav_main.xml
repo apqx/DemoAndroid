@@ -3,38 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_main"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/tabViewFragment">
 
-    <fragment
-        android:id="@+id/homeFragment"
-        android:name="me.apqx.demo.view.HomeFragment"
-        android:label="FragmentHome"
-        tools:layout="@layout/frag_home">
-        <action
-            android:id="@+id/action_home_to_dialog"
-            app:destination="@id/dialogFragment" />
-        <action
-            android:id="@+id/action_home_to_Anim"
-            app:destination="@id/animFragment" />
-        <action
-            android:id="@+id/action_home_to_addView"
-            app:destination="@id/addViewFragment" />
-        <action
-            android:id="@+id/action_home_to_text"
-            app:destination="@id/textFragment" />
-        <action
-            android:id="@+id/action_home_to_recycler"
-            app:destination="@id/recyclerFragment" />
-        <action
-            android:id="@+id/action_home_to_notification"
-            app:destination="@id/notificationFragment" />
-        <action
-            android:id="@+id/action_home_to_frags"
-            app:destination="@id/fragsFragment" />
-        <action
-            android:id="@+id/action_home_to_mvvm"
-            app:destination="@id/mvvmFragment" />
-    </fragment>
     <fragment
         android:id="@+id/dialogFragment"
         android:name="me.apqx.demo.view.DialogFragment"
@@ -54,7 +24,17 @@
         android:id="@+id/textFragment"
         android:name="me.apqx.demo.view.TextFragment"
         android:label="TextFragment"
-        tools:layout="@layout/frag_text"/>
+        tools:layout="@layout/frag_text">
+<!--        singleTop，如果要启动的Fragment处于栈顶，则确实会创建新的Fragment处于栈顶
+，旧的Fragment会被直接Remove，不会押入返回站，即栈顶只有最新的那个Fragment实例，View当然也会刷新-->
+        <action
+            android:id="@+id/action_textFragment_self"
+            app:destination="@id/textFragment"
+            app:launchSingleTop="false" />
+        <action
+            android:id="@+id/action_textFragment_to_tabViewFragment"
+            app:destination="@id/tabViewFragment" />
+    </fragment>
     <fragment
         android:id="@+id/recyclerFragment"
         android:name="me.apqx.demo.view.recycler.RecyclerFragment"
@@ -75,5 +55,70 @@
         android:name="me.apqx.demo.mvvm.views.MvvmFragment"
         android:label="MvvmFragment"
         tools:layout="@layout/frag_mvvm"/>
+    <fragment
+        android:id="@+id/tabViewFragment"
+        android:name="me.apqx.demo.view.tab.TabViewFragment"
+        android:label="TabViewFragment"
+        tools:layout="@layout/frag_view">
+        <action
+            android:id="@+id/action_tabViewFragment_to_dialogFragment"
+            app:destination="@id/dialogFragment"
+            app:enterAnim="@anim/dialog_enter"
+            app:popExitAnim="@anim/dialog_exit" />
+        <action
+            android:id="@+id/action_tabViewFragment_to_animFragment"
+            app:destination="@id/animFragment"
+            app:enterAnim="@anim/dialog_enter"
+            app:popExitAnim="@anim/dialog_exit" />
+        <action
+            android:id="@+id/action_tabViewFragment_to_addViewFragment"
+            app:destination="@id/addViewFragment"
+            app:enterAnim="@anim/dialog_enter"
+            app:popExitAnim="@anim/dialog_exit"  />
+        <action
+            android:id="@+id/action_tabViewFragment_to_fragsFragment"
+            app:destination="@id/fragsFragment"
+            app:enterAnim="@anim/dialog_enter"
+            app:popExitAnim="@anim/dialog_exit"/>
+        <action
+            android:id="@+id/action_tabViewFragment_to_textFragment"
+            app:destination="@id/textFragment"
+            app:enterAnim="@anim/dialog_enter"
+            app:popExitAnim="@anim/dialog_exit"  />
+        <action
+            android:id="@+id/action_tabViewFragment_to_tabOtherFragment"
+            app:destination="@id/tabOtherFragment"
+            app:launchSingleTop="true" />
+        <action
+            android:id="@+id/action_tabViewFragment_to_tabComponentFragment"
+            app:destination="@id/tabComponentFragment"
+            app:launchSingleTop="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/tabComponentFragment"
+        android:name="me.apqx.demo.view.tab.TabComponentFragment"
+        android:label="TabComponentFragment"
+        tools:layout="@layout/frag_component">
+        <action
+            android:id="@+id/action_tabComponentFragment_to_notificationFragment"
+            app:destination="@id/notificationFragment"
+            app:enterAnim="@anim/dialog_enter"
+            app:popExitAnim="@anim/dialog_exit"/>
+        <action
+            android:id="@+id/action_tabComponentFragment_to_recyclerFragment"
+            app:destination="@id/recyclerFragment"
+            app:enterAnim="@anim/dialog_enter"
+            app:popExitAnim="@anim/dialog_exit" />
+        <action
+            android:id="@+id/action_tabComponentFragment_to_mvvmFragment"
+            app:destination="@id/mvvmFragment"
+            app:enterAnim="@anim/dialog_enter"
+            app:popExitAnim="@anim/dialog_exit"/>
+    </fragment>
+    <fragment
+        android:id="@+id/tabOtherFragment"
+        android:name="me.apqx.demo.view.tab.TabOtherFragment"
+        android:label="TabOtherFragment"
+        tools:layout="@layout/frag_others"/>
 
 </navigation>

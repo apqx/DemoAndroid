@@ -4,13 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import kotlinx.android.synthetic.main.frag_component.*
 import me.apqx.demo.MainActivity
 import me.apqx.demo.R
 import me.apqx.demo.mvp.BaseFragment
 import me.apqx.demo.mvp.BasePresenter
 import me.apqx.demo.mvp.IBaseView
-import me.apqx.demo.view.HomeFragmentDirections
 import java.lang.ref.SoftReference
 
 class TabComponentFragment: BaseFragment<BasePresenter<IBaseView>>() {
@@ -38,13 +38,13 @@ class TabComponentFragment: BaseFragment<BasePresenter<IBaseView>>() {
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.btn_recycler -> {
-                (activity as MainActivity).navController.navigate(HomeFragmentDirections.actionHomeToRecycler())
+                findNavController().navigate(TabComponentFragmentDirections.actionTabComponentFragmentToRecyclerFragment())
             }
             R.id.btn_notification -> {
-                (activity as MainActivity).navController.navigate(HomeFragmentDirections.actionHomeToNotification())
+                findNavController().navigate(TabComponentFragmentDirections.actionTabComponentFragmentToNotificationFragment())
             }
             R.id.btn_mvvm -> {
-                (activity as MainActivity).navController.navigate(HomeFragmentDirections.actionHomeToMvvm())
+                findNavController().navigate(TabComponentFragmentDirections.actionTabComponentFragmentToMvvmFragment())
             }
         }
     }

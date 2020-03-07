@@ -33,7 +33,7 @@
             tools:srcCompat="@tools:sample/avatars" />
 
         <TextView
-            android:id="@+id/tv_name"
+            android:id="@+id/tv_student_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
@@ -45,12 +45,12 @@
             app:layout_constraintTop_toTopOf="@+id/iv_head" />
 
         <TextView
-            android:id="@+id/tv_age"
+            android:id="@+id/tv_student_age"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:text="@{String.valueOf(student.age), default = 18}"
             app:layout_constraintBottom_toBottomOf="@+id/iv_head"
-            app:layout_constraintStart_toStartOf="@+id/tv_name"/>
+            app:layout_constraintStart_toStartOf="@+id/tv_student_name"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

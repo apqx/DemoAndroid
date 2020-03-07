@@ -29,11 +29,11 @@ class CusFragmentActivity : FragmentActivity() {
     private fun initListener() {
         bottomNavigationView.setOnNavigationItemSelectedListener {
             when (it.itemId) {
-                R.id.view -> {
+                R.id.tabViewFragment -> {
                     showFragView()
                     true
                 }
-                R.id.component -> {
+                R.id.tabComponentFragment -> {
                     showFragComonent()
                     true
                 }

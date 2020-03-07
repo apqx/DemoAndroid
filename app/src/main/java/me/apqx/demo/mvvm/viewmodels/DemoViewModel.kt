@@ -1,43 +1,57 @@
 package me.apqx.demo.mvvm.viewmodels
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import io.reactivex.Observable
-import io.reactivex.ObservableOnSubscribe
-import io.reactivex.Observer
-import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
-import io.reactivex.functions.Consumer
-import io.reactivex.schedulers.Schedulers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import me.apqx.demo.mvvm.data.Student
+import me.apqx.demo.mvvm.data.StudentRepository
 import me.apqx.demo.old.tools.LogUtil
+import java.util.Collections.addAll
 
 class DemoViewModel : ViewModel() {
-    var disposable: Disposable? = null
+    private val repository = StudentRepository()
+    private var job: Job? = null
 
-    val strList: MutableLiveData<List<String>> by lazy {
-        MutableLiveData<List<String>>().also {
-            loadStrList()
+    val loadingState: MutableLiveData<Boolean> = MutableLiveData()
+    val errorInfo: MutableLiveData<String> = MutableLiveData()
+
+    // 懒加载
+    val studentList: MutableLiveData<List<Student>> by lazy {
+        MutableLiveData<List<Student>>().also {
+            // 这里是懒加载，不能在当前线程中，直接访问studentList对象，因为它还没有加载完成，会造成无限递归
+            loadMoreStudent()
         }
     }
 
-    fun loadStrList() {
-        LogUtil.d("DemoViewModel loadStrList")
-        if (disposable != null && disposable?.isDisposed == false) {
-            disposable?.dispose()
-        }
-        disposable = Observable.create(ObservableOnSubscribe<Long> {
-            it.onNext(System.currentTimeMillis())
-        }).subscribeOn(Schedulers.computation())
-                .subscribe({
-                    LogUtil.d("DemoViewModel loadStrList done $it")
-                    // 必须在主线程中调用
-//                    strList.value = arrayListOf("$it")
-//                     在任意线程中调用，会被发送到主线程
-                    strList.postValue(arrayListOf("$it"))
-                }, {
-                    it.printStackTrace()
+    fun loadMoreStudent() {
+        // 在上一个任务完成后再执行新任务
+        LogUtil.d("job.isComplete = ${job?.isCompleted}")
+        if (job == null || job?.isCompleted == true) {
+            job = GlobalScope.launch {
+                loadingState.postValue(true)
+                studentList.postValue(repository.loadStudent(10, studentList.value?.size ?: 0).apply {
+                    val tempList = ArrayList<Student>(studentList.value ?: ArrayList<Student>(0))
+                    tempList.addAll(this)
+                    clear()
+                    addAll(tempList)
+                    wait()
                 })
+                loadingState.postValue(false)
+            }
+        } else {
+            errorInfo.postValue("正在加载")
+        }
+    }
+
+    /**
+     * 耗时操作，只可以在协程中使用，避免阻塞主线程
+     */
+    private suspend fun wait() {
+        delay(2000)
     }
 
 }

@@ -22,8 +22,8 @@ class MVVMActivity : AppCompatActivity() {
         studentViewMode = ViewModelProviders.of(this).get(StudentViewModel::class.java)
         studentViewMode.studentLiveData.observe(this, Observer<Student> { t ->
             LogUtil.d("update $t")
-            dataBinding.tvName.text = t.name
-            dataBinding.tvAge.text = t.age.toString()
+            dataBinding.tvStudentName.text = t.name
+            dataBinding.tvStudentAge.text = t.age.toString()
         })
     }
 

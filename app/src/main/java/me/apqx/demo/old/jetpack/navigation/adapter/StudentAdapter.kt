@@ -25,9 +25,9 @@ class StudentAdapter(val list: List<Student>) : RecyclerView.Adapter<StudentAdap
 
     inner class CusViewHolder(val itemStudentBinding: ItemStudentBinding?) : RecyclerView.ViewHolder(itemStudentBinding!!.root) {
         fun setStudent(student: Student) {
-            itemStudentBinding!!.tvName.text = student.name
-            itemStudentBinding!!.tvAge.text = student.age.toString()
-            itemStudentBinding!!.imageView.setImageResource(R.mipmap.ic_launcher_round)
+            itemStudentBinding!!.tvStudentName.text = student.name
+            itemStudentBinding!!.tvStudentAge.text = student.age.toString()
+            itemStudentBinding!!.ivStudentHead.setImageResource(R.mipmap.ic_launcher_round)
         }
 
     }

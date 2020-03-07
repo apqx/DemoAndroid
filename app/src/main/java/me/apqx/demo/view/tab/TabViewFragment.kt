@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.frag_view.*
 import me.apqx.demo.MainActivity
@@ -19,10 +20,7 @@ import me.apqx.demo.mvp.BaseFragment
 import me.apqx.demo.mvp.BasePresenter
 import me.apqx.demo.mvp.IBaseView
 import me.apqx.demo.mvvm.viewmodels.DemoViewModel
-import me.apqx.demo.old.fragment.CusFragmentActivity
-import me.apqx.demo.old.tools.LogUtil
 import me.apqx.demo.old.tools.ToastUtil
-import me.apqx.demo.view.HomeFragmentDirections
 import java.lang.ref.SoftReference
 
 class TabViewFragment : BaseFragment<BasePresenter<IBaseView>>() {
@@ -43,8 +41,8 @@ class TabViewFragment : BaseFragment<BasePresenter<IBaseView>>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val model: DemoViewModel by viewModels()
-        model.strList.observe(this, Observer {
-            ToastUtil.showToast("TabView LiveData $it")
+        model.studentList.observe(viewLifecycleOwner, Observer {
+//            ToastUtil.showToast("TabView LiveData $it")
         })
     }
 
@@ -93,19 +91,19 @@ class TabViewFragment : BaseFragment<BasePresenter<IBaseView>>() {
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.btn_fragment -> {
-                (activity as MainActivity).navController.navigate(HomeFragmentDirections.actionHomeToFrags())
+                findNavController().navigate(TabViewFragmentDirections.actionTabViewFragmentToFragsFragment())
             }
             R.id.btn_second_activity -> {
                 startActivity(Intent(activity, SecondActivity::class.java))
             }
             R.id.btn_dialog -> {
-                (activity as MainActivity).navController.navigate(HomeFragmentDirections.actionHomeToDialog())
+                findNavController().navigate(TabViewFragmentDirections.actionTabViewFragmentToDialogFragment())
             }
             R.id.btn_anim -> {
-                (activity as MainActivity).navController.navigate(HomeFragmentDirections.actionHomeToAnim())
+                findNavController().navigate(TabViewFragmentDirections.actionTabViewFragmentToAnimFragment())
             }
             R.id.btn_add_view -> {
-                (activity as MainActivity).navController.navigate(HomeFragmentDirections.actionHomeToAddView())
+                findNavController().navigate(TabViewFragmentDirections.actionTabViewFragmentToAddViewFragment())
             }
             R.id.btn_toggle_loading -> {
                 if ((activity as MainActivity).isLoadingShowing()) {
@@ -115,7 +113,7 @@ class TabViewFragment : BaseFragment<BasePresenter<IBaseView>>() {
                 }
             }
             R.id.btn_text -> {
-                (activity as MainActivity).navController.navigate(HomeFragmentDirections.actionHomeToText())
+                findNavController().navigate(TabViewFragmentDirections.actionTabViewFragmentToTextFragment())
             }
 
             R.id.btn_expand_top -> {
