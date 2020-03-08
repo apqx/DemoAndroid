@@ -9,6 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.frag_mvvm.*
+import kotlinx.android.synthetic.main.item_student.*
 import me.apqx.demo.R
 import me.apqx.demo.mvp.BaseFragment
 import me.apqx.demo.mvp.BasePresenter

@@ -2,20 +2,17 @@ package me.apqx.demo
 
 import android.os.Bundle
 import android.view.View
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.Observer
+import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
-import androidx.navigation.NavDestination
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.NavigationUI
 import kotlinx.android.synthetic.main.activity_main.*
 import me.apqx.demo.databinding.ActivityMainBinding
-import me.apqx.demo.mvvm.viewmodels.DemoViewModel
 import me.apqx.demo.old.tools.LogUtil
-import me.apqx.demo.old.tools.ToastUtil
+import me.apqx.demo.view.tab.TabComponentFragment
+import me.apqx.demo.view.tab.TabOtherFragment
+import me.apqx.demo.view.tab.TabViewFragment
 import me.apqx.demo.widget.dialog.LoadingDialog
 import me.apqx.demo.widget.view.DisplayUtils
 import org.greenrobot.eventbus.EventBus
@@ -27,25 +24,96 @@ class MainActivity : AppCompatActivity() {
     private lateinit var navHostFragment: NavHostFragment
     lateinit var navController: NavController
     private lateinit var loadingDialog: LoadingDialog
+    private val tagFragmentView = "tagFragmentView"
+    private val tagFragmentComponent = "tagFragmentComponent"
+    private val tagFragmentOthers = "tagFragmentOthers"
+
+    var fragmentView: Fragment? = null
+    var fragmentComponent: Fragment? = null
+    var fragmentOthers: Fragment? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         dataBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-        navController = findNavController(R.id.frag_nav_host_main)
-        navController.addOnDestinationChangedListener { controller, destination, arguments ->
-            when (destination.id) {
-                R.id.tabViewFragment, R.id.tabComponentFragment, R.id.tabOtherFragment -> {
-                    bnv_tab.visibility = View.VISIBLE
+        DisplayUtils.listViews(window.decorView, 0)
+        DisplayUtils.setStatusBarTransparent(this)
+        LogUtil.d("MainActivity savedInstanceState = $savedInstanceState")
+        if (savedInstanceState == null) {
+            showPageView()
+//            supportFragmentManager.beginTransaction()
+//                    .add(R.id.fl_main_frag_container, FragsFragment(), "tag")
+//                    .commit()
+        } else {
+            fragmentView = supportFragmentManager.findFragmentByTag(tagFragmentView)
+            fragmentComponent = supportFragmentManager.findFragmentByTag(tagFragmentComponent)
+            fragmentOthers = supportFragmentManager.findFragmentByTag(tagFragmentOthers)
+        }
+
+        bnv_tab.setOnNavigationItemSelectedListener {
+            LogUtil.d("showPag${it.title} fragmentView = $fragmentView")
+            LogUtil.d("showPag${it.title} fragmentComponent = $fragmentComponent")
+            LogUtil.d("showPag${it.title} fragmentOthers = $fragmentOthers")
+            when (it.itemId) {
+                R.id.tabViewFragment -> {
+                    showPageView()
                 }
-                else -> {
-                    bnv_tab.visibility = View.GONE
+                R.id.tabComponentFragment -> {
+                    showPageComponent()
+                }
+                R.id.tabOtherFragment -> {
+                    showPageOthers()
                 }
             }
+            true
         }
-        NavigationUI.setupWithNavController(bnv_tab, navController)
-        DisplayUtils.listViews(window.decorView, 0)
+        bnv_tab.setOnNavigationItemReselectedListener {
+            if (it.itemId == R.id.tabViewFragment) {
+                (fragmentView as TabViewFragment).toggleExpandStatus()
+            }
+        }
 
-        DisplayUtils.setStatusBarTransparent(this)
+    }
+
+    private fun showPageView() {
+        supportFragmentManager.beginTransaction().apply {
+            fragmentComponent?.let { hide(it) }
+            fragmentOthers?.let { hide(it) }
+            if (fragmentView == null) {
+                fragmentView = TabViewFragment()
+                add(R.id.fl_main_frag_container, fragmentView as Fragment, tagFragmentView)
+            } else {
+                show(fragmentView as Fragment)
+            }
+            commit()
+        }
+    }
+
+    private fun showPageComponent() {
+        supportFragmentManager.beginTransaction().apply {
+            fragmentView?.let { hide(it) }
+            fragmentOthers?.let { hide(it) }
+            if (fragmentComponent == null) {
+                fragmentComponent = TabComponentFragment()
+                add(R.id.fl_main_frag_container, fragmentComponent as Fragment, tagFragmentComponent)
+            } else {
+                show(fragmentComponent as Fragment)
+            }
+            commit()
+        }
+    }
+
+    private fun showPageOthers() {
+        supportFragmentManager.beginTransaction().apply {
+            fragmentComponent?.let { hide(it) }
+            fragmentView?.let { hide(it) }
+            if (fragmentOthers == null) {
+                fragmentOthers = TabOtherFragment()
+                add(R.id.fl_main_frag_container, fragmentOthers as Fragment, tagFragmentOthers)
+            } else {
+                show(fragmentOthers as Fragment)
+            }
+            commit()
+        }
     }
 
 

@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.item_student.view.*
 import me.apqx.demo.R
 import me.apqx.demo.mvvm.data.Student
+import me.apqx.demo.old.tools.ToastUtil
 
 class MvvmRecyclerAdapter : ListAdapter<Student, RecyclerView.ViewHolder>(CusDiffCallback())  {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -23,6 +24,9 @@ class MvvmRecyclerAdapter : ListAdapter<Student, RecyclerView.ViewHolder>(CusDif
         fun bindData(student: Student) {
             itemView.tv_student_name.text = student.name
             itemView.iv_student_head.setImageResource(R.mipmap.ic_launcher_round)
+            itemView.mcv_item_student.setOnClickListener{
+                ToastUtil.showToast("click ${student.name}")
+            }
         }
     }
 

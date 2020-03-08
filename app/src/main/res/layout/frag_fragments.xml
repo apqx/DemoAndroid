@@ -9,7 +9,7 @@
     <LinearLayout
         android:id="@+id/vg_frag_container"
         android:layout_width="0dp"
-        android:layout_height="500dp"
+        android:layout_height="300dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -17,7 +17,7 @@
 
     <fragment
         android:id="@+id/frag_black"
-        android:name="me.apqx.demo.view.frags.ItemBlackFragment"
+        android:name="me.apqx.demo.view.frags.ItemFragment"
         tools:layout="@layout/frag_item_black"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -64,4 +64,20 @@
         android:text="Remove Frag"
         app:layout_constraintBottom_toBottomOf="@+id/btn_add_fragment"
         app:layout_constraintStart_toEndOf="@+id/btn_replace_fragment" />
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tl_frag_tab"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/frag_black"/>
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/vp_frag"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tl_frag_tab" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -123,5 +123,9 @@ class TabViewFragment : BaseFragment<BasePresenter<IBaseView>>() {
         }
     }
 
+    fun toggleExpandStatus() {
+        abl_top.setExpanded(true, true)
+    }
+
 
 }

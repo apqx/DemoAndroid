@@ -1,38 +1,72 @@
 package me.apqx.demo.old.tools
 
 import android.util.Log
+import com.google.gson.Gson
+import com.google.gson.GsonBuilder
 
 object LogUtil {
-    private const val tag = "apqx"
+    private const val TAG = "apqx"
+    private val gson: Gson by lazy {
+        GsonBuilder().create()
+    }
 
-    /**
-     * 常规
-     */
+    var debugOn: Boolean = true
+
     fun d(str: String) {
-        Log.d(tag, str)
+        d(TAG, str)
     }
 
-    /**
-     * 异常错误
-     */
+    fun d(tag: String, str: String) {
+        if (debugOn)
+            Log.d(TAG, str)
+    }
+
+    fun dJson(obj: Any) {
+        if (debugOn)
+            dJson(TAG, gson.toJson(obj))
+    }
+
+    fun dJson(tag: String, obj: Any) {
+        if (debugOn)
+            d(tag, gson.toJson(obj))
+    }
+
     fun e(str: String) {
-        Log.e(tag, str)
+        e(TAG, str)
     }
 
-    /**
-     * 一些值得注意的事件
-     * 1，生命周期
-     */
+    fun e(tag: String, str: String) {
+        if (debugOn)
+            Log.e(TAG, str)
+    }
+
+    fun eJson(obj: Any) {
+        if (debugOn)
+            eJson(TAG, gson.toJson(obj))
+    }
+
+    fun eJson(tag: String, obj: Any) {
+        if (debugOn)
+            e(tag, gson.toJson(obj))
+    }
+
     fun i(str: String) {
-        Log.i(tag, str)
+        i(TAG, str)
     }
 
-    fun v(str: String) {
-        Log.v(tag, str)
+    fun i(tag: String, str: String) {
+        if (debugOn)
+            Log.i(TAG, str)
     }
 
-    fun w(str: String) {
-        Log.w(tag, str)
+    fun iJson(obj: Any) {
+        if (debugOn)
+            iJson(TAG, gson.toJson(obj))
+    }
+
+    fun iJson(tag: String, obj: Any) {
+        if (debugOn)
+            i(tag, gson.toJson(obj))
     }
 
 

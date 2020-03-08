@@ -7,7 +7,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
+import androidx.fragment.app.viewModels
 import kotlinx.android.synthetic.main.frag_fragments.*
+import me.apqx.demo.MainViewModel
 import me.apqx.demo.R
 import me.apqx.demo.mvp.BaseFragment
 import me.apqx.demo.mvp.BasePresenter
@@ -20,6 +22,7 @@ class FragsFragment : BaseFragment<BasePresenter<IBaseView>>() {
     private val fragList = ArrayList<Fragment>()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+
         return inflater.inflate(R.layout.frag_fragments, container, false)
     }
 
@@ -116,7 +119,7 @@ class FragsFragment : BaseFragment<BasePresenter<IBaseView>>() {
 
 
     private fun generateFragment(): Fragment {
-        return if (flag++ % 2 == 0) ItemRedFragment(flag) else ItemGreenFragment(flag)
+        return ItemFragment.getInstance(flag++)
     }
 
     override fun onDestroy() {
