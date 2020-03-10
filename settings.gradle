@@ -1,1 +1,2 @@
-include ':app', ':libAnnotation', ':libtools'
+include ':app', ':libAnnotation', ':libtools', ':libbase'
+rootProject.name='DemoApplication'
