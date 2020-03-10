@@ -52,7 +52,7 @@ android {
             println("apqx: buildTypes debug")
             // 修改Debug模式下的应用名，这个属性会覆盖flavor中定义的属性
 //            manifestPlaceholders = [appName: "Debug"]
-            getManifestPlaceholders().put(APP_NAME, "Debug")
+//            getManifestPlaceholders().put(APP_NAME, "Debug")
             // debug模式下生成不一样的applicationId，让正式版和测试版共存
             applicationIdSuffix = '.debug'
             // debug模式下定义不一样的版本名称
@@ -152,10 +152,15 @@ dependencies {
 
     implementation 'com.google.android:flexbox:2.0.0'
 
-    implementation project(path: ':libtools', configuration: 'default')
+
     implementation 'com.jakewharton:butterknife:10.2.1'
     kapt 'com.jakewharton:butterknife-compiler:10.2.1'
 
     implementation "androidx.viewpager2:viewpager2:1.0.0"
+    implementation project(path: ':libbase')
+
+    // Flavor依赖问题
+//        implementation project(path: ':libtools', configuration: 'default')
+//    implementation project(path: ':libtools')
 
 }
