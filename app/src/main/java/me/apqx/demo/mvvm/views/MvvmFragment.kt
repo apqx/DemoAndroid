@@ -10,11 +10,13 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.frag_mvvm.*
 import kotlinx.android.synthetic.main.item_student.*
+import kotlinx.coroutines.GlobalScope
 import me.apqx.demo.R
 import me.apqx.demo.mvp.BaseFragment
 import me.apqx.demo.mvp.BasePresenter
 import me.apqx.demo.mvp.IBaseView
 import me.apqx.demo.mvvm.adapter.MvvmRecyclerAdapter
+import me.apqx.demo.mvvm.data.AppDatabase
 import me.apqx.demo.mvvm.data.Student
 import me.apqx.demo.mvvm.viewmodels.DemoViewModel
 import me.apqx.demo.old.tools.LogUtil
@@ -31,6 +33,10 @@ class MvvmFragment : BaseFragment<BasePresenter<IBaseView>>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         btn_mvvm_change.setOnClickListener(this)
+        btn_mvvm_query.setOnClickListener(this)
+        btn_mvvm_add.setOnClickListener(this)
+        btn_mvvm_delete.setOnClickListener(this)
+
         srl_mvvm.setOnRefreshListener {
             model.loadMoreStudent()
         }
@@ -66,11 +72,42 @@ class MvvmFragment : BaseFragment<BasePresenter<IBaseView>>() {
         return list
     }
 
+
     override fun onClick(v: View?) {
-        when (v?.id) {
-            R.id.btn_mvvm_change -> {
-                model.loadMoreStudent()
+        val dao = AppDatabase.getInstance().studentDao()
+        Thread {
+            when (v?.id) {
+                R.id.btn_mvvm_change -> {
+                    model.loadMoreStudent()
+                }
+                R.id.btn_mvvm_add -> {
+                    val allStudent = dao.loadAllStudents()
+                    LogUtil.d("loadAllStudents = $allStudent")
+                    val id = (allStudent.lastOrNull()?.id?.plus(1)) ?: 0
+                    dao.insert(Student(
+                            id = id, name = "Tom_$id", teacherName = "Teacher_$id")
+                    ))
+                }
+                R.id.btn_mvvm_query -> {
+                    val ids = listOf<Int>(1, 2)
+                    LogUtil.d("loadStudentsById = ${dao.loadStudentsByIds(ids)}")
+                    LogUtil.d("loadSingle = ${dao.loadSingle()}")
+                }
+                R.id.btn_mvvm_delete -> {
+                    val allStudent = dao.loadAllStudents()
+                    dao.deleteAllStudents()
+                    LogUtil.d("loadAllStudents = $allStudent")
+                    if (allStudent.isEmpty()) {
+                        return@Thread
+                    }
+                    val delId = allStudent[allStudent.size - 1].id
+                    LogUtil.d("delete id = $delId")
+                    dao.delete(Student(delId))
+                }
             }
-        }
+
+        }.start()
     }
+
+
 }

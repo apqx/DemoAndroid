@@ -47,8 +47,14 @@ class CusApp : MultiDexApplication() {
             LogUtil.i("onActivityCreated $activity")
         }
     }
+
+    companion object {
+        lateinit var context: Context
+    }
+
     override fun onCreate() {
         super.onCreate()
+        context = this
         registerActivityLifecycleCallbacks(actLifeCycleCallback)
 
         LogUtil.d("process = ${getCurrentProcessName()}")

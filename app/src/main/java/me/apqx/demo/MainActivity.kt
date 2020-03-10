@@ -6,7 +6,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.NavigationUI
 import kotlinx.android.synthetic.main.activity_main.*
 import me.apqx.demo.databinding.ActivityMainBinding
 import me.apqx.demo.old.tools.LogUtil
@@ -38,11 +40,25 @@ class MainActivity : AppCompatActivity() {
         DisplayUtils.listViews(window.decorView, 0)
         DisplayUtils.setStatusBarTransparent(this)
         LogUtil.d("MainActivity savedInstanceState = $savedInstanceState")
+//        initByFragmentManager(savedInstanceState)
+        navController = findNavController(R.id.frag_nav_host_main)
+        navController.addOnDestinationChangedListener { controller, destination, arguments ->
+            when (destination.id) {
+                R.id.tabViewFragment, R.id.tabComponentFragment, R.id.tabOtherFragment -> {
+                    bnv_tab.visibility = View.VISIBLE
+                }
+                else -> {
+                    bnv_tab.visibility = View.GONE
+                }
+            }
+        }
+        NavigationUI.setupWithNavController(bnv_tab, navController)
+
+    }
+
+    private fun initByFragmentManager(savedInstanceState: Bundle?) {
         if (savedInstanceState == null) {
             showPageView()
-//            supportFragmentManager.beginTransaction()
-//                    .add(R.id.fl_main_frag_container, FragsFragment(), "tag")
-//                    .commit()
         } else {
             fragmentView = supportFragmentManager.findFragmentByTag(tagFragmentView)
             fragmentComponent = supportFragmentManager.findFragmentByTag(tagFragmentComponent)
@@ -71,7 +87,6 @@ class MainActivity : AppCompatActivity() {
                 (fragmentView as TabViewFragment).toggleExpandStatus()
             }
         }
-
     }
 
     private fun showPageView() {
