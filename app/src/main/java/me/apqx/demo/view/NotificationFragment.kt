@@ -7,6 +7,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.os.Vibrator
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -33,6 +34,11 @@ class NotificationFragment : BaseFragment<BasePresenter<IBaseView>>() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         btn_show_notify.setOnClickListener(this)
+        btn_dismiss_notify.setOnClickListener(this)
+        btn_notify_ring.setOnClickListener(this)
+        btn_notify_ring_stop.setOnClickListener(this)
+        btn_notify_vibrate.setOnClickListener(this)
+        btn_notify_vibrate_stop.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
@@ -44,6 +50,19 @@ class NotificationFragment : BaseFragment<BasePresenter<IBaseView>>() {
                     return
                 }
                 showSimpleNotification(context!!)
+            }
+            R.id.btn_notify_ring -> {
+                // 响铃
+
+            }
+            R.id.btn_notify_ring_stop -> {
+            }
+            R.id.btn_notify_vibrate -> {
+                // 震动
+                val vibrator = requireActivity().getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
+                vibrator.vibrate(100)
+            }
+            R.id.btn_notify_vibrate_stop -> {
             }
         }
     }
