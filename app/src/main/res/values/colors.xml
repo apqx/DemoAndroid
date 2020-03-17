@@ -6,4 +6,5 @@
     <color name="colorNightPrimaryDark">#2f3640</color>
     <color name="colorAccent">#D81B60</color>
     <color name="colorNightAccent">#7f8fa6</color>
+    <color name="transparent">#00ffffff</color>
 </resources>

@@ -95,6 +95,7 @@ public class DisplayUtils {
 
     /**
      * 在Activity运行时，设置状态栏为透明，必须设置Theme#windowTranslucentStatus
+     * 安卓5.0 SDK21及以上有效
      */
     public static void setStatusBarTransparent(Activity activity) {
         LogUtil.INSTANCE.i("setStatusBarTransparent " + activity.getClass().getSimpleName());
@@ -112,17 +113,8 @@ public class DisplayUtils {
     }
 
     /**
-     * 在Activity运行时，动态设置状态栏颜色
-     *
-     * @param darkStatusIcon 是否显示深色的状态栏图标、文字
-     */
-    public static void setStatusBarColor(Activity activity, int color, boolean darkStatusIcon) {
-        setStatusBarColor(activity, color);
-        setStatusDarkIcon(activity, darkStatusIcon);
-    }
-
-    /**
      * 在Activity运行时，动态设置状态栏颜色，不需要设置Theme
+     * 安卓5.0 SDK21及以上有效
      */
     public static void setStatusBarColor(Activity activity, int color) {
         LogUtil.INSTANCE.i("setStatusBarColor " + activity.getClass().getSimpleName());
@@ -133,7 +125,9 @@ public class DisplayUtils {
     }
 
     /**
-     * 在Activity运行时，动态设置状态栏颜色，不需要设置Theme
+     * 在Activity运行时，动态设置状态栏图标颜色，不需要设置Theme
+     * 安卓6.0 SDK23及以上有效，在5.0~6.0之间的设备，无法设置状态栏图标颜色，如果因为状态栏透明显示，需要设置深色图标，避免状态栏一片白，
+     * 可以{@link DisplayUtils#setStatusBarColor setStatusBarColor}给状态栏设置一个深色的背景
      *
      * @param darkStatusIcon 是否显示深色的状态栏图标、文字
      */
@@ -142,7 +136,7 @@ public class DisplayUtils {
                 + "darkStatusIcon = " + darkStatusIcon);
         Window window = activity.getWindow();
         int systemUiVisibility = window.getDecorView().getSystemUiVisibility();
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (darkStatusIcon) {
                 // 添加Flag
                 systemUiVisibility |= View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR;

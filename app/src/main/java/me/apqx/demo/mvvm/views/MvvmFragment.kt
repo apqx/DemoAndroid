@@ -86,7 +86,7 @@ class MvvmFragment : BaseFragment<BasePresenter<IBaseView>>() {
                     val id = (allStudent.lastOrNull()?.id?.plus(1)) ?: 0
                     dao.insert(Student(
                             id = id, name = "Tom_$id", teacherName = "Teacher_$id")
-                    ))
+                    )
                 }
                 R.id.btn_mvvm_query -> {
                     val ids = listOf<Int>(1, 2)

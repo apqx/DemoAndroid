@@ -21,7 +21,7 @@ interface StudentDAO {
     fun loadAllStudents(): List<Student>
 
     @Query("SELECT * FROM student")
-    fun loadSingle(): Student
+    fun loadSingle(): Student?
 
     /**
      * PrimaryKey 相等即可删除，未找到则不删除，不会抛出异常
