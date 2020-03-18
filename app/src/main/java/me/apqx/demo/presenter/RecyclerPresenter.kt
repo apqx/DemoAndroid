@@ -1,9 +1,8 @@
 package me.apqx.demo.presenter
 
-import android.content.ClipData
 import me.apqx.demo.adapter.RecyclerFragVpAdapter
 import me.apqx.demo.mvp.BasePresenter
-import me.apqx.demo.old.tools.LogUtil
+import me.apqx.libbase.util.LogUtil
 import me.apqx.demo.view.recycler.ChipsRecyclerFrag
 import me.apqx.demo.view.recycler.RecyclerFragment
 

@@ -5,16 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
-import androidx.fragment.app.viewModels
 import kotlinx.android.synthetic.main.frag_fragments.*
-import me.apqx.demo.MainViewModel
 import me.apqx.demo.R
 import me.apqx.demo.mvp.BaseFragment
 import me.apqx.demo.mvp.BasePresenter
 import me.apqx.demo.mvp.IBaseView
-import me.apqx.demo.old.tools.LogUtil
+import me.apqx.libbase.util.LogUtil
 
 class FragsFragment : BaseFragment<BasePresenter<IBaseView>>() {
     private var flag = 1

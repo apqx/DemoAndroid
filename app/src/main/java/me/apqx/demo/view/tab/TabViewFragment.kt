@@ -20,7 +20,7 @@ import me.apqx.demo.mvp.BaseFragment
 import me.apqx.demo.mvp.BasePresenter
 import me.apqx.demo.mvp.IBaseView
 import me.apqx.demo.mvvm.viewmodels.DemoViewModel
-import me.apqx.demo.old.tools.ToastUtil
+import me.apqx.libbase.util.ToastUtil
 import java.lang.ref.SoftReference
 
 class TabViewFragment : BaseFragment<BasePresenter<IBaseView>>() {

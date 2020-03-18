@@ -8,9 +8,8 @@ import kotlinx.android.synthetic.main.frag_recycler.*
 import me.apqx.demo.R
 import me.apqx.demo.adapter.RecyclerFragVpAdapter
 import me.apqx.demo.mvp.BaseFragment
-import me.apqx.demo.old.tools.LogUtil
+import me.apqx.libbase.util.LogUtil
 import me.apqx.demo.presenter.RecyclerPresenter
-import me.apqx.demo.widget.view.HorizontalPager
 import java.util.ArrayList
 
 open class RecyclerFragment : BaseFragment<RecyclerPresenter>() {

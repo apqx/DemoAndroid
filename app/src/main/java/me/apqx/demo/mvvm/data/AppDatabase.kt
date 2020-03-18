@@ -4,10 +4,9 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
 import me.apqx.demo.CusApp
-import me.apqx.demo.old.tools.LogUtil
+import me.apqx.libbase.util.LogUtil
 
 const val DATABASE_NAME = "app-db"
 @Database(entities = [Score::class, Student::class], version = 1)

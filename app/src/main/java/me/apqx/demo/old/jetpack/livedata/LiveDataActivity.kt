@@ -7,7 +7,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
-import me.apqx.demo.old.tools.LogUtil
+import me.apqx.libbase.util.LogUtil
 import me.apqx.demo.R
 import me.apqx.demo.databinding.ActivityLivedataBinding
 import me.apqx.demo.old.jetpack.livedata.adapter.StudentAdapter

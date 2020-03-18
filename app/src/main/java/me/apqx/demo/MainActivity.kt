@@ -11,7 +11,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import kotlinx.android.synthetic.main.activity_main.*
 import me.apqx.demo.databinding.ActivityMainBinding
-import me.apqx.demo.old.tools.LogUtil
+import me.apqx.libbase.util.LogUtil
 import me.apqx.demo.view.tab.TabComponentFragment
 import me.apqx.demo.view.tab.TabOtherFragment
 import me.apqx.demo.view.tab.TabViewFragment

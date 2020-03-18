@@ -3,7 +3,7 @@ package me.apqx.demo.old.test
 import android.os.*
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import me.apqx.demo.old.tools.LogUtil
+import me.apqx.libbase.util.LogUtil
 import me.apqx.demo.R
 import java.io.File
 

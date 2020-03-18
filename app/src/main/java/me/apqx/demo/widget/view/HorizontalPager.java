@@ -31,7 +31,7 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
-import me.apqx.demo.old.tools.LogUtil;
+import me.apqx.libbase.util.LogUtil;
 import me.apqx.demo.R;
 
 public class HorizontalPager extends RelativeLayout {

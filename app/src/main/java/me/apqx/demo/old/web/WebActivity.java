@@ -17,7 +17,7 @@ import butterknife.ButterKnife;
 import io.reactivex.Observable;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
-import me.apqx.demo.old.tools.LogUtil;
+import me.apqx.libbase.util.LogUtil;
 import me.apqx.demo.R;
 
 public class WebActivity extends Activity {

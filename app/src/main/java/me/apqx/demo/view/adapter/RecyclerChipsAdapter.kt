@@ -1,7 +1,6 @@
 package me.apqx.demo.view.adapter
 
 import android.content.Context
-import android.os.VibrationEffect
 import android.os.Vibrator
 import android.view.LayoutInflater
 import android.view.View
@@ -9,7 +8,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.item_chips.view.*
 import me.apqx.demo.R
-import me.apqx.demo.old.tools.LogUtil
+import me.apqx.libbase.util.LogUtil
 
 class RecyclerChipsAdapter : RecyclerView.Adapter<RecyclerChipsAdapter.ChipsViewHolder>() {
 

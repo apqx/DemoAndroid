@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import io.realm.Realm
-import me.apqx.demo.old.tools.LogUtil
+import me.apqx.libbase.util.LogUtil
 import me.apqx.demo.R
 import me.apqx.demo.old.realm.bean.Course
 import me.apqx.demo.old.realm.bean.Student

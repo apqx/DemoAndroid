@@ -9,9 +9,9 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import me.apqx.demo.old.tools.LogUtil
+import me.apqx.libbase.util.LogUtil
 import me.apqx.demo.R
-import me.apqx.demo.old.tools.ToastUtil
+import me.apqx.libbase.util.ToastUtil
 import me.apqx.demo.databinding.ActivityRecyclerBinding
 import me.apqx.demo.widget.recycler.adapter.ItemDecoration
 import me.apqx.demo.widget.recycler.adapter.OutAdapter

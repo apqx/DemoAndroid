@@ -9,8 +9,6 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.frag_mvvm.*
-import kotlinx.android.synthetic.main.item_student.*
-import kotlinx.coroutines.GlobalScope
 import me.apqx.demo.R
 import me.apqx.demo.mvp.BaseFragment
 import me.apqx.demo.mvp.BasePresenter
@@ -19,8 +17,8 @@ import me.apqx.demo.mvvm.adapter.MvvmRecyclerAdapter
 import me.apqx.demo.mvvm.data.AppDatabase
 import me.apqx.demo.mvvm.data.Student
 import me.apqx.demo.mvvm.viewmodels.DemoViewModel
-import me.apqx.demo.old.tools.LogUtil
-import me.apqx.demo.old.tools.ToastUtil
+import me.apqx.libbase.util.LogUtil
+import me.apqx.libbase.util.ToastUtil
 
 class MvvmFragment : BaseFragment<BasePresenter<IBaseView>>() {
 

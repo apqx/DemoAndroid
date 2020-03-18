@@ -12,8 +12,8 @@ import com.squareup.leakcanary.LeakCanary
 import io.realm.Realm
 import io.realm.RealmConfiguration
 import me.apqx.demo.old.realm.CusRealmMigration
-import me.apqx.demo.old.tools.LogUtil
-import me.apqx.demo.old.tools.ToastUtil
+import me.apqx.libbase.util.LogUtil
+import me.apqx.libbase.util.ToastUtil
 
 class CusApp : MultiDexApplication() {
 //    val screenShotManager = ScreenShotManager.newInstance(this)

@@ -9,8 +9,7 @@ import android.view.WindowManager
 import android.widget.TextView
 import butterknife.BindView
 import butterknife.ButterKnife
-import com.google.android.material.bottomsheet.BottomSheetDialog
-import me.apqx.demo.old.tools.LogUtil
+import me.apqx.libbase.util.LogUtil
 import me.apqx.demo.R
 import me.apqx.demo.databinding.DialogCusBinding
 import me.apqx.demo.widget.view.DisplayUtils

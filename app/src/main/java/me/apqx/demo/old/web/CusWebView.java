@@ -6,7 +6,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.webkit.WebView;
 
-import me.apqx.demo.old.tools.LogUtil;
+import me.apqx.libbase.util.LogUtil;
 
 public class CusWebView extends WebView {
     private final int paddingTop = 50;

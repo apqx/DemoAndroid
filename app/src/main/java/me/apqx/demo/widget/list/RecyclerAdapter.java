@@ -10,7 +10,7 @@ import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-import me.apqx.demo.old.tools.LogUtil;
+import me.apqx.libbase.util.LogUtil;
 import me.apqx.demo.R;
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.CusViewHolder> {

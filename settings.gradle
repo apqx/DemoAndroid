@@ -1,2 +1,3 @@
 include ':app', ':libAnnotation', ':libtools', ':libbase'
 rootProject.name='DemoApplication'
+include ':libwidget'

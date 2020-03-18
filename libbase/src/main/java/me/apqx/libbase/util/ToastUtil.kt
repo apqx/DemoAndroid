@@ -1,4 +1,4 @@
-package me.apqx.demo.old.tools
+package me.apqx.libbase.util
 
 import android.annotation.SuppressLint
 import android.content.Context

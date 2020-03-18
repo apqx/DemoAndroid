@@ -2,15 +2,13 @@ package me.apqx.demo.mvvm.viewmodels
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import io.reactivex.disposables.Disposable
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import me.apqx.demo.mvvm.data.Student
 import me.apqx.demo.mvvm.data.StudentRepository
-import me.apqx.demo.old.tools.LogUtil
-import java.util.Collections.addAll
+import me.apqx.libbase.util.LogUtil
 
 class DemoViewModel : ViewModel() {
     private val repository = StudentRepository()

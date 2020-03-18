@@ -8,7 +8,7 @@ import android.os.Bundle
 import android.os.IBinder
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import me.apqx.demo.old.tools.LogUtil
+import me.apqx.libbase.util.LogUtil
 import me.apqx.demo.R
 
 class ServiceActivity : AppCompatActivity() {
