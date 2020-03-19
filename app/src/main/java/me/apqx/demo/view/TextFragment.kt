@@ -14,7 +14,7 @@ import me.apqx.demo.mvp.BaseFragment
 import me.apqx.demo.mvp.BasePresenter
 import me.apqx.demo.mvp.IBaseView
 import me.apqx.libbase.util.LogUtil
-import me.apqx.demo.widget.view.DisplayUtils
+import me.apqx.libbase.util.DisplayUtil
 
 class TextFragment: BaseFragment<BasePresenter<IBaseView>>() {
 
@@ -47,8 +47,8 @@ class TextFragment: BaseFragment<BasePresenter<IBaseView>>() {
         LogUtil.d("TextFragment onClick")
         when (v?.id) {
             R.id.sv_text, R.id.vg_inner_scroll_text -> {
-                DisplayUtils.hideSoftInputKeyboard(v)
-                DisplayUtils.clearEditFocus(v)
+                DisplayUtil.hideSoftInputKeyboard(v)
+                DisplayUtil.clearEditFocus(v)
             }
 
             R.id.btn_bottom -> {

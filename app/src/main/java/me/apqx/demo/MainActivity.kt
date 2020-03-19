@@ -16,7 +16,7 @@ import me.apqx.demo.view.tab.TabComponentFragment
 import me.apqx.demo.view.tab.TabOtherFragment
 import me.apqx.demo.view.tab.TabViewFragment
 import me.apqx.demo.widget.dialog.LoadingDialog
-import me.apqx.demo.widget.view.DisplayUtils
+import me.apqx.libbase.util.DisplayUtil
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
@@ -37,8 +37,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         dataBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-        DisplayUtils.listViews(window.decorView, 0)
-        DisplayUtils.setStatusBarTransparent(this)
+        DisplayUtil.listViews(window.decorView, 0)
+        DisplayUtil.setStatusBarTransparent(this)
         LogUtil.d("MainActivity savedInstanceState = $savedInstanceState")
 //        initByFragmentManager(savedInstanceState)
         navController = findNavController(R.id.frag_nav_host_main)

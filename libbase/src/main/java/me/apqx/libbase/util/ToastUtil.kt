@@ -5,7 +5,7 @@ import android.content.Context
 import android.os.Handler
 import android.view.LayoutInflater
 import android.widget.Toast
-import me.apqx.demo.R
+import me.apqx.libbase.R
 
 @SuppressLint("StaticFieldLeak")
 object ToastUtil {
@@ -59,7 +59,7 @@ object ToastUtil {
             toast.cancel()
         }
         toast = Toast(context)
-        toast.view = LayoutInflater.from(context).inflate(R.layout.dialog_cus, null, false)
+//        toast.view = LayoutInflater.from(context).inflate(R.layout.dialog_cus, null, false)
         toast.duration = Toast.LENGTH_SHORT
         toast.show()
     }

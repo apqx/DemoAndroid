@@ -262,7 +262,24 @@
                                 <LayoutPositions />
                               </value>
                             </entry>
+                            <entry key="action_textFragment_to_tabViewFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                           </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="viewPagerFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="476" />
+                            <option name="y" value="2414" />
+                          </Point>
                         </option>
                       </LayoutPositions>
                     </value>

@@ -114,11 +114,21 @@
             app:destination="@id/mvvmFragment"
             app:enterAnim="@anim/dialog_enter"
             app:popExitAnim="@anim/dialog_exit"/>
+        <action
+            android:id="@+id/action_tabComponentFragment_to_viewPagerFragment"
+            app:destination="@id/viewPagerFragment"
+            app:enterAnim="@anim/dialog_enter"
+            app:popExitAnim="@anim/dialog_exit" />
     </fragment>
     <fragment
         android:id="@+id/tabOtherFragment"
         android:name="me.apqx.demo.view.tab.TabOtherFragment"
         android:label="TabOtherFragment"
         tools:layout="@layout/frag_others"/>
+    <fragment
+        android:id="@+id/viewPagerFragment"
+        android:name="me.apqx.demo.view.ViewPagerFragment"
+        android:label="ViewPagerFragment"
+        tools:layout="@layout/frag_view_pager"/>
 
 </navigation>

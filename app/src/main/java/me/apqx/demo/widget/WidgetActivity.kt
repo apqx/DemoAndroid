@@ -28,6 +28,7 @@ import me.apqx.demo.widget.dialog.CusDialogInstance
 import me.apqx.demo.widget.list.ListActivity
 import me.apqx.demo.widget.recycler.RecyclerActivity
 import me.apqx.demo.widget.view.*
+import me.apqx.libbase.util.DisplayUtil
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
@@ -128,7 +129,7 @@ class WidgetActivity : AppCompatActivity() {
         var text = "尊敬的用户，在您使用金投网前，为了让您更好地了解我们是如何保护用户的个人信息的，请您仔细阅读《隐私政策》和《服务协议》。" +
                 "\n" +
                 "如您同意并接受全部条款，请点击\"同意\"开始接受我们的服务。"
-        text = DisplayUtils.halfToFull(text)
+        text = DisplayUtil.halfToFull(text)
         var spannableString = SpannableString(text)
         val regex1 = "《隐私政策》"
         val regex2 = "《服务协议》"

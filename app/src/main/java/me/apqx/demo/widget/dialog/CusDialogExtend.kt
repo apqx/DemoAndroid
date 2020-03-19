@@ -12,7 +12,7 @@ import butterknife.ButterKnife
 import me.apqx.libbase.util.LogUtil
 import me.apqx.demo.R
 import me.apqx.demo.databinding.DialogCusBinding
-import me.apqx.demo.widget.view.DisplayUtils
+import me.apqx.libbase.util.DisplayUtil
 import java.lang.Exception
 
 class CusDialogExtend : Dialog {
@@ -65,8 +65,8 @@ class CusDialogExtend : Dialog {
     private fun setSize(dialog: Dialog) {
         val window = dialog.window!!
         val lp = window.attributes
-        lp.height = DisplayUtils.dpToPx(context, 250f)
-        lp.width = DisplayUtils.dpToPx(context, 200f)
+        lp.height = DisplayUtil.dpToPx(context, 250f)
+        lp.width = DisplayUtil.dpToPx(context, 200f)
         // 当子View的尺寸设置为MATCH_PARENT时，Dialog并不会自动全屏显示，它有自己的最大尺寸，如果想要全屏显示，应该在这里设置
         lp.height = WindowManager.LayoutParams.MATCH_PARENT
         lp.width = WindowManager.LayoutParams.MATCH_PARENT

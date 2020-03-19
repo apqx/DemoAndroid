@@ -14,6 +14,7 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 
 import me.apqx.demo.R;
+import me.apqx.libbase.util.DisplayUtil;
 
 public class CusSwitcher extends LinearLayout {
     private int selectedTextColor;
@@ -43,7 +44,7 @@ public class CusSwitcher extends LinearLayout {
     }
 
     private void init() {
-        int dp3 = DisplayUtils.dpToPx(getContext(), 3);
+        int dp3 = DisplayUtil.dpToPx(getContext(), 3);
 
         setBackgroundResource(R.drawable.bg_rg_tab);
 

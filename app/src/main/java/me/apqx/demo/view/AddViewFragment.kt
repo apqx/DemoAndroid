@@ -15,7 +15,7 @@ import me.apqx.demo.R
 import me.apqx.demo.mvp.BaseFragment
 import me.apqx.demo.mvp.BasePresenter
 import me.apqx.demo.mvp.IBaseView
-import me.apqx.demo.widget.view.DisplayUtils
+import me.apqx.libbase.util.DisplayUtil
 
 class AddViewFragment : BaseFragment<BasePresenter<IBaseView>>() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -85,11 +85,11 @@ class AddViewFragment : BaseFragment<BasePresenter<IBaseView>>() {
     private fun addView() {
         checkNotNull(context) { "Context is null" }
         val view = generateView()
-        val layoutParams = LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, DisplayUtils.dpToPx(context!!, 180f))
-        layoutParams.topMargin = DisplayUtils.dpToPx(context!!, 5f)
-        layoutParams.bottomMargin = DisplayUtils.dpToPx(context!!, 5f)
-        layoutParams.leftMargin = DisplayUtils.dpToPx(context!!, 10f)
-        layoutParams.rightMargin = DisplayUtils.dpToPx(context!!, 10f)
+        val layoutParams = LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, DisplayUtil.dpToPx(context!!, 180f))
+        layoutParams.topMargin = DisplayUtil.dpToPx(context!!, 5f)
+        layoutParams.bottomMargin = DisplayUtil.dpToPx(context!!, 5f)
+        layoutParams.leftMargin = DisplayUtil.dpToPx(context!!, 10f)
+        layoutParams.rightMargin = DisplayUtil.dpToPx(context!!, 10f)
 
         ll_add_view_container.addView(view, layoutParams)
     }

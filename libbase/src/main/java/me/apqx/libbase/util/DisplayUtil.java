@@ -1,4 +1,4 @@
-package me.apqx.demo.widget.view;
+package me.apqx.libbase.util;
 
 import android.app.Activity;
 import android.content.Context;
@@ -11,9 +11,7 @@ import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
-import me.apqx.libbase.util.LogUtil;
-
-public class DisplayUtils {
+public class DisplayUtil {
     /**
      * 将dp或dip转换为px
      */
@@ -126,7 +124,7 @@ public class DisplayUtils {
     /**
      * 在Activity运行时，动态设置状态栏图标颜色，不需要设置Theme
      * 安卓6.0 SDK23及以上有效，在5.0~6.0之间的设备，无法设置状态栏图标颜色，如果因为状态栏透明显示，需要设置深色图标，避免状态栏一片白，
-     * 可以{@link DisplayUtils#setStatusBarColor setStatusBarColor}给状态栏设置一个深色的背景
+     * 可以{@link DisplayUtil#setStatusBarColor setStatusBarColor}给状态栏设置一个深色的背景
      *
      * @param darkStatusIcon 是否显示深色的状态栏图标、文字
      */

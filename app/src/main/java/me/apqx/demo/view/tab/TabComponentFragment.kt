@@ -31,6 +31,7 @@ class TabComponentFragment: BaseFragment<BasePresenter<IBaseView>>() {
         btn_recycler.setOnClickListener(this)
         btn_notification.setOnClickListener(this)
         btn_mvvm.setOnClickListener(this)
+        btn_view_pager.setOnClickListener(this)
     }
 
 
@@ -45,6 +46,9 @@ class TabComponentFragment: BaseFragment<BasePresenter<IBaseView>>() {
             }
             R.id.btn_mvvm -> {
                 findNavController().navigate(TabComponentFragmentDirections.actionTabComponentFragmentToMvvmFragment())
+            }
+            R.id.btn_view_pager -> {
+                findNavController().navigate(TabComponentFragmentDirections.actionTabComponentFragmentToViewPagerFragment())
             }
         }
     }
