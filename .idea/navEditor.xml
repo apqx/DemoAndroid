@@ -116,6 +116,18 @@
                       </LayoutPositions>
                     </value>
                   </entry>
+                  <entry key="imgFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="152" />
+                            <option name="y" value="2617" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="mvvmFragment">
                     <value>
                       <LayoutPositions>
@@ -174,6 +186,11 @@
                               </value>
                             </entry>
                             <entry key="action_tabComponentFragment_to_recyclerFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_tabComponentFragment_to_viewPagerFragment">
                               <value>
                                 <LayoutPositions />
                               </value>

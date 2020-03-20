@@ -32,6 +32,7 @@ class TabComponentFragment: BaseFragment<BasePresenter<IBaseView>>() {
         btn_notification.setOnClickListener(this)
         btn_mvvm.setOnClickListener(this)
         btn_view_pager.setOnClickListener(this)
+        btn_img.setOnClickListener(this)
     }
 
 
@@ -49,6 +50,9 @@ class TabComponentFragment: BaseFragment<BasePresenter<IBaseView>>() {
             }
             R.id.btn_view_pager -> {
                 findNavController().navigate(TabComponentFragmentDirections.actionTabComponentFragmentToViewPagerFragment())
+            }
+            R.id.btn_img -> {
+                findNavController().navigate(TabComponentFragmentDirections.actionTabComponentFragmentToImgFragment())
             }
         }
     }
