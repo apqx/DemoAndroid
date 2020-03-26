@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexWrap
 import com.google.android.flexbox.FlexboxLayoutManager
@@ -25,8 +26,11 @@ class ChipsRecyclerFrag : BaseFragment<BasePresenter<IBaseView>>() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        btn_chips_change.setOnClickListener(this)
+
         adapter = RecyclerChipsAdapter()
-        val layoutManager = FlexboxLayoutManager(context, FlexDirection.ROW, FlexWrap.WRAP)
+//        val layoutManager = FlexboxLayoutManager(context, FlexDirection.ROW, FlexWrap.WRAP)
+        val layoutManager = LinearLayoutManager(requireContext())
         rv_chips.adapter = adapter
         rv_chips.layoutManager = layoutManager
         ItemTouchHelper(ChipsItemTouchHelperCallback()).attachToRecyclerView(rv_chips)
@@ -51,6 +55,11 @@ class ChipsRecyclerFrag : BaseFragment<BasePresenter<IBaseView>>() {
     }
 
     override fun onClick(v: View?) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        when (v?.id) {
+            R.id.btn_chips_change -> {
+
+                adapter.notifyItemChanged(0)
+            }
+        }
     }
 }

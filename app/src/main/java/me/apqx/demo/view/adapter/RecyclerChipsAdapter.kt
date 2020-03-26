@@ -24,7 +24,7 @@ class RecyclerChipsAdapter : RecyclerView.Adapter<RecyclerChipsAdapter.ChipsView
     }
 
     override fun onBindViewHolder(holder: ChipsViewHolder, position: Int) {
-        holder.bindData(list[position])
+        holder.bindData(list[position], position)
     }
 
     fun setData(list: java.util.ArrayList<String>) {
@@ -33,11 +33,13 @@ class RecyclerChipsAdapter : RecyclerView.Adapter<RecyclerChipsAdapter.ChipsView
         this.list.addAll(list)
     }
 
-    public fun getData(): List<String> {
+    public fun getData(): MutableList<String> {
         return list
     }
 
-    class ChipsViewHolder : RecyclerView.ViewHolder {
+    inner class ChipsViewHolder : RecyclerView.ViewHolder {
+        private var itemPosition: Int = 0
+
         constructor(itemView: View) : super(itemView) {
 
             itemView.setOnLongClickListener{
@@ -45,9 +47,16 @@ class RecyclerChipsAdapter : RecyclerView.Adapter<RecyclerChipsAdapter.ChipsView
                 vibrator.vibrate(100)
                 true
             }
+
+            itemView.setOnClickListener{
+                itemView.tv_chips_subtitle.visibility = if (itemView.tv_chips_subtitle.visibility == View.VISIBLE)
+                    View.GONE else View.VISIBLE
+                notifyItemChanged(itemPosition)
+            }
         }
 
-        fun bindData(s: String) {
+        fun bindData(s: String, position: Int) {
+            this.itemPosition = position
             // Kotlin可以直接访问ViewHolder中的View，自动import kotlinx.android.synthetic
             itemView.tv_chips_title.text = s
         }
