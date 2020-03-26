@@ -7,7 +7,9 @@ import com.google.gson.GsonBuilder
 object LogUtil {
     private const val TAG = "apqx"
     private val gson: Gson by lazy {
-        GsonBuilder().create()
+        GsonBuilder()
+                .serializeNulls()
+                .create()
     }
 
     var debugOn: Boolean = true

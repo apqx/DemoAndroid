@@ -49,6 +49,7 @@ class PagerIndicator : LinearLayout {
 
     public fun bindViewPager(viewPager: ViewPager?) {
         if (viewPager == null) return
+        if (this.viewPager == viewPager) return
         this.viewPager = viewPager
         bindViewPagerAdapter()
         viewPager.addOnPageChangeListener(pagerChangeListener)
