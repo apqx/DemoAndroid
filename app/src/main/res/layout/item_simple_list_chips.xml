@@ -17,16 +17,4 @@
         android:paddingRight="15dp"
         android:gravity="center"
         android:background="@drawable/bg_item_chips"/>
-    <TextView
-        android:id="@+id/tv_chips_subtitle"
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        tools:text="标签"
-        android:textColor="#ecf0f1"
-        android:maxLines="1"
-        android:paddingLeft="15dp"
-        android:paddingRight="15dp"
-        android:gravity="center"
-        android:layout_marginTop="5dp"
-        android:background="@drawable/bg_item_chips_red" />
 </LinearLayout>

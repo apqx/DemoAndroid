@@ -5,7 +5,7 @@ import androidx.recyclerview.widget.RecyclerView
 import me.apqx.libbase.util.LogUtil
 import java.util.*
 
-class ChipsItemTouchHelperCallback : ItemTouchHelper.SimpleCallback(ItemTouchHelper.UP
+class ListItemTouchHelperCallback : ItemTouchHelper.SimpleCallback(ItemTouchHelper.UP
         or ItemTouchHelper.DOWN or ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT
         , ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT) {
     override fun onMove(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder, target: RecyclerView.ViewHolder): Boolean {
@@ -15,10 +15,10 @@ class ChipsItemTouchHelperCallback : ItemTouchHelper.SimpleCallback(ItemTouchHel
         if (toPosition == 0 || fromPosition == 0) {
             return false
         }
-        val adapter = recyclerView.adapter as RecyclerChipsAdapter
+        val adapter = recyclerView.adapter as RecyclerListAdapter
         val list = adapter.getData()
         if (fromPosition < toPosition) {
-            //分别把中间所有的item的位置重新交换
+            // 分别把中间所有的item的位置重新交换
             for (i in fromPosition until toPosition) {
                 Collections.swap(list, i, i + 1)
             }

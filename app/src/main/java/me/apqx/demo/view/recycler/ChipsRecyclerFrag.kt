@@ -29,8 +29,8 @@ class ChipsRecyclerFrag : BaseFragment<BasePresenter<IBaseView>>() {
         btn_chips_change.setOnClickListener(this)
 
         adapter = RecyclerChipsAdapter()
-//        val layoutManager = FlexboxLayoutManager(context, FlexDirection.ROW, FlexWrap.WRAP)
-        val layoutManager = LinearLayoutManager(requireContext())
+        val layoutManager = FlexboxLayoutManager(context, FlexDirection.ROW, FlexWrap.WRAP)
+//        val layoutManager = LinearLayoutManager(requireContext())
         rv_chips.adapter = adapter
         rv_chips.layoutManager = layoutManager
         ItemTouchHelper(ChipsItemTouchHelperCallback()).attachToRecyclerView(rv_chips)
