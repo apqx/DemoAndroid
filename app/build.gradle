@@ -49,6 +49,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
         debug {
+//            debugable = true
             println("apqx: buildTypes debug")
             // 修改Debug模式下的应用名，这个属性会覆盖flavor中定义的属性
 //            manifestPlaceholders = [appName: "Debug"]
