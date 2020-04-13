@@ -4,10 +4,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <ImageView
-        android:id="@+id/iv_canvas"
+    <me.apqx.demo.widget.view.CustomDrawView
         android:layout_width="match_parent"
-        android:layout_height="400dp"
-        android:scaleType="center"
-        tools:src="@mipmap/edit_black"/>
+        android:layout_height="300dp"/>
 </LinearLayout>

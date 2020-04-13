@@ -48,7 +48,8 @@
         <activity android:name=".old.fragment.CusFragmentActivity" />
         <activity android:name=".old.web.WebActivity" />
         <activity android:name=".old.recycler.RecyclerActivity" />
-        <activity android:name=".old.draw.DrawActivity" />
+        <activity android:name=".view.DrawActivity"
+            android:configChanges="orientation|screenSize"/>
         <activity android:name=".SecondActivity"
             android:theme="@style/AppTheme.TransparentStatusBar"/>
 

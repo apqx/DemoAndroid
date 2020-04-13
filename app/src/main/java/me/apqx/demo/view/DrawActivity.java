@@ -1,4 +1,4 @@
-package me.apqx.demo.old.draw;
+package me.apqx.demo.view;
 
 import android.app.Activity;
 import android.content.Context;
@@ -29,18 +29,8 @@ public class DrawActivity extends Activity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_draw);
-        iv_canvas = findViewById(R.id.iv_canvas);
 
-        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.edit);
-        Bitmap background = Bitmap.createBitmap(100,200, Bitmap.Config.ARGB_8888);
-        Canvas canvas = new Canvas(background);
-        Paint paint = new Paint();
 
-        canvas.drawBitmap(bitmap, new Rect(0, 0, bitmap.getWidth(), bitmap.getHeight())
-                , new Rect(0, 0, 100, 200), paint);
-        canvas.save();
-        saveMyBitmapForPath(this, background);
-        iv_canvas.setImageBitmap(background);
     }
 
     /**

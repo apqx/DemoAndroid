@@ -1,5 +1,6 @@
 package me.apqx.demo.view.tab
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,7 @@ import me.apqx.demo.R
 import me.apqx.demo.mvp.BaseFragment
 import me.apqx.demo.mvp.BasePresenter
 import me.apqx.demo.mvp.IBaseView
+import me.apqx.demo.view.DrawActivity
 import java.lang.ref.SoftReference
 
 class TabComponentFragment: BaseFragment<BasePresenter<IBaseView>>() {
@@ -33,6 +35,7 @@ class TabComponentFragment: BaseFragment<BasePresenter<IBaseView>>() {
         btn_mvvm.setOnClickListener(this)
         btn_view_pager.setOnClickListener(this)
         btn_img.setOnClickListener(this)
+        btn_draw.setOnClickListener(this)
     }
 
 
@@ -53,6 +56,9 @@ class TabComponentFragment: BaseFragment<BasePresenter<IBaseView>>() {
             }
             R.id.btn_img -> {
                 findNavController().navigate(TabComponentFragmentDirections.actionTabComponentFragmentToImgFragment())
+            }
+            R.id.btn_draw -> {
+                startActivity(Intent(context, DrawActivity::class.java))
             }
         }
     }
