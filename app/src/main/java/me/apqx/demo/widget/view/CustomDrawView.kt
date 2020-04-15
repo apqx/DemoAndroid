@@ -7,6 +7,8 @@ import android.graphics.Paint
 import android.graphics.Rect
 import android.util.AttributeSet
 import android.view.View
+import me.apqx.libbase.util.CanvasUtil
+import me.apqx.libbase.util.DisplayUtil
 import me.apqx.libbase.util.LogUtil
 
 class CustomDrawView : View {
@@ -22,7 +24,9 @@ class CustomDrawView : View {
 
     private val textPaint by lazy {
         Paint().apply {
-            color = Color.BLACK
+            color = Color.GREEN
+            style = Paint.Style.STROKE
+            isAntiAlias = true
             textSize = 90f
         }
     }
@@ -34,14 +38,17 @@ class CustomDrawView : View {
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
         val str = "测试文本"
+
         textPaint.getTextBounds(str, 0, str.length, textBoundsRect)
 
         val textWidth = textBoundsRect.right - textBoundsRect.left
         val textHeight = textBoundsRect.bottom - textBoundsRect.top
+        val padding = DisplayUtil.dpToPx(context, 10f)
 
         LogUtil.d("textBounds $textBoundsRect")
-        canvas?.drawRect(0f, 0f, textWidth.toFloat(), textHeight.toFloat(), bgPaint)
-        canvas?.drawText(str, 0f, textHeight.toFloat(), textPaint)
+        canvas?.drawRect(0f, 0f, textWidth.toFloat() + padding * 2, textHeight.toFloat() + padding * 2, bgPaint)
+        canvas?.drawText(str, CanvasUtil.getDrawTextCenterX(0, (textWidth.toFloat() + padding * 2).toInt(), textBoundsRect).toFloat()
+                , CanvasUtil.getDrawTextCenterY(0, (textHeight.toFloat() + padding * 2).toInt(), textBoundsRect).toFloat(), textPaint)
 
 
     }
