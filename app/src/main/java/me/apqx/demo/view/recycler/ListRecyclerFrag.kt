@@ -2,11 +2,14 @@ package me.apqx.demo.view.recycler
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.view.setPadding
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.frag_list_recycler.*
 import me.apqx.demo.R
 import me.apqx.demo.mvp.BaseFragment
@@ -14,6 +17,8 @@ import me.apqx.demo.mvp.BasePresenter
 import me.apqx.demo.mvp.IBaseView
 import me.apqx.demo.view.adapter.ListItemTouchHelperCallback
 import me.apqx.demo.view.adapter.RecyclerListAdapter
+import me.apqx.libbase.util.LogUtil
+import me.apqx.libbase.util.ToastUtil
 
 
 class ListRecyclerFrag : BaseFragment<BasePresenter<IBaseView>>() {
@@ -34,6 +39,12 @@ class ListRecyclerFrag : BaseFragment<BasePresenter<IBaseView>>() {
         val itemTouchHelper = ItemTouchHelper(ListItemTouchHelperCallback())
         itemTouchHelper.attachToRecyclerView(rv_list)
         initData()
+
+        rv_list.addOnItemTouchListener(object : OnRecyclerItemClickListener(context!!) {
+            override fun onItemClick(position: Int) {
+                LogUtil.d("OnItemClick $position")
+            }
+        })
     }
 
     private fun initData() {
@@ -43,6 +54,8 @@ class ListRecyclerFrag : BaseFragment<BasePresenter<IBaseView>>() {
         }
         adapter.setData(list)
         adapter.notifyDataSetChanged()
+
+
     }
 
     override fun onClick(view: View?) {
@@ -51,7 +64,7 @@ class ListRecyclerFrag : BaseFragment<BasePresenter<IBaseView>>() {
                 rv_list.setPadding(100, 0, 100, 0)
             }
             R.id.btn_right -> {
-
+                adapter.notifyItemChanged(0)
             }
         }
     }

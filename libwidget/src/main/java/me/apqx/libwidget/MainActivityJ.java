@@ -27,7 +27,7 @@ public class MainActivityJ extends AppCompatActivity {
         pagerIndicator.bindViewPager(viewPager);
     }
 
-    class DemoPagerAdapter extends PagerAdapter {
+    static class DemoPagerAdapter extends PagerAdapter {
         @Override
         public int getCount() {
             return 5;

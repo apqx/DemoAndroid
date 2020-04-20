@@ -16,7 +16,10 @@ class RecyclerListAdapter : RecyclerView.Adapter<RecyclerListAdapter.ListViewHol
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_simple_list_man, parent, false)
-        return ListViewHolder(view)
+        val viewHolder =  ListViewHolder(view)
+        LogUtil.d("onCreateViewHolder ${viewHolder.hashCode()}")
+
+        return viewHolder
     }
 
     override fun getItemCount(): Int {
@@ -24,6 +27,7 @@ class RecyclerListAdapter : RecyclerView.Adapter<RecyclerListAdapter.ListViewHol
     }
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
+        LogUtil.d("onBindViewHolder $position ${holder.hashCode()}")
         holder.bindData(list[position], position)
     }
 
