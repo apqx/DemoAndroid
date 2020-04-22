@@ -10,6 +10,8 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import io.reactivex.disposables.Disposable
+import io.reactivex.functions.Function
 import kotlinx.android.synthetic.main.frag_view.*
 import me.apqx.demo.MainActivity
 import me.apqx.demo.R
@@ -20,8 +22,14 @@ import me.apqx.demo.mvp.BaseFragment
 import me.apqx.demo.mvp.BasePresenter
 import me.apqx.demo.mvp.IBaseView
 import me.apqx.demo.mvvm.viewmodels.DemoViewModel
+import me.apqx.libbase.util.LogUtil
 import me.apqx.libbase.util.ToastUtil
+import rx.Observable
+import rx.functions.Func1
+import rx.schedulers.Schedulers
 import java.lang.ref.SoftReference
+import java.util.*
+import kotlin.collections.ArrayList
 
 class TabViewFragment : BaseFragment<BasePresenter<IBaseView>>() {
     private lateinit var binding: FragViewBinding
