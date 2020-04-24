@@ -43,6 +43,9 @@ class ListRecyclerFrag : BaseFragment<BasePresenter<IBaseView>>() {
         rv_list.addOnItemTouchListener(object : OnRecyclerItemClickListener(context!!) {
             override fun onItemClick(position: Int) {
                 LogUtil.d("OnItemClick $position")
+                adapter.notifyItemRemoved(position)
+                adapter.getData().removeAt(position)
+                LogUtil.d(adapter.getData().toString())
             }
         })
     }

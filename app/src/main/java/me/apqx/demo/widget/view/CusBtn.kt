@@ -23,15 +23,6 @@ class CusBtn : androidx.appcompat.widget.AppCompatTextView {
     constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr)
 
     override fun onDraw(canvas: Canvas?) {
-//        if (!this::path.isInitialized) {
-//            path = Path()
-//            path.lineTo(width.toFloat(), 0f)
-//            path.lineTo((width - 40).toFloat(), height.toFloat())
-//            path.lineTo(0f, height.toFloat())
-//            path.close()
-//        }
-//        canvas!!.clipPath(path)
-//        canvas.drawRGB(0xff, 0, 0)
         super.onDraw(canvas)
     }
 
@@ -49,7 +40,6 @@ class CusBtn : androidx.appcompat.widget.AppCompatTextView {
             path.close()
         }
         canvas!!.clipPath(path)
-//        canvas.drawRGB(0xff, 0, 0)
         super.draw(canvas)
     }
 }
