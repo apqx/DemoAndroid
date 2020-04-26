@@ -9,10 +9,22 @@
         android:layout_width="match_parent"
         android:layout_height="300dp"/>
 
-    <androidx.cardview.widget.CardView
+    <me.apqx.demo.widget.view.CusBtn
+        android:id="@+id/cusView"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:textColor="@android:color/white"
+        android:text="测试"
+        android:gravity="center"
+        android:background="@color/colorPrimary"
+        android:foreground="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"/>
+
+    <Switch
+        android:id="@+id/sw_switch"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:layout_margin="20dp"
-        app:cardElevation="2dp"
+        android:layout_height="wrap_content"
+        android:text= "測試"
         />
 </LinearLayout>

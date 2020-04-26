@@ -45,9 +45,9 @@ class RecyclerListAdapter : RecyclerView.Adapter<RecyclerListAdapter.ListViewHol
         private var itemPosition: Int = 0
 
         constructor(itemView: View) : super(itemView) {
-            itemView.setOnClickListener {
-
-            }
+//            itemView.setOnClickListener {
+//                LogUtil.d("onClick")
+//            }
             itemView.setOnLongClickListener{
                 val vibrator = itemView.context.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
                 vibrator.vibrate(100)

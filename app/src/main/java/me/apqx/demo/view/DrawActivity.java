@@ -11,7 +11,9 @@ import android.graphics.Rect;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
+import android.widget.Switch;
 
 import androidx.annotation.Nullable;
 
@@ -21,6 +23,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 import me.apqx.demo.R;
+import me.apqx.libbase.util.ToastUtil;
 
 public class DrawActivity extends Activity {
     private ImageView iv_canvas;
@@ -29,8 +32,17 @@ public class DrawActivity extends Activity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_draw);
-
-
+        Switch mSwitch = findViewById(R.id.sw_switch);
+        mSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                ToastUtil.INSTANCE.showToast("变化 " + isChecked);
+            }
+        });
+        findViewById(R.id.cusView).setOnClickListener(v -> {
+//            ToastUtil.INSTANCE.showToast("点击");
+            mSwitch.setChecked(!mSwitch.isChecked());
+        });
     }
 
     /**
