@@ -116,7 +116,7 @@ class FragsFragment : BaseFragment<BasePresenter<IBaseView>>() {
 
 
     private fun generateFragment(): Fragment {
-        return ItemFragment.getInstance(flag++)
+        return ItemFragment.newInstance(flag++)
     }
 
     override fun onDestroy() {

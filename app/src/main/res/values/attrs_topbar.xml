@@ -2,6 +2,9 @@
 <resources>
     <declare-styleable name="CusTopBar">
         <attr name="title" format="string"/>
-        <attr name="backText" format="string"/>
+        <attr name="iconRes" format="reference"/>
+        <attr name="titleColor" format="color"/>
+        <attr name="showSubtitle" format="boolean"/>
+        <attr name="titleFontSize" format="dimension"/>
     </declare-styleable>
 </resources>

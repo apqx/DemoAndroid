@@ -5,11 +5,6 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <me.apqx.demo.widget.view.CusTopBar
-        android:layout_width="match_parent"
-        android:layout_height="?android:actionBarSize"
-        app:title="标题"
-        app:backText="后退"/>
     <ListView
         android:id="@+id/lv_top"
         android:layout_width="match_parent"

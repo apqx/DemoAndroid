@@ -10,15 +10,13 @@ import me.apqx.demo.mvp.BaseFragment
 import me.apqx.demo.mvp.BasePresenter
 import me.apqx.demo.mvp.IBaseView
 import me.apqx.libbase.util.LogUtil
-import java.lang.ref.SoftReference
 
 
 class ItemFragment() : BaseFragment<BasePresenter<IBaseView>>() {
 
-
     companion object {
         private val tagInt = "tag"
-        public fun getInstance(id: Int): ItemFragment {
+        fun newInstance(id: Int): ItemFragment {
             val bundle = Bundle()
             bundle.putInt(tagInt, id)
             val fragment = ItemFragment()
@@ -27,27 +25,18 @@ class ItemFragment() : BaseFragment<BasePresenter<IBaseView>>() {
         }
     }
 
-    private lateinit var viewSoftReference: SoftReference<View>
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-//        if (this::viewSoftReference.isInitialized && viewSoftReference.get() != null) {
-//            return viewSoftReference.get()
-//        }
-        val view = inflater.inflate(R.layout.frag_item_black, container, false)
-        viewSoftReference = SoftReference(view)
-        return view
+        return inflater.inflate(R.layout.frag_item_black, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         tv_item_frag_content.setOnClickListener(this)
+        val key = arguments?.getInt("key")
+        tv_item_frag_content.text = "$key"
         LogUtil.d("ItemFragment int = ${arguments?.getInt(tagInt)}")
-//        arguments?.getInt(tagInt).also {
-//            tv_item_frag_content.text = it.toString()
-//        }
-//        if (savedInstanceState != null && savedInstanceState.containsKey("key")) {
-//            tv_item_frag_content.text = savedInstanceState.getString("key")
-//        }
+
     }
 
     override fun onSaveInstanceState(outState: Bundle) {

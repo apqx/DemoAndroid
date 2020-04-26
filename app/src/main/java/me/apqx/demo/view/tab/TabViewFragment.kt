@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -20,6 +21,7 @@ import me.apqx.demo.mvp.BaseFragment
 import me.apqx.demo.mvp.BasePresenter
 import me.apqx.demo.mvp.IBaseView
 import me.apqx.demo.mvvm.viewmodels.DemoViewModel
+import me.apqx.demo.view.frags.FragsActivity
 import me.apqx.libbase.util.ToastUtil
 import java.lang.ref.SoftReference
 
@@ -91,7 +93,8 @@ class TabViewFragment : BaseFragment<BasePresenter<IBaseView>>() {
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.btn_fragment -> {
-                findNavController().navigate(TabViewFragmentDirections.actionTabViewFragmentToFragsFragment())
+//                findNavController().navigate(TabViewFragmentDirections.actionTabViewFragmentToFragsFragment())
+                startActivity(Intent(context, FragsActivity::class.java))
             }
             R.id.btn_second_activity -> {
                 startActivity(Intent(activity, SecondActivity::class.java))

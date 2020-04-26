@@ -30,6 +30,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".view.frags.FragsActivity"/>
         <activity android:name=".old.jetpack.JetpackActivity" />
         <activity android:name=".ipc.IpcActivity" />
         <activity android:name=".old.tools.ToolsActivity" />
@@ -52,6 +53,7 @@
             android:configChanges="orientation|screenSize"/>
         <activity android:name=".SecondActivity"
             android:theme="@style/AppTheme.TransparentStatusBar"/>
+        <activity android:name=".view.frags.FragsActivity" />
 
         <service
             android:name=".ipc.RemoteService"
