@@ -13,6 +13,7 @@ import me.apqx.demo.mvp.BaseFragment
 import me.apqx.demo.mvp.BasePresenter
 import me.apqx.demo.mvp.IBaseView
 import me.apqx.demo.view.DrawActivity
+import me.apqx.demo.view.ScrollActivity
 import java.lang.ref.SoftReference
 
 class TabComponentFragment: BaseFragment<BasePresenter<IBaseView>>() {
@@ -36,6 +37,7 @@ class TabComponentFragment: BaseFragment<BasePresenter<IBaseView>>() {
         btn_view_pager.setOnClickListener(this)
         btn_img.setOnClickListener(this)
         btn_draw.setOnClickListener(this)
+        btn_scroll.setOnClickListener(this)
     }
 
 
@@ -59,6 +61,9 @@ class TabComponentFragment: BaseFragment<BasePresenter<IBaseView>>() {
             }
             R.id.btn_draw -> {
                 startActivity(Intent(context, DrawActivity::class.java))
+            }
+            R.id.btn_scroll -> {
+                startActivity(Intent(context, ScrollActivity::class.java))
             }
         }
     }

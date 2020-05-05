@@ -54,6 +54,7 @@
         <activity android:name=".SecondActivity"
             android:theme="@style/AppTheme.TransparentStatusBar"/>
         <activity android:name=".view.frags.FragsActivity" />
+        <activity android:name=".view.ScrollActivity" />
 
         <service
             android:name=".ipc.RemoteService"
