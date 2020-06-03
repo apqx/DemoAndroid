@@ -33,16 +33,14 @@ public class DrawActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_draw);
         Switch mSwitch = findViewById(R.id.sw_switch);
-        mSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                ToastUtil.INSTANCE.showToast("变化 " + isChecked);
-            }
-        });
+        mSwitch.setOnCheckedChangeListener((buttonView, isChecked)
+                -> ToastUtil.INSTANCE.showToast("Check变化 " + isChecked));
         findViewById(R.id.cusView).setOnClickListener(v -> {
-//            ToastUtil.INSTANCE.showToast("点击");
+            ToastUtil.INSTANCE.showToast("点击");
             mSwitch.setChecked(!mSwitch.isChecked());
         });
+        mSwitch.setOnClickListener(view -> {});
+
     }
 
     /**

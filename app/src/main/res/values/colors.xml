@@ -7,4 +7,9 @@
     <color name="colorAccent">#D81B60</color>
     <color name="colorNightAccent">#7f8fa6</color>
     <color name="transparent">#00ffffff</color>
+
+    <color name="commonTitleRed">#FF0000</color>
+    <color name="commonTitleGreen">#00FF00</color>
+    <color name="commonBgRed">#7F8FA6</color>
+    <color name="commonBgGreen">#7F8FA6</color>
 </resources>

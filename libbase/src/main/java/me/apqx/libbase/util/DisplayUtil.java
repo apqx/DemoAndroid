@@ -185,6 +185,7 @@ public class DisplayUtil {
      */
     public static void hideSoftInputKeyboard(View view) {
         InputMethodManager imm = (InputMethodManager) view.getContext().getSystemService(Activity.INPUT_METHOD_SERVICE);
+        assert imm != null;
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 

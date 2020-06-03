@@ -23,8 +23,8 @@ android {
     // 定义要重复使用的字符串
     def APP_NAME = "appName"
 
-    compileSdkVersion 28
-    buildToolsVersion '28.0.3'
+    compileSdkVersion 29
+    buildToolsVersion '29.0.3'
     defaultConfig {
         // 定义包名
         applicationId "me.apqx.demo"
@@ -36,7 +36,7 @@ android {
         getManifestPlaceholders().put(APP_NAME, "DEF_NAME")
 
         minSdkVersion 16
-        targetSdkVersion 28
+        targetSdkVersion 29
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
