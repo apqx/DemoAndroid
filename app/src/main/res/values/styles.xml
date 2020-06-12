@@ -8,6 +8,16 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="AppTheme.RED">
+        <item name="commonTitle">@color/commonTitleRed</item>
+        <item name="commonBg">@color/commonBgRed</item>
+    </style>
+
+    <style name="AppTheme.GREEN">
+        <item name="commonTitle">@color/commonTitleGreen</item>
+        <item name="commonBg">@color/commonBgGreen</item>
+    </style>
+
     <style name="commonBtn" parent="TextAppearance.AppCompat">
         <item name="android:textColor">?attr/colorAccent</item>
         <item name="android:background">@drawable/bg_common_btn</item>
