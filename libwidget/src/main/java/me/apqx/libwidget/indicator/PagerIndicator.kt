@@ -2,7 +2,6 @@ package me.apqx.libwidget.indicator
 
 import android.content.Context
 import android.database.DataSetObserver
-import android.graphics.Rect
 import android.util.AttributeSet
 import android.view.View
 import android.view.ViewGroup
@@ -10,7 +9,8 @@ import android.widget.LinearLayout
 import androidx.viewpager.widget.PagerAdapter
 import androidx.viewpager.widget.ViewPager
 import me.apqx.libbase.util.DisplayUtil
-import me.apqx.libbase.util.LogUtil
+import me.apqx.libtools.log.LogUtil
+
 import me.apqx.libwidget.R
 
 class PagerIndicator : LinearLayout {

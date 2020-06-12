@@ -10,7 +10,8 @@ import android.widget.TextView
 import butterknife.BindView
 import butterknife.ButterKnife
 import me.apqx.demo.R
-import me.apqx.libbase.util.LogUtil
+import me.apqx.libtools.log.LogUtil
+
 
 class LoadingDialog : Dialog {
     @BindView(R.id.tv_loading_hint)

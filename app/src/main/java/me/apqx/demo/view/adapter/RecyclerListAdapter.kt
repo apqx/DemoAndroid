@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.item_simple_list_man.view.*
 import me.apqx.demo.R
-import me.apqx.libbase.util.LogUtil
+import me.apqx.libtools.log.LogUtil
 
 class RecyclerListAdapter : RecyclerView.Adapter<RecyclerListAdapter.ListViewHolder>() {
 

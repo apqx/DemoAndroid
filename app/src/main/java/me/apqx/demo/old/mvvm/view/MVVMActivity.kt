@@ -6,11 +6,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import me.apqx.libbase.util.LogUtil
+
 import me.apqx.demo.R
 import me.apqx.demo.databinding.ActivityMvvmBinding
 import me.apqx.demo.old.mvvm.bean.Student
 import me.apqx.demo.old.mvvm.viewmodel.StudentViewModel
+import me.apqx.libtools.log.LogUtil
 
 class MVVMActivity : AppCompatActivity() {
     private lateinit var dataBinding: ActivityMvvmBinding

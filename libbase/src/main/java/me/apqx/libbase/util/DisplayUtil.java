@@ -11,6 +11,8 @@ import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
+import me.apqx.libtools.log.LogUtil;
+
 public class DisplayUtil {
     /**
      * 将dp或dip转换为px

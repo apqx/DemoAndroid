@@ -8,7 +8,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.item_simple_list_chips.view.*
 import me.apqx.demo.R
-import me.apqx.libbase.util.LogUtil
+import me.apqx.libtools.log.LogUtil
+
 
 class RecyclerChipsAdapter : RecyclerView.Adapter<RecyclerChipsAdapter.ChipsViewHolder>() {
 

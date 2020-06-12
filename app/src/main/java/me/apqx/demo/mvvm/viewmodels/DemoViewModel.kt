@@ -8,7 +8,8 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import me.apqx.demo.mvvm.data.Student
 import me.apqx.demo.mvvm.data.StudentRepository
-import me.apqx.libbase.util.LogUtil
+import me.apqx.libtools.log.LogUtil
+
 
 class DemoViewModel : ViewModel() {
     private val repository = StudentRepository()

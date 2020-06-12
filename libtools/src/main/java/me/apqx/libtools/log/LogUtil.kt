@@ -1,4 +1,4 @@
-package me.apqx.libbase.util
+package me.apqx.libtools.log
 
 import android.util.Log
 import com.google.gson.Gson
@@ -20,7 +20,7 @@ object LogUtil {
 
     fun d(tag: String, str: String) {
         if (debugOn)
-            Log.d(TAG, str)
+            Log.d(tag, str)
     }
 
     fun dJson(obj: Any) {
@@ -39,7 +39,7 @@ object LogUtil {
 
     fun e(tag: String, str: String) {
         if (debugOn)
-            Log.e(TAG, str)
+            Log.e(tag, str)
     }
 
     fun eJson(obj: Any) {
@@ -58,7 +58,7 @@ object LogUtil {
 
     fun i(tag: String, str: String) {
         if (debugOn)
-            Log.i(TAG, str)
+            Log.i(tag, str)
     }
 
     fun iJson(obj: Any) {

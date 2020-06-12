@@ -3,7 +3,8 @@ package me.apqx.demo.old.service
 import android.app.Service
 import android.content.Intent
 import android.os.IBinder
-import me.apqx.libbase.util.LogUtil
+import me.apqx.libtools.log.LogUtil
+
 
 class Service1 : Service() {
 

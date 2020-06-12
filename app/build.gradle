@@ -22,7 +22,9 @@ android {
 
     // 定义要重复使用的字符串
     def APP_NAME = "appName"
-
+    def PH_MODE = "ph_mode"
+    def PH_FLAVOR = "ph_flavor"
+    def PH_FLAVOR_MORE = "ph_flavor_more"
     compileSdkVersion 28
     buildToolsVersion '28.0.3'
     defaultConfig {
@@ -42,14 +44,16 @@ android {
         multiDexEnabled true
     }
 
+
     // 这里是按方法块的定义顺序执行的，似乎有的代码块可以继承属性，有的就不可以
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+            getManifestPlaceholders().put(PH_MODE, "release")
         }
         debug {
-//            debugable = true
             println("apqx: buildTypes debug")
             // 修改Debug模式下的应用名，这个属性会覆盖flavor中定义的属性
 //            manifestPlaceholders = [appName: "Debug"]
@@ -58,6 +62,8 @@ android {
             applicationIdSuffix = '.debug'
             // debug模式下定义不一样的版本名称
             versionNameSuffix = "-debug"
+
+            getManifestPlaceholders().put(PH_MODE, "release")
         }
     }
     dataBinding {
@@ -78,17 +84,16 @@ android {
     productFlavors {
         // 每一个flavor都从defaultConfig中继承属性，并可以进行覆盖
         mi {
-
             dimension = 'version'
             println("apqx: flavor mi")
-            // 定义不同的应用名
-            getManifestPlaceholders().put(APP_NAME, "Mi")
+            getManifestPlaceholders().put(PH_FLAVOR, "mi")
+            getManifestPlaceholders().put(PH_FLAVOR_MORE, "mi_more")
         }
         play {
             dimension = 'version'
             println("apqx: flavor play")
-            // 定义不同的应用名
-            getManifestPlaceholders().put(APP_NAME, "Play")
+            getManifestPlaceholders().put(PH_FLAVOR, "play")
+            getManifestPlaceholders().put(PH_FLAVOR_MORE, "play_more")
         }
     }
 
@@ -106,7 +111,7 @@ dependencies {
     implementation 'com.android.support:multidex:1.0.3'
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'com.google.android.material:material:1.0.0'
+    implementation 'com.google.android.material:material:1.1.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.1.0'
@@ -166,6 +171,7 @@ dependencies {
     implementation "androidx.viewpager2:viewpager2:1.0.0"
     implementation project(path: ':libbase')
     implementation project(path: ':libwidget')
+    implementation project(path: ':libtools')
 
     // Flavor依赖问题
 //        implementation project(path: ':libtools', configuration: 'default')

@@ -9,7 +9,8 @@ import android.util.AttributeSet
 import android.view.View
 import me.apqx.libbase.util.CanvasUtil
 import me.apqx.libbase.util.DisplayUtil
-import me.apqx.libbase.util.LogUtil
+import me.apqx.libtools.log.LogUtil
+
 
 class CustomDrawView : View {
     constructor(context: Context?) : super(context)

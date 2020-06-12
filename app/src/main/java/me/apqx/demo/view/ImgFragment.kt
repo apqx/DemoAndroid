@@ -15,8 +15,8 @@ import me.apqx.demo.R
 import me.apqx.demo.mvp.BaseFragment
 import me.apqx.demo.mvp.BasePresenter
 import me.apqx.demo.mvp.IBaseView
-import me.apqx.libbase.util.LogUtil
-import java.lang.Exception
+import me.apqx.libtools.log.LogUtil
+
 import java.math.BigDecimal
 import java.math.RoundingMode
 

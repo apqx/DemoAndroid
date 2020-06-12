@@ -6,7 +6,8 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
 import me.apqx.demo.CusApp
-import me.apqx.libbase.util.LogUtil
+import me.apqx.libtools.log.LogUtil
+
 
 const val DATABASE_NAME = "app-db"
 @Database(entities = [Score::class, Student::class], version = 1)

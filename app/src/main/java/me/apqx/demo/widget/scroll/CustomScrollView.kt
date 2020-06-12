@@ -8,7 +8,8 @@ import android.view.animation.OvershootInterpolator
 import android.widget.ImageView
 import android.widget.ScrollView
 import me.apqx.demo.R
-import me.apqx.libbase.util.LogUtil
+import me.apqx.libtools.log.LogUtil
+
 import kotlin.math.roundToInt
 
 class CustomScrollView : ScrollView {
@@ -22,7 +23,7 @@ class CustomScrollView : ScrollView {
 
     private val START_BY_TOP = 1
     private val START_BY_BOTTOM = 2
-    private val START_BY_BOTH = 2
+    private val START_BY_BOTH = 3
 
     var startY = 0f
     var startBy = 0

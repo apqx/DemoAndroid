@@ -19,7 +19,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import kotlinx.android.synthetic.main.activity_widget.*
 import kotlinx.android.synthetic.main.layout_tab.view.*
-import me.apqx.libbase.util.LogUtil
+
 import me.apqx.demo.R
 import me.apqx.libbase.util.ToastUtil
 import me.apqx.demo.databinding.ActivityWidgetBinding
@@ -29,6 +29,7 @@ import me.apqx.demo.widget.list.ListActivity
 import me.apqx.demo.widget.recycler.RecyclerActivity
 import me.apqx.demo.widget.view.*
 import me.apqx.libbase.util.DisplayUtil
+import me.apqx.libtools.log.LogUtil
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode

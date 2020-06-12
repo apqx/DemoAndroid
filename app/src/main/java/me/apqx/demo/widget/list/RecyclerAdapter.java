@@ -10,8 +10,9 @@ import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-import me.apqx.libbase.util.LogUtil;
+;
 import me.apqx.demo.R;
+import me.apqx.libtools.log.LogUtil;
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.CusViewHolder> {
     private int resource;

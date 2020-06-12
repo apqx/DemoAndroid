@@ -6,10 +6,10 @@
         android:id="@+id/wv_web"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="测试文本"
-        android:gravity="center"
-        android:background="#33DFECFD"/>
+    <Button
+        android:id="@+id/btn_margin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="margin"
+        android:layout_gravity="bottom|center_horizontal"/>
 </FrameLayout>

@@ -20,8 +20,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.flexbox.FlexDirection;
 import com.google.android.flexbox.FlexboxLayoutManager;
 
-import me.apqx.libbase.util.LogUtil;
+;
 import me.apqx.demo.R;
+import me.apqx.libtools.log.LogUtil;
 
 public class ListActivity extends Activity {
     private ListView listView;

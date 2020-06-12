@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -22,6 +21,9 @@ import me.apqx.demo.mvp.BasePresenter
 import me.apqx.demo.mvp.IBaseView
 import me.apqx.demo.mvvm.viewmodels.DemoViewModel
 import me.apqx.demo.view.frags.FragsActivity
+import me.apqx.demo.old.web.WebActivity
+import me.apqx.demo.view.TextActivity
+import me.apqx.demo.view.ThemeActivity
 import me.apqx.libbase.util.ToastUtil
 import java.lang.ref.SoftReference
 
@@ -64,6 +66,8 @@ class TabViewFragment : BaseFragment<BasePresenter<IBaseView>>() {
         btn_add_view.setOnClickListener(this)
         btn_toggle_loading.setOnClickListener(this)
         btn_text.setOnClickListener(this)
+        btn_web_activity.setOnClickListener(this)
+        btn_theme.setOnClickListener(this)
 
         simpleAdapter = SimpleRecyclerAdapter()
         simpleAdapter.setOnItemClickListener(object : SimpleRecyclerAdapter.OnItemClickListener {
@@ -116,12 +120,19 @@ class TabViewFragment : BaseFragment<BasePresenter<IBaseView>>() {
                 }
             }
             R.id.btn_text -> {
-                findNavController().navigate(TabViewFragmentDirections.actionTabViewFragmentToTextFragment())
+                startActivity(Intent(context, TextActivity::class.java))
+//                findNavController().navigate(TabViewFragmentDirections.actionTabViewFragmentToTextFragment())
             }
 
             R.id.btn_expand_top -> {
                 // 设置AppBar展开
                 abl_top.setExpanded(true, true)
+            }
+            R.id.btn_web_activity -> {
+                startActivity(Intent(context, WebActivity::class.java))
+            }
+            R.id.btn_theme -> {
+                startActivity(Intent(context, ThemeActivity::class.java))
             }
         }
     }

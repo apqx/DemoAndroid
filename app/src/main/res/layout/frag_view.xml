@@ -44,6 +44,12 @@
                         android:text="Second Activity" />
 
                     <Button
+                        android:id="@+id/btn_web_activity"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Web" />
+
+                    <Button
                         android:id="@+id/btn_dialog"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -70,6 +76,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Text" />
+                    <Button
+                        android:id="@+id/btn_theme"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Theme" />
                 </LinearLayout>
 
                 <androidx.appcompat.widget.Toolbar

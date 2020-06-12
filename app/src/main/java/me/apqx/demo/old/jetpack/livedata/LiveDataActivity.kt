@@ -7,12 +7,13 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
-import me.apqx.libbase.util.LogUtil
+
 import me.apqx.demo.R
 import me.apqx.demo.databinding.ActivityLivedataBinding
 import me.apqx.demo.old.jetpack.livedata.adapter.StudentAdapter
 import me.apqx.demo.old.jetpack.livedata.bean.Student
 import me.apqx.demo.old.jetpack.livedata.viewmodel.StudentViewModel
+import me.apqx.libtools.log.LogUtil
 
 /**
  * LiveData与DataBinding配合

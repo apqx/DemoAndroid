@@ -46,4 +46,5 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
     // 记录日志的拦截器
     implementation 'com.squareup.okhttp3:logging-interceptor:3.9.1'
+    implementation project(path: ':libtools')
 }

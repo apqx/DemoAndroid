@@ -9,7 +9,7 @@ import me.apqx.demo.R
 import me.apqx.demo.mvp.BaseFragment
 import me.apqx.demo.mvp.BasePresenter
 import me.apqx.demo.mvp.IBaseView
-import me.apqx.libbase.util.LogUtil
+import me.apqx.libtools.log.LogUtil
 
 
 class ItemFragment() : BaseFragment<BasePresenter<IBaseView>>() {

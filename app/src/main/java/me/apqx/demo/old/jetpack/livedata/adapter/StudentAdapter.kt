@@ -4,11 +4,12 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
-import me.apqx.libbase.util.LogUtil
+
 import me.apqx.demo.R
 import me.apqx.demo.databinding.ItemStudentLivedataBinding
 import me.apqx.demo.old.jetpack.livedata.ILiveDataActivity
 import me.apqx.demo.old.jetpack.livedata.bean.Student
+import me.apqx.libtools.log.LogUtil
 
 class StudentAdapter(val list: MutableList<Student>, val iLiveDataActivity: ILiveDataActivity): RecyclerView.Adapter<StudentAdapter.CusViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CusViewHolder {

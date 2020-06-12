@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import me.apqx.libbase.util.LogUtil;
+;import me.apqx.libtools.log.LogUtil;
 
 public class CusHorizontalAdapter extends HorizontalPager.Adapter {
 

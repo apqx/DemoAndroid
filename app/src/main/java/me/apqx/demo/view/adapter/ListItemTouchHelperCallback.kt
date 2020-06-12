@@ -2,7 +2,8 @@ package me.apqx.demo.view.adapter
 
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
-import me.apqx.libbase.util.LogUtil
+import me.apqx.libtools.log.LogUtil
+
 import java.util.*
 
 class ListItemTouchHelperCallback : ItemTouchHelper.SimpleCallback(ItemTouchHelper.UP

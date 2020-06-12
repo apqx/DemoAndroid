@@ -20,7 +20,10 @@
         android:networkSecurityConfig="@xml/network_security_config"
         tools:ignore="UnusedAttribute">
 
-        <meta-data android:name="channel" android:value="DEF_CHANNEL"/>
+        <meta-data android:name="flavor"
+            android:value="${ph_flavor}"/>
+        <meta-data android:name="flavorMore"
+            android:value="${ph_flavor_more}"/>
 
         <activity android:name=".MainActivity"
             android:theme="@style/AppTheme.TransparentStatusBar"
@@ -55,6 +58,8 @@
             android:theme="@style/AppTheme.TransparentStatusBar"/>
         <activity android:name=".view.frags.FragsActivity" />
         <activity android:name=".view.ScrollActivity" />
+        <activity android:name=".view.TextActivity" />
+        <activity android:name=".view.ThemeActivity" />
 
         <service
             android:name=".ipc.RemoteService"

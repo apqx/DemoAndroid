@@ -5,31 +5,30 @@ import android.os.Bundle;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Button;
 
 import androidx.annotation.Nullable;
 
 
 import java.util.HashMap;
-import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import io.reactivex.Observable;
-import io.reactivex.Observer;
-import io.reactivex.disposables.Disposable;
-import me.apqx.libbase.util.LogUtil;
+;
 import me.apqx.demo.R;
+import me.apqx.libtools.log.LogUtil;
 
 public class WebActivity extends Activity {
     @BindView(R.id.wv_web)
     WebView webView;
+    @BindView(R.id.btn_margin)
+    Button btnMargin;
     private HashMap<String, Boolean> map = new HashMap();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_web_test);
-//        WebView webView = findViewById(R.id.wv_web);
         ButterKnife.bind(this);
         webView.setWebViewClient(new WebViewClient() {
             @Override
@@ -37,18 +36,19 @@ public class WebActivity extends Activity {
                 //返回值是true表示当前程序处理
                 //返回值是false表示当前WebView处理
                 //如果不覆写此方法，则由系统决定那个app执行网页
-                view.loadUrl(url);
-                return true;
+                LogUtil.INSTANCE.d("shouldOverrideUrlLoading " + url);
+                return false;
             }
 
             @Override
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
-                LogUtil.INSTANCE.d("js " + url);
+                LogUtil.INSTANCE.d("onPageFinished " + url);
 //                if (url.equals("http://ithome.com/")) {
 //                    LogUtil.INSTANCE.d("js in " + url);
-                view.loadUrl("javascript:(function(){ document.body.style.paddingTop = '50px'})();");
+//                view.loadUrl("javascript:(function(){ document.body.style.paddingTop = '50px'})();");
 //                }
+
             }
         });
 
@@ -59,37 +59,22 @@ public class WebActivity extends Activity {
         webSetting.setPluginState(WebSettings.PluginState.ON);
         // 设置可以支持缩放
         webSetting.setSupportZoom(false);
+        // 禁止字体缩放
+        webView.getSettings().setTextZoom(100);
         webSetting.setCacheMode(WebSettings.LOAD_NO_CACHE);
         // 设置出现缩放工具
-        webSetting.setBuiltInZoomControls(true);
+        webSetting.setBuiltInZoomControls(false);
+        webSetting.setDomStorageEnabled(true);
         // 扩大比例的缩放
         webSetting.setUseWideViewPort(true);
         webSetting.setLoadWithOverviewMode(true);
 //        webView.loadUrl("https://www.cfd139.com.cn/zt/hy/mobile/lp6/m-common16.html?utm_source=jt&utm_medium=hq&utm_campaign=wzl2");
 //        webView.loadUrl("https://www.cfd139.com/zt/hy/mobile/lp6/m-common26.html?utm_source=jt&utm_medium=sy&utm_campaign=banner");
-        webView.loadUrl("https://btcccfd.com/JT1/?utm_source=JT1&utm_medium=BTHQ_2.5.2");
-//        webView.loadUrl("javascript:(function(){ document.body.style.paddingTop = '50px'})();");
-        Observable.interval(1, TimeUnit.SECONDS)
-                .subscribe(new Observer<Long>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
-
-                    }
-
-                    @Override
-                    public void onNext(Long aLong) {
-
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-
-                    }
-
-                    @Override
-                    public void onComplete() {
-
-                    }
-                });
+//        webView.loadUrl("https://btcccfd.com/JT1/?utm_source=JT1&utm_medium=BTHQ_2.5.2");
+        webView.loadUrl("https://jjh.cngold.org/sports/prize/list.htm?cngoldId=1944989&type=1&grantStatus=2&isNight=0");
+        btnMargin.setOnClickListener(view -> {
+            LogUtil.INSTANCE.d("canGoBack = " + webView.canGoBack());
+            if (webView.canGoBack()) webView.goBack();
+        });
     }
 }

@@ -3,8 +3,9 @@ package me.apqx.demo.old.test
 import android.os.*
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import me.apqx.libbase.util.LogUtil
+
 import me.apqx.demo.R
+import me.apqx.libtools.log.LogUtil
 import java.io.File
 
 class TestActivity : AppCompatActivity() {

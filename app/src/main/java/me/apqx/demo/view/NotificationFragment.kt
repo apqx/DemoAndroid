@@ -20,7 +20,8 @@ import me.apqx.demo.mvp.BaseFragment
 import me.apqx.demo.mvp.BasePresenter
 import me.apqx.demo.mvp.IBaseView
 import me.apqx.demo.old.tools.NotificationUtils
-import me.apqx.libbase.util.LogUtil
+import me.apqx.libtools.log.LogUtil
+
 
 class NotificationFragment : BaseFragment<BasePresenter<IBaseView>>() {
     private val channelId = "apqx"

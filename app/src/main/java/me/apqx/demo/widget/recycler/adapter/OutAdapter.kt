@@ -7,12 +7,13 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import me.apqx.libbase.util.LogUtil
+
 import me.apqx.demo.R
 import me.apqx.demo.databinding.ItemRecyclerListBinding
 import me.apqx.demo.databinding.ItemRecyclerManBinding
 import me.apqx.demo.widget.recycler.bean.DATA_TYPE_NORMAL
 import me.apqx.demo.widget.recycler.bean.Man
+import me.apqx.libtools.log.LogUtil
 
 /**
  * 外层竖向RecyclerView的Adapter

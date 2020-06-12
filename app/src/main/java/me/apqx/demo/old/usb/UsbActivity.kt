@@ -11,8 +11,9 @@ import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_usb.*
-import me.apqx.libbase.util.LogUtil
+
 import me.apqx.demo.R
+import me.apqx.libtools.log.LogUtil
 
 class UsbActivity : AppCompatActivity(){
     private lateinit var usbManager: UsbManager

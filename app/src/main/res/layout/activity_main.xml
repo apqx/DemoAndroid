@@ -15,7 +15,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:menu="@menu/bottom_navigation_home" />
+            app:menu="@menu/bottom_navigation_home"
+            android:background="@color/colorPrimary"/>
 
         <FrameLayout
             android:id="@+id/fl_main_frag_container"

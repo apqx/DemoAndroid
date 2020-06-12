@@ -4,11 +4,12 @@ import android.app.Service
 import android.content.Intent
 import android.os.IBinder
 import androidx.room.Room
-import me.apqx.libbase.util.LogUtil
+
 import me.apqx.demo.ipc.aidl.IBookManager
 import me.apqx.demo.ipc.aidl.ICallback
 import me.apqx.demo.ipc.aidl.bean.Book
 import me.apqx.demo.ipc.room.IpcDataBase
+import me.apqx.libtools.log.LogUtil
 
 class RemoteService : Service() {
     var db: IpcDataBase? = null

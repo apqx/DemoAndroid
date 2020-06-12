@@ -7,7 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.viewpager.widget.PagerAdapter
-import me.apqx.libbase.util.LogUtil
+import me.apqx.libtools.log.LogUtil
+
 import kotlin.random.Random
 
 class SimplePagerAdapter(val context: Context) : PagerAdapter() {

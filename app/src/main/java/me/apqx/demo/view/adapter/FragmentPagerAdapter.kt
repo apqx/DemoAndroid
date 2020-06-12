@@ -1,5 +1,7 @@
 package me.apqx.demo.view.adapter
 
+import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
@@ -21,4 +23,18 @@ class FragmentPagerAdapter(fragmentManager: FragmentManager) : FragmentStatePage
     override fun getPageTitle(position: Int): CharSequence? {
         return "TAB$position"
     }
+
+    override fun instantiateItem(container: ViewGroup, position: Int): Any {
+        return super.instantiateItem(container, position)
+    }
+
+    override fun instantiateItem(container: View, position: Int): Any {
+        return super.instantiateItem(container, position)
+    }
+
+    override fun destroyItem(container: ViewGroup, position: Int, `object`: Any) {
+        super.destroyItem(container, position, `object`)
+    }
+
+
 }

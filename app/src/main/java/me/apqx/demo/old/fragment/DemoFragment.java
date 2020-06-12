@@ -11,9 +11,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import me.apqx.libbase.util.LogUtil;
+;
 import me.apqx.demo.R;
 import me.apqx.demo.widget.WidgetActivity;
+import me.apqx.libtools.log.LogUtil;
 
 public class DemoFragment extends Fragment {
     private static final int REQUEST_CODE = 1;

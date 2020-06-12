@@ -7,7 +7,8 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.Scroller
 import androidx.constraintlayout.widget.ConstraintLayout
-import me.apqx.libbase.util.LogUtil
+import me.apqx.libtools.log.LogUtil
+
 
 /**
  * 跟随手指移动的View，5种移动方式

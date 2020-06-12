@@ -12,39 +12,40 @@ import com.squareup.leakcanary.LeakCanary
 import io.realm.Realm
 import io.realm.RealmConfiguration
 import me.apqx.demo.old.realm.CusRealmMigration
-import me.apqx.libbase.util.LogUtil
+
 import me.apqx.libbase.util.ToastUtil
+import me.apqx.libtools.log.LogUtil
 
 class CusApp : MultiDexApplication() {
 //    val screenShotManager = ScreenShotManager.newInstance(this)
 
     private val actLifeCycleCallback = object : ActivityLifecycleCallbacks {
         override fun onActivityPaused(activity: Activity?) {
-            LogUtil.i("onActivityPaused ${activity?.javaClass?.simpleName}")
+            LogUtil.i("activity lifeCircle onActivityPaused $activity")
         }
 
         override fun onActivityResumed(activity: Activity?) {
-            LogUtil.i("onActivityResumed ${activity?.javaClass?.simpleName}")
+            LogUtil.i("activity lifeCircle onActivityResumed $activity")
         }
 
         override fun onActivityStarted(activity: Activity?) {
-            LogUtil.i("onActivityStarted ${activity?.javaClass?.simpleName}")
+            LogUtil.i("activity lifeCircle onActivityStarted $activity")
         }
 
         override fun onActivityDestroyed(activity: Activity?) {
-            LogUtil.i("onActivityDestroyed ${activity?.javaClass?.simpleName}")
+            LogUtil.i("activity lifeCircle onActivityDestroyed $activity")
         }
 
         override fun onActivitySaveInstanceState(activity: Activity?, outState: Bundle?) {
-            LogUtil.i("onActivitySaveInstanceState ${activity?.javaClass?.simpleName}")
+            LogUtil.i("activity lifeCircle onActivitySaveInstanceState $activity")
         }
 
         override fun onActivityStopped(activity: Activity?) {
-            LogUtil.i("onActivityStopped ${activity?.javaClass?.simpleName}")
+            LogUtil.i("activity lifeCircle onActivityStopped $activity")
         }
 
         override fun onActivityCreated(activity: Activity?, savedInstanceState: Bundle?) {
-            LogUtil.i("onActivityCreated $activity")
+            LogUtil.i("activity lifeCircle onActivityCreated $activity")
         }
     }
 

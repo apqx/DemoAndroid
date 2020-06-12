@@ -8,8 +8,9 @@ import android.os.Bundle
 import android.os.IBinder
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import me.apqx.libbase.util.LogUtil
+
 import me.apqx.demo.R
+import me.apqx.libtools.log.LogUtil
 
 class ServiceActivity : AppCompatActivity() {
     var cusIntent1: Intent? = null

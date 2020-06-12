@@ -1,15 +1,11 @@
 package me.apqx.demo.view
 
-import android.animation.IntEvaluator
-import android.animation.ValueAnimator
 import android.os.Bundle
-import android.view.MotionEvent
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.activity_scroll.*
 import kotlinx.android.synthetic.main.item_scroll_top.*
 import me.apqx.demo.R
-import me.apqx.libbase.util.LogUtil
+import me.apqx.libtools.log.LogUtil
+
 import kotlin.math.roundToInt
 
 class ScrollActivity : AppCompatActivity() {
