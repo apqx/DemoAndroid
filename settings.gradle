@@ -1,3 +1,6 @@
-include ':app', ':libAnnotation', ':libtools', ':libbase'
+include ':app',
+        ':libAnnotation',
+        ':libtools',
+        ':libbase',
+        ':libwidget'
 rootProject.name='DemoAndroid'
-include ':libwidget'

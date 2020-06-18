@@ -1,77 +1,70 @@
 apply plugin: 'com.android.application'
-
 apply plugin: 'androidx.navigation.safeargs'
-
 apply plugin: 'kotlin-android'
-
 apply plugin: 'kotlin-android-extensions'
-
 apply plugin: 'kotlin-kapt'
-
 apply plugin: 'realm-android'
 
 android {
+
     signingConfigs {
         mySign {
-            storeFile file('/Users/apqx/Code/Android/DemoAndroid/apqx.jks')
+            storeFile file('../apqx.jks')
             storePassword '123456'
             keyAlias = 'apqx'
             keyPassword '123456'
         }
     }
 
-    // 定义要重复使用的字符串
-    def APP_NAME = "appName"
-    def PH_MODE = "ph_mode"
-    def PH_FLAVOR = "ph_flavor"
-    def PH_FLAVOR_MORE = "ph_flavor_more"
-    compileSdkVersion 28
-    buildToolsVersion '28.0.3'
+    compileSdkVersion 29
+    buildToolsVersion '29.0.3'
+
     defaultConfig {
+        minSdkVersion 16
+        targetSdkVersion 29
+
         // 定义包名
         applicationId "me.apqx.demo"
         versionCode 1
-        versionName "1.0"
-
-        // 定义可以在AndroidManifest文件中使用的变量，不同的分支比如release和debug可以覆写这个变量
-        // 来实现不同分支的不同行为
-        getManifestPlaceholders().put(APP_NAME, "DEF_NAME")
-
-        minSdkVersion 16
-        targetSdkVersion 28
+        versionName "1.0.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
-    }
 
+        // 定义可以在AndroidManifest文件中使用的变量，不同的分支比如release和debug可以覆写这个变量
+        // 来实现不同分支的不同行为
+        manifestPlaceholders APP_NAME: 'Demo',
+                PH_MODE: 'DEF',
+                PH_FLAVOR: 'DEF',
+                PH_FLAVOR_MORE: 'DEF'
+    }
 
     // 这里是按方法块的定义顺序执行的，似乎有的代码块可以继承属性，有的就不可以
     buildTypes {
         release {
-            minifyEnabled false
+            // 这里配置了release的签名，release任务才会出现在gradle自动生成的任务里
+            signingConfig signingConfigs.mySign
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-
-            getManifestPlaceholders().put(PH_MODE, "release")
+            manifestPlaceholders APP_NAME: 'DemoRelease',
+                    PH_MODE: 'release'
         }
         debug {
+            signingConfig signingConfigs.mySign
             println("apqx: buildTypes debug")
-            // 修改Debug模式下的应用名，这个属性会覆盖flavor中定义的属性
-//            manifestPlaceholders = [appName: "Debug"]
-//            getManifestPlaceholders().put(APP_NAME, "Debug")
-            // debug模式下生成不一样的applicationId，让正式版和测试版共存
+            // debug模式下生成不一样的applicationId后缀，让正式版和测试版共存
             applicationIdSuffix = '.debug'
-            // debug模式下定义不一样的版本名称
+            // debug模式下定义不一样的版本名称后缀
             versionNameSuffix = "-debug"
-
-            getManifestPlaceholders().put(PH_MODE, "release")
+            // 修改Debug模式下的应用名，这个属性会覆盖flavor中定义的属性
+            manifestPlaceholders APP_NAME: 'DemoDebug',
+                    PH_MODE: 'debug'
         }
     }
     dataBinding {
         enabled = true
     }
     compileOptions {
-        sourceCompatibility = '1.8'
-        targetCompatibility = '1.8'
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
@@ -81,28 +74,37 @@ android {
 
     flavorDimensions 'version'
 
+    /**
+     * 定义Flavor，每一个Flavor都拥有所有的buildType
+     */
     productFlavors {
         // 每一个flavor都从defaultConfig中继承属性，并可以进行覆盖
+        // 但是这里定义的属性，会被buildType中定义的相同属性覆盖
         mi {
             dimension = 'version'
             println("apqx: flavor mi")
-            getManifestPlaceholders().put(PH_FLAVOR, "mi")
-            getManifestPlaceholders().put(PH_FLAVOR_MORE, "mi_more")
+            manifestPlaceholders PH_FLAVOR: 'mi',
+                    PH_FLAVOR_MORE: 'mi_more'
         }
         play {
             dimension = 'version'
             println("apqx: flavor play")
-            getManifestPlaceholders().put(PH_FLAVOR, "play")
-            getManifestPlaceholders().put(PH_FLAVOR_MORE, "play_more")
+            manifestPlaceholders PH_FLAVOR: 'play',
+                    PH_FLAVOR_MORE: 'play_more'
         }
     }
 
+    // 默认的输出路径为 ./{moduleName}/build/outputs/apk/{flavor}/{buildType}/xxx.apk
     android.applicationVariants.all { variant ->
+        // variant.name 为 {flavor}{buildType} 一般类似 miDebug
+        // variant.versionName 为 版本号 一般类似 1.0.0
+        // variant.buildType.name 为 buildType，一般为release或debug
         variant.outputs.all {
-//            outputFileName = filePath
-            def apkName = "Haha"
-            // 相对于默认的输出路径，向上跳2个层级
-            outputFileName = "../../myApks/" + apkName +"-${variant.name}-${variant.versionName}.apk"
+            // 定义输出的apk路径和名字
+            def apkName = "demo"
+            // 相对于默认的输出路径，向上跳2个层级，在apk目录下
+            // 注意，这里不再允许使用相对于工程根目录的绝对路径
+//            outputFileName = "../../${variant.buildType.name}/${apkName}_${variant.name}_${variant.versionName}.apk"
         }
     }
 }
@@ -110,7 +112,7 @@ android {
 dependencies {
     implementation 'com.android.support:multidex:1.0.3'
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$rootProject.kotlin_version"
     implementation 'com.google.android.material:material:1.1.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     testImplementation 'junit:junit:4.12'
@@ -122,7 +124,6 @@ dependencies {
 
     def room_version = "2.2.4"
     implementation "androidx.room:room-runtime:$room_version"
-    // use kapt for Kotlin
     kapt "androidx.room:room-compiler:$room_version"
     // optional - RxJava support for Room
     implementation "androidx.room:room-rxjava2:$room_version"
@@ -144,8 +145,8 @@ dependencies {
     // 记录日志的拦截器
     implementation 'com.squareup.okhttp3:logging-interceptor:3.9.1'
     // Navigation， use -ktx for Kotlin
-    implementation "androidx.navigation:navigation-fragment-ktx:$rootProject.navigationVersion"
-    implementation "androidx.navigation:navigation-ui-ktx:$rootProject.navigationVersion"
+    implementation "androidx.navigation:navigation-fragment-ktx:$rootProject.navigation_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$rootProject.navigation_version"
     // use -ktx for Kotlin
     def work_version = "2.3.2"
     implementation "androidx.work:work-runtime-ktx:$work_version"
@@ -156,7 +157,6 @@ dependencies {
     // use -ktx for Kotlin
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.6.3'
     releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.6.3'
-    implementation 'com.android.support:design:28.0.0'
     implementation 'org.greenrobot:eventbus:3.1.1'
 
     implementation 'com.google.android:flexbox:2.0.0'
@@ -172,9 +172,5 @@ dependencies {
     implementation project(path: ':libbase')
     implementation project(path: ':libwidget')
     implementation project(path: ':libtools')
-
-    // Flavor依赖问题
-//        implementation project(path: ':libtools', configuration: 'default')
-//    implementation project(path: ':libtools')
 
 }

@@ -13,7 +13,7 @@
         android:name=".CusApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="${appName}"
+        android:label="${APP_NAME}"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
@@ -21,9 +21,9 @@
         tools:ignore="UnusedAttribute">
 
         <meta-data android:name="flavor"
-            android:value="${ph_flavor}"/>
+            android:value="${PH_FLAVOR}"/>
         <meta-data android:name="flavorMore"
-            android:value="${ph_flavor_more}"/>
+            android:value="${PH_FLAVOR_MORE}"/>
 
         <activity android:name=".MainActivity"
             android:theme="@style/AppTheme.TransparentStatusBar"
@@ -59,7 +59,6 @@
         <activity android:name=".view.ScrollActivity" />
         <activity android:name=".view.ThemeActivity" />
         <activity android:name=".view.TextActivity" />
-        <activity android:name=".view.ThemeActivity" />
 
         <service
             android:name=".ipc.RemoteService"

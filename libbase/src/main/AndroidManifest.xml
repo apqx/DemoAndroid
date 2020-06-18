@@ -2,6 +2,6 @@
     package="me.apqx.libbase" >
     <application>
         <meta-data android:name="mode"
-            android:value="${ph_mode}"/>
+            android:value="${PH_MODE}"/>
     </application>
 </manifest>
