@@ -13,7 +13,7 @@ import io.realm.Realm
 import io.realm.RealmConfiguration
 import me.apqx.demo.old.realm.CusRealmMigration
 
-import me.apqx.libbase.util.ToastUtil
+import me.apqx.libtools.notify.ToastUtil
 import me.apqx.libtools.log.LogUtil
 
 class CusApp : MultiDexApplication() {

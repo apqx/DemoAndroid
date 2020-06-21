@@ -18,7 +18,7 @@ import me.apqx.demo.mvvm.data.AppDatabase
 import me.apqx.demo.mvvm.data.Student
 import me.apqx.demo.mvvm.viewmodels.DemoViewModel
 
-import me.apqx.libbase.util.ToastUtil
+import me.apqx.libtools.notify.ToastUtil
 import me.apqx.libtools.log.LogUtil
 
 class MvvmFragment : BaseFragment<BasePresenter<IBaseView>>() {

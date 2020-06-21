@@ -31,10 +31,10 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
-import me.apqx.libbase.util.DisplayUtil;
 ;
 import me.apqx.demo.R;
 import me.apqx.libtools.log.LogUtil;
+import me.apqx.libtools.view.DisplayUtil;
 
 public class HorizontalPager extends RelativeLayout {
     private ViewPager viewPager;
@@ -57,9 +57,9 @@ public class HorizontalPager extends RelativeLayout {
      */
     private final int animTimeMills = 3000;
 
-    private final int indicatorWidth = DisplayUtil.dpToPx(getContext(), 10);
-    private final int indicatorHeight = DisplayUtil.dpToPx(getContext(), 2);
-    private final int indicatorMarginBottom = DisplayUtil.dpToPx(getContext(), 15);
+    private final int indicatorWidth = DisplayUtil.INSTANCE.dpToPx(getContext(), 10);
+    private final int indicatorHeight = DisplayUtil.INSTANCE.dpToPx(getContext(), 2);
+    private final int indicatorMarginBottom = DisplayUtil.INSTANCE.dpToPx(getContext(), 15);
 
     /**
      * GridLayout的最终高度和宽度
@@ -78,15 +78,15 @@ public class HorizontalPager extends RelativeLayout {
     /**
      * GridLayout左右margin
      */
-    private int marginSide = DisplayUtil.dpToPx(getContext(), 6);
+    private int marginSide = DisplayUtil.INSTANCE.dpToPx(getContext(), 6);
     /**
      * GridLayout下Margin
      */
-    private int marginBottom = DisplayUtil.dpToPx(getContext(), 28);
+    private int marginBottom = DisplayUtil.INSTANCE.dpToPx(getContext(), 28);
     /**
      * GridLayout上Margin
      */
-    private int marginTop = DisplayUtil.dpToPx(getContext(), 18);
+    private int marginTop = DisplayUtil.INSTANCE.dpToPx(getContext(), 18);
 
 
     private Handler handler;

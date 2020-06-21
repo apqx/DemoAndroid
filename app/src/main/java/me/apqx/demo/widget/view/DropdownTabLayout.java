@@ -26,10 +26,10 @@ import com.google.android.material.tabs.TabLayout;
 
 import java.util.List;
 
-import me.apqx.libbase.util.DisplayUtil;
 ;
 import me.apqx.demo.R;
 import me.apqx.libtools.log.LogUtil;
+import me.apqx.libtools.view.DisplayUtil;
 
 public class DropdownTabLayout extends FrameLayout {
     private TabLayout tabLayout;
@@ -227,9 +227,9 @@ public class DropdownTabLayout extends FrameLayout {
      * 根据传入的数据，填充下拉列表的UI视图
      */
     private LinearLayout fillDropdownList() {
-        int dp5 = DisplayUtil.dpToPx(getContext(), 5);
-        int dp2 = DisplayUtil.dpToPx(getContext(), 2);
-        int dp10 = DisplayUtil.dpToPx(getContext(), 10);
+        int dp5 = DisplayUtil.INSTANCE.dpToPx(getContext(), 5);
+        int dp2 = DisplayUtil.INSTANCE.dpToPx(getContext(), 2);
+        int dp10 = DisplayUtil.INSTANCE.dpToPx(getContext(), 10);
         LinearLayout linearLayout = new LinearLayout(getContext());
         linearLayout.setOrientation(LinearLayout.VERTICAL);
         linearLayout.setPadding(dp5, 0, dp5, 0);

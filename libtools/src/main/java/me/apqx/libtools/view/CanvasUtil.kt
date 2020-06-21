@@ -1,4 +1,4 @@
-package me.apqx.libbase.util
+package me.apqx.libtools.view
 
 import android.graphics.Rect
 
@@ -10,7 +10,7 @@ object CanvasUtil {
      * @param containerBottom 容器的Bottom坐标
      * @param textBounds 测量后Text的边界矩形
      */
-    fun getDrawTextCenterY(containerTop: Int, containerBottom: Int, textBounds: Rect) : Int {
+    fun getDrawTextVerticalCenterY(containerTop: Int, containerBottom: Int, textBounds: Rect) : Int {
         val gap = ((containerBottom - containerTop) - (textBounds.bottom - textBounds.top)) / 2
         return containerTop + (gap - textBounds.top)
     }
@@ -22,7 +22,7 @@ object CanvasUtil {
      * @param containerRight 容器的Right坐标
      * @param textBounds 测量后Text的边界矩形
      */
-    fun getDrawTextCenterX(containerLeft: Int, containerRight: Int, textBounds: Rect) : Int {
+    fun getDrawTextHorizontalCenterX(containerLeft: Int, containerRight: Int, textBounds: Rect) : Int {
         val gap = ((containerRight - containerLeft) - (textBounds.right - textBounds.left)) / 2
         return containerLeft + gap
     }

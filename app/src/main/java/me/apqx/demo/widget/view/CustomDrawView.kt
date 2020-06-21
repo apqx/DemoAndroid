@@ -7,9 +7,9 @@ import android.graphics.Paint
 import android.graphics.Rect
 import android.util.AttributeSet
 import android.view.View
-import me.apqx.libbase.util.CanvasUtil
-import me.apqx.libbase.util.DisplayUtil
+import me.apqx.libtools.view.CanvasUtil
 import me.apqx.libtools.log.LogUtil
+import me.apqx.libtools.view.DisplayUtil
 
 
 class CustomDrawView : View {
@@ -48,8 +48,8 @@ class CustomDrawView : View {
 
         LogUtil.d("textBounds $textBoundsRect")
         canvas?.drawRect(0f, 0f, textWidth.toFloat() + padding * 2, textHeight.toFloat() + padding * 2, bgPaint)
-        canvas?.drawText(str, CanvasUtil.getDrawTextCenterX(0, (textWidth.toFloat() + padding * 2).toInt(), textBoundsRect).toFloat()
-                , CanvasUtil.getDrawTextCenterY(0, (textHeight.toFloat() + padding * 2).toInt(), textBoundsRect).toFloat(), textPaint)
+        canvas?.drawText(str, CanvasUtil.getDrawTextHorizontalCenterX(0, (textWidth.toFloat() + padding * 2).toInt(), textBoundsRect).toFloat()
+                , CanvasUtil.getDrawTextVerticalCenterY(0, (textHeight.toFloat() + padding * 2).toInt(), textBoundsRect).toFloat(), textPaint)
 
 
     }

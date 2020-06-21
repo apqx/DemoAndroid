@@ -16,9 +16,9 @@ import me.apqx.demo.view.tab.TabComponentFragment
 import me.apqx.demo.view.tab.TabOtherFragment
 import me.apqx.demo.view.tab.TabViewFragment
 import me.apqx.demo.widget.dialog.LoadingDialog
-import me.apqx.libbase.util.DisplayUtil
 import me.apqx.libtools.file.ManifestUtil
 import me.apqx.libtools.log.LogUtil
+import me.apqx.libtools.view.DisplayUtil
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode

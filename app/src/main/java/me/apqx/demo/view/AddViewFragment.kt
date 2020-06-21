@@ -15,7 +15,7 @@ import me.apqx.demo.R
 import me.apqx.demo.mvp.BaseFragment
 import me.apqx.demo.mvp.BasePresenter
 import me.apqx.demo.mvp.IBaseView
-import me.apqx.libbase.util.DisplayUtil
+import me.apqx.libtools.view.DisplayUtil
 
 class AddViewFragment : BaseFragment<BasePresenter<IBaseView>>() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

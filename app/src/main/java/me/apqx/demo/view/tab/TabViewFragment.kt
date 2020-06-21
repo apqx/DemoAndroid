@@ -22,9 +22,10 @@ import me.apqx.demo.mvp.IBaseView
 import me.apqx.demo.mvvm.viewmodels.DemoViewModel
 import me.apqx.demo.view.frags.FragsActivity
 import me.apqx.demo.old.web.WebActivity
+import me.apqx.demo.view.ScreenShotActivity
 import me.apqx.demo.view.TextActivity
 import me.apqx.demo.view.ThemeActivity
-import me.apqx.libbase.util.ToastUtil
+import me.apqx.libtools.notify.ToastUtil
 import java.lang.ref.SoftReference
 
 class TabViewFragment : BaseFragment<BasePresenter<IBaseView>>() {
@@ -68,6 +69,7 @@ class TabViewFragment : BaseFragment<BasePresenter<IBaseView>>() {
         btn_text.setOnClickListener(this)
         btn_web_activity.setOnClickListener(this)
         btn_theme.setOnClickListener(this)
+        btn_screenshot.setOnClickListener(this)
 
         simpleAdapter = SimpleRecyclerAdapter()
         simpleAdapter.setOnItemClickListener(object : SimpleRecyclerAdapter.OnItemClickListener {
@@ -133,6 +135,9 @@ class TabViewFragment : BaseFragment<BasePresenter<IBaseView>>() {
             }
             R.id.btn_theme -> {
                 startActivity(Intent(context, ThemeActivity::class.java))
+            }
+            R.id.btn_screenshot -> {
+                startActivity(Intent(context, ScreenShotActivity::class.java))
             }
         }
     }

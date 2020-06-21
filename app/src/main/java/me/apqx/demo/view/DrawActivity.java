@@ -4,14 +4,9 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Rect;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
-import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.Switch;
 
@@ -23,7 +18,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 import me.apqx.demo.R;
-import me.apqx.libbase.util.ToastUtil;
+import me.apqx.libtools.notify.ToastUtil;
 
 public class DrawActivity extends Activity {
     private ImageView iv_canvas;

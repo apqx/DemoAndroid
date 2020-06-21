@@ -59,6 +59,7 @@
         <activity android:name=".view.ScrollActivity" />
         <activity android:name=".view.ThemeActivity" />
         <activity android:name=".view.TextActivity" />
+        <activity android:name=".view.ScreenShotActivity" />
 
         <service
             android:name=".ipc.RemoteService"

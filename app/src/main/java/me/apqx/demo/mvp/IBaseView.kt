@@ -1,6 +1,6 @@
 package me.apqx.demo.mvp
 
-import me.apqx.libbase.util.ToastUtil
+import me.apqx.libtools.notify.ToastUtil
 
 interface IBaseView {
     public fun showTips(tips: String) {

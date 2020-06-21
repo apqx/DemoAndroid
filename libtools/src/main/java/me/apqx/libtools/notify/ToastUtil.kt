@@ -1,11 +1,9 @@
-package me.apqx.libbase.util
+package me.apqx.libtools.notify
 
 import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Handler
-import android.view.LayoutInflater
 import android.widget.Toast
-import me.apqx.libbase.R
 
 @SuppressLint("StaticFieldLeak")
 object ToastUtil {

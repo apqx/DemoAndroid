@@ -12,8 +12,8 @@ import butterknife.ButterKnife
 
 import me.apqx.demo.R
 import me.apqx.demo.databinding.DialogCusBinding
-import me.apqx.libbase.util.DisplayUtil
 import me.apqx.libtools.log.LogUtil
+import me.apqx.libtools.view.DisplayUtil
 import java.lang.Exception
 
 class CusDialogExtend : Dialog {

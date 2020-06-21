@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 import me.apqx.demo.R
-import me.apqx.libbase.util.ToastUtil
+import me.apqx.libtools.notify.ToastUtil
 import me.apqx.demo.databinding.ActivityRecyclerBinding
 import me.apqx.demo.widget.recycler.adapter.ItemDecoration
 import me.apqx.demo.widget.recycler.adapter.OutAdapter

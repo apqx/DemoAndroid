@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.item_student.view.*
 import me.apqx.demo.R
 import me.apqx.demo.mvvm.data.Student
-import me.apqx.libbase.util.ToastUtil
+import me.apqx.libtools.notify.ToastUtil
 
 class MvvmRecyclerAdapter : ListAdapter<Student, RecyclerView.ViewHolder>(CusDiffCallback())  {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
