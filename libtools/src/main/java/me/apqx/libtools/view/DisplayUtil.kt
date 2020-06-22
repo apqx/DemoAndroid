@@ -83,6 +83,41 @@ object DisplayUtil {
     }
 
     /**
+     * 当Theme设定Activity顶部延伸到系统顶部状态栏中显示时，通过这个方法，设置顶部TitleBar的paddingTop为系统状态栏高度，
+     * TitleBar的高度需要为wrap_content
+     * @param titleBar 头部控件的ViewGroup,若为null,整个界面将和状态栏重叠
+     */
+    fun initTitleBar(titleBar: View?) {
+        if (titleBar == null) return
+        val context = titleBar.context
+        // 设置头部控件ViewGroup的PaddingTop,防止界面与状态栏重叠
+        // 本质是增大titleBar的高度，并设置上padding
+        val statusBarHeight: Int = getStatusBarHeight(context)
+        titleBar.measure(0, 0)
+        val measuredHeight = titleBar.measuredHeight
+        val layoutParams = titleBar.layoutParams
+        layoutParams.height = measuredHeight + statusBarHeight
+        titleBar.layoutParams = layoutParams
+        titleBar.setPadding(titleBar.paddingLeft,
+                titleBar.paddingTop + statusBarHeight,
+                titleBar.paddingRight,
+                titleBar.paddingBottom)
+    }
+
+    /**
+     * 获取系统状态栏高度
+     */
+    fun getStatusBarHeight(context: Context): Int {
+        var result = 0
+        val resourceId = context.resources.getIdentifier(
+                "status_bar_height", "dimen", "android")
+        if (resourceId > 0) {
+            result = context.resources.getDimensionPixelSize(resourceId)
+        }
+        return result
+    }
+
+    /**
      * 设置指定Activity的状态栏透明显示
      *
      * @param darkStatusIcon 是否显示深色的状态栏图标、文字
