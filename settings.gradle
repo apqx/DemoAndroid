@@ -1,6 +1,6 @@
 include ':app',
         ':libAnnotation',
-        ':libtools',
-        ':libbase',
-        ':libwidget'
+        ':libTools',
+        ':libBase',
+        ':libWidget'
 rootProject.name='DemoAndroid'

@@ -18,55 +18,6 @@
         <item name="commonBg">@color/commonBgGreen</item>
     </style>
 
-    <style name="commonBtn" parent="TextAppearance.AppCompat">
-        <item name="android:textColor">?attr/colorAccent</item>
-        <item name="android:background">@drawable/bg_common_btn</item>
-        <item name="android:layout_marginLeft">10dp</item>
-        <item name="android:layout_marginRight">10dp</item>
-        <item name="android:layout_marginTop">2dp</item>
-        <item name="android:layout_marginBottom">2dp</item>
-    </style>
-
-
-    <style name="loading_dialog" parent="android:style/Theme.Dialog">
-        <item name="android:windowFrame">@null</item>
-        <item name="android:windowNoTitle">true</item>
-        <item name="android:windowIsFloating">true</item>
-        <item name="android:windowContentOverlay">@null</item>
-    </style>
-
-    <style name="DropdownDialogTheme" parent="Theme.MaterialComponents.Light.Dialog">
-        <item name="android:windowNoTitle">true</item>
-        <item name="android:windowIsFloating">true</item>
-<!--        取消Dialog的大背景半透明虚化-->
-        <item name="android:backgroundDimEnabled">false</item>
-    </style>
-
-    <style name="TransparentDialog" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:windowNoTitle">true</item>
-        <item name="android:windowIsFloating">true</item>
-        <!--        取消Dialog的大背景半透明虚化-->
-        <item name="android:backgroundDimEnabled">true</item>
-        <!--        设置Dialog窗体背景颜色，默认是白色-->
-        <item name="android:windowBackground">@android:color/transparent</item>
-    </style>
-
-    <style name="CusTabStyle">
-        <item name="android:textSize">14sp</item>
-<!--    必须设置颜色，因为View默认会加载颜色，没有的话会异常-->
-        <item name="android:textColor">@color/colorAccent</item>
-        <item name="android:textAllCaps">true</item>
-    </style>
-
-<!--    定义一个继承自AppTheme的透明状态栏的主题，Android 4.4以上有效-->
-    <style name="AppTheme.TransparentStatusBar"/>
-
-<!--    Dialog的进入、退出动画-->
-    <style name="dialogWindowAnim" parent="android:Animation">
-        <item name="android:windowEnterAnimation">@anim/dialog_enter</item>
-        <item name="android:windowExitAnimation">@anim/dialog_exit</item>
-    </style>
-
 
 
 </resources>

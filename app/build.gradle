@@ -94,10 +94,22 @@ android {
         }
     }
 
+    /**
+     * 过滤指定的Variant，被过滤的Variant将不会出现在打包系统里
+     */
+    variantFilter { variant ->
+        def names = variant.flavors*.name
+        if (names.contains("minApi21") && names.contains("demo")) {
+            // Gradle将会忽略符合条件的Variant
+            setIgnore(true)
+        }
+    }
+
     // 默认的输出路径为 ./{moduleName}/build/outputs/apk/{flavor}/{buildType}/xxx.apk
     android.applicationVariants.all { variant ->
-        // variant.name 为 {flavor}{buildType} 一般类似 miDebug
-        // variant.versionName 为 版本号 一般类似 1.0.0
+        // variant.name 为 {flavor}{buildType}，一般类似 miDebug
+        // variant.versionName 为 版本号，一般类似 1.0.0
+        // variant.flavors.name 为 flavor，一般类似[mi]
         // variant.buildType.name 为 buildType，一般为release或debug
         variant.outputs.all {
             // 定义输出的apk路径和名字
@@ -144,15 +156,6 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
     // 记录日志的拦截器
     implementation 'com.squareup.okhttp3:logging-interceptor:3.9.1'
-    // Navigation， use -ktx for Kotlin
-    implementation "androidx.navigation:navigation-fragment-ktx:$rootProject.navigation_version"
-    implementation "androidx.navigation:navigation-ui-ktx:$rootProject.navigation_version"
-    // use -ktx for Kotlin
-    def work_version = "2.3.2"
-    implementation "androidx.work:work-runtime-ktx:$work_version"
-    // use -ktx for Kotlin
-    def paging_version = "2.1.1"
-    implementation "androidx.paging:paging-runtime-ktx:$paging_version"
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
     // use -ktx for Kotlin
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.6.3'
@@ -169,8 +172,8 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
 
     implementation "androidx.viewpager2:viewpager2:1.0.0"
-    implementation project(path: ':libbase')
-    implementation project(path: ':libwidget')
-    implementation project(path: ':libtools')
+    implementation project(path: ':libBase')
+    implementation project(path: ':libWidget')
+    implementation project(path: ':libTools')
 
 }

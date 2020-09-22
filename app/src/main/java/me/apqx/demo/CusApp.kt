@@ -4,20 +4,13 @@ import android.app.Activity
 import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.ViewGroup
-import android.widget.PopupWindow
 import androidx.multidex.MultiDexApplication
 import com.squareup.leakcanary.LeakCanary
-import io.realm.Realm
-import io.realm.RealmConfiguration
-import me.apqx.demo.old.realm.CusRealmMigration
-
-import me.apqx.libtools.notify.ToastUtil
 import me.apqx.libtools.log.LogUtil
+import me.apqx.libtools.notify.ToastUtil
+
 
 class CusApp : MultiDexApplication() {
-//    val screenShotManager = ScreenShotManager.newInstance(this)
 
     private val actLifeCycleCallback = object : ActivityLifecycleCallbacks {
         override fun onActivityPaused(activity: Activity?) {
@@ -70,12 +63,6 @@ class CusApp : MultiDexApplication() {
 //        })
 
         ToastUtil.init(this)
-        Realm.init(this)
-        val config = RealmConfiguration.Builder()
-                .migration(CusRealmMigration())
-                .name("defRealm")
-                .build()
-        Realm.setDefaultConfiguration(config)
         if (LeakCanary.isInAnalyzerProcess(this)) {
             return
         } else {
@@ -104,11 +91,6 @@ class CusApp : MultiDexApplication() {
         val applicationInfo = packageManager.getApplicationInfo(packageName, PackageManager.GET_META_DATA)
         val channel = applicationInfo.metaData.getString("channel")
         LogUtil.e("READ ANDROID_MANIFEST chanel = $channel")
-    }
-
-    private fun showPopWindow() {
-        val view = LayoutInflater.from(this).inflate(R.layout.window_pop, null, false)
-        val popWindow = PopupWindow(view, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
     }
 
     override fun onTerminate() {
