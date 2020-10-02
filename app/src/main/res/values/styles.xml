@@ -18,6 +18,7 @@
         <item name="commonBg">@color/commonBgGreen</item>
     </style>
 
+    <style name="AppTheme.TransparentStatusBar"/>
 
 
 </resources>

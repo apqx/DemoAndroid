@@ -17,7 +17,6 @@ buildscript {
         // 定义可以在Module中使用的Plugin
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$navigation_version"
-        classpath "io.realm:realm-gradle-plugin:5.9.1"
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
