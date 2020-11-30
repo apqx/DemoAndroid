@@ -19,12 +19,12 @@ public class MainActivityJ extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        ViewPager viewPager = findViewById(R.id.vp_demo);
-        PagerAdapter adapter = new DemoPagerAdapter();
-        viewPager.setAdapter(adapter);
-        PagerIndicator pagerIndicator = findViewById(R.id.pi_pager_indicator);
-        pagerIndicator.bindViewPager(viewPager);
+//        setContentView(R.layout.activity_main);
+//        ViewPager viewPager = findViewById(R.id.vp_demo);
+//        PagerAdapter adapter = new DemoPagerAdapter();
+//        viewPager.setAdapter(adapter);
+//        PagerIndicator pagerIndicator = findViewById(R.id.pi_pager_indicator);
+//        pagerIndicator.bindViewPager(viewPager);
     }
 
     static class DemoPagerAdapter extends PagerAdapter {

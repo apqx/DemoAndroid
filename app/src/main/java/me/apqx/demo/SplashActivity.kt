@@ -10,11 +10,14 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import me.apqx.libtools.log.LogUtil
+import java.lang.Exception
 
 class SplashActivity : AppCompatActivity() {
     private lateinit var jobCountDownTimer: CountDownTimer
 
     private lateinit var jobCountdown: Job
+
+    private val mainScope = MainScope()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,14 +31,23 @@ class SplashActivity : AppCompatActivity() {
         }
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        mainScope.cancel()
+    }
+
     private fun startCountdown() {
         LogUtil.d("start countdown")
         stopCountdown()
-        jobCountdown = GlobalScope.launch(Dispatchers.Main) {
+        jobCountdown = mainScope.launch {
             flow {
-                for (i in 5 downTo 0) {
-                    delay(1000)
-                    emit(i)
+                try {
+                    for (i in 5 downTo 0) {
+                        delay(1000)
+                        emit(i)
+                    }
+                } catch (e: Exception) {
+                    e.printStackTrace()
                 }
                 LogUtil.d("countdown finish")
             }.collect {

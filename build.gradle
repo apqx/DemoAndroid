@@ -12,7 +12,7 @@ buildscript {
     }
     dependencies {
         // 定义Android Gradle Plugin版本，将会在编译时自动下载
-        classpath 'com.android.tools.build:gradle:4.0.1'
+        classpath 'com.android.tools.build:gradle:4.1.1'
 
         // 定义可以在Module中使用的Plugin
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"

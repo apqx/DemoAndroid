@@ -14,31 +14,31 @@ class CusApp : MultiDexApplication() {
 
     private val actLifeCycleCallback = object : ActivityLifecycleCallbacks {
         override fun onActivityPaused(activity: Activity?) {
-            LogUtil.i("activity lifeCircle onActivityPaused $activity")
+            LogUtil.i("activity life onActivityPaused $activity")
         }
 
         override fun onActivityResumed(activity: Activity?) {
-            LogUtil.i("activity lifeCircle onActivityResumed $activity")
+            LogUtil.i("activity life onActivityResumed $activity")
         }
 
         override fun onActivityStarted(activity: Activity?) {
-            LogUtil.i("activity lifeCircle onActivityStarted $activity")
+            LogUtil.i("activity life onActivityStarted $activity")
         }
 
         override fun onActivityDestroyed(activity: Activity?) {
-            LogUtil.i("activity lifeCircle onActivityDestroyed $activity")
+            LogUtil.i("activity life onActivityDestroyed $activity")
         }
 
         override fun onActivitySaveInstanceState(activity: Activity?, outState: Bundle?) {
-            LogUtil.i("activity lifeCircle onActivitySaveInstanceState $activity")
+            LogUtil.i("activity life onActivitySaveInstanceState $activity")
         }
 
         override fun onActivityStopped(activity: Activity?) {
-            LogUtil.i("activity lifeCircle onActivityStopped $activity")
+            LogUtil.i("activity life onActivityStopped $activity")
         }
 
         override fun onActivityCreated(activity: Activity?, savedInstanceState: Bundle?) {
-            LogUtil.i("activity lifeCircle onActivityCreated $activity")
+            LogUtil.i("activity life onActivityCreated $activity")
         }
     }
 
